@@ -1,24 +1,23 @@
-# Flux-capacitr
+# ExtinctIn
 
 [Heroku link][heroku]
 
-[heroku]: http://flux-capacitr.herokuapp.com
+[heroku]: #fillthisin
 
 ## Minimum Viable Product
-Flux-capacitr is a clone of Tumblr built on Rails and Backbone. Users can:
+ExtinctIn is a clone of LinkedIn built on Rails and Backbone. Users can:
 
-<!-- This is a Markdown checklist. Use it to keep track of your progress! -->
+- [ ] Create accounts
+- [ ] Create sessions (log in)
+- [ ] Create user profiles with personal information
+- [ ] Add past jobs to user profile
+- [ ] Request to connect with other users
+- [ ] Send messages to other users
+- [ ] Users receive notifications for messages and invitations to connect
+- [ ] Search for users by name
+- [ ] Search for users by company
+- [ ] Users can edit their profile in place by double clicking the text
 
-- [x] Create accounts
-- [x] Create sessions (log in)
-- [x] Create blogs
-- [x] Create blog posts
-- [ ] View blogs and posts
-- [ ] Subscribe to blogs
-- [ ] View a feed of subscribed blogs
-- [ ] Tag blog posts
-- [ ] Search for blogs by title
-- [ ] Search for posts by tag
 
 ## Design Docs
 * [View Wireframes][views]
@@ -88,4 +87,3 @@ collections, but they will fetch from the new `search` routes.
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
-

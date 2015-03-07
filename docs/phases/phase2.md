@@ -1,29 +1,26 @@
-# Phase 2: Viewing Blogs and Posts
+# Phase 2: Editing Profiles and Adding Experiences
 
 ## Rails
 ### Models
+* Experience
 
 ### Controllers
-Api::BlogsController (create, destroy, index, show)
-Api::PostsController (create, destroy, show, update)
+API::ProfilesController (update)
+API::ExperiencesController (create, show, update, destroy)
 
 ### Views
-* blogs/show.json.jbuilder
+* profiles/show.json.jbuilder (edit existing to include experiences)
 
 ## Backbone
 ### Models
-* Blog (parses nested `posts` association)
-* Post
+* Profile
+* Experience
 
 ### Collections
-* Blogs
-* Posts
+* Experiences
 
 ### Views
-* BlogForm
-* BlogShow (composite view, contains PostsIndex subview)
-* PostsIndex (composite view, contains PostsIndexItem subviews)
-* PostsIndexItem
-* PostShow
+* ProfileShow (composite view, contains JobsIndex and SchoolsIndex)
+* JobsIndex (compositve view, contains JobShow)
 
 ## Gems/Libraries

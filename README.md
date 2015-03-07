@@ -11,12 +11,12 @@ ExtinctIn is a clone of LinkedIn built on Rails and Backbone. Users can:
 - [ ] Create sessions (log in)
 - [ ] Create user profiles with personal information
 - [ ] Add past jobs to user profile
+- [ ] Users can edit their profile in place by double clicking the text
 - [ ] Request to connect with other users
 - [ ] Send messages to other users
-- [ ] Users receive notifications for messages and invitations to connect
 - [ ] Search for users by name
 - [ ] Search for users by company
-- [ ] Users can edit their profile in place by double clicking the text
+- [ ] Users receive notifications for messages and invitations to connect
 
 
 ## Design Docs
@@ -28,20 +28,20 @@ ExtinctIn is a clone of LinkedIn built on Rails and Backbone. Users can:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Blog Creation (~1 day)
+### Phase 1: User Authentication, Profile Creation (~1 day)
 I will implement user authentication in Rails based on the practices learned at
-App Academy. By the end of this phase, users will be able to create blogs using
-a simple text form in a Rails view. The most important part of this phase will
+App Academy. By the end of this phase, users will be able to create an account using
+a simple text form in a Rails view. A user's profile will be automatically created with blank values upon sign-up. The most important part of this phase will
 be pushing the app to Heroku and ensuring that everything works before moving on
 to phase 2.
 
 [Details][phase-one]
 
-### Phase 2: Viewing Blogs and Posts (~2 days)
-I will add API routes to serve blog and post data as JSON, then add Backbone
-models and collections that fetch data from those routes. By the end of this
-phase, users will be able to create blogs and view both blogs and posts, all
-inside a single Backbone app.
+### Phase 2: Profile Detail and Experiences (~2 days)
+I will add API routes to serve profile and experiences data as JSON, then add Backbone
+models and collections that fetch data from these routes. By the end of this
+phase, users will be able to edit and update their profiles in place, all
+inside a single Backbone app. They will also be able to create, edit, and delete job/education experiences.
 
 [Details][phase-two]
 

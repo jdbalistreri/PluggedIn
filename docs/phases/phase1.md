@@ -1,22 +1,21 @@
-# Phase 1: User Authentication, Basic Blogs and Posts
+# Phase 1: User Authentication, Basic Profile
 
 ## Rails
 ### Models
 * User
-* Blog
-* Post
+* Profile
 
 ### Controllers
 * UsersController (create, new)
 * SessionsController (create, new, destroy)
-* BlogsController (create, new, show)
-* PostsController (create, new, show)
+* StaticController (root)
+* API::ProfilesController (show)
 
 ### Views
 * users/new.html.erb
 * session/new.html.erb
-* blogs/new.html.erb
-* blogs/show.html.erb
+* static/root.html.erb
+* profiles/show.json.jbuilder (just basic info)
 
 ## Backbone
 ### Models
@@ -26,3 +25,10 @@
 ### Views
 
 ## Gems/Libraries
+
+
+
+##Sequence of Events
+* Create Rails models/controllers/views for users and sessions
+* Create Rails MVC for profiles
+* Push app to Heroku

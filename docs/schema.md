@@ -32,7 +32,7 @@ profile_picture | ??????    |
 location        | string    |
 tagline         | string    |
 industry        | string    |
-birthday        | date      |
+date_of_birth   | date      |
 summary         | text      |
 
 ## users

@@ -33,6 +33,7 @@ API::ExperiencesController (create, show, update, destroy)
 
 
 ##Notes
+* ASK ABOUT HOW TO DIVIDE JOBS/SCHOOLS IN EXPERIENCES
 * Make sure that the current user may only edit his/her own profile (can either toggle the edit buttons or I can have two different views; also can have protections on the Rails side)
 * Clicking edit on any property of a JobIndexItem or SchoolIndexItem will display the entire form to edit that item
 * I will need to look into the best way to handle the dates -- how do I store months/years only or years only? Also, how do I say present in the database?

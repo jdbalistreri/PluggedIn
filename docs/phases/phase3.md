@@ -29,7 +29,7 @@
 * Link to this view will be in the navigation bar
 * PendingConnectionsIndex will be a subview of Inbox, it will show connection requests the user has received and allow them to approve those connections
 * PendingConnectionItem will be a subview of PendingConnectionsIndex, allowing the connection to be approved/denied
-* SentIndex will be a subview of Inbox showing a list of connection requests a user has sent (this will later contain sent messages as well)
+* SentIndex will be a subview of Inbox showing a list of connection requests a user has sent (this will later contain sent messages as well) !!!Maybe take this out
 
 --- Old View: Profile Show ---
 * ConnectionButton (displayed on user profiles for now)

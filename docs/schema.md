@@ -30,7 +30,7 @@ session_token   | string    | not null, unique
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-user_id         | integer   | not null, unique, foreign_key
+profile_id      | integer   | not null, unique, foreign_key
 position        | string    | not null
 experience_type | integer   | not null (enum)
 institution     | string    |
@@ -53,8 +53,6 @@ connectee_id    | integer   | not null, foreign_key
 status          | integer   | not null, (enum)
 sent_date       | date      | not null
 response_date   | date      |
-message         | text      | --optional--
-connection_type | integer   | --optional--(enum)
 
 ## user_connections
 column name     | data type | details

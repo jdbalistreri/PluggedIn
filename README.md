@@ -16,8 +16,6 @@ ExtinctIn is a clone of LinkedIn built on Rails and Backbone. Users can:
 - [ ] Send messages to other users
 - [ ] Search for users by name
 - [ ] Search for users by company
-- [ ] Users receive notifications for messages and invitations to connect
-
 
 ## Design Docs
 * [View Wireframes][views]

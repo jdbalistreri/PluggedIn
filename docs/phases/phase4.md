@@ -2,19 +2,33 @@
 
 ## Rails
 ### Models
+* Message
 
 ### Controllers
-Api::PostsController (feed)
+API::Messages (create, index, show)
 
 ### Views
-posts/feed.json.jbuilder
 
 ## Backbone
 ### Models
+* Message
 
 ### Collections
+* Messages
 
 ### Views
-* FeedShow (composite view, contains PostsIndex subview)
+* ReceivedMessages (composite view in the Inbox view, has many MessageListItems)
+* SentMessages (composite view - may need to merge with sent connection requests)
+* MessageListItem
+* MessageShow
+* MessageForm
+
+* --- Old Views: OtherProfileShow ---
+* Add a button to send a message to the user (this will replace the "Connect" button if you are connected with the user)
 
 ## Gems/Libraries
+
+
+
+##Notes
+* Not sure if "reply" is a crucial feature or just nice to have

@@ -61,11 +61,8 @@ Finally, there will be multiple links (either reply or on a user's profile page)
 
 [Details][phase-four]
 
-### Phase 5: Searching for Users (~2 days)
-I'll need to add `search` routes to both the Blogs and Posts controllers. On the
-Backbone side, there will be a `SearchResults` composite view has `BlogsIndex`
-and `PostsIndex` subviews. These views will use plain old `blogs` and `posts`
-collections, but they will fetch from the new `search` routes.
+### Phase 5: Searching for Users (~1-2 days)
+I'll need to add a `search` route to the Users controller. On the Backbone side, there will be a `SearchResults` view that has a `UsersIndex`. This view will use a Users collection and will fetch from the search route. It will contain many UserListItem subviews, each linking to a given user's profile.
 
 [Details][phase-five]
 

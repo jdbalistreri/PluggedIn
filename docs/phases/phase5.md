@@ -2,21 +2,24 @@
 
 ## Rails
 ### Models
+* User (add a search class method)
 
 ### Controllers
-Api::BlogsController (search)
-Api::PostsController (search)
+* Api::UsersController (search)
 
 ### Views
+* users/search.json.jbuilder
 
 ## Backbone
 ### Models
+* User
 
 ### Collections
+* Users
 
 ### Views
-* BlogSearchItem
-* SearchShow (composite view, contains BlogsIndex and PostsIndex subviews)
+* SearchResults (compositve view with a UsersIndex view on it)
+* UsersIndex view will contain a users collection and will have UserListItem subviews
+* UserListItem (subview of UsersIndex with a link to the user's ProfileShow view)
 
 ## Gems/Libraries
-

@@ -6,7 +6,8 @@
 * UserConnections
 
 ### Controllers
-* Connections (create, update, destroy, index) -- do i need a show?
+* API::Connections (create, update, destroy, index) -- do i need a show?
+* The index route will likely need to be nested under a given user (e.g. users/1/connections)
 
 ### Views
 * connections/index.json.jbuilder (this will probably need to include profile information for each user)

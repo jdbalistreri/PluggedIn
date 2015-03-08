@@ -59,7 +59,6 @@ On the Backbone side, I will add ReceievedMessages and SentMessages views inside
 
 Finally, there will be multiple links (either reply or on a user's profile page) to the MessageForm view, that will allow a user to create a new message.
 
-
 [Details][phase-four]
 
 ### Phase 5: Searching for Users (~2 days)
@@ -70,13 +69,8 @@ collections, but they will fetch from the new `search` routes.
 
 [Details][phase-five]
 
-### Phase 6: Notifications and Dropdowns (~2 days)
-I will add drop-downs on the navigation bar for messages, connections (to show connections requested), and notifications (which will represent when others have accepted your requests)
-
-
-[Details][phase-six]
-
 ### Bonus Features
+- [ ] Notifications and dropdown menus on navigation bar
 - [ ] Typeahead search bar
 - [ ] Degrees of connection
 - [ ] Detailed search options (e.g. location, school, etc.)
@@ -91,4 +85,3 @@ I will add drop-downs on the navigation bar for messages, connections (to show c
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
-[phase-six]: ./docs/phases/phase6.md

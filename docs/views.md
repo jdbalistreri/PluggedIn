@@ -22,7 +22,7 @@
 ![search-results]
 
 [new-session]: ./wireframes/new_session.png
-[profile]: ./wireframes/profile.png
+[profile]: ./wireframes/profile0.png
 [connections-index]: ./wireframes/connections_index.png
 [inbox]: ./wireframes/inbox.png
 [message-show]: ./wireframes/message_show.png

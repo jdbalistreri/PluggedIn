@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+/*RESET*/
+h1, h2, h3, body, label, form, input, a, section, header {
+  background: transparent;
+  border: none;
+  margin: none;
+  padding: none;
+  font-size: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/*CLEARFIX*/
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.toggled > .trigger, .hidden-input {
+  display: none;
+}
+
+.toggled > .hidden-input, .trigger {
+  display: block;
+}

@@ -1,9 +1,12 @@
 ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
 
+  className: "user-show",
+
   template: JST["users/show"],
 
   events: {
     "submit .user-info-form" : "userInfoSubmit",
+    "dblclick .user-info" : "toggleDisplay",
   },
 
   initialize: function () {
@@ -16,7 +19,19 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
     return this;
   },
 
+  toggleDisplay: function () {
+    this.$el.toggleClass("toggled");
+  },
+
   userInfoSubmit: function (event) {
     event.preventDefault();
+    var that = this;
+    var attrs = $(event.target).serializeJSON().user
+
+    this.model.save(attrs, {
+      success: function () {
+        that.toggleDisplay()
+      },
+    })
   },
 })

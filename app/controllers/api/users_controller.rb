@@ -9,7 +9,13 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    render json: "need to fill this in"
+    @user = User.find(params[:id])
+    p user_params
+    if @user.update(user_params)
+      render "show"
+    else
+      render json: "error"
+    end
   end
-  
+
 end

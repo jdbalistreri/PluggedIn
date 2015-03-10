@@ -1,5 +1,5 @@
 
-<section class="user-info">
+<section class="user-info trigger">
   Name: <%= user.escape("fname") + " " + user.escape("lname")  %>
   <br>
   Location: <%= user.escape("location") %>
@@ -14,7 +14,7 @@
 </section>
 
 <% if (ExtinctIn.currentUserId === user.id) { %>
-  <form class="user-info-form">
+  <form class="user-info-form hidden-input">
     <h3>Edit Form!</h3>
     <label for="user-fname">First Name: </label>
     <input id="user-fname" type="text" name="user[fname]" value="<%= user.escape("fname")%>">
@@ -36,7 +36,7 @@
     <input id="user-tagline" type="text" name="user[tagline]" value="<%= user.escape("tagline")%>">
     <br>
 
-    <label for="user-date_of_birth">Tagline: </label>
+    <label for="user-date_of_birth">DOB: </label>
     <input id="user-date_of_birth" type="date" name="user[date_of_birth]" value="<%= user.escape("date_of_birth")%>">
     <br>
 

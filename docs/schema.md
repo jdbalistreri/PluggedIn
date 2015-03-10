@@ -2,19 +2,6 @@
 
 # Phase 1
 
-## profiles
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, primary key
-user_id         | integer   | not null, unique, foreign_key
-name            | string    | not null
-profile_picture | ??????    |
-location        | string    |
-tagline         | string    |
-industry        | string    |
-date_of_birth   | date      |
-summary         | text      |
-
 ## users
 column name     | data type | details
 ----------------|-----------|-----------------------
@@ -22,6 +9,13 @@ id              | integer   | not null, primary key
 email           | string    | not null, unique
 password_digest | string    | not null
 session_token   | string    | not null, unique
+fname           | string    |
+lname           | string    |
+location        | string    |
+tagline         | string    |
+industry        | string    |
+date_of_birth   | date      |
+summary         | text      |
 
 
 # Phase 2
@@ -30,16 +24,15 @@ session_token   | string    | not null, unique
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-profile_id      | integer   | not null, unique, foreign_key
-position        | string    | not null
+user_id         | integer   | not null, unique, foreign_key
 experience_type | integer   | not null (enum)
+role            | string    | 
 institution     | string    |
 location        | string    |
 description     | text      |
-start_date      | date      | how to store present?
-end_date        | date      | how to store present?
-degree          | string    |
-field_of_study  | string    |
+start_date      | date      | not null
+end_date        | date      |
+field           | string    |
 
 
 # Phase 3

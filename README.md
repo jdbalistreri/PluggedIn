@@ -7,10 +7,10 @@
 ## Minimum Viable Product
 ExtinctIn is a clone of LinkedIn built on Rails and Backbone. Users can:
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
-- [ ] Create user profiles with personal information
-- [ ] Add past jobs to user profile
+- [x] Create accounts
+- [x] Create sessions (log in)
+- [x] Create user profiles with personal information
+- [ ] User profiles contain past job/school experiences
 - [ ] Users can edit their profile in place by double clicking the text
 - [ ] Request to connect with other users
 - [ ] Send messages to other users
@@ -29,16 +29,16 @@ ExtinctIn is a clone of LinkedIn built on Rails and Backbone. Users can:
 ### Phase 1: User Authentication, Profile Creation (~1 day)
 I will implement user authentication in Rails based on the practices learned at
 App Academy. By the end of this phase, users will be able to create an account using
-a simple text form in a Rails view. A user's profile will be automatically created with blank values upon sign-up. The most important part of this phase will
+a simple text form in a Rails view. The most important part of this phase will
 be pushing the app to Heroku and ensuring that everything works before moving on
 to phase 2.
 
 [Details][phase-one]
 
 ### Phase 2: Profile Detail and Experiences (~1-2 days)
-I will add API routes to serve profile and experiences data as JSON, then add Backbone
+I will add API routes to serve user and experiences data as JSON, then add Backbone
 models and collections that fetch data from these routes. By the end of this
-phase, users will be able to edit and update their profiles in place, all
+phase, users will be able to edit and update their profile information in place, all
 inside a single Backbone app. They will also be able to create, edit, and delete job/education experiences.
 
 [Details][phase-two]

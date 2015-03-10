@@ -3,7 +3,6 @@
 ## Rails
 ### Models
 * User
-* Profile
 
 ### Controllers
 * UsersController (create, new)
@@ -15,7 +14,7 @@
 * users/new.html.erb
 * session/new.html.erb
 * static/root.html.erb
-* profiles/show.json.jbuilder (just basic info)
+* users/show.json.jbuilder
 
 ## Backbone
 ### Models
@@ -30,5 +29,4 @@
 
 ##Sequence of Events
 * Create Rails models/controllers/views for users and sessions
-* Create Rails MVC for profiles
 * Push app to Heroku

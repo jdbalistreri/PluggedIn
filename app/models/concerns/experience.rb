@@ -1,6 +1,6 @@
 class Experience < ActiveRecord::Base
 
-  enum experience_type: [:employment, :education]
+  enum experience_type: [:job, :school]
 
   validates :user, :experience_type, :start_date, presence: true
 

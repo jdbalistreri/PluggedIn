@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      log_in!(@user)
       redirect_to :root
     else
       render :new
@@ -14,9 +15,4 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-
-  private
-    def user_params
-      params.require(:user).permit(:password, :email)
-    end
 end

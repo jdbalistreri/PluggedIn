@@ -5,6 +5,11 @@ class User < ActiveRecord::Base
   validates :email, :session_token, uniqueness: true;
   after_initialize :ensure_session_token
 
+  has_many(
+    :experiences,
+    inverse_of: :user
+  )
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password);

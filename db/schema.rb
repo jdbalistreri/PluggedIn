@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310181231) do
+ActiveRecord::Schema.define(version: 20150310215224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "experiences", force: true do |t|
+    t.integer "user_id",         null: false
+    t.integer "experience_type", null: false
+    t.string  "role"
+    t.string  "institution"
+    t.string  "location"
+    t.text    "description"
+    t.date    "start_date",      null: false
+    t.date    "end_date"
+    t.string  "field"
+  end
+
+  add_index "experiences", ["experience_type"], name: "index_experiences_on_experience_type", using: :btree
+  add_index "experiences", ["user_id"], name: "index_experiences_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string "email",           null: false

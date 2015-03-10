@@ -7,6 +7,7 @@ class UsersController < ApplicationController
       log_in!(@user)
       redirect_to :root
     else
+      flash.now[:errors] = @user.errors.full_messages
       render :new
     end
   end

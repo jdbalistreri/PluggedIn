@@ -1,0 +1,9 @@
+<% if logged_in? %>
+  Signed in as <%= current_user.email %>
+  <br>
+  <form action="<%= session_url %>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="_method" value="DELETE">
+    <button>Log Out</button>
+  </form>
+<% end %>

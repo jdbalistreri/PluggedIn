@@ -1,12 +1,22 @@
-<h2>ROOOOOOTTT!</h2>
 
 
-<% if logged_in? %>
-  Signed in as <%= current_user.email %>
-  <br>
-  <form action="<%= session_url %>" method="post">
-    <%= auth_token %>
-    <input type="hidden" name="_method" value="DELETE">
-    <button>Log Out</button>
-  </form>
-<% end %>
+<header>
+  <h2>Extinct IN</h2>
+  <nav>
+
+  </nav>
+</header>
+
+<main>
+  <section id="content">
+
+  </section>
+</main>
+
+<%= render partial: "/shared/logged_in", locals: {current_user: current_user } %>
+
+<script charset="utf-8">
+  $(document).ready(function(){
+    ExtinctIn.initialize({$rootEl: $("#content")});
+  });
+</script>

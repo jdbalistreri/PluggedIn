@@ -4,16 +4,6 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :email, :session_token, uniqueness: true;
   after_initialize :ensure_session_token
-  after_create :add_profile
-
-  has_one(
-    :profile,
-    class_name: "Profile",
-    foreign_key: :user_id,
-    primary_key: :id,
-    inverse_of: :user,
-    dependent: :destroy
-  )
 
   def password=(password)
     @password = password
@@ -47,10 +37,6 @@ class User < ActiveRecord::Base
   private
     def ensure_session_token
       self.session_token ||= self.class.generate_session_token
-    end
-
-    def add_profile
-      self.create_profile()
     end
 
 end

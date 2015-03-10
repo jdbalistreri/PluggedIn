@@ -21,3 +21,12 @@ user3 = User.create!(email: "joe3", password: "joejoe")
 user4 = User.create!(email: "joe4", password: "joejoe")
 user5 = User.create!(email: "joe5", password: "joejoe")
 user6 = User.create!(email: "joe6", password: "joejoe")
+
+
+exp1 = user1.experiences.create!(experience_type: 0, role: "Consultant",
+  institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
+  start_date: Date.new(2012,1,1), end_date: Date.new(2012,1,1), field: nil)
+
+exp2 = user1.experiences.create!(experience_type: 1, role: "Bachelors Degree",
+  institution: "University College", location: "Sarasota, FL", description: "studied hard",
+  start_date: Date.new(2009,1,1), end_date: Date.new(2013,1,1), field: "Psychology")

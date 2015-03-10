@@ -5,8 +5,8 @@
 * Experience
 
 ### Controllers
-API::Users (update)
-API::ExperiencesController (create, update, destroy)
+* API::Users (update)
+* API::ExperiencesController (create, update, destroy)
 
 ### Views
 * profiles/show.json.jbuilder (update existing file)

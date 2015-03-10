@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   validates :password_digest, :email, :session_token, presence: true
   validates :password, length: {minimum: 6, allow_nil: true}
+  validates :email, :session_token, uniqueness: true;
   after_initialize :ensure_session_token
 
   def password=(password)

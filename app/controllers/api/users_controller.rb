@@ -8,4 +8,8 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def update
+    render json: "need to fill this in"
+  end
+  
 end

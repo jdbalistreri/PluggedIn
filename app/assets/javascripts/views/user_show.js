@@ -20,7 +20,9 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   toggleDisplay: function () {
-    this.$el.toggleClass("toggled");
+    if (ExtinctIn.currentUserId === this.model.id) {
+      this.$el.toggleClass("toggled");
+    }
   },
 
   userInfoSubmit: function (event) {

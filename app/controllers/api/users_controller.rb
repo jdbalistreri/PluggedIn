@@ -9,9 +9,8 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    p user_params
-    if @user.update(user_params)
+    if current_user.update(user_params)
+      @user = current_user
       render "show"
     else
       render json: "error"

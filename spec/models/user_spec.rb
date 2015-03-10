@@ -37,4 +37,9 @@ describe User, type: :model do
     expect(User.first.password).to eq(nil)
   end
 
+  it "builds an associated profile on create" do
+    user1 = User.create!(email: "user@example.com", password: "password")
+    expect(user1.profile).to be_a(Profile)
+  end
+
 end

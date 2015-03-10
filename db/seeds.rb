@@ -8,3 +8,8 @@
 
 
 user1 = User.create!(email: "joe", password: "joejoe")
+user2 = User.create!(email: "joe2", password: "joejoe")
+user3 = User.create!(email: "joe3", password: "joejoe")
+user4 = User.create!(email: "joe4", password: "joejoe")
+user5 = User.create!(email: "joe5", password: "joejoe")
+user6 = User.create!(email: "joe6", password: "joejoe")

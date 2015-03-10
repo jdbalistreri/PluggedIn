@@ -10,12 +10,12 @@
 user1 = User.create!(email: "joe", password: "joejoe",
   fname: "Joe", lname: "Bali", tagline: "ain't life grand?",
   location: "Milwaukee, WI", industry: "Computer Software",
-  date_of_birth: "07/24/1991", summary: "This is my summary")
+  date_of_birth: Date.new(1991, 7, 24), summary: "This is my summary")
 
 user2 = User.create!(email: "joe2", password: "joejoe",
   fname: "John", lname: "Masters", tagline: "life ain't grand",
   location: "Cleveland, OH", industry: "Law",
-  date_of_birth: "01/21/1950", summary: "Summary 2")
+  date_of_birth: Date.new(1950, 1, 23), summary: "Summary 2")
 
 user3 = User.create!(email: "joe3", password: "joejoe")
 user4 = User.create!(email: "joe4", password: "joejoe")

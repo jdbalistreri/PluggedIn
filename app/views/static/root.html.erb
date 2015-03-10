@@ -12,8 +12,10 @@
 
   </section>
 
-  <a href="#users/1">User1</a><br>
-  <a href="#users/2">User2</a><br>
+  <hr>
+
+  <a href="#users/1">User1</a>
+  <a href="#users/2">User2</a>
   <a href="#">Index</a>
 </main>
 
@@ -21,6 +23,7 @@
 
 <script charset="utf-8">
   $(document).ready(function(){
+    ExtinctIn.currentUserId = <%= current_user.try(:id) || "null" %>;
     ExtinctIn.initialize({$rootEl: $("#content")});
   });
 </script>

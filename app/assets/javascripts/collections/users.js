@@ -6,7 +6,7 @@ ExtinctIn.Collections.Users = Backbone.Collection.extend({
     var user = this.get(id);
 
     if (!user) {
-      user = new ExtinctIn.Model.User({id: id});
+      user = new ExtinctIn.Models.User({id: id});
       this.add(user)
     }
 

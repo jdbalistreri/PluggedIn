@@ -17,7 +17,8 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
 
   user_show: function (id) {
     var user = this.collection.getOrFetch(id);
-    var view
+    var view = new ExtinctIn.Views.UserShow({model: user});
+    this._swapViews(view);
   },
 
   _swapViews: function (view) {

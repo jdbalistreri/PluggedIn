@@ -23,12 +23,22 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
   editJobSubmit: function (event) {
     event.preventDefault();
     var that = this;
+
+    var $ul = this.$(".errors")
+    $ul.empty();
+
     var attrs = $(event.target).serializeJSON().experience;
 
     this.model.save(attrs, {
       success: function (model) {
         that.toggleJobInfo();
-      }
+      },
+      error: function (model, response) {
+        response.responseJSON.forEach(function (error) {
+          var $li = $("<li>").text(error);
+          $ul.append($li);
+        })
+      },
     });
   },
 

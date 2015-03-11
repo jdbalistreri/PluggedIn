@@ -38,20 +38,13 @@ describe Experience, type: :model do
     expect(experience2.valid?).to be(false)
   end
 
-  it "validates the presence of a role, institution, and location" do
+  it "validates the presence of a role and institution" do
     experience1 = user.experiences.new(
                       start_date: Date.new(2000,1,1),
                       experience_type: 0,
-                      location: "abc",
-                      institution: "abc")
-    expect(experience1.valid?).to be(false)
-
-    experience2 = user.experiences.new(
-                      start_date: Date.new(2000,1,1),
-                      experience_type: 0,
                       role: "abc",
-                      institution: "abc")
-    expect(experience2.valid?).to be(false)
+                      location: "abc")
+    expect(experience1.valid?).to be(false)
 
     experience3 = user.experiences.new(
                       start_date: Date.new(2000,1,1),

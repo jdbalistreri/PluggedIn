@@ -18,9 +18,11 @@ ExtinctIn.Views.JobModal = Backbone.View.extend({
   deleteModel: function () {
     this.model.destroy();
     this.toggleModal();
+    this.remove();
   },
 
   toggleModal: function () {
     ExtinctIn.$modalEl.toggleClass("toggled");
+    this.remove();
   }
 })

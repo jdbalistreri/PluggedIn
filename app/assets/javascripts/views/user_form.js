@@ -30,9 +30,18 @@ ExtinctIn.Views.UserForm = Backbone.View.extend({
     var that = this;
     var attrs = $(event.target).serializeJSON().user
 
+    var $ul = this.$(".errors")
+    $ul.empty();
+
     this.model.save(attrs, {
       success: function () {
         that.toggleUserInfo()
+      },
+      error: function (model, response) {
+        response.responseJSON.forEach(function (error) {
+          var $li = $("<li>").text(error);
+          $ul.append($li);
+        })
       },
     })
   },

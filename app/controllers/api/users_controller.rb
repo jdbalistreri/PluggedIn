@@ -9,11 +9,12 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
-      @user = current_user
+    @user = current_user
+
+    if @user.update(user_params)
       render "show"
     else
-      render json: "error"
+      render json: @user.errors.full_messages, status: :unprocessable_entity
     end
   end
 

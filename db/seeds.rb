@@ -17,10 +17,10 @@ user2 = User.create!(email: "joe2", password: "joejoe",
   location: "Cleveland, OH", industry: "Law",
   date_of_birth: Date.new(1950, 1, 23), summary: "Summary 2")
 
-user3 = User.create!(email: "joe3", password: "joejoe")
-user4 = User.create!(email: "joe4", password: "joejoe")
-user5 = User.create!(email: "joe5", password: "joejoe")
-user6 = User.create!(email: "joe6", password: "joejoe")
+user3 = User.create!(email: "joe3", password: "joejoe", fname: "Mike", lname: "Cash")
+user4 = User.create!(email: "joe4", password: "joejoe", fname: "Jake", lname: "Blommer")
+user5 = User.create!(email: "joe5", password: "joejoe", fname: "Kelly", lname: "Blommer")
+user6 = User.create!(email: "joe6", password: "joejoe", fname: "Sarah", lname: "Masters")
 
 
 # USER 1

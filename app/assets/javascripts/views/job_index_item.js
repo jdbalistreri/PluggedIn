@@ -13,7 +13,7 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
     "dblclick .trigger" : "toggleJobInfo",
     "submit form" : "editJobSubmit",
     "click a.cancel" : "cancelForm",
-    "click a.delete" : "delete",
+    "click a.delete" : "deleteJob",
   },
 
   render: function () {
@@ -25,6 +25,10 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
   cancelForm: function () {
     this.toggleJobInfo();
     this.render();
+  },
+
+  deleteJob: function () {
+    this.model.destroy();
   },
 
   editJobSubmit: function (event) {

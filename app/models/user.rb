@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many(
     :experiences,
+    dependent: :destroy,
     inverse_of: :user
   )
 

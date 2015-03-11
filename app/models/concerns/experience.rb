@@ -7,7 +7,6 @@ class Experience < ActiveRecord::Base
 
   belongs_to(
     :user,
-    dependent: :destroy,
     inverse_of: :experiences
   )
 

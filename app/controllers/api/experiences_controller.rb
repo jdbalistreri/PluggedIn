@@ -11,8 +11,9 @@ class Api::ExperiencesController < ApplicationController
   end
 
   def destroy
-    @experience = current_user.experiences.where(params[:id])
-    @experience.destroy()
+    @experience = current_user.experiences.find(params[:id])
+    @experience.destroy!
+    render json: "success"
   end
 
   def update

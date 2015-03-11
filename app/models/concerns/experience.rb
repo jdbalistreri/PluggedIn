@@ -2,7 +2,8 @@ class Experience < ActiveRecord::Base
 
   enum experience_type: [:job, :school]
 
-  validates :user, :experience_type, :start_date, presence: true
+  validates :user, :experience_type, :start_date,
+    :institution, :role, :location, presence: true
 
   belongs_to(
     :user,

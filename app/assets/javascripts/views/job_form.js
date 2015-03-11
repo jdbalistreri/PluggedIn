@@ -7,7 +7,8 @@ ExtinctIn.Views.JobForm = Backbone.View.extend({
   template: JST["jobs/new-form"],
 
   events: {
-    "submit form" : "newJobSubmit"
+    "submit form" : "newJobSubmit",
+    "click a.trigger" : "toggleNewJob",
   },
 
   render: function () {
@@ -26,5 +27,9 @@ ExtinctIn.Views.JobForm = Backbone.View.extend({
         that.collection.add(that.model);
       },
     })
+  },
+
+  toggleNewJob: function () {
+    this.$el.toggleClass("toggled");
   },
 })

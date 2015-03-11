@@ -6,7 +6,7 @@ class Api::ExperiencesController < ApplicationController
     if @experience.save
       render json: @experience
     else
-      render json: @experience.errors.full_messages
+      render json: @experience.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -21,7 +21,7 @@ class Api::ExperiencesController < ApplicationController
     if @experience.update(experience_params)
       render json: @experience
     else
-      render json: @experience.errors.full_messages
+      render json: @experience.errors.full_messages, status: :unprocessable_entity
     end
   end
 

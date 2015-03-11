@@ -46,3 +46,7 @@ ul {
 .toggled > .hidden-input, .trigger {
   display: block;
 }
+
+input {
+  border: 1px solid grey;
+}

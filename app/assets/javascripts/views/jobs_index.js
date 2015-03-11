@@ -4,6 +4,10 @@ ExtinctIn.Views.JobsIndex = Backbone.CompositeView.extend({
 
   template: JST["jobs/index"],
 
+  initialize: function (options) {
+    this.user = options.user;
+  },
+
   render: function () {
     var that = this;
     var content = this.template()
@@ -13,6 +17,10 @@ ExtinctIn.Views.JobsIndex = Backbone.CompositeView.extend({
       var jobItemView = new ExtinctIn.Views.JobIndexItem({model: job});
       that.addSubview("ul.jobs-list", jobItemView);
     })
+
+    var model = new ExtinctIn.Models.Job({user: this.user});
+    var newJobView = new ExtinctIn.Views.JobForm({model: model});
+    this.addSubview("ul.jobs-list", newJobView);
 
     return this;
   },

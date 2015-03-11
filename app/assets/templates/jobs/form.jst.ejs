@@ -1,0 +1,29 @@
+<h4>Add a Job!</h4>
+
+<form>
+  <label for="">Title: </label>
+  <input type="text" name="experience[role]" value="<%= job.escape("role") %>">
+  <br>
+
+  <label for="">Company: </label>
+  <input type="text" name="experience[institution]" value="<%= job.escape("institution") %>">
+  <br>
+
+  <label for="">Location: </label>
+  <input type="text" name="experience[location]" value="<%= job.escape("location") %>">
+  <br>
+
+  <label for="">Start Date: </label>
+  <input type="date" name="experience[start_date]" value="<%= job.escape("start_date") %>">
+  <br>
+
+  <label for="">End Date: </label>
+  <input type="date" name="experience[end_date]" value="<%= job.escape("end_date") %>">
+  <br>
+
+  <label for="">Description: </label>
+  <textarea name="experience[description]"><%= job.escape("location") %></textarea>
+  <br>
+
+  <button>Submit</button>
+</form>

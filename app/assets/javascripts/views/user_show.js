@@ -42,7 +42,10 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
   },
 
   addJobsIndex: function () {
-    var jobsIndex = new ExtinctIn.Views.JobsIndex({collection: this.model.jobs()})
+    var jobsIndex = new ExtinctIn.Views.JobsIndex({
+      collection: this.model.jobs(),
+      user: this.model,
+    })
     this.addSubview(".user-experiences", jobsIndex)
   },
 })

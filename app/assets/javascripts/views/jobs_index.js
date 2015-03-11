@@ -6,7 +6,7 @@ ExtinctIn.Views.JobsIndex = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.user = options.user;
-    this.listenTo(this.collection, "add", this.render)
+    this.listenTo(this.collection, "add remove", this.render)
   },
 
   render: function () {

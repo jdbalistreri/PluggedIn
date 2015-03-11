@@ -26,4 +26,8 @@
   <br>
 
   <button>Submit</button>
+  <a href="javascript:void(0)" class="cancel">Cancel</a>
+  <% if (!job.isNew()) { %>
+    <a href="javascript:void(0)" class="delete">Remove this position</a>
+  <% } %>
 </form>

@@ -13,7 +13,7 @@ ExtinctIn.Views.JobsIndex = Backbone.CompositeView.extend({
       var jobItemView = new ExtinctIn.Views.JobIndexItem({model: job});
       that.addSubview("ul.jobs-list", jobItemView);
     })
-    
+
     return this;
   },
 

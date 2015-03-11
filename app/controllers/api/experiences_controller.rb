@@ -1,4 +1,4 @@
-class ExperiencesController < ApplicationController
+class Api::ExperiencesController < ApplicationController
 
   def create
     @experience = current_user.experiences.new(experience_params)

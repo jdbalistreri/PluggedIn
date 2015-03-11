@@ -4,7 +4,7 @@ ExtinctIn.Views.UserForm = Backbone.View.extend({
 
   events: {
     "submit form" : "userInfoSubmit",
-    "dblclick p.trigger" : "toggleUserInfo",
+    "click p.trigger" : "toggleUserInfo",
     "click a.cancel" : "cancelForm",
   },
 

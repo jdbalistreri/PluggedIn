@@ -10,6 +10,7 @@ ExtinctIn.Views.JobForm = Backbone.View.extend({
     "submit form" : "newJobSubmit",
     "click a.trigger" : "toggleNewJob",
     "click a.cancel" : "cancelForm",
+    "click input#check-present" : "toggleEndDate",
   },
 
   render: function () {
@@ -44,6 +45,10 @@ ExtinctIn.Views.JobForm = Backbone.View.extend({
         })
       },
     })
+  },
+
+  toggleEndDate: function () {
+    this.$(".end-date").toggleClass("toggled")
   },
 
   toggleNewJob: function () {

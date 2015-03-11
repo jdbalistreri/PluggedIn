@@ -5,11 +5,6 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
 
   template: JST["users/show"],
 
-  events: {
-    "submit .user-info > form" : "userInfoSubmit",
-    "dblclick .user-info > p" : "toggleUserInfo",
-  },
-
   initialize: function () {
     this.listenTo(this.model, "sync", this.render)
   },
@@ -18,27 +13,10 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
     var content = this.template({user: this.model});
     this.$el.html(content);
 
+    this.addUserForm();
     this.addJobsIndex();
 
     return this;
-  },
-
-  toggleUserInfo: function () {
-    if (ExtinctIn.currentUserId === this.model.id) {
-      this.$(".user-info").toggleClass("toggled");
-    }
-  },
-
-  userInfoSubmit: function (event) {
-    event.preventDefault();
-    var that = this;
-    var attrs = $(event.target).serializeJSON().user
-
-    this.model.save(attrs, {
-      success: function () {
-        that.toggleUserInfo()
-      },
-    })
   },
 
   addJobsIndex: function () {
@@ -47,5 +25,12 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
       user: this.model,
     })
     this.addSubview(".user-experiences", jobsIndex)
+  },
+
+  addUserForm: function () {
+    var userForm = new ExtinctIn.Views.UserForm({
+      model: this.model,
+    })
+    this.addSubview(".user-info", userForm)
   },
 })

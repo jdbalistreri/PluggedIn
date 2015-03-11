@@ -9,12 +9,18 @@ ExtinctIn.Views.JobForm = Backbone.View.extend({
   events: {
     "submit form" : "newJobSubmit",
     "click a.trigger" : "toggleNewJob",
+    "click a.cancel" : "cancelForm",
   },
 
   render: function () {
     var content = this.template({job: this.model});
     this.$el.html(content);
     return this;
+  },
+
+  cancelForm: function () {
+    this.toggleNewJob();
+    this.render();
   },
 
   newJobSubmit: function (event) {

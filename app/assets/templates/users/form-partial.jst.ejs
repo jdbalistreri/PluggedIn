@@ -1,0 +1,34 @@
+<form class="hidden-input">
+  <ul class="errors"></ul>
+
+  <label for="user-fname">First Name: </label>
+  <input id="user-fname" type="text" name="user[fname]" value="<%= user.escape("fname")%>">
+  <br>
+
+  <label for="user-lname">Last Name: </label>
+  <input id="user-lname" type="text" name="user[lname]" value="<%= user.escape("lname")%>">
+  <br>
+
+  <label for="user-location">Location: </label>
+  <input id="user-location" type="text" name="user[location]" value="<%= user.escape("location")%>">
+  <br>
+
+  <label for="user-industry">Industry: </label>
+  <input id="user-industry" type="text" name="user[industry]" value="<%= user.escape("industry")%>">
+  <br>
+
+  <label for="user-tagline">Tagline: </label>
+  <input id="user-tagline" type="text" name="user[tagline]" value="<%= user.escape("tagline")%>">
+  <br>
+
+  <label for="user-date_of_birth">DOB: </label>
+  <input id="user-date_of_birth" type="date" name="user[date_of_birth]" value="<%= user.escape("date_of_birth")%>">
+  <br>
+
+  <label for="user-summary">Summary: </label>
+  <textarea id="user-summary" name="user[summary]"><%= user.escape("summary") %></textarea>
+  <br>
+
+  <button>Submit</button>
+  <a href="javascript:void(0)" class="cancel">Cancel</a>
+</form>

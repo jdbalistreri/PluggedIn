@@ -4,7 +4,7 @@ ExtinctIn.Views.JobForm = Backbone.View.extend({
   className: "new-job-form",
 
 
-  template: JST["jobs/form"],
+  template: JST["jobs/new-form"],
 
   events: {
     "submit form" : "newJobSubmit"
@@ -20,7 +20,7 @@ ExtinctIn.Views.JobForm = Backbone.View.extend({
     event.preventDefault();
     var that = this;
     var attrs = $(event.target).serializeJSON().experience
-    debugger
+
     this.model.save(attrs, {
       success: function () {
         that.collection.add(that.model);

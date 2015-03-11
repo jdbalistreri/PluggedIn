@@ -11,14 +11,14 @@ class Api::ExperiencesController < ApplicationController
   end
 
   def destroy
-    @experience = current_user.experiences.where({id: params[:id]})
+    @experience = current_user.experiences.where(params[:id])
     @experience.destroy()
   end
 
   def update
-    @experience = current_user.experiences.where({id: params[:id]})
+    @experience = current_user.experiences.find(params[:id])
 
-    if @experience.save
+    if @experience.update(experience_params)
       render json: @experience
     else
       render json: @experience.errors.full_messages
@@ -27,9 +27,9 @@ class Api::ExperiencesController < ApplicationController
 
   private
     def experience_params
-      params.require(:experience).permit([:experience_type, :role, :institution,
+      params.require(:experience).permit(:experience_type, :role, :institution,
                                           :location, :description, :start_date,
-                                          :end_date, :field])
+                                          :end_date, :field)
     end
 
 end

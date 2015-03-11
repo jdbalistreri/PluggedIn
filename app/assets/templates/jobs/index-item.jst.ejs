@@ -1,5 +1,5 @@
 
-<section>
+<section class="trigger">
   Title: <%= job.escape("role") %>
   <br>
   Company: <%= job.escape("institution") %>
@@ -13,5 +13,9 @@
   Description: <%= job.escape("description") %>
   <br>
 </section>
+
+<div class="hidden-input">
+  <%= JST["jobs/form-partial"]({job: job}) %>
+</div>
 
 <hr>

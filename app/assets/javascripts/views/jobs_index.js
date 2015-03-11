@@ -18,9 +18,11 @@ ExtinctIn.Views.JobsIndex = Backbone.CompositeView.extend({
       that.addSubview("ul.jobs-list", jobItemView);
     })
 
-    var model = new ExtinctIn.Models.Job({user: this.user});
-    var newJobView = new ExtinctIn.Views.JobForm({model: model});
-    this.addSubview("ul.jobs-list", newJobView);
+    if (ExtinctIn.currentUserId === this.user.id ) {
+      var model = new ExtinctIn.Models.Job({user: this.user});
+      var newJobView = new ExtinctIn.Views.JobForm({model: model});
+      this.addSubview("ul.jobs-list", newJobView);
+    }
 
     return this;
   },

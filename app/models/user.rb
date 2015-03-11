@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   validates :password_digest, :email, :session_token, presence: true
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :email, :session_token, uniqueness: true
-  validates :fname, presence: { message: "Must include a first name"}
-  validates :lname, presence: { message: "Must include a last name"}
+  validate :name_presence
   after_initialize :ensure_session_token
 
   has_many(
@@ -45,6 +44,15 @@ class User < ActiveRecord::Base
   private
     def ensure_session_token
       self.session_token ||= self.class.generate_session_token
+    end
+
+    def name_presence
+      if self.fname.empty?
+        errors[:base] << "Please include a first name"
+      end
+      if self.lname.empty?
+        errors[:base] << "Please include a last name"
+      end
     end
 
 end

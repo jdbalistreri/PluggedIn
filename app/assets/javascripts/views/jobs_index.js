@@ -1,14 +1,19 @@
-ExtinctIn.Views.JobsIndex = Backbone.View.extend({
+ExtinctIn.Views.JobsIndex = Backbone.CompositeView.extend({
 
-  tagName: "ul",
-  className: "jobs-index",
+  tagName: "section",
+
+  template: JST["jobs/index"],
 
   render: function () {
-    this.$el.empty();
-    // this.collection.each( function(job) {
-    //
-    // })
-    this.$el.html("jobsindexworks");
+    var that = this;
+    var content = this.template()
+    this.$el.append(content)
+
+    this.collection.each( function(job) {
+      var jobItemView = new ExtinctIn.Views.JobIndexItem({model: job});
+      that.addSubview("ul.jobs-list", jobItemView);
+    })
+    
     return this;
   },
 

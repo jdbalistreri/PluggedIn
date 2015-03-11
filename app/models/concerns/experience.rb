@@ -27,6 +27,22 @@ class Experience < ActiveRecord::Base
     end
   end
 
+  def start_year
+    self.start_date.year
+  end
+
+  def start_month
+    self.start_date.month
+  end
+
+  def end_year
+    self.end_date && self.end_date.year
+  end
+
+  def end_month
+    self.end_date && self.end_date.month
+  end
+
   private
     def experience_specific_validations
       if !self.role.present?

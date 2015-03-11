@@ -44,7 +44,7 @@ ul {
 }
 
 .toggled > .hidden-input, .trigger {
-  display: block;
+  display: inline-block;
 }
 
 #modal {
@@ -74,4 +74,9 @@ ul {
 
 input {
   border: 1px solid grey;
+}
+
+.required:after {
+  content: " *";
+  color: red;
 }

@@ -15,11 +15,15 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
     "submit form" : "editJobSubmit",
     "click a.cancel" : "cancelForm",
     "click a.delete" : "deleteJob",
+    "click input#check-present" : "toggleEndDate",
   },
 
   render: function () {
     var content = this.template({job: this.model});
     this.$el.html(content);
+
+    this.selectCurrentDates()
+
     return this;
   },
 
@@ -32,11 +36,10 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
     var modalView = new ExtinctIn.Views.JobModal({model: this.model})
     ExtinctIn.$modalEl.toggleClass("toggled");
     ExtinctIn.$modalEl.html(modalView.render().$el);
-    // this.model.destroy();
   },
 
   editJobSubmit: function (event) {
-    event.preventDefault();
+    event.preventDefault();".end-date".toggleClass("hidden-input")
     var that = this;
 
     var $ul = this.$(".errors")
@@ -55,6 +58,20 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
         })
       },
     });
+  },
+
+  toggleEndDate: function () {
+    this.$(".end-date").toggleClass("toggled")
+  },
+
+  selectCurrentDates: function () {
+    this.$el.find("#experience_start_date_2i").val(this.model.get("start_month"))
+    this.$el.find("#experience_end_date_2i").val(this.model.get("end_month"))
+
+    if (this.model.get("end_date") === null ) {
+      this.$("input#check-present").prop("checked", true);
+      this.toggleEndDate();
+    }
   },
 
   toggleJobInfo: function () {

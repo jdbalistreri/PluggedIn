@@ -24,18 +24,40 @@
 
 <div id="modal"></div>
 
-<%= date_select("experience", "start_date",
-      {discard_day: true, discard_year: true, prompt: {month: "Choose..."}}) %>
-<input type="number"
-        id="experience_start_date_1i"
-        name="experience[start_date(1i)]"
-        value=""
-        placeholder="Year">
-
 <script charset="utf-8">
   $(document).ready(function(){
     ExtinctIn.currentUserId = <%= current_user.try(:id) || "null" %>;
     ExtinctIn.$modalEl = $("#modal");
     ExtinctIn.initialize({$rootEl: $("#content")});
   });
+</script>
+
+<%= select_month(Date.today) %>
+
+<script type="text/template" id="job-date-input">
+  <%= date_select("experience", "start_date",
+        {discard_day: true, discard_year: true,
+        prompt: {month: "Choose..."}}) %>
+  <input type="number"
+          id="experience_start_date_1i"
+          name="experience[start_date(1i)]"
+          value="<%%= job.escape("start_year") %>"
+          placeholder="Year">
+   -
+  <span class="end-date">
+    <span class="trigger">
+      <%= date_select("experience", "end_date",
+            {discard_day: true, discard_year: true,
+            prompt: {month: "Choose..."}}) %>
+      <input type="number"
+              id="experience_end_date_1i"
+              name="experience[end_date(1i)]"
+              value="<%%= job.escape("end_year") %>"
+              placeholder="Year">
+    </span>
+    <span class="hidden-input">
+      Present
+    </span>
+
+  </span>
 </script>

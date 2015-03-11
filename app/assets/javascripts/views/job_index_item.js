@@ -39,17 +39,20 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
   },
 
   editJobSubmit: function (event) {
-    event.preventDefault();".end-date".toggleClass("hidden-input")
+    event.preventDefault();
     var that = this;
 
     var $ul = this.$(".errors")
     $ul.empty();
+
+    delete this.model.attributes["check_present"];
 
     var attrs = $(event.target).serializeJSON().experience;
 
     this.model.save(attrs, {
       success: function (model) {
         that.toggleJobInfo();
+        that.model.fetch();
       },
       error: function (model, response) {
         response.responseJSON.forEach(function (error) {

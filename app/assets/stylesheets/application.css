@@ -72,11 +72,16 @@ ul {
   transform: translateX(-50%) translateY(-50%);
 }
 
+.required:after {
+  content: " *";
+  color: red;
+}
+
+/*HELPER STYLES*/
 input {
   border: 1px solid grey;
 }
 
-.required:after {
-  content: " *";
-  color: red;
+a {
+  color: blue;
 }

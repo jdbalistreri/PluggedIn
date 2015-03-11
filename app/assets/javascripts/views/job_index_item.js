@@ -28,7 +28,10 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
   },
 
   deleteJob: function () {
-    this.model.destroy();
+    var modalView = new ExtinctIn.Views.JobModal({model: this.model})
+    ExtinctIn.$modalEl.toggleClass("toggled");
+    ExtinctIn.$modalEl.html(modalView.render().$el);
+    // this.model.destroy();
   },
 
   editJobSubmit: function (event) {

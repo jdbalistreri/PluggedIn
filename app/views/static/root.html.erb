@@ -22,9 +22,12 @@
 
 <%= render partial: "/shared/logged_in", locals: {current_user: current_user } %>
 
+<div id="modal"></div>
+
 <script charset="utf-8">
   $(document).ready(function(){
     ExtinctIn.currentUserId = <%= current_user.try(:id) || "null" %>;
+    ExtinctIn.$modalEl = $("#modal");
     ExtinctIn.initialize({$rootEl: $("#content")});
   });
 </script>

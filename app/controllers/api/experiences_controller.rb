@@ -16,6 +16,10 @@ class Api::ExperiencesController < ApplicationController
     render json: "success"
   end
 
+  def show
+    @experience = current_user.experiences.find(params[:id])
+  end
+
   def update
     @experience = current_user.experiences.find(params[:id])
 

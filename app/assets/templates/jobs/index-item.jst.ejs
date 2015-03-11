@@ -4,14 +4,26 @@
   <br>
   Company: <%= job.escape("institution") %>
   <br>
-  Location: <%= job.escape("location") %>
+  Dates: <%= job.escape("date_string") %>
   <br>
-  Start Date: <%= job.escape("start_date") %>
-  <br>
-  End Date: <%= job.escape("end_date") %>
-  <br>
-  Description: <%= job.escape("description") %>
-  <br>
+
+  <% if (job.escape("location") === "") { %>
+    <a class="edit-form" href="javascript:void(0)">Add Location</a>
+    <br>
+  <% } else { %>
+    Location: <%= job.escape("location") %>
+    <br>
+  <% } %>
+
+  <% if (job.escape("description") === "") { %>
+    <a class="edit-form" href="javascript:void(0)">Add Description</a>
+    <br>
+  <% } else { %>
+    Description: <%= job.escape("description") %>
+    <br>
+  <% } %>
+
+
 </section>
 
 <div class="hidden-input">

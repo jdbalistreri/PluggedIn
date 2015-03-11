@@ -12,6 +12,14 @@ class User < ActiveRecord::Base
     inverse_of: :user
   )
 
+  def jobs
+    self.experiences.where(experience_type: 0)
+  end
+
+  def schools
+    self.experiences.where(experience_type: 1)
+  end
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password);

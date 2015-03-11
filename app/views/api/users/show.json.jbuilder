@@ -2,8 +2,10 @@
 json.(@user, :id, :fname, :lname, :location,
       :tagline, :industry, :date_of_birth, :summary)
 
-json.jobs @user.experiences.where(experience_type: "job"), :id, :user_id, :experience_type,
-  :role, :institution, :location, :description, :start_date, :end_date, :field
+json.jobs @user.jobs, :id, :user_id, :experience_type,
+  :role, :institution, :location, :description, :start_date, :end_date,
+  :date_string, :field
 
-json.schools @user.experiences.where(experience_type: "school"), :id, :user_id, :experience_type,
-  :role, :institution, :location, :description, :start_date, :end_date, :field
+json.schools @user.schools, :id, :user_id, :experience_type,
+  :role, :institution, :location, :description, :start_date, :end_date,
+  :date_string, :field

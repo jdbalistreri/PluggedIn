@@ -35,6 +35,7 @@ ExtinctIn.Views.JobForm = Backbone.View.extend({
     this.model.save(attrs, {
       success: function () {
         that.collection.add(that.model);
+        that.model.fetch();
       },
       error: function (model, response) {
         response.responseJSON.forEach(function (error) {

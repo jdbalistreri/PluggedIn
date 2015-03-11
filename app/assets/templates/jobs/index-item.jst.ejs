@@ -4,7 +4,7 @@
   <br>
   Company: <%= job.escape("institution") %>
   <br>
-  Dates: <%= job.escape("date_string") %>
+  <%= job.escape("date_string") %>
   <br>
 
   <% if (job.escape("location") === "") { %>

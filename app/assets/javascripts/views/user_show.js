@@ -1,12 +1,13 @@
 ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
 
   className: "user-show",
+  tagName: "section",
 
   template: JST["users/show"],
 
   events: {
-    "submit .user-info-form" : "userInfoSubmit",
-    "dblclick .user-info" : "toggleDisplay",
+    "submit .user-info > form" : "userInfoSubmit",
+    "dblclick .user-info > p" : "toggleUserInfo",
   },
 
   initialize: function () {
@@ -16,12 +17,15 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({user: this.model});
     this.$el.html(content);
+
+    this.addJobsIndex();
+
     return this;
   },
 
-  toggleDisplay: function () {
+  toggleUserInfo: function () {
     if (ExtinctIn.currentUserId === this.model.id) {
-      this.$el.toggleClass("toggled");
+      this.$(".user-info").toggleClass("toggled");
     }
   },
 
@@ -32,8 +36,13 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
 
     this.model.save(attrs, {
       success: function () {
-        that.toggleDisplay()
+        that.toggleUserInfo()
       },
     })
+  },
+
+  addJobsIndex: function () {
+    var jobsIndex = new ExtinctIn.Views.JobsIndex({collection: this.model.jobs()})
+    this.addSubview(".user-experiences", jobsIndex)
   },
 })

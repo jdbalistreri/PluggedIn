@@ -1,49 +1,56 @@
 
-<section class="user-info trigger">
-  Name: <%= user.escape("fname") + " " + user.escape("lname")  %>
-  <br>
-  Location: <%= user.escape("location") %>
-  <br>
-  Industry: <%= user.escape("industry") %>
-  <br>
-  Tagline: <%= user.escape("tagline") %>
-  <br>
-  DOB: <%= user.escape("date_of_birth") %>
-  <br>
-  Summary: <%= user.escape("summary") %>
-</section>
-
-<% if (ExtinctIn.currentUserId === user.id) { %>
-  <form class="user-info-form hidden-input">
-    <h3>Edit Form!</h3>
-    <label for="user-fname">First Name: </label>
-    <input id="user-fname" type="text" name="user[fname]" value="<%= user.escape("fname")%>">
+<article class="user-info">
+  <p class="trigger">
+    Name: <%= user.escape("fname") + " " + user.escape("lname")  %>
     <br>
-
-    <label for="user-lname">Last Name: </label>
-    <input id="user-lname" type="text" name="user[lname]" value="<%= user.escape("lname")%>">
+    Location: <%= user.escape("location") %>
     <br>
-
-    <label for="user-location">Location: </label>
-    <input id="user-location" type="text" name="user[location]" value="<%= user.escape("location")%>">
+    Industry: <%= user.escape("industry") %>
     <br>
-
-    <label for="user-industry">Industry: </label>
-    <input id="user-industry" type="text" name="user[industry]" value="<%= user.escape("industry")%>">
+    Tagline: <%= user.escape("tagline") %>
     <br>
-
-    <label for="user-tagline">Tagline: </label>
-    <input id="user-tagline" type="text" name="user[tagline]" value="<%= user.escape("tagline")%>">
+    DOB: <%= user.escape("date_of_birth") %>
     <br>
+    Summary: <%= user.escape("summary") %>
+  </p>
 
-    <label for="user-date_of_birth">DOB: </label>
-    <input id="user-date_of_birth" type="date" name="user[date_of_birth]" value="<%= user.escape("date_of_birth")%>">
-    <br>
+  <% if (ExtinctIn.currentUserId === user.id) { %>
+    <form class="hidden-input">
+      <h3>Edit Form!</h3>
+      <label for="user-fname">First Name: </label>
+      <input id="user-fname" type="text" name="user[fname]" value="<%= user.escape("fname")%>">
+      <br>
 
-    <label for="user-summary">Summary: </label>
-    <textarea id="user-summary" name="user[summary]"><%= user.escape("summary") %></textarea>
-    <br>
+      <label for="user-lname">Last Name: </label>
+      <input id="user-lname" type="text" name="user[lname]" value="<%= user.escape("lname")%>">
+      <br>
 
-    <button>Submit</button>
-  </form>
-<% } %>
+      <label for="user-location">Location: </label>
+      <input id="user-location" type="text" name="user[location]" value="<%= user.escape("location")%>">
+      <br>
+
+      <label for="user-industry">Industry: </label>
+      <input id="user-industry" type="text" name="user[industry]" value="<%= user.escape("industry")%>">
+      <br>
+
+      <label for="user-tagline">Tagline: </label>
+      <input id="user-tagline" type="text" name="user[tagline]" value="<%= user.escape("tagline")%>">
+      <br>
+
+      <label for="user-date_of_birth">DOB: </label>
+      <input id="user-date_of_birth" type="date" name="user[date_of_birth]" value="<%= user.escape("date_of_birth")%>">
+      <br>
+
+      <label for="user-summary">Summary: </label>
+      <textarea id="user-summary" name="user[summary]"><%= user.escape("summary") %></textarea>
+      <br>
+
+      <button>Submit</button>
+    </form>
+  <% } %>
+</article>
+
+
+<article class="user-experiences">
+
+</article>

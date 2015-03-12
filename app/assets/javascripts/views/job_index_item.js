@@ -18,6 +18,7 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
   },
 
   render: function () {
+    console.log("render index item")
     var content = this.template({job: this.model});
     this.$el.html(content);
 
@@ -48,13 +49,22 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
 
     var attrs = $(event.target).serializeJSON().experience;
 
+
+    if ((!this.$("#check-present").prop("checked")) &&
+        (this.$("#experience_end_date_2i").val() === "") ||
+        (this.$(".experience_end_year").val() === "")) {
+
+      $ul.append($("<li>").text("Please fill in both fields for end date"));
+      return;
+    }
+
     this.model.save(attrs, {
       success: function (model) {
+        console.log(model)
         that.toggleJobInfo();
-        that.model.fetch();
+        that.model.collection.sort();
       },
       error: function (model, response) {
-        // debugger
         response.responseJSON.forEach(function (error) {
           var $li = $("<li>").text(error);
           $ul.append($li);

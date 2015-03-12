@@ -33,7 +33,7 @@ class Api::ExperiencesController < ApplicationController
     end
 
     if @experience.save
-      render json: @experience
+      render :show
     else
       render json: @experience.errors.full_messages, status: :unprocessable_entity
     end

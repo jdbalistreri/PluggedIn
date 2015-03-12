@@ -1,8 +1,8 @@
-ExtinctIn.Views.JobModal = Backbone.View.extend({
+ExtinctIn.Views.DeleteModal = Backbone.View.extend({
 
   tagName: "section",
 
-  template: JST["jobs/modal"],
+  template: JST["utils/delete-modal"],
 
   events: {
     "click a.no" : "toggleModal",

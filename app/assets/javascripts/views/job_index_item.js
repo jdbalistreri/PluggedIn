@@ -1,4 +1,4 @@
-ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
+ExtinctIn.Views.JobIndexItem = Backbone.ToggleableFormView.extend({
 
   tagName: "li",
   className: "job-index-item",
@@ -8,12 +8,11 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
     this.listenTo(this.model, "sync", this.render);
   },
 
-  events: {
-    "click section.trigger" : "toggleJobInfo",
-    "submit form" : "editJobSubmit",
-    "click a.cancel" : "cancelForm",
-    "click a.delete" : "deleteJob",
-    "click input#check-present" : "toggleEndDate",
+  events: function () {
+    return _.extend({}, Backbone.ToggleableFormView.prototype.events,{
+      "submit form" : "editJobSubmit",
+      "click input#check-present" : "toggleEndDate",
+    });
   },
 
   render: function () {
@@ -25,17 +24,6 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
     return this;
   },
 
-  cancelForm: function () {
-    this.toggleJobInfo();
-    this.render();
-  },
-
-  deleteJob: function () {
-    var modalView = new ExtinctIn.Views.JobModal({model: this.model})
-    ExtinctIn.$modalEl.toggleClass("toggled");
-    ExtinctIn.$modalEl.html(modalView.render().$el);
-  },
-
   editJobSubmit: function (event) {
     event.preventDefault();
     var that = this;
@@ -45,13 +33,13 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
 
     delete this.model.attributes["check_present"];
 
-    if (!this.validEndDate($ul)) return;
+    if (!this.validEndDate()) return;
 
     var attrs = $(event.target).serializeJSON().experience;
 
     this.model.save(attrs, {
       success: function (model) {
-        that.toggleJobInfo();
+        that.toggleEl();
         that.model.collection.sort();
       },
       error: function (model, response) {
@@ -63,10 +51,21 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
     });
   },
 
-  toggleEndDate: function () {
-    this.$(".end-date").toggleClass("toggled")
+  submitCancelCondition: function () {
+    return false;
   },
 
+  submitBeforeSave: function () {
+
+  },
+
+  submitOnSuccess: function () {
+    this.toggleEl();
+    this.model.collection.sort();
+  },
+
+
+  // EXPERIENCE SPECIFIC METHODS
   selectCurrentDates: function () {
     this.$el.find("#experience_start_date_2i").val(this.model.get("start_month"))
     this.$el.find("#experience_end_date_2i").val(this.model.get("end_month"))
@@ -77,21 +76,19 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
     }
   },
 
-  toggleJobInfo: function () {
-    if (ExtinctIn.currentUserId === this.model.get("user_id")) {
-      this.$el.toggleClass("toggled");
-    }
-  },
-
-  validEndDate: function (ul) {
+  validEndDate: function () {
     if ((!this.$("#check-present").prop("checked")) &&
         ((this.$("#experience_end_date_2i").val() === "") ||
         (this.$(".experience_end_year").val() === ""))) {
 
-      ul.append($("<li>").text("Please fill in both fields for end date"));
+      this.$(".errors").append($("<li>").text("Please fill in both fields for end date"));
       return false;
     }
     return true;
+  },
+
+  toggleEndDate: function () {
+    this.$(".end-date").toggleClass("toggled")
   },
 
 })

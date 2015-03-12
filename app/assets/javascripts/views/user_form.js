@@ -1,23 +1,17 @@
-ExtinctIn.Views.UserForm = Backbone.View.extend({
+ExtinctIn.Views.UserForm = Backbone.ToggleableFormView.extend({
 
   template: JST["users/form"],
 
-  events: {
-    "submit form" : "userInfoSubmit",
-    "click p.trigger" : "toggleUserInfo",
-    "click a.cancel" : "cancelForm",
-    "change input#user-picture" : "changePicture",
+  events: function () {
+    return _.extend({}, Backbone.ToggleableFormView.prototype.events,{
+      "change input#user-picture" : "changePicture",
+    });
   },
 
   render: function() {
     var content = this.template({user: this.model});
     this.$el.html(content);
     return this;
-  },
-
-  cancelForm: function () {
-    this.toggleUserInfo();
-    this.render();
   },
 
   changePicture: function (event) {
@@ -33,31 +27,8 @@ ExtinctIn.Views.UserForm = Backbone.View.extend({
     fileReader.readAsDataURL(file);
   },
 
-  toggleUserInfo: function () {
-    if (ExtinctIn.currentUserId === this.model.id) {
-      this.$el.toggleClass("toggled");
-    }
-  },
-
-  userInfoSubmit: function (event) {
-    event.preventDefault();
-    var that = this;
-    var attrs = $(event.target).serializeJSON().user
-
-    var $ul = this.$(".errors")
-    $ul.empty();
-
-    this.model.save(attrs, {
-      success: function () {
-        that.toggleUserInfo()
-      },
-      error: function (model, response) {
-        response.responseJSON.forEach(function (error) {
-          var $li = $("<li>").text(error);
-          $ul.append($li);
-        })
-      },
-    })
+  submitOnSuccess: function () {
+    this.toggleEl();
   },
 
 })

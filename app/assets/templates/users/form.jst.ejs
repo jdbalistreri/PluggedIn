@@ -1,5 +1,5 @@
 
-<p class="trigger">
+<section class="trigger">
   <img src="<%= user.escape("picture_url") %>" alt="Profile Picture" />
   Name: <%= user.escape("fname") + " " + user.escape("lname")  %>
   <br>
@@ -12,7 +12,7 @@
   DOB: <%= user.escape("date_of_birth") %>
   <br>
   Summary: <%= user.escape("summary") %>
-</p>
+</section>
 
 <% if (ExtinctIn.currentUserId === user.id) { %>
   <%= JST["users/form-partial"]({user: user}) %>

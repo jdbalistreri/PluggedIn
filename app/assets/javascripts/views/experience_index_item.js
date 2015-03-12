@@ -1,14 +1,18 @@
-ExtinctIn.Views.JobIndexItem = Backbone.ExperiencesForm.extend({
+ExtinctIn.Views.ExperienceIndexItem = Backbone.ExperiencesForm.extend({
 
-  className: "job-index-item",
-  template: JST["jobs/index-item"],
+  className: "experience-index-item",
 
-  initialize: function () {
+  template: function () {
+    return JST[this.type + "s/index-item"]
+  },
+
+  initialize: function (options) {
+    this.type = options.type;
     this.listenTo(this.model, "sync", this.render);
   },
 
   render: function () {
-    var content = this.template({job: this.model});
+    var content = this.template()({experience: this.model});
     this.$el.html(content);
 
     this.selectCurrentDates()

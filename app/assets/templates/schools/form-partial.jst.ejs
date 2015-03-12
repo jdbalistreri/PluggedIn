@@ -1,0 +1,33 @@
+<form>
+  <ul class="errors"></ul>
+
+  <label class="required" for="">Title: </label>
+  <input type="text" name="role" value="<%= job.escape("role") %>">
+  <br>
+
+  <label class="required" for="">Company: </label>
+  <input type="text" name="institution" value="<%= job.escape("institution") %>">
+  <br>
+
+  <label for="">Location: </label>
+  <input type="text" name="location" value="<%= job.escape("location") %>">
+  <br>
+
+  <label class="required" for="">Time Period: </label>
+  <%= _.template($("#job-date-input").html())({job: job}) %>
+
+  <br>
+  <input id="check-present" type="checkbox" name="check_present" value="true">
+  <label for="check-present">I currently work here</label>
+  <br>
+
+  <label for="">Description: </label>
+  <textarea name="description"><%= job.escape("description") %></textarea>
+  <br>
+
+  <button>Submit</button>
+  <a href="javascript:void(0)" class="cancel">Cancel</a>
+  <% if (!job.isNew()) { %>
+    <a href="javascript:void(0)" class="delete">Remove this position</a>
+  <% } %>
+</form>

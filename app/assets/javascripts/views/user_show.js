@@ -15,7 +15,7 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
 
     this.addUserForm();
     this.addJobsIndex();
-    // this.addSchoolsIndex();
+    this.addSchoolsIndex();
 
     return this;
   },
@@ -24,7 +24,8 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
     var jobsIndex = new ExtinctIn.Views.ExperiencesIndex({
       collection: this.model.jobs(),
       user: this.model,
-      type: "Job",
+      typeU: "Job",
+      typeL: "job",
     });
     this.addSubview(".user-experiences", jobsIndex);
   },
@@ -33,7 +34,8 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
     var schoolsIndex = new ExtinctIn.Views.ExperiencesIndex({
       collection: this.model.schools(),
       user: this.model,
-      type: "School",
+      typeU: "School",
+      typeL: "school",
     });
     this.addSubview(".user-experiences", schoolsIndex);
   },

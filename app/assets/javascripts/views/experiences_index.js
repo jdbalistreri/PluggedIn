@@ -26,7 +26,10 @@ ExtinctIn.Views.ExperiencesIndex = Backbone.CompositeView.extend({
       var model = new ExtinctIn.Models[that.typeU]({user: this.user});
 
       var viewType = this.typeU + "Form"
-      var newExperienceView = new ExtinctIn.Views[viewType]({model: model, collection: this.collection});
+      var newExperienceView = new ExtinctIn.Views.ExperienceForm(
+        { model: model,
+          collection: this.collection,
+          type: this.typeL});
 
       this.addSubview("ul.experiences-list", newExperienceView);
     }

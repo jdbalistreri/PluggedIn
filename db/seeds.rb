@@ -28,15 +28,15 @@ user6 = User.create!(email: "joe6", password: "joejoe", fname: "Sarah", lname: "
 # USER 1
 job1 = user1.experiences.create!(experience_type: 0, role: "Consultant",
   institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
-  start_date: Date.new(2012,1,1), end_date: Date.new(2012,1,1), field: nil)
+  start_date: Date.new(2012,1,1), end_date: Date.new(2013,1,1), field: nil)
 
 job2 = user1.experiences.create!(experience_type: 0, role: "Consultant",
   institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
-  start_date: Date.new(2012,1,1), end_date: Date.new(2012,1,1), field: nil)
+  start_date: Date.new(2012,1,1), end_date: Date.new(2013,1,1), field: nil)
 
 job3 = user1.experiences.create!(experience_type: 0, role: "Consultant",
   institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
-  start_date: Date.new(2012,1,1), end_date: Date.new(2012,1,1), field: nil)
+  start_date: Date.new(2012,1,1), end_date: Date.new(2013,1,1), field: nil)
 
 school1 = user1.experiences.create!(experience_type: 1, role: "Bachelors Degree",
   institution: "University College", location: "Sarasota, FL", description: "studied hard",
@@ -55,15 +55,15 @@ school3 = user1.experiences.create!(experience_type: 1, role: "Bachelors Degree"
 # USER 2
 job4 = user2.experiences.create!(experience_type: 0, role: "Consultant",
   institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
-  start_date: Date.new(2012,1,1), end_date: Date.new(2012,1,1), field: nil)
+  start_date: Date.new(2012,1,1), end_date: Date.new(2013,1,1), field: nil)
 
 job5 = user2.experiences.create!(experience_type: 0, role: "Consultant",
   institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
-  start_date: Date.new(2012,1,1), end_date: Date.new(2012,1,1), field: nil)
+  start_date: Date.new(2012,1,1), end_date: Date.new(2013,1,1), field: nil)
 
 job6 = user2.experiences.create!(experience_type: 0, role: "Consultant",
   institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
-  start_date: Date.new(2012,1,1), end_date: Date.new(2012,1,1), field: nil)
+  start_date: Date.new(2012,1,1), end_date: Date.new(2013,1,1), field: nil)
 
 school4 = user2.experiences.create!(experience_type: 1, role: "Bachelors Degree",
   institution: "University College", location: "Sarasota, FL", description: "studied hard",

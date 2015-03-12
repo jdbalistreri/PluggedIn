@@ -2,27 +2,27 @@
   <ul class="errors"></ul>
 
   <label class="required" for="">Title: </label>
-  <input type="text" name="experience[role]" value="<%= job.escape("role") %>">
+  <input type="text" name="role" value="<%= job.escape("role") %>">
   <br>
 
   <label class="required" for="">Company: </label>
-  <input type="text" name="experience[institution]" value="<%= job.escape("institution") %>">
+  <input type="text" name="institution" value="<%= job.escape("institution") %>">
   <br>
 
   <label for="">Location: </label>
-  <input type="text" name="experience[location]" value="<%= job.escape("location") %>">
+  <input type="text" name="location" value="<%= job.escape("location") %>">
   <br>
 
   <label class="required" for="">Time Period: </label>
   <%= _.template($("#job-date-input").html())({job: job}) %>
 
   <br>
-  <input id="check-present" type="checkbox" name="experience[check_present]" value="true">
+  <input id="check-present" type="checkbox" name="check_present" value="true">
   <label for="check-present">I currently work here</label>
   <br>
 
   <label for="">Description: </label>
-  <textarea name="experience[description]"><%= job.escape("description") %></textarea>
+  <textarea name="description"><%= job.escape("description") %></textarea>
   <br>
 
   <button>Submit</button>

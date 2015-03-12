@@ -10,7 +10,6 @@ ExtinctIn.Views.JobIndexItem = Backbone.ToggleableFormView.extend({
 
   events: function () {
     return _.extend({}, Backbone.ToggleableFormView.prototype.events,{
-      "submit form" : "editJobSubmit",
       "click input#check-present" : "toggleEndDate",
     });
   },
@@ -24,39 +23,19 @@ ExtinctIn.Views.JobIndexItem = Backbone.ToggleableFormView.extend({
     return this;
   },
 
-  editJobSubmit: function (event) {
-    event.preventDefault();
-    var that = this;
-
-    var $ul = this.$(".errors")
-    $ul.empty();
-
-    delete this.model.attributes["check_present"];
-
-    if (!this.validEndDate()) return;
-
-    var attrs = $(event.target).serializeJSON().experience;
-
-    this.model.save(attrs, {
-      success: function (model) {
-        that.toggleEl();
-        that.model.collection.sort();
-      },
-      error: function (model, response) {
-        response.responseJSON.forEach(function (error) {
-          var $li = $("<li>").text(error);
-          $ul.append($li);
-        })
-      },
-    });
+  submitSetAttrs: function (event) {
+    var attrs = $(event.target).serializeJSON();
+    var date = attrs.date;
+    delete attrs.date;
+    return _.extend(attrs, date);
   },
 
   submitCancelCondition: function () {
-    return false;
+    return !this.validEndDate()
   },
 
   submitBeforeSave: function () {
-
+    delete this.model.attributes["check_present"];
   },
 
   submitOnSuccess: function () {
@@ -67,8 +46,8 @@ ExtinctIn.Views.JobIndexItem = Backbone.ToggleableFormView.extend({
 
   // EXPERIENCE SPECIFIC METHODS
   selectCurrentDates: function () {
-    this.$el.find("#experience_start_date_2i").val(this.model.get("start_month"))
-    this.$el.find("#experience_end_date_2i").val(this.model.get("end_month"))
+    this.$el.find("#date_start_date_2i").val(this.model.get("start_month"))
+    this.$el.find("#date_end_date_2i").val(this.model.get("end_month"))
 
     if (this.model.get("end_date") === null ) {
       this.$("input#check-present").prop("checked", true);
@@ -78,8 +57,8 @@ ExtinctIn.Views.JobIndexItem = Backbone.ToggleableFormView.extend({
 
   validEndDate: function () {
     if ((!this.$("#check-present").prop("checked")) &&
-        ((this.$("#experience_end_date_2i").val() === "") ||
-        (this.$(".experience_end_year").val() === ""))) {
+        ((this.$("#date_end_date_2i").val() === "") ||
+        (this.$(".date_end_year").val() === ""))) {
 
       this.$(".errors").append($("<li>").text("Please fill in both fields for end date"));
       return false;

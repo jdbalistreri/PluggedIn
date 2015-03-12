@@ -33,24 +33,24 @@
 </script>
 
 <script type="text/template" id="job-date-input">
-  <%= date_select("experience", "start_date",
+  <%= date_select("date", "start_date",
         {discard_day: true, discard_year: true,
         prompt: {month: "Choose..."}}) %>
   <input type="number"
-          id="experience_start_date_1i"
-          name="experience[start_date(1i)]"
+          id="date_start_date_1i"
+          name="date[start_date(1i)]"
           value="<%%= job.escape("start_year") %>"
           placeholder="Year">
    -
   <span class="end-date">
     <span class="trigger">
-      <%= date_select("experience", "end_date",
+      <%= date_select("date", "end_date",
             {discard_day: true, discard_year: true,
             prompt: {month: "Choose..."}}) %>
       <input type="number"
-              id="experience_end_date_1i"
-              class="experience_end_year"
-              name="experience[end_date(1i)]"
+              id="date_end_date_1i"
+              class="date_end_year"
+              name="date[end_date(1i)]"
               value="<%%= job.escape("end_year") %>"
               placeholder="Year">
     </span>

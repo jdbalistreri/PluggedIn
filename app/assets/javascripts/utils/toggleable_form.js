@@ -20,7 +20,7 @@ Backbone.ToggleableFormView = Backbone.CompositeView.extend({
 
   formSubmit: function (event) {
     event.preventDefault();
-    var attrs = $(event.target).serializeJSON()
+    var attrs = this.submitSetAttrs(event);
     this.$(".errors").empty();
 
     this.submitBeforeSave();
@@ -38,6 +38,10 @@ Backbone.ToggleableFormView = Backbone.CompositeView.extend({
 
 
   // FORM HELPER METHODS (LIKELY TO BE OVERWRITTEN)
+  submitSetAttrs: function (event) {
+    return $(event.target).serializeJSON();
+  },
+
   submitCancelCondition: function () {
     return false;
   },

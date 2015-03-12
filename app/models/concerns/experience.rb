@@ -5,9 +5,12 @@ class Experience < ActiveRecord::Base
 
   enum experience_type: [:job, :school]
 
-  validate :experience_specific_validations
   validates :user, :experience_type, presence: true
   validates :start_date, presence: true
+
+  validate :experience_type_specific_validations
+  validate :dates_make_sense
+
 
   belongs_to(
     :user,
@@ -44,13 +47,28 @@ class Experience < ActiveRecord::Base
   end
 
   private
-    def experience_specific_validations
+    def experience_type_specific_validations
       if !self.role.present?
-        errors[:base] << (self.job? ? "Title can't be blank" : "Degree can't be blank")
+        errors[:base] << (self.job? ? "Please enter a title." : "Degree can't be blank")
       end
       if !self.institution.present?
-        errors[:base] << (self.job? ? "Company can't be blank" : "School can't be blank")
+        errors[:base] << (self.job? ? "Please enter a company name." : "School can't be blank")
       end
+    end
+
+    def dates_make_sense
+      return nil unless self.start_date
+      if self.job?
+        if self.start_date > Time.now
+          errors[:base] << "Please enter a start date no later than this month."
+        elsif self.end_date && self.end_date > Time.now
+            errors[:base] << "Please enter an end date no later than this month."
+        elsif self.end_date && self.start_date >= self.end_date
+          errors[:base] << "Please be sure the start date is not after the end date."
+        end
+      else
+      end
+
     end
 
 end

@@ -10,7 +10,7 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
   },
 
   events: {
-    "click .trigger" : "toggleJobInfo",
+    "click section.trigger" : "toggleJobInfo",
     "submit form" : "editJobSubmit",
     "click a.cancel" : "cancelForm",
     "click a.delete" : "deleteJob",
@@ -54,6 +54,7 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
         that.model.fetch();
       },
       error: function (model, response) {
+        // debugger
         response.responseJSON.forEach(function (error) {
           var $li = $("<li>").text(error);
           $ul.append($li);

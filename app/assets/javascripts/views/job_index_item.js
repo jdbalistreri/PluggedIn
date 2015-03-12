@@ -2,7 +2,6 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
 
   tagName: "li",
   className: "job-index-item",
-
   template: JST["jobs/index-item"],
 
   initialize: function () {
@@ -18,7 +17,6 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
   },
 
   render: function () {
-    console.log("render index item")
     var content = this.template({job: this.model});
     this.$el.html(content);
 
@@ -47,20 +45,12 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
 
     delete this.model.attributes["check_present"];
 
+    if (!this.validEndDate($ul)) return;
+
     var attrs = $(event.target).serializeJSON().experience;
-
-
-    if ((!this.$("#check-present").prop("checked")) &&
-        (this.$("#experience_end_date_2i").val() === "") ||
-        (this.$(".experience_end_year").val() === "")) {
-
-      $ul.append($("<li>").text("Please fill in both fields for end date"));
-      return;
-    }
 
     this.model.save(attrs, {
       success: function (model) {
-        console.log(model)
         that.toggleJobInfo();
         that.model.collection.sort();
       },
@@ -91,6 +81,17 @@ ExtinctIn.Views.JobIndexItem = Backbone.View.extend({
     if (ExtinctIn.currentUserId === this.model.get("user_id")) {
       this.$el.toggleClass("toggled");
     }
+  },
+
+  validEndDate: function (ul) {
+    if ((!this.$("#check-present").prop("checked")) &&
+        ((this.$("#experience_end_date_2i").val() === "") ||
+        (this.$(".experience_end_year").val() === ""))) {
+
+      ul.append($("<li>").text("Please fill in both fields for end date"));
+      return false;
+    }
+    return true;
   },
 
 })

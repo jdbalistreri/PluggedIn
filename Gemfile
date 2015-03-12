@@ -32,6 +32,7 @@ gem 'backbone-on-rails'
 gem 'bcrypt'
 gem 'font-awesome-rails'
 gem 'jquery-ui-rails'
+gem "paperclip", "~> 4.2"
 
 group :development do
   gem 'annotate'

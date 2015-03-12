@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312132258) do
+ActiveRecord::Schema.define(version: 20150312160146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 20150312132258) do
   add_index "experiences", ["user_id"], name: "index_experiences_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
+    t.string   "email",                null: false
+    t.string   "password_digest",      null: false
+    t.string   "session_token",        null: false
     t.string   "fname"
     t.string   "lname"
     t.string   "location"
@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(version: 20150312132258) do
     t.text     "summary"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

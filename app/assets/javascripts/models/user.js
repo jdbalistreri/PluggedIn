@@ -23,7 +23,7 @@ ExtinctIn.Models.User = Backbone.Model.extend({
 
   jobs: function () {
     if (!this._jobs) {
-      this._jobs = new ExtinctIn.Collections.Jobs([], {user: this})
+      this._jobs = new ExtinctIn.Collections.Jobs()
     }
 
     return this._jobs
@@ -31,7 +31,7 @@ ExtinctIn.Models.User = Backbone.Model.extend({
 
   schools: function () {
     if (!this._schools) {
-      this._schools = new ExtinctIn.Collections.Schools([], {user: this})
+      this._schools = new ExtinctIn.Collections.Schools()
     }
 
     return this._schools

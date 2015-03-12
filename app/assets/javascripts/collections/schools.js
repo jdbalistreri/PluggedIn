@@ -1,9 +1,3 @@
-ExtinctIn.Collections.Schools = Backbone.Collection.extend({
-  url: "api/experiences",
+ExtinctIn.Collections.Schools = ExtinctIn.ExperienceCollection.extend({
   model: ExtinctIn.Models.School,
-
-  initialize: function (models, options) {
-    this.user = options.user;
-  }
-
 })

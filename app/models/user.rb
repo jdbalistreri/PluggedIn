@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
     inverse_of: :user
   )
 
+  has_attached_file :picture, styles: {medium: "300x300>", thumb: "100x100>"}, default_url: "default1.png"
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+
   def jobs
     self.experiences.where(experience_type: 0)
   end

@@ -33,6 +33,6 @@ class ApplicationController < ActionController::Base
 
     def user_params
       params.require(:user).permit(:password, :email, :fname, :lname, :location,
-            :tagline, :industry, :date_of_birth, :summary)
+            :tagline, :industry, :date_of_birth, :summary, :picture)
     end
 end

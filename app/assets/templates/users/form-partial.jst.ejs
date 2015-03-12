@@ -29,6 +29,12 @@
   <textarea id="user-summary" name="user[summary]"><%= user.escape("summary") %></textarea>
   <br>
 
+  <label for="user-picture">Picture: </label>
+  <input type="file" id="user-picture" name="user[picture]">
+  <br>
+
+  <img id="picture-preview" src="" alt="" />
+
   <button>Submit</button>
   <a href="javascript:void(0)" class="cancel">Cancel</a>
 </form>

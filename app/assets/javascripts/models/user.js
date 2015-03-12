@@ -15,6 +15,12 @@ ExtinctIn.Models.User = Backbone.Model.extend({
     return response
   },
 
+  toJSON: function () {
+    return {
+      user: _.clone(this.attributes)
+    }
+  },
+
   jobs: function () {
     if (!this._jobs) {
       this._jobs = new ExtinctIn.Collections.Jobs([], {user: this})

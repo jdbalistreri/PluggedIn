@@ -6,6 +6,7 @@ ExtinctIn.Views.UserForm = Backbone.View.extend({
     "submit form" : "userInfoSubmit",
     "click p.trigger" : "toggleUserInfo",
     "click a.cancel" : "cancelForm",
+    "change input#user-picture" : "changePicture",
   },
 
   render: function() {
@@ -17,6 +18,19 @@ ExtinctIn.Views.UserForm = Backbone.View.extend({
   cancelForm: function () {
     this.toggleUserInfo();
     this.render();
+  },
+
+  changePicture: function (event) {
+    var that = this;
+    var file = event.currentTarget.files[0];
+    var fileReader = new FileReader();
+
+    fileReader.onloadend = function () {
+      that.model.set("picture", fileReader.result);
+      that.$("#picture-preview").attr("src", fileReader.result)
+    };
+
+    fileReader.readAsDataURL(file);
   },
 
   toggleUserInfo: function () {

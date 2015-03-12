@@ -36,24 +36,17 @@ Backbone.ToggleableFormView = Backbone.CompositeView.extend({
     this.$el.toggleClass("toggled");
   },
 
-
-  // FORM HELPER METHODS (LIKELY TO BE OVERWRITTEN)
   submitSetAttrs: function (event) {
     return $(event.target).serializeJSON();
   },
 
   submitCancelCondition: function () {
-    debugger
     return false;
   },
 
-  submitBeforeSave: function () {
+  submitBeforeSave: function () {},
 
-  },
-
-  submitOnSuccess: function () {
-
-  },
+  submitOnSuccess: function () {},
 
   submitOnError: function (model, response) {
     response.responseJSON.forEach(function (error) {

@@ -1,14 +1,13 @@
-ExtinctIn.Views.JobForm = Backbone.View.extend({
+ExtinctIn.Views.JobForm = Backbone.ToggleableFormView.extend({
 
   tagName: "li",
   className: "new-job-form",
   template: JST["jobs/new-form"],
 
-  events: {
-    "submit form" : "newJobSubmit",
-    "click a.trigger" : "toggleNewJob",
-    "click a.cancel" : "cancelForm",
-    "click input#check-present" : "toggleEndDate",
+  events: function () {
+    return _.extend({}, Backbone.ToggleableFormView.prototype.events,{
+      "click input#check-present" : "toggleEndDate",
+    });
   },
 
   render: function () {
@@ -17,49 +16,31 @@ ExtinctIn.Views.JobForm = Backbone.View.extend({
     return this;
   },
 
-  cancelForm: function () {
-    this.toggleNewJob();
-    this.render();
+  submitSetAttrs: function (event) {
+    var attrs = $(event.target).serializeJSON();
+    var date = attrs.date;
+    delete attrs.date;
+    return _.extend(attrs, date);
   },
 
-  newJobSubmit: function (event) {
-    event.preventDefault();
-    var that = this;
+  submitCancelCondition: function () {
+    return !this.validEndDate();
+  },
 
-    var $ul = this.$(".errors")
-    $ul.empty();
-
-    if (!this.validEndDate($ul)) return;
-
-    var attrs = $(event.target).serializeJSON().experience
-
-    this.model.save(attrs, {
-      success: function (model) {
-        that.collection.add(model, {merge: true});
-      },
-      error: function (model, response) {
-        response.responseJSON.forEach(function (error) {
-          var $li = $("<li>").text(error);
-          $ul.append($li);
-        })
-      },
-    })
+  submitOnSuccess: function (model) {
+    this.collection.add(model, {merge: true});
   },
 
   toggleEndDate: function () {
     this.$(".end-date").toggleClass("toggled")
   },
 
-  toggleNewJob: function () {
-    this.$el.toggleClass("toggled");
-  },
-
-  validEndDate: function (ul) {
+  validEndDate: function () {
     if ((!this.$("#check-present").prop("checked")) &&
-        ((this.$("#experience_end_date_2i").val() === "") ||
-        (this.$(".experience_end_year").val() === ""))) {
+        ((this.$("#date_end_date_2i").val() === "") ||
+        (this.$(".date_end_year").val() === ""))) {
 
-      ul.append($("<li>").text("Please fill in both fields for end date"));
+      this.$(".errors").append($("<li>").text("Please fill in both fields for end date"));
       return false;
     }
     return true;

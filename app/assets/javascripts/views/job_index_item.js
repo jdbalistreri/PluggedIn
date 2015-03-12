@@ -43,7 +43,6 @@ ExtinctIn.Views.JobIndexItem = Backbone.ToggleableFormView.extend({
     this.model.collection.sort();
   },
 
-
   // EXPERIENCE SPECIFIC METHODS
   selectCurrentDates: function () {
     this.$el.find("#date_start_date_2i").val(this.model.get("start_month"))

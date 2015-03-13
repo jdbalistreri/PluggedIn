@@ -39,44 +39,6 @@ ul {
   display: block;
 }
 
-.toggled > .trigger, .hidden-input {
-  display: none;
-}
-
-.toggled > .hidden-input, .trigger {
-  display: inline-block;
-}
-
-#modal {
-  display: none;
-}
-
-#modal.toggled {
-  display: block;
-  position: absolute;
-  background: rgba(0,0,0,.4);
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-#modal > section {
-  display: block;
-  position: absolute;
-  background: white;
-  width: 400px;
-  height: 200px;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}
-
-.required:after {
-  content: " *";
-  color: red;
-}
-
 /*HELPER STYLES*/
 input {
   border: 1px solid grey;
@@ -86,10 +48,10 @@ a {
   color: blue;
 }
 
-/*.trigger:hover {
+.trigger > span:hover, .trigger > a:hover {
   background: lightgrey;
   cursor: pointer;
-}*/
+}
 
 /*ALL PAGES*/
 
@@ -124,7 +86,6 @@ main {
 
 .user-card section.trigger {
   width: 935px;
-  display: block;
 }
 .profile-picture {
   float: left;
@@ -202,4 +163,43 @@ a.edit-form {
   margin: 30px 0px;
   text-align: center;
   padding: 20px;
+}
+
+/*TOGGLE AND OTHERS*/
+.toggled > .trigger, .hidden-input {
+  display: none;
+}
+
+.toggled > .hidden-input, .trigger {
+  display: inline-block;
+}
+
+#modal {
+  display: none;
+}
+
+#modal.toggled {
+  display: block;
+  position: absolute;
+  background: rgba(0,0,0,.4);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#modal > section {
+  display: block;
+  position: absolute;
+  background: white;
+  width: 400px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.required:after {
+  content: " *";
+  color: red;
 }

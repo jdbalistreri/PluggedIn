@@ -2,13 +2,10 @@
 <section class="trigger group">
   <img class="profile-picture" src="<%= user.escape("picture_url") %>" alt="Profile Picture" />
   <span class="full-name"><%= user.escape("fname") + " " + user.escape("lname")  %></span>
-  <p class="field-text"><%= user.escape("tagline") %></p>
+  <span class="field-text"><%= user.escape("tagline") %></span>
   Location: <%= user.escape("location") %>
   <br>
   Industry: <%= user.escape("industry") %>
-  <br>
-  <br>
-  Summary: <%= user.escape("summary") %>
 </section>
 
 <% if (ExtinctIn.currentUserId === user.id) { %>

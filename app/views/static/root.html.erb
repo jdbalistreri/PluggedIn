@@ -1,24 +1,18 @@
 
 
 <header>
-  <h2>Extinct IN</h2>
-  <nav>
+  <a href="#"><span>Extinct IN</span></a>
+  <a href="#users/<%=current_user.try(:id) || "" %>">My Profile</a>
+  <span>
     <%= render partial: "/shared/logged_in", locals: {current_user: current_user } %>
 
-  </nav>
+  </span>
 </header>
 
 <main>
   <section class="group" id="content">
 
   </section>
-
-  <hr>
-
-  <a href="#users/<%=current_user.try(:id) || "" %>">My Profile</a>
-  <a href="#users/1">User1</a>
-  <a href="#users/2">User2</a>
-  <a href="#">Index</a>
 </main>
 
 

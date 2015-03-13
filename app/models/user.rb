@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     inverse_of: :user
   )
 
-  has_attached_file :picture, styles: {medium: "300x300>", thumb: "100x100>"}, default_url: "default2.png"
+  has_attached_file :picture, styles: {profile: "200x200>", thumb: "60x60>"}, default_url: "default2.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
   def jobs

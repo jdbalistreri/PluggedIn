@@ -1,1 +1,8 @@
-<a href="#users/<%= user.id %>"><%= user.escape("full_name") %></a>
+
+<img class="thumb-picture" src="<%= user.escape("thumb_picture_url") %>" alt="Profile Picture" />
+<span class="full-name">
+  <a href="#users/<%= user.id %>"><%= user.escape("full_name") %></a>
+</span>
+<span class="field-text"><%= user.escape("tagline") %></span>
+<span class="location"><%= user.escape("location") %></span>
+<span class="industry"><%= user.escape("industry") %></span>

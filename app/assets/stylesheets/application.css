@@ -56,7 +56,7 @@ a {
 /*ALL PAGES*/
 
 body {
-  font-family: sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 header {
@@ -81,11 +81,13 @@ main {
   padding: 20px;
   width: 975px;
   margin: 0px auto;
+  color: #333;
 }
 
-.user-show > article {
+.user-show > article, .user-search {
   background: #fff;
   border: 1px solid grey;
+  box-shadow: 1px 1px 1px grey;
 
 }
 
@@ -97,7 +99,6 @@ input {
 /*USER CARD*/
 
 .user-card {
-  border: 1px solid grey;
   padding: 20px;
   background: #fff;
 }
@@ -106,6 +107,7 @@ input {
   width: 935px;
 }
 .profile-picture {
+  margin-left: -20px;
   float: left;
   width: 200px;
   padding-right: 20px;
@@ -169,6 +171,31 @@ a.edit-form {
   display: block;
   font-size: 14px;
   height: 0px;
+}
+
+/*SEARCH RESULTS*/
+
+.thumb-picture {
+  width: 60px;
+  float: left;
+  margin-right: 10px;
+}
+
+.search-results {
+  width: 564px;
+}
+
+.search-results > .user-index-item {
+  height: 68px;
+  padding-top: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid grey;
+}
+
+.user-index-item > .full-name > a {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(0, 111, 166);
 }
 
 /*SIDEBAR*/

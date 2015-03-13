@@ -2,7 +2,9 @@ require 'action_view'
 
 class Experience < ActiveRecord::Base
   include ActionView::Helpers::DateHelper
+  include PgSearch
 
+  multisearchable against: [:role, :institution]
   enum experience_type: [:job, :school]
 
   validates :user, :experience_type, presence: true

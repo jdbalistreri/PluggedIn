@@ -19,6 +19,7 @@ gem 'jquery-ui-rails'
 gem 'paperclip', "~> 4.2"
 gem 'aws-sdk', '< 2.0'
 gem 'figaro'
+gem 'pg_search'
 
 group :development do
   gem 'annotate'

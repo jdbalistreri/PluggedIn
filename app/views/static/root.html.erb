@@ -3,6 +3,7 @@
 <header>
   <h2>Extinct IN</h2>
   <nav>
+    <%= render partial: "/shared/logged_in", locals: {current_user: current_user } %>
 
   </nav>
 </header>
@@ -20,7 +21,6 @@
   <a href="#">Index</a>
 </main>
 
-<%= render partial: "/shared/logged_in", locals: {current_user: current_user } %>
 
 <div id="modal"></div>
 

@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializejson.min
-//= require turbolinks
 //= require underscore
 //= require backbone
 //= require extinct_in

@@ -1,5 +1,10 @@
-ExtinctIn.ExperienceCollection = Backbone.Collection.extend({
+ExtinctIn.Collections.Experiences = Backbone.Collection.extend({
   url: "api/experiences",
+
+  model: function (attrs) {
+    var type = attrs.type_str;
+    return new ExtinctIn.Models[type](attrs);
+  },
 
   comparator: function (modelA, modelB) {
     if (modelA.get("end_year") === null) {

@@ -17,6 +17,10 @@ class Experience < ActiveRecord::Base
     inverse_of: :experiences
   )
 
+  def type_str
+    self.experience_type.to_s.capitalize
+  end
+
   def date_string
     if self.job?
       start_str = self.start_date.strftime('%b %Y')

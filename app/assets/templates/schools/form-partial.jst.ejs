@@ -2,32 +2,32 @@
   <ul class="errors"></ul>
 
   <label class="required" for="">Title: </label>
-  <input type="text" name="role" value="<%= job.escape("role") %>">
+  <input type="text" name="role" value="<%= school.escape("role") %>">
   <br>
 
   <label class="required" for="">Company: </label>
-  <input type="text" name="institution" value="<%= job.escape("institution") %>">
+  <input type="text" name="institution" value="<%= school.escape("institution") %>">
   <br>
 
   <label for="">Location: </label>
-  <input type="text" name="location" value="<%= job.escape("location") %>">
+  <input type="text" name="location" value="<%= school.escape("location") %>">
   <br>
 
   <label class="required" for="">Time Period: </label>
-  <%= _.template($("#job-date-input").html())({job: job}) %>
+  <%= _.template($("#job-date-input").html())({job: school}) %>
 
   <br>
   <input id="check-present" type="checkbox" name="check_present" value="true">
-  <label for="check-present">I currently work here</label>
+  <label for="check-present">I currently attend school here</label>
   <br>
 
   <label for="">Description: </label>
-  <textarea name="description"><%= job.escape("description") %></textarea>
+  <textarea name="description"><%= school.escape("description") %></textarea>
   <br>
 
   <button>Submit</button>
   <a href="javascript:void(0)" class="cancel">Cancel</a>
-  <% if (!job.isNew()) { %>
-    <a href="javascript:void(0)" class="delete">Remove this position</a>
+  <% if (!school.isNew()) { %>
+    <a href="javascript:void(0)" class="delete">Remove this school</a>
   <% } %>
 </form>

@@ -26,7 +26,7 @@ column name     | data type | details
 id              | integer   | not null, primary key
 user_id         | integer   | not null, unique, foreign_key
 experience_type | integer   | not null (enum)
-role            | string    | 
+role            | string    |
 institution     | string    |
 location        | string    |
 description     | text      |
@@ -67,10 +67,3 @@ sent_date       | date      | not null
 subject         | string    | not null
 body            | text      | not null
 reply_to_id     | integer   |
-
-## user_messages
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, primary key
-user_id         | integer   | not null, foreign_key
-message_id      | integer   | not null, foreign_key

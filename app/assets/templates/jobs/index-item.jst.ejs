@@ -1,5 +1,5 @@
 
-<section class="trigger">
+<section class="<%= currentUser ? "trigger" : "" %>">
   <span class="field-text"><%= experience.escape("role") %></span>
   <span class="field-text"><%= experience.escape("institution") %></span>
   <span class="date-text"><%= experience.escape("date_string") %></span>
@@ -20,9 +20,10 @@
 
 
 </section>
-
-<div class="hidden-input">
-  <%= JST["jobs/form-partial"]({job: experience}) %>
-</div>
+<% if (currentUser) { %>
+  <div class="hidden-input">
+    <%= JST["jobs/form-partial"]({job: experience}) %>
+  </div>
+<%  } %>
 
 <hr>

@@ -12,7 +12,7 @@ ExtinctIn.Views.ExperienceIndexItem = Backbone.ExperiencesForm.extend({
   },
 
   render: function () {
-    var content = this.template()({experience: this.model});
+    var content = this.template()({experience: this.model, currentUser: this.currentUser()});
     this.$el.html(content);
 
     this.selectCurrentDates()

@@ -9,7 +9,7 @@ ExtinctIn.Views.UserForm = ExtinctIn.ToggleableFormView.extend({
   },
 
   render: function() {
-    var content = this.template({user: this.model});
+    var content = this.template({user: this.model, currentUser: this.currentUser()});
     this.$el.html(content);
     return this;
   },

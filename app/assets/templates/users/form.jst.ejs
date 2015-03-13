@@ -1,5 +1,5 @@
 
-<section class="trigger group">
+<section class="group<%= currentUser ? " trigger" : "" %>">
   <img class="profile-picture" src="<%= user.escape("profile_picture_url") %>" alt="Profile Picture" />
   <span class="full-name"><%= user.escape("full_name")  %></span>
   <span class="field-text"><%= user.escape("tagline") %></span>

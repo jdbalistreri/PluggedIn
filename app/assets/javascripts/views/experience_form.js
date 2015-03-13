@@ -10,8 +10,12 @@ ExtinctIn.Views.ExperienceForm = Backbone.ExperiencesForm.extend({
     this.type = options.type;
   },
 
+  currentUser: function () {
+    return true;
+  },
+
   render: function () {
-    var content = this.template()({experience: this.model});
+    var content = this.template()({experience: this.model, currentUser: this.currentUser()});
     this.$el.html(content);
     return this;
   },

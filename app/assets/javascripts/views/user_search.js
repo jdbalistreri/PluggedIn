@@ -1,4 +1,4 @@
-ExtinctIn.Views.UserSearch = Backbone.View.extend({
+ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.searchResults = new ExtinctIn.Collections.SearchResults();
@@ -14,6 +14,12 @@ ExtinctIn.Views.UserSearch = Backbone.View.extend({
   render: function () {
     var content = this.template({results: this.searchResults});
     this.$el.html(content);
+
+    this.searchResults.each(function (user) {
+      var indexItem = new ExtinctIn.Views.UserIndexItem({model: user});
+      this.addSubview(".search-results", indexItem);
+    }.bind(this))
+
     return this;
   },
 

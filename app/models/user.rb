@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     self.experiences.where(experience_type: 1)
   end
 
+  def full_name
+    "#{fname} #{lname}"
+  end
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password);

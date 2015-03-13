@@ -5,6 +5,8 @@ window.ExtinctIn = {
   Routers: {},
   initialize: function(options) {
     new ExtinctIn.Routers.Router(options);
-    Backbone.history.start();
+    if (!Backbone.History.started) {
+      Backbone.history.start();
+    }
   }
 };

@@ -1,6 +1,7 @@
 class Api::ExperiencesController < ApplicationController
 
   def create
+    sleep 0.3
     @experience = current_user.experiences.new(experience_params)
 
     if params["experience"]["check_present"]
@@ -25,6 +26,7 @@ class Api::ExperiencesController < ApplicationController
   end
 
   def update
+    sleep 0.3
     @experience = current_user.experiences.find(params[:id])
     @experience.assign_attributes(experience_params)
 

@@ -50,6 +50,7 @@ Backbone.ExperiencesForm = ExtinctIn.ToggleableFormView.extend({
         (this.$(".date_end_year").val() === ""))) {
 
       this.$(".errors").append($("<li>").text("Please fill in both fields for end date"));
+      this.$("button").html("Submit").prop("disabled", false);
       return false;
     }
     return true;

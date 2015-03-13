@@ -25,7 +25,7 @@
   <textarea name="description"><%= job.escape("description") %></textarea>
   <br>
 
-  <button>Submit</button>
+  <button class="submit">Submit</button>
   <a href="javascript:void(0)" class="cancel">Cancel</a>
   <% if (!job.isNew()) { %>
     <a href="javascript:void(0)" class="delete">Remove this position</a>

@@ -21,14 +21,22 @@ ExtinctIn.ToggleableFormView = Backbone.CompositeView.extend({
   formSubmit: function (event) {
     event.preventDefault();
     var attrs = this.submitSetAttrs(event);
+    var that = this;
     this.$(".errors").empty();
+    this.$("button").html("Submitting...").prop("disabled", true);
 
     this.submitBeforeSave();
     if (this.submitCancelCondition()) return;
 
     this.model.save(attrs, {
-      success: this.submitOnSuccess.bind(this),
-      error: this.submitOnError.bind(this),
+      success: function (model, response) {
+        this.$("button").html("Submit").prop("disabled", false);
+        return that.submitOnSuccess(response);
+      },
+      error: function (model, response) {
+        this.$("button").html("Submit").prop("disabled", false);
+        return that.submitOnError(response);
+      },
     })
   },
 
@@ -48,7 +56,7 @@ ExtinctIn.ToggleableFormView = Backbone.CompositeView.extend({
 
   submitOnSuccess: function () {},
 
-  submitOnError: function (model, response) {
+  submitOnError: function (response) {
     response.responseJSON.forEach(function (error) {
       var $li = $("<li>").text(error);
       this.$(".errors").append($li);

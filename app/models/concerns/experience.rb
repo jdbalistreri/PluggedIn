@@ -29,8 +29,8 @@ class Experience < ActiveRecord::Base
       return "#{start_str} - #{end_str} (#{distance})"
     else
       start_str = self.start_date.strftime('%Y')
-      end_str = self.end_date ? self.end_date.strftime('%Y') : "Present"
-      return "#{start_str} - #{end_str}"
+      end_str = self.end_date ? " - #{self.end_date.strftime('%Y')}" : ""
+      return "#{start_str}#{end_str}"
     end
   end
 

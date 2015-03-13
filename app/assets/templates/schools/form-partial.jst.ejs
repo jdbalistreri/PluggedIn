@@ -1,12 +1,12 @@
 <form>
   <ul class="errors"></ul>
 
-  <label class="required" for="">Title: </label>
-  <input type="text" name="role" value="<%= school.escape("role") %>">
+  <label class="required" for="">School: </label>
+  <input type="text" name="institution" value="<%= school.escape("institution") %>">
   <br>
 
-  <label class="required" for="">Company: </label>
-  <input type="text" name="institution" value="<%= school.escape("institution") %>">
+  <label class="required" for="">Degree: </label>
+  <input type="text" name="role" value="<%= school.escape("role") %>">
   <br>
 
   <label for="">Location: </label>
@@ -14,11 +14,11 @@
   <br>
 
   <label class="required" for="">Time Period: </label>
-  <%= _.template($("#job-date-input").html())({job: school}) %>
-
+  <%= _.template($("#school-date-input").html())({school: school}) %>
   <br>
-  <input id="check-present" type="checkbox" name="check_present" value="true">
-  <label for="check-present">I currently attend school here</label>
+
+  <label for="">Field of Study: </label>
+  <input type="text" name="field" value="<%= school.escape("field") %>">
   <br>
 
   <label for="">Description: </label>

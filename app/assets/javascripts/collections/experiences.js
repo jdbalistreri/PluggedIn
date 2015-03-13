@@ -7,16 +7,37 @@ ExtinctIn.Collections.Experiences = Backbone.Collection.extend({
   },
 
   comparator: function (modelA, modelB) {
-    if (modelA.get("end_year") === null) {
-      if (modelB.get("end_year") === null) {
-        return this.startDateSort(modelA, modelB);
+    if (modelA instanceof ExtinctIn.Models.Job) {
+      if (modelA.get("end_year") === null) {
+        if (modelB.get("end_year") === null) {
+          return this.startDateSort(modelA, modelB);
+        } else {
+          return -1;
+        }
+      } else if (modelB.get("end_year") === null) {
+        return 1;
       } else {
-        return -1;
+        return this.startDateSort(modelA, modelB);
       }
-    } else if (modelB.get("end_year") === null) {
-      return 1;
     } else {
-      return this.startDateSort(modelA, modelB);
+      var maxA = modelA.get("end_year") || modelA.get("start_year");
+      var minA = modelA.get("start_year") || modelA.get("end_year");
+      var maxB = modelB.get("end_year") || modelB.get("start_year");
+      var minB = modelB.get("start_year") || modelB.get("end_year");
+
+      if (maxA === maxB) {
+        if (minA === minB) {
+          return 0
+        } else if (minA < minB) {
+          return 1
+        } else {
+          return -1
+        }
+      } else if (maxA < maxB) {
+        return 1
+      } else {
+        return -1
+      }
     }
   },
 

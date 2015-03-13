@@ -1,4 +1,4 @@
-Backbone.ToggleableFormView = Backbone.CompositeView.extend({
+ExtinctIn.ToggleableFormView = Backbone.CompositeView.extend({
 
   events: {
     "click a.cancel" : "cancelForm",

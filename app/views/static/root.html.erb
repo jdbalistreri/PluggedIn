@@ -60,3 +60,15 @@
 
   </span>
 </script>
+
+<script type="text/template" id="school-date-input">
+  <%= date_select("date", "start_date",
+        {discard_day: true, discard_month: true,
+        prompt: {year: "-"}, start_year: Time.now.year, end_year: 1900}) %>
+   -
+  <span class="end-date">
+      <%= date_select("date", "end_date",
+        {discard_day: true, discard_month: true,
+        prompt: {year: "-"}, start_year: Time.now.year + 7, end_year: 1900}) %>
+  </span>
+</script>

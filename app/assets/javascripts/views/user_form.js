@@ -1,9 +1,9 @@
-ExtinctIn.Views.UserForm = Backbone.ToggleableFormView.extend({
+ExtinctIn.Views.UserForm = ExtinctIn.ToggleableFormView.extend({
 
   template: JST["users/form"],
 
   events: function () {
-    return _.extend({}, Backbone.ToggleableFormView.prototype.events,{
+    return _.extend({}, ExtinctIn.ToggleableFormView.prototype.events,{
       "change input#user-picture" : "changePicture",
     });
   },

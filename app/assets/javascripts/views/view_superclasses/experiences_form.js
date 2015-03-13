@@ -1,8 +1,8 @@
-Backbone.ExperiencesForm = Backbone.ToggleableFormView.extend({
+Backbone.ExperiencesForm = ExtinctIn.ToggleableFormView.extend({
   tagName: "li",
 
   events: function () {
-    return _.extend({}, Backbone.ToggleableFormView.prototype.events,{
+    return _.extend({}, ExtinctIn.ToggleableFormView.prototype.events,{
       "click input#check-present" : "toggleEndDate",
     });
   },

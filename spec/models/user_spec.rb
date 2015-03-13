@@ -46,4 +46,6 @@ describe User, type: :model do
     expect(User.first.password).to eq(nil)
   end
 
+  it "has many connected users"
+
 end

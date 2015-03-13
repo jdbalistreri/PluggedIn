@@ -54,4 +54,12 @@ describe Experience, type: :model do
     expect(experience3.valid?).to be(false)
   end
 
+  it "validates that the start date is no later than the present"
+  it "validates that the start date is not after the end date"
+
+  describe "job experiences" do
+    it "validates that the end date is no later than the present"
+
+  end
+
 end

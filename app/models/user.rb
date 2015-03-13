@@ -14,11 +14,33 @@ class User < ActiveRecord::Base
     inverse_of: :user
   )
 
-  has_many :user_connections, inverse_of: :user
-  has_many :connections, through: :user_connections, source: :connection
+  has_many :user_connections, inverse_of: :user, dependent: :destroy
+  has_many(
+    :connections,
+    through: :user_connections,
+    source: :connection,
+    dependent: :destroy
+  )
 
   has_attached_file :picture, styles: {profile: "200x200>", thumb: "60x60>"}, default_url: "default2.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+
+  def connected_users
+    User.find_by_sql([<<-SQL, id: self.id])
+      SELECT DISTINCT
+        u2.*
+      FROM
+        users u1
+      JOIN
+        user_connections uc1 ON u1.id = uc1.user_id
+      JOIN
+        user_connections uc2 ON uc1.connection_id = uc2.connection_id
+      JOIN
+        users u2 ON uc2.user_id = u2.id
+      WHERE
+        u1.id = :id AND u2.id != :id
+    SQL
+  end
 
   def jobs
     self.experiences.where(experience_type: 0)

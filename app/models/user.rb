@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
     inverse_of: :user
   )
 
+  has_many :user_connections, inverse_of: :user
+  has_many :connections, through: :user_connections, source: :connection
+
   has_attached_file :picture, styles: {profile: "200x200>", thumb: "60x60>"}, default_url: "default2.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
@@ -64,10 +67,10 @@ class User < ActiveRecord::Base
     end
 
     def name_presence
-      if self.fname.empty?
+      unless self.fname.present?
         errors[:base] << "Please include a first name"
       end
-      if self.lname.empty?
+      unless self.lname.present?
         errors[:base] << "Please include a last name"
       end
     end

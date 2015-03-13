@@ -1,26 +1,21 @@
 
 <section class="trigger">
-  Title: <%= experience.escape("role") %>
-  <br>
-  Company: <%= experience.escape("institution") %>
-  <br>
-  <%= experience.escape("date_string") %>
-  <br>
+  <span class="field-text"><%= experience.escape("role") %></span>
+  <span class="field-text"><%= experience.escape("institution") %></span>
+  <span class="date-text"><%= experience.escape("date_string") %></span>
 
   <% if (experience.escape("location") === "") { %>
     <a class="edit-form" href="javascript:void(0)">Add Location</a>
     <br>
   <% } else { %>
-    Location: <%= experience.escape("location") %>
-    <br>
+    <span class="local-text"><%= experience.escape("location") %></span>
   <% } %>
 
   <% if (experience.escape("description") === "") { %>
     <a class="edit-form" href="javascript:void(0)">Add Description</a>
     <br>
   <% } else { %>
-    Description: <%= experience.escape("description") %>
-    <br>
+    <span class="field-text"><%= experience.escape("description") %></span>
   <% } %>
 
 

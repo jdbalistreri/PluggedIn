@@ -15,7 +15,7 @@
  */
 
 /*RESET*/
-h1, h2, h3, body, label, form, input, a, section, header, main, head {
+h1, h2, h3, body, label, form, input, a, header, main, head {
   background: transparent;
   border: none;
   margin: none;
@@ -107,8 +107,14 @@ main {
   margin: 30px auto;
 }
 
+.user-show > article {
+  background: #fff;
+  border: 1px solid grey;
 
-/*USER PROFILE*/
+}
+
+
+/*USER CARD*/
 
 .user-card {
   border: 1px solid grey;
@@ -116,17 +122,84 @@ main {
   background: #fff;
 }
 
+.user-card section.trigger {
+  width: 935px;
+  display: block;
+}
+.profile-picture {
+  float: left;
+  width: 200px;
+  padding-right: 20px;
+}
+
+span.full-name {
+  display: block;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+
+/*USER EXPERIENCES*/
 .user-experiences {
-  border: 1px solid grey;
+  width: 604px;
   padding: 20px;
-  background: #fff;
+  float: left;
   margin: 30px 0px;
 }
 
 .user-experiences h3 {
   font-size: 24px;
+  padding-left: 10px;
 }
 
-.profile-picture {
-  float: left;
+
+.field-text:first-child {
+  font-size: 18px;
+  line-height: 35px;
+}
+
+.field-text:nth-child(2) {
+  color: #444;
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.field-text {
+  display: block;
+  line-height: 25px;
+  font-size: 14px;
+}
+
+.local-text, .date-text {
+  color: #444;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.local-text:before, .major:before {
+  content: " | "
+}
+
+.major, .degree {
+  color: #444;
+  font-size: 16px;
+  line-height: 25px;
+}
+
+a.edit-form {
+  display: block;
+  font-size: 14px;
+  height: 0px;
+}
+
+/*SIDEBAR*/
+
+.user-sidebar {
+  float: right;
+  background: white;
+  width: 278px;
+  height: 500px;
+  margin: 30px 0px;
+  text-align: center;
+  padding: 20px;
 }

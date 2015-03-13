@@ -1,28 +1,25 @@
 
 <section class="trigger">
-  School: <%= experience.escape("institution") %>
-  <br>
-  Degree: <%= experience.escape("role") %>
-  <br>
-  <%= experience.escape("date_string") %>
-  <br>
+  <span class="field-text"><%= experience.escape("institution") %></span>
+  <span class="degree"><%= experience.escape("role") %></span>
 
-  <% if (experience.escape("field") === "") { %>
-    <a class="edit-form" href="javascript:void(0)">Add Field of Study</a>
-    <br>
-  <% } else { %>
-    Field of Study: <%= experience.escape("field") %>
-    <br>
+  <% if (experience.escape("field") !== "") { %>
+    <span class="major"><%= experience.escape("field") %></span>
   <% } %>
+
+  <span class="field-text"><%= experience.escape("date_string") %></span>
 
   <% if (experience.escape("description") === "") { %>
     <a class="edit-form" href="javascript:void(0)">Add Description</a>
     <br>
   <% } else { %>
-    Description: <%= experience.escape("description") %>
-    <br>
+    <span class="field-text"><%= experience.escape("description") %></span>
   <% } %>
 
+  <% if (experience.escape("field") === "") { %>
+    <a class="edit-form" href="javascript:void(0)">Add Field of Study</a>
+    <br>
+  <% } %>
 
 </section>
 

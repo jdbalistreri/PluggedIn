@@ -13,8 +13,6 @@ Backbone.ExperiencesForm = ExtinctIn.ToggleableFormView.extend({
       this.$el.find("#date_end_date_1i").val(this.model.get("end_year"));
       this.$el.find("#date_start_date_2i").val(1);
       this.$el.find("#date_end_date_2i").val(1);
-      this.$el.find("#date_start_date_3i").val(1);
-      this.$el.find("#date_end_date_3i").val(1);
     } else {
       this.$el.find("#date_start_date_2i").val(this.model.get("start_month"));
       this.$el.find("#date_end_date_2i").val(this.model.get("end_month"));

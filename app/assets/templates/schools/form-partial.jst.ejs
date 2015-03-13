@@ -9,10 +9,6 @@
   <input type="text" name="role" value="<%= school.escape("role") %>">
   <br>
 
-  <label for="">Location: </label>
-  <input type="text" name="location" value="<%= school.escape("location") %>">
-  <br>
-
   <label class="required" for="">Time Period: </label>
   <%= _.template($("#school-date-input").html())({school: school}) %>
   <br>

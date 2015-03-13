@@ -8,13 +8,26 @@ Backbone.ExperiencesForm = ExtinctIn.ToggleableFormView.extend({
   },
 
   selectCurrentDates: function () {
-    this.$el.find("#date_start_date_2i").val(this.model.get("start_month"))
-    this.$el.find("#date_end_date_2i").val(this.model.get("end_month"))
+    if (this.school()) {
+      this.$el.find("#date_start_date_1i").val(this.model.get("start_year"));
+      this.$el.find("#date_end_date_1i").val(this.model.get("end_year"));
+      this.$el.find("#date_start_date_2i").val(1);
+      this.$el.find("#date_end_date_2i").val(1);
+      this.$el.find("#date_start_date_3i").val(1);
+      this.$el.find("#date_end_date_3i").val(1);
+    } else {
+      this.$el.find("#date_start_date_2i").val(this.model.get("start_month"));
+      this.$el.find("#date_end_date_2i").val(this.model.get("end_month"));
 
-    if (this.model.get("end_date") === null ) {
-      this.$("input#check-present").prop("checked", true);
-      this.toggleEndDate();
+      if (this.model.get("end_date") === null ) {
+        this.$("input#check-present").prop("checked", true);
+        this.toggleEndDate();
+      }
     }
+  },
+
+  school: function () {
+    return this.model.get("type_str") === "School";
   },
 
   submitSetAttrs: function (event) {
@@ -25,6 +38,7 @@ Backbone.ExperiencesForm = ExtinctIn.ToggleableFormView.extend({
   },
 
   submitCancelCondition: function () {
+    if (this.school()) return false
     return !this.validEndDate();
   },
 

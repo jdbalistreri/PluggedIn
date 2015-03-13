@@ -7,14 +7,6 @@
   <%= experience.escape("date_string") %>
   <br>
 
-  <% if (experience.escape("location") === "") { %>
-    <a class="edit-form" href="javascript:void(0)">Add Location</a>
-    <br>
-  <% } else { %>
-    Location: <%= experience.escape("location") %>
-    <br>
-  <% } %>
-
   <% if (experience.escape("field") === "") { %>
     <a class="edit-form" href="javascript:void(0)">Add Field of Study</a>
     <br>

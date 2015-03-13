@@ -44,6 +44,6 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
     var userForm = new ExtinctIn.Views.UserForm({
       model: this.model,
     });
-    this.addSubview(".user-info", userForm);
+    this.addSubview(".user-card", userForm);
   },
 })

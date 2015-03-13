@@ -15,7 +15,7 @@
  */
 
 /*RESET*/
-h1, h2, h3, body, label, form, input, a, section, header {
+h1, h2, h3, body, label, form, input, a, section, header, main, head {
   background: transparent;
   border: none;
   margin: none;
@@ -90,3 +90,43 @@ a {
   background: lightgrey;
   cursor: pointer;
 }*/
+
+/*ALL PAGES*/
+
+body {
+  font-family: sans-serif;
+}
+
+main {
+  background: lightgrey;
+}
+
+#content {
+  padding: 20px;
+  width: 975px;
+  margin: 30px auto;
+}
+
+
+/*USER PROFILE*/
+
+.user-card {
+  border: 1px solid grey;
+  padding: 20px;
+  background: #fff;
+}
+
+.user-experiences {
+  border: 1px solid grey;
+  padding: 20px;
+  background: #fff;
+  margin: 30px 0px;
+}
+
+.user-experiences h3 {
+  font-size: 24px;
+}
+
+.profile-picture {
+  float: left;
+}

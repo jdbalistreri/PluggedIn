@@ -20,6 +20,10 @@ ExtinctIn.Views.ExperienceIndexItem = Backbone.ExperiencesForm.extend({
     return this;
   },
 
+  currentUser: function () {
+    return ExtinctIn.currentUserId === parseInt(this.model.get("user_id"));
+  },
+
   submitBeforeSave: function () {
     delete this.model.attributes["check_present"];
   },

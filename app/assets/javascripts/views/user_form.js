@@ -27,6 +27,10 @@ ExtinctIn.Views.UserForm = ExtinctIn.ToggleableFormView.extend({
     fileReader.readAsDataURL(file);
   },
 
+  currentUser: function () {
+    return ExtinctIn.currentUserId === parseInt(this.model.id);
+  },
+
   submitOnSuccess: function () {
     this.toggleEl();
   },

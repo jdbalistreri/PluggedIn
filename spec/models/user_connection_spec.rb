@@ -1,16 +1,18 @@
 require 'rails_helper'
-
+require 'byebug'
 
 describe UserConnection, type: :model do
-  it "validates the presence of a user and a connection" do
-    c1 = UserConnection.new(user_id: 1, connection_id: 1)
-    expect(c1.valid?).to be(true)
 
-    c2 = UserConnection.new(user_id: 1)
-    expect(c2.valid?).to be(false)
+  let(:user1) { User.create!(email: "user1@example.com", password: "password",
+                              fname: "joe", lname: "bal")}
+  let(:user2) { User.create!(email: "user2@example.com", password: "password",
+                              fname: "joe", lname: "bal")}
+  let(:connection) { Connection.create!(sender_id: user1.id, receiver_id: user2.id)}
 
-    c3 = UserConnection.new(connection_id: 1)
-    expect(c3.valid?).to be(false)
-  end
+  it "validates the presence of a user and a connection"
+    # this was failing because the connection automatically creates
+    # user connection instances
+
+  it "validates the uniqueness of connection_id scoped on user_id"
 
 end

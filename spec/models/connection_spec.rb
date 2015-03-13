@@ -23,6 +23,7 @@ describe Connection, type: :model do
     expect(c1.valid?).to be(false)
   end
 
+  it "ensures a pending status on create"
   it "validates that the status may only be 'pending' upon creation" do
     c1 = Connection.new(sender_id: user1.id, receiver_id: user2.id, status: 1)
     expect(c1.valid?).to be(false)
@@ -32,5 +33,8 @@ describe Connection, type: :model do
     c2.status = 1
     expect(c2.valid?). to be(true)
   end
+
+  it "automatically creates UserConnections on create"
+  it "ensures that connections between one user and another cannot be duplicated"
 
 end

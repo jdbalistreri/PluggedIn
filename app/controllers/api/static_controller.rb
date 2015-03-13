@@ -11,6 +11,7 @@ class Api::StaticController < ApplicationController
                         .map(&:searchable)
 
     @result_users = found_experiences.map(&:user).concat(found_users).uniq
+    @result_users = User.all if @result_users.empty?
   end
 
 end

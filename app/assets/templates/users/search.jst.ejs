@@ -1,0 +1,13 @@
+<h3>User Search!</h3>
+
+<form class="user-search">
+  <input class="search-input" type="text" placeholder="Search for people..." autofocus="true">
+  <button class="submit" >Search!</button>
+</form>
+
+
+<section class="user-results">
+  <% results.each(function (result) { %>
+    <li><%= result.escape("fname") %></li>
+  <% }) %>
+</section>

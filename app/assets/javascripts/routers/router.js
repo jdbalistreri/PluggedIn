@@ -12,7 +12,8 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   index: function () {
-    this.$rootEl.html("hello")
+    var view = new ExtinctIn.Views.UserSearch();
+    this._swapViews(view);
   },
 
   user_show: function (id) {

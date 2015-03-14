@@ -16,16 +16,16 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
     this.addUserForm();
     this.addJobsIndex();
     this.addSchoolsIndex();
-    this.addConnectionsIndex();
+    this.addConnectedUsersIndex();
 
     return this;
   },
 
-  addConnectionsIndex: function () {
-    var connectionsIndex = new ExtinctIn.Views.ConnectionsIndex({
+  addConnectedUsersIndex: function () {
+    var connectedUsersIndex = new ExtinctIn.Views.ConnectedUsersIndex({
       user: this.model,
     });
-    this.addSubview(".user-connections", connectionsIndex)
+    this.addSubview(".user-connections", connectedUsersIndex)
   },
 
   addJobsIndex: function () {

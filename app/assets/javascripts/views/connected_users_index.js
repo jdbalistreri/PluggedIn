@@ -1,4 +1,4 @@
-ExtinctIn.Views.ConnectionsIndex = Backbone.CompositeView.extend({
+ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
 
   tagName: "section",
 

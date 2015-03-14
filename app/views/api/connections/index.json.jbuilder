@@ -1,3 +1,3 @@
-json.array! @connected_users do |user|
-  json.partial! 'api/shared/user', user: user
+json.array! @connections do |connection|
+  json.(connection, :sender_id, :receiver_id, :status)
 end

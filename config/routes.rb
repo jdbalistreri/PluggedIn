@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :connected_users, only: :index
     end
 
-    resources :connections, only: [:create, :update]
+    resources :connections, only: [:create, :update, :index]
     resources :experiences, only: [:create, :update, :destroy, :show]
     get "/search", to: "static#search"
   end

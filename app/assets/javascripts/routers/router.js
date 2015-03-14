@@ -4,6 +4,9 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
     this.collection = new ExtinctIn.Collections.Users();
     this.collection.fetch();
+
+    this.connections = new ExtinctIn.Collections.Connections();
+    this.connections.fetch();
   },
 
   routes: {
@@ -18,7 +21,9 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   inbox_show: function () {
-    var view = new ExtinctIn.Views.InboxShow();
+    var view = new ExtinctIn.Views.InboxShow({
+      connections: this.connections,
+    });
     this._swapViews(view);
   },
 

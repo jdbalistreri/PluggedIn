@@ -221,9 +221,15 @@ a.edit-form {
 }
 
 .inbox > .sidebar {
+  float: left;
   background: lightgrey;
   border: 1px solid grey;
   width: 154px;
+  height: 100%;
+}
+
+.inbox > .messages {
+  float: right;
 }
 
 

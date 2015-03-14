@@ -25,7 +25,19 @@ class User < ActiveRecord::Base
   has_attached_file :picture, styles: {profile: "200x200>", thumb: "60x60>"}, default_url: "default2.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
+  def connected_with?(user)
+    connected_users.map(&:id).include?(user.id)
+  end
+
+  def requested?(user)
+
+  end
+
   def connected_users
+    @connected_users ||= 12
+  end
+
+  def all_user_connections
     User.find_by_sql([<<-SQL, id: self.id])
       SELECT DISTINCT
         u2.*
@@ -40,6 +52,25 @@ class User < ActiveRecord::Base
       WHERE
         u1.id = :id AND u2.id != :id
     SQL
+  end
+
+  def all_user_connections2
+    join1 = "JOIN user_connections uc1 ON u1.id = uc1.user_id"
+    join2 = "JOIN user_connections uc2 ON uc1.connection_id = uc2.connection_id"
+    join3 = "JOIN users u2 ON uc2.user_id = u2.id"
+    where = "u1.id = :id AND u2.id != :id"
+    User.select("u2.*")
+        .distinct
+        .from("users u1")
+        .joins(join1)
+        .joins(join2)
+        .joins(join3)
+        .where([where, {id: self.id}])
+  end
+
+  def requested_users
+    join_text = "JOIN connections ON connections.sender_id = ?"
+    all_user_connections.joins(join_text, self.id)
   end
 
   def jobs

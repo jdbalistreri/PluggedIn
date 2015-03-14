@@ -1,6 +1,6 @@
 class Connection < ActiveRecord::Base
 
-  enum status: [:pending, :approved, :denied]
+  enum status: [:pending, :approved, :ignored]
 
   validates :sender_id, :receiver_id, presence: true
   validate :cannot_send_to_self

@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   def requested?(user)
     requested_users.map(&:id).include?(user.id)
   end
-  
+
   def connection_status(user)
     return @connection_status if @connection_status
 
@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   end
 
   def connected_users
-    @connected_users ||= self.all_user_connections.where("c.status = 0")
+    @connected_users ||= self.all_user_connections.where("c.status = 1")
   end
 
   def all_user_connections

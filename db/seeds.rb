@@ -1,6 +1,13 @@
 User.destroy_all
 Experience.destroy_all
 
+NUM_USERS = 10
+CONNECTION_DILUTOR = 2
+ADV_DEG_FREQ = 2
+MAX_USER_AGE = 60
+MIN_USER_AGE = 18
+
+
 ADV_DEGREES   = [{degree: "Master's Degree",
                     years: 2,
                     field: true},
@@ -15,11 +22,6 @@ ADV_DEGREES   = [{degree: "Master's Degree",
                     field: true}]
 
 MAJORS = ["Anthropology", "Art History", "Biological Sciences", "Chemistry", "Classics", "Comparative Literature", "Computer Science", "Earth Sciences", "Economics", "Education", "Engineering Sciences", "English", "Environmental Studies", "Film and Media Studies", "Geography", "Government", "History", "LGBT Studies", "Linguistics", "Mathematics", "Music", "Native American Studies", "Neuroscience", "Philosophy", "Physics and Astronomy", "Psychology", "Religion", "Russian Literature", "Sociology", "Spanish Literature", "Studio Art", "Theater", "Women’s and Gender"]
-
-user1 = User.create!(email: "joe", password: "joejoe",
-  fname: "Joe", lname: "Bali", tagline: "ain't life grand?",
-  location: "Milwaukee, WI", industry: "Computer Software",
-  date_of_birth: Date.new(1991, 7, 24), summary: "This is my summary")
 
 def rand_location
   "#{Faker::Address.city}, #{Faker::Address.state}"
@@ -39,7 +41,7 @@ def make_user
     tagline: Faker::Name.title,
     location: rand_location,
     industry: Faker::Commerce.department(2),
-    date_of_birth: Faker::Date.between(60.years.ago, 18.years.ago),
+    date_of_birth: Faker::Date.between(MAX_USER_AGE.years.ago, MIN_USER_AGE.years.ago),
     summary: summary,
     picture: Faker::Avatar.image
   )
@@ -133,18 +135,44 @@ def add_job(user)
   true
 end
 
-
-10.times do |i|
+# USER CREATION
+NUM_USERS.times do |i|
   user = make_user
   add_high_school(user)
   add_college(user)
-  add_adv_deg(user) if i % 2 === 0
+  add_adv_deg(user) if i % ADV_DEG_FREQ === 0
 
-  i = 0
   loop do
-    i += 1
-    puts i
     break unless add_job(user)
+  end
+end
+
+# CONNECTION CREATION
+NUM_USERS.times do |sender_idx|
+  sample_size = rand( (NUM_USERS - sender_idx - 1) / CONNECTION_DILUTOR)
+  connections = (sender_idx+2..NUM_USERS).to_a.sample(sample_size)
+
+  connections.each do |receiver_idx|
+    Connection.create!(sender_id: sender_idx + 1, receiver_id: receiver_idx)
   end
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+user1 = User.create!(email: "joe", password: "joejoe",
+  fname: "Joe", lname: "Bali", tagline: "ain't life grand?",
+  location: "Milwaukee, WI", industry: "Computer Software",
+  date_of_birth: Date.new(1991, 7, 24), summary: "This is my summary")

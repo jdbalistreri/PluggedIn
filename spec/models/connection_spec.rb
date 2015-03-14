@@ -24,9 +24,9 @@ describe Connection, type: :model do
   end
 
   it "ensures a pending status on create"
-  it "validates that the status may only be 'pending' upon creation" do
+  it "does not validate that the status may only be 'pending' upon creation" do
     c1 = Connection.new(sender_id: user1.id, receiver_id: user2.id, status: 1)
-    expect(c1.valid?).to be(false)
+    expect(c1.valid?).to be(true  )
 
     c2 = Connection.create!(sender_id: user1.id, receiver_id: user2.id)
     c2 = Connection.first

@@ -8,11 +8,17 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
 
   routes: {
     "": "index",
-    "users/:id": "user_show"
+    "users/:id": "user_show",
+    "inbox": "inbox_show",
   },
 
   index: function () {
     var view = new ExtinctIn.Views.UserSearch();
+    this._swapViews(view);
+  },
+
+  inbox_show: function () {
+    var view = new ExtinctIn.Views.InboxShow();
     this._swapViews(view);
   },
 

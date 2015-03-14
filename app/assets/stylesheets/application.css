@@ -49,6 +49,11 @@ a {
   color: blue;
 }
 
+h3 {
+  font-size: 24px;
+  padding-left: 10px;
+}
+
 /*NAVIGATION BAR*/
 header {
   background: black;
@@ -76,7 +81,7 @@ main {
 }
 
 /*USER SHOW HIGH-LEVEL*/
-.user-show > article, .user-search {
+article {
   background: #fff;
   border: 1px solid grey;
   box-shadow: 1px 1px 1px grey;
@@ -136,12 +141,6 @@ span.full-name {
 
 
 /*USER EXPERIENCES*/
-
-.user-experiences h3 {
-  font-size: 24px;
-  padding-left: 10px;
-}
-
 
 .field-text:first-child {
   font-size: 18px;
@@ -211,6 +210,23 @@ a.edit-form {
 .user-sidebar {
   text-align: center;
 }
+
+
+/*INBOX*/
+
+.inbox {
+  margin-top: 30px;
+  width: 646px;
+  float: left;
+}
+
+.inbox > .sidebar {
+  background: lightgrey;
+  border: 1px solid grey;
+  width: 154px;
+}
+
+
 
 /*TOGGLE*/
 .toggled > .trigger, .hidden-input {

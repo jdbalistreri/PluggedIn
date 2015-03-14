@@ -13,7 +13,7 @@ ExtinctIn.Models.User = Backbone.Model.extend({
     }
 
     if (response.cu_connection) {
-      this.cu_connection = new ExtinctIn.Models.Connection(response.cu_connection);
+      this.cu_connection().set(response.cu_connection);
       delete response.cu_connection;
     }
 
@@ -24,6 +24,13 @@ ExtinctIn.Models.User = Backbone.Model.extend({
     return {
       user: _.clone(this.attributes)
     }
+  },
+
+  cu_connection: function () {
+    if (!this._cu_connection) {
+      this._cu_connection = new ExtinctIn.Models.Connection();
+    }
+    return this._cu_connection
   },
 
   jobs: function () {

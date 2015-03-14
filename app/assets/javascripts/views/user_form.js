@@ -13,7 +13,9 @@ ExtinctIn.Views.UserForm = ExtinctIn.ToggleableFormView.extend({
     this.$el.html(content);
 
     if (!this.currentUser()) {
-      var connectButton = new ExtinctIn.Views.ConnectButton({model: this.model});
+      var connectButton = new ExtinctIn.Views.ConnectButton({
+        user: this.model,
+        model: this.model.cu_connection()});
       this.addSubview(".button-holder", connectButton);
     }
 

@@ -58,6 +58,22 @@ class User < ActiveRecord::Base
     DateTime.now.year - self.date_of_birth.year
   end
 
+  def last_date
+    return @last_date if @last_date
+    end_dates = self.experiences.map(&:end_date)
+
+    if end_dates.any? { |date| date.nil? || Time.now < date }
+      @last_date = nil
+      return @last_date
+    end
+
+    @last_date = end_dates.max
+  end
+
+  def last_date=(value)
+    @last_date = value > Time.now ? nil : value
+  end
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password);

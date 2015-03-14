@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     "#{fname} #{lname}"
   end
 
+  def age
+    DateTime.now.year - self.date_of_birth.year
+  end
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password);

@@ -1,78 +1,77 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 User.destroy_all
 Experience.destroy_all
+
+BASIC_DEGREES = ["High School", "Bachelor's Degree"]
+ADV_DEGREES   = ["Master's Degree", "Master's of Business Administration,
+                  Doctor of Medicine (M.D.), Doctor of Philosophy (Ph.D.)"]
+MAJORS = ["Anthropology", "Art History", "Biological Sciences", "Chemistry", "Classics", "Comparative Literature", "Computer Science", "Earth Sciences", "Economics", "Education", "Engineering Sciences", "English", "Environmental Studies", "Film and Media Studies", "Geography", "Government", "History", "LGBT Studies", "Linguistics", "Mathematics", "Music", "Native American Studies", "Neuroscience", "Philosophy", "Physics and Astronomy", "Psychology", "Religion", "Russian Literature", "Sociology", "Spanish Literature", "Studio Art", "Theater", "Women’s and Gender"]
 
 user1 = User.create!(email: "joe", password: "joejoe",
   fname: "Joe", lname: "Bali", tagline: "ain't life grand?",
   location: "Milwaukee, WI", industry: "Computer Software",
   date_of_birth: Date.new(1991, 7, 24), summary: "This is my summary")
 
-user2 = User.create!(email: "joe2", password: "joejoe",
-  fname: "John", lname: "Masters", tagline: "life ain't grand",
-  location: "Cleveland, OH", industry: "Law",
-  date_of_birth: Date.new(1950, 1, 23), summary: "Summary 2")
+def rand_location
+  "#{Faker::Address.city}, #{Faker::Address.state}"
+end
 
-user3 = User.create!(email: "joe3", password: "joejoe", fname: "Mike", lname: "Cash")
-user4 = User.create!(email: "joe4", password: "joejoe", fname: "Jake", lname: "Blommer")
-user5 = User.create!(email: "joe5", password: "joejoe", fname: "Kelly", lname: "Blommer")
-user6 = User.create!(email: "joe6", password: "joejoe", fname: "Sarah", lname: "Masters")
-
-
-# USER 1
-job1 = user1.experiences.create!(experience_type: 0, role: "Consultant",
-  institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
-  start_date: Date.new(2012,1,1), end_date: Date.new(2013,1,1), field: nil)
-
-job2 = user1.experiences.create!(experience_type: 0, role: "Consultant",
-  institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
-  start_date: Date.new(2012,1,1), end_date: Date.new(2013,1,1), field: nil)
-
-job3 = user1.experiences.create!(experience_type: 0, role: "Consultant",
-  institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
-  start_date: Date.new(2012,1,1), end_date: Date.new(2013,1,1), field: nil)
-
-school1 = user1.experiences.create!(experience_type: 1, role: "Bachelors Degree",
-  institution: "University College", location: "Sarasota, FL", description: "studied hard",
-  start_date: Date.new(2009,1,1), end_date: Date.new(2013,1,1), field: "Psychology")
-
-school2 = user1.experiences.create!(experience_type: 1, role: "Bachelors Degree",
-  institution: "University College", location: "Sarasota, FL", description: "studied hard",
-  start_date: Date.new(2009,1,1), end_date: Date.new(2013,1,1), field: "Psychology")
-
-school3 = user1.experiences.create!(experience_type: 1, role: "Bachelors Degree",
-  institution: "University College", location: "Sarasota, FL", description: "studied hard",
-  start_date: Date.new(2009,1,1), end_date: Date.new(2013,1,1), field: "Psychology")
+def make_user
+  fname = Faker::Name.first_name
+  lname = Faker::Name.last_name
+  summary = "#{Faker::Company.bs.capitalize}."
 
 
+  user = User.create(
+    email: Faker::Internet.free_email("#{fname}.#{lname}"),
+    password: "password",
+    fname: fname,
+    lname: lname,
+    tagline: Faker::Name.title,
+    location: rand_location,
+    industry: Faker::Commerce.department(2),
+    date_of_birth: Faker::Date.between(60.years.ago, 18.years.ago),
+    summary: summary,
+    picture: Faker::Avatar.image
+  )
 
-# USER 2
-job4 = user2.experiences.create!(experience_type: 0, role: "Consultant",
-  institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
-  start_date: Date.new(2012,1,1), end_date: Date.new(2013,1,1), field: nil)
+  user
+end
 
-job5 = user2.experiences.create!(experience_type: 0, role: "Consultant",
-  institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
-  start_date: Date.new(2012,1,1), end_date: Date.new(2013,1,1), field: nil)
+def add_high_school(user)
+  start_date = Date.new((Time.now.year - user.age) + 13, 1, 1)
+  end_date = Date.new((Time.now.year - user.age) + 17, 1, 1)
+  user.experiences.create!(
+    experience_type: 1,
+    role: "High School",
+    institution: "#{Faker::Name.last_name} #{["High School", "High", "Prep", "Academy"].sample}",
+    location: rand_location,
+    start_date: start_date,
+    end_date: end_date,
+    description: nil
+  )
+end
 
-job6 = user2.experiences.create!(experience_type: 0, role: "Consultant",
-  institution: "Big Co.", location: "Greenwich, CT", description: "very important work",
-  start_date: Date.new(2012,1,1), end_date: Date.new(2013,1,1), field: nil)
+def add_college(user)
+  start_date = Date.new((Time.now.year - user.age) + 17, 1, 1)
+  end_date = Date.new((Time.now.year - user.age) + 21, 1, 1)
+  user.experiences.create!(
+    experience_type: 1,
+    role: "Bachelor's Degree",
+    institution: "#{Faker::Name.last_name} #{["University", "College", "State"].sample}",
+    location: rand_location,
+    description: nil,
+    start_date: start_date,
+    end_date: end_date,
+    field: MAJORS.sample
+  )
+end
 
-school4 = user2.experiences.create!(experience_type: 1, role: "Bachelors Degree",
-  institution: "University College", location: "Sarasota, FL", description: "studied hard",
-  start_date: Date.new(2009,1,1), end_date: Date.new(2013,1,1), field: "Psychology")
+def add_job(user)
+end
 
-school5 = user2.experiences.create!(experience_type: 1, role: "Bachelors Degree",
-  institution: "University College", location: "Sarasota, FL", description: "studied hard",
-  start_date: Date.new(2009,1,1), end_date: Date.new(2013,1,1), field: "Psychology")
 
-school6 = user2.experiences.create!(experience_type: 1, role: "Bachelors Degree",
-  institution: "University College", location: "Sarasota, FL", description: "studied hard",
-  start_date: Date.new(2009,1,1), end_date: Date.new(2013,1,1), field: "Psychology")
+15.times do
+  user = make_user
+  add_high_school(user)
+  add_college(user)
+end

@@ -1,7 +1,7 @@
 User.destroy_all
 Experience.destroy_all
 
-NUM_USERS = 10
+NUM_USERS = 30
 CONNECTION_DILUTOR = 2
 ADV_DEG_FREQ = 2
 MAX_USER_AGE = 60
@@ -43,7 +43,7 @@ def make_user
     industry: Faker::Commerce.department(2),
     date_of_birth: Faker::Date.between(MAX_USER_AGE.years.ago, MIN_USER_AGE.years.ago),
     summary: summary,
-    picture: Faker::Avatar.image("robot","200x200")
+    picture: Faker::Avatar.image(rand(1..1000),"200x200")
   )
 
   user
@@ -148,29 +148,25 @@ NUM_USERS.times do |i|
 end
 
 # CONNECTION CREATION
-NUM_USERS.times do |sender_idx|
-  sample_size = rand( (NUM_USERS - sender_idx - 1) / CONNECTION_DILUTOR)
-  connections = (sender_idx+2..NUM_USERS).to_a.sample(sample_size)
+first_user_id = User.first.id
+last_user_id = User.last.id
 
-  connections.each do |receiver_idx|
-    Connection.create!(sender_id: sender_idx + 1, receiver_id: receiver_idx)
+NUM_USERS.times do |i|
+  current_sender_id = first_user_id + i
+
+  first_receiver_id = current_sender_id + 1
+  num_connections = rand( (NUM_USERS - i - 1) / CONNECTION_DILUTOR)
+
+  receiver_ids = (first_receiver_id..last_user_id).to_a.sample(num_connections)
+
+  receiver_ids.each do |receiver_id|
+    Connection.create!(
+      sender_id: current_sender_id,
+      receiver_id: receiver_id,
+      status: [0,0,1].sample )
   end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 user1 = User.create!(email: "joe", password: "joejoe",
   fname: "Joe", lname: "Bali", tagline: "ain't life grand?",

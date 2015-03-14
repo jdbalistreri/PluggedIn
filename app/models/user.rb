@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
     dependent: :destroy
   )
 
-  has_attached_file :picture, styles: {profile: "200x200>", thumb: "60x60>"}, default_url: "default2.png"
+  has_attached_file :picture, styles: {profile: "200x200>", thumb: "60x60>"}, default_url: "default.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
   def connected_with?(user)
@@ -33,31 +33,21 @@ class User < ActiveRecord::Base
 
   end
 
+  def requested_users
+    @requested_users ||= self.all_user_connections
+                          .where("c.sender_id = ?", self.id)
+                          .where("c.status != 0")
+  end
+
   def connected_users
-    @connected_users ||= 12
+    @connected_users ||= self.all_user_connections.where("c.status = 0")
   end
 
   def all_user_connections
-    User.find_by_sql([<<-SQL, id: self.id])
-      SELECT DISTINCT
-        u2.*
-      FROM
-        users u1
-      JOIN
-        user_connections uc1 ON u1.id = uc1.user_id
-      JOIN
-        user_connections uc2 ON uc1.connection_id = uc2.connection_id
-      JOIN
-        users u2 ON uc2.user_id = u2.id
-      WHERE
-        u1.id = :id AND u2.id != :id
-    SQL
-  end
-
-  def all_user_connections2
     join1 = "JOIN user_connections uc1 ON u1.id = uc1.user_id"
     join2 = "JOIN user_connections uc2 ON uc1.connection_id = uc2.connection_id"
     join3 = "JOIN users u2 ON uc2.user_id = u2.id"
+    join4 = "JOIN connections c ON c.id = uc1.connection_id"
     where = "u1.id = :id AND u2.id != :id"
     User.select("u2.*")
         .distinct
@@ -65,12 +55,8 @@ class User < ActiveRecord::Base
         .joins(join1)
         .joins(join2)
         .joins(join3)
+        .joins(join4)
         .where([where, {id: self.id}])
-  end
-
-  def requested_users
-    join_text = "JOIN connections ON connections.sender_id = ?"
-    all_user_connections.joins(join_text, self.id)
   end
 
   def jobs

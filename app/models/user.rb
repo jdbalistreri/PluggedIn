@@ -31,22 +31,6 @@ class User < ActiveRecord::Base
       .first
   end
 
-  def connected_with?(user)
-    connected_users.map(&:id).include?(user.id)
-  end
-
-  def requested?(user)
-    requested_users.map(&:id).include?(user.id)
-  end
-
-  def connection_status(user)
-    return @connection_status if @connection_status
-
-    connection = connection_with(user)
-
-    @connection_status ||= connection ? connection.status : "no connection"
-  end
-
   def requested_users
     @requested_users ||= self.all_user_connections
                           .where("c.sender_id = ?", self.id)

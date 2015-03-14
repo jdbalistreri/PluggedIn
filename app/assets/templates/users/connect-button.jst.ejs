@@ -1,12 +1,18 @@
 
 
-<% if (user.escape("cu_connected_with") === "true") { %>
+<% if (!cu_connection) { %>
+  <button name="request-connection">Connect</button>
+
+<% } else if (cu_connection.escape("status") === "approved") { %>
   <button name="message-user">Message</button>
-<% } else if (user.escape("cu_requested_user") === "true") { %>
+
+<% } else if (parseInt(cu_connection.get("receiver_id")) === user.id) { %>
   <button name="delete-this">Already Requested</button>
-<% } else if (user.escape("cu_connection_status") === "pending") { %>
+
+<% } else if (cu_connection.escape("status") === "pending") { %>
   <button name="approve-connection">Approve</button>
   <button name="deny-connection">Deny</button>
+
 <% } else { %>
   <button name="request-connection">Connect</button>
 <% } %>

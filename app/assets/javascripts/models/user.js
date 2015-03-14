@@ -12,6 +12,11 @@ ExtinctIn.Models.User = Backbone.Model.extend({
       delete response.schools
     }
 
+    if (response.cu_connection) {
+      this.cu_connection = new ExtinctIn.Models.Connection(response.cu_connection);
+      delete response.cu_connection;
+    }
+
     return response
   },
 

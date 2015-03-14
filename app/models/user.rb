@@ -30,7 +30,16 @@ class User < ActiveRecord::Base
   end
 
   def requested?(user)
+    requested_users.map(&:id).include?(user.id)
+  end
+  
+  def connection_status(user)
+    return @connection_status if @connection_status
 
+    connection = self.connections
+                  .where(["connections.sender_id = :id OR connections.receiver_id = :id", {id: user.id}]).first
+
+    @connection_status ||= connection ? connection.status : "no connection"
   end
 
   def requested_users

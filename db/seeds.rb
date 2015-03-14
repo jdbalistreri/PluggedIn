@@ -43,7 +43,7 @@ def make_user
     industry: Faker::Commerce.department(2),
     date_of_birth: Faker::Date.between(MAX_USER_AGE.years.ago, MIN_USER_AGE.years.ago),
     summary: summary,
-    picture: Faker::Avatar.image
+    picture: Faker::Avatar.image("robot","200x200")
   )
 
   user

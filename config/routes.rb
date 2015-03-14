@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resource :session, only: [:create, :destroy, :new]
 
   namespace :api, defaults: {format: :json} do
-    resources :users, only: [:show, :index, :update]
+    resources :users, only: [:show, :index, :update] do
+      resources :connections, only: [:index]
+    end
+
+    resources :connections, only: [:create, :update]
     resources :experiences, only: [:create, :update, :destroy, :show]
     get "/search", to: "static#search"
   end

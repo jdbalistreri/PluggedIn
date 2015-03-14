@@ -32,11 +32,11 @@ ExtinctIn.ToggleableFormView = Backbone.CompositeView.extend({
       success: function (model, response) {
         this.$("button").html("Submit").prop("disabled", false);
         return that.submitOnSuccess(response);
-      },
+      }.bind(this),
       error: function (model, response) {
         this.$("button").html("Submit").prop("disabled", false);
         return that.submitOnError(response);
-      },
+      }.bind(this),
     })
   },
 

@@ -1,14 +1,10 @@
 
-<section class="group<%= currentUser ? " trigger" : "" %>">
+<section class="group user-info<%= currentUser ? " trigger" : "" %>">
   <img class="profile-picture" src="<%= user.escape("profile_picture_url") %>" alt="Profile Picture" />
   <span class="full-name"><%= user.escape("full_name")  %></span>
   <span class="field-text"><%= user.escape("tagline") %></span>
   <span class="location"><%= user.escape("location") %></span>
   <span class="industry"><%= user.escape("industry") %></span>
-
-  <% if (!currentUser) {%>
-    <%= JST["users/connect-button"]({user: user}) %>
-  <% } %>
 
 </section>
 

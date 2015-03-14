@@ -1,6 +1,5 @@
 
-
-<% if (!cu_connection) { %>
+<% if (cu_connection.isNew()) { %>
   <button class="request-connection">Connect</button>
 
 <% } else if (cu_connection.escape("status") === "approved") { %>

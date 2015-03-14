@@ -9,17 +9,23 @@
 
   <span class="field-text"><%= experience.escape("date_string") %></span>
 
-  <% if (experience.escape("description") === "") { %>
-    <a class="edit-form" href="javascript:void(0)">Add Description</a>
-    <br>
-  <% } else { %>
+  <% if (experience.escape("description") !== "") { %>
     <span class="field-text"><%= experience.escape("description") %></span>
   <% } %>
 
-  <% if (experience.escape("field") === "") { %>
-    <a class="edit-form" href="javascript:void(0)">Add Field of Study</a>
-    <br>
+  <% if (currentUser) { %>
+    <% if (experience.escape("field") === "") { %>
+      <a class="edit-form" href="javascript:void(0)">Add Field of Study</a>
+      <br>
+    <% } %>
+    <% if (experience.escape("description") === "") { %>
+      <a class="edit-form" href="javascript:void(0)">Add Description</a>
+      <br>
+    <% } %>
   <% } %>
+
+
+
 
 </section>
 <% if (currentUser) { %>

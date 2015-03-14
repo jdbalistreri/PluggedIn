@@ -4,19 +4,24 @@
   <span class="field-text"><%= experience.escape("institution") %></span>
   <span class="date-text"><%= experience.escape("date_string") %></span>
 
-  <% if (experience.escape("location") === "") { %>
-    <a class="edit-form" href="javascript:void(0)">Add Location</a>
-    <br>
-  <% } else { %>
+  <% if (experience.escape("location") !== "") { %>
     <span class="local-text"><%= experience.escape("location") %></span>
   <% } %>
-
-  <% if (experience.escape("description") === "") { %>
-    <a class="edit-form" href="javascript:void(0)">Add Description</a>
-    <br>
-  <% } else { %>
+  <% if (experience.escape("description") !== "") { %>
     <span class="field-text"><%= experience.escape("description") %></span>
   <% } %>
+
+  <% if (currentUser) { %>
+    <% if (experience.escape("location") === "") { %>
+      <a class="edit-form" href="javascript:void(0)">Add Location</a>
+      <br>
+    <% } %>
+
+    <% if (experience.escape("description") === "") { %>
+      <a class="edit-form" href="javascript:void(0)">Add Description</a>
+      <br>
+    <% } %>
+  <%  } %>
 
 
 </section>

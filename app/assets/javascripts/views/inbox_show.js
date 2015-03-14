@@ -7,7 +7,8 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
   template: JST["inbox/show"],
 
   events: {
-    "click .received-connections" : "receivedConnections"
+    "click .received-connections" : "receivedConnections",
+    "click .sent-connections" : "sentConnections"
   },
 
   render: function (){
@@ -17,9 +18,22 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
   },
 
   receivedConnections: function () {
-    console.log("clicked")
-    this.connections.each(function (connection) {
-      view = new ExtinctIn.Views.ConnectionIndexItem({model: connection});
+    this.fillInbox(this.connections, "sender_id");
+  },
+
+  sentConnections: function () {
+    this.fillInbox(this.connections, "receiver_id");
+  },
+
+  fillInbox: function (collection, id_attr) {
+    this.emptySubviews(".messages");
+    collection.each(function (model) {
+      if (parseInt(model.get(id_attr)) === ExtinctIn.currentUserId) {
+        return;
+      }
+      view = new ExtinctIn.Views.ConnectionIndexItem({
+        model: model,
+      });
       this.addSubview(".messages", view);
     }.bind(this))
   },

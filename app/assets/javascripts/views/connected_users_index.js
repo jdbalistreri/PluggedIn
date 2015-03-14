@@ -2,7 +2,7 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
 
   tagName: "section",
 
-  template: JST["connections/index"],
+  template: JST["connected_users/index"],
 
   initialize: function (options) {
     this.user = options.user;
@@ -17,7 +17,7 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
 
     this.collection.each( function(user) {
       var connectionView = new ExtinctIn.Views.UserIndexItem({model: user});
-      this.addSubview("ul.connections-list", connectionView);
+      this.addSubview("ul.connected-users-list", connectionView);
     }.bind(this))
 
     return this;

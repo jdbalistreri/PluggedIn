@@ -230,6 +230,7 @@ a.edit-form {
 
 .inbox > .messages {
   float: right;
+  width: 450px;
 }
 
 

@@ -1,5 +1,7 @@
 ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
 
+  tagName: "article",
+
   initialize: function () {
     this.searchResults = new ExtinctIn.Collections.SearchResults();
     this.listenTo(this.searchResults, "sync", this.render)

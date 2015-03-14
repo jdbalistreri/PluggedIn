@@ -1,6 +1,8 @@
 <hr>
-Sent By: <%= connection.escape("sender_id") %>
+Sent By: <a href="<%="#/users/" + connection.escape("sender_id") %>">
+  <%= connection.escape("sender_id") %></a>
 <br>
-Received By: <%= connection.escape("receiver_id") %>
+Received By: <a href="<%="#/users/" + connection.escape("receiver_id") %>">
+  <%= connection.escape("receiver_id") %></a>
 <br>
 Status: <%= connection.escape("status") %>

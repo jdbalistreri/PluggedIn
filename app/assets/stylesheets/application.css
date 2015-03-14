@@ -15,7 +15,7 @@
  */
 
 /*RESET*/
-h1, h2, h3, body, label, form, input, a, header, main, head {
+h1, h2, h3, body, label, form, ul, input, a, header, main, head {
   background: transparent;
   border: 0;
   margin: 0;
@@ -80,17 +80,16 @@ main {
   color: #333;
 }
 
-/*USER SHOW HIGH-LEVEL*/
+/*USER SHOW :: GENERAL*/
 article {
   background: #fff;
-  border: 1px solid grey;
   box-shadow: 1px 1px 1px grey;
 }
 
 .user-experiences,
 .user-connections,
 .user-card {
-  width: 604px;
+  width: 606px;
   padding: 20px;
   float: left;
   margin-top: 10px;
@@ -121,7 +120,7 @@ article {
 }
 
 
-/*USER CARD*/
+/*USER SHOW :: CARD*/
 
 .user-card section.trigger {
   width: 935px;
@@ -140,7 +139,7 @@ span.full-name {
 }
 
 
-/*USER EXPERIENCES*/
+/*USER SHOW :: EXPERIENCES*/
 
 .field-text:first-child {
   font-size: 18px;
@@ -180,6 +179,26 @@ a.edit-form {
   font-size: 14px;
   height: 0px;
 }
+
+/*USER SHOW :: CONNECTIONS*/
+
+.connected-users-list {
+  margin: 0 -20px;
+}
+
+.connected-users-list > li {
+  float: left;
+  width: 318px;
+  height: 62px;
+  overflow: hidden;
+  padding-top: 10px;
+}
+
+.connected-users-list > li > span {
+  font-size: 12px;
+}
+
+
 
 /*SEARCH RESULTS*/
 

@@ -25,6 +25,12 @@ class User < ActiveRecord::Base
   has_attached_file :picture, styles: {profile: "200x200>", thumb: "60x60>"}, default_url: "default.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
+  def connection_with(user)
+    self.connections
+      .where(["connections.sender_id = :id OR connections.receiver_id = :id", {id: user.id}])
+      .first
+  end
+
   def connected_with?(user)
     connected_users.map(&:id).include?(user.id)
   end
@@ -36,8 +42,7 @@ class User < ActiveRecord::Base
   def connection_status(user)
     return @connection_status if @connection_status
 
-    connection = self.connections
-                  .where(["connections.sender_id = :id OR connections.receiver_id = :id", {id: user.id}]).first
+    connection = connection_with(user)
 
     @connection_status ||= connection ? connection.status : "no connection"
   end

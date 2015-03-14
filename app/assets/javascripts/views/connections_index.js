@@ -6,7 +6,7 @@ ExtinctIn.Views.ConnectionsIndex = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.user = options.user;
-    this.collection = new ExtinctIn.Collections.Connections([], {user_id: this.user.id});
+    this.collection = new ExtinctIn.Collections.ConnectedUsers([], {user_id: this.user.id});
     this.collection.fetch();
     this.listenTo(this.collection, "sync", this.render);
   },

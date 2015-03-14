@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   def requested_users
     @requested_users ||= self.all_user_connections
                           .where("c.sender_id = ?", self.id)
-                          .where("c.status != 0")
+                          .where("c.status != 1")
   end
 
   def connected_users

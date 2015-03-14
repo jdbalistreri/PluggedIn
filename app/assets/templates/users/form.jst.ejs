@@ -5,6 +5,11 @@
   <span class="field-text"><%= user.escape("tagline") %></span>
   <span class="location"><%= user.escape("location") %></span>
   <span class="industry"><%= user.escape("industry") %></span>
+
+  <% if (!currentUser) {%>
+    <%= JST["users/connect-button"]({user: user}) %>
+  <% } %>
+
 </section>
 
 <% if (ExtinctIn.currentUserId === user.id) { %>

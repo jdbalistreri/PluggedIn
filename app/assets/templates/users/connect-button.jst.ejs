@@ -1,0 +1,12 @@
+
+
+<% if (user.escape("cu_connected_with") === "true") { %>
+  <button name="message-user">Message</button>
+<% } else if (user.escape("cu_requested_user") === "true") { %>
+  <button name="delete-this">Already Requested</button>
+<% } else if (user.escape("cu_connection_status") === "pending") { %>
+  <button name="approve-connection">Approve</button>
+  <button name="deny-connection">Deny</button>
+<% } else { %>
+  <button name="request-connection">Connect</button>
+<% } %>

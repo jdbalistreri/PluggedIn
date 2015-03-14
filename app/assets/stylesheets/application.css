@@ -39,26 +39,17 @@ ul {
   display: block;
 }
 
-/*HELPER STYLES*/
-input {
-  border: 1px solid grey;
-}
-
-a {
-  color: blue;
-}
-
-.trigger > span:hover, .trigger > a:hover {
-  background: lightgrey;
-  cursor: pointer;
-}
-
 /*ALL PAGES*/
 
 body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+a {
+  color: blue;
+}
+
+/*NAVIGATION BAR*/
 header {
   background: black;
   height: 40px;
@@ -73,35 +64,59 @@ header > h2 {
   float: left;
 }
 
+/*MAIN*/
 main {
-  background: lightgrey;
+  background-image: url(https://static.licdn.com/scds/common/u/images/themes/katy/textures/texture_grain_200x200_v2.png);
 }
 
 #content {
-  padding: 20px;
   width: 975px;
   margin: 0px auto;
   color: #333;
 }
 
+/*USER SHOW HIGH-LEVEL*/
 .user-show > article, .user-search {
   background: #fff;
   border: 1px solid grey;
   box-shadow: 1px 1px 1px grey;
-
 }
 
-input {
-  background: white;
+.user-experiences,
+.user-connections,
+.user-card {
+  width: 604px;
+  padding: 20px;
+  float: left;
+  margin-top: 10px;
+}
+
+.user-card, .user-sidebar {
+  margin-top: 30px;
+}
+
+.user-sidebar {
+  float: right;
+  width: 278px;
+  height: 500px;
+  padding: 20px;
+}
+
+.user-show > article > h2 {
+  display: inline-block;
+  margin-top: -20px;
+  margin-left: -20px;
+  padding: 7px 20px;
+  background: #333;
+  color: #fff;
+  font-size: 13px;
+  line-height: 17px;
+  font-weight: bold;
+
 }
 
 
 /*USER CARD*/
-
-.user-card {
-  padding: 20px;
-  background: #fff;
-}
 
 .user-card section.trigger {
   width: 935px;
@@ -121,12 +136,6 @@ span.full-name {
 
 
 /*USER EXPERIENCES*/
-.user-experiences {
-  width: 604px;
-  padding: 20px;
-  float: left;
-  margin: 30px 0px;
-}
 
 .user-experiences h3 {
   font-size: 24px;
@@ -199,18 +208,11 @@ a.edit-form {
 }
 
 /*SIDEBAR*/
-
 .user-sidebar {
-  float: right;
-  background: white;
-  width: 278px;
-  height: 500px;
-  margin: 30px 0px;
   text-align: center;
-  padding: 20px;
 }
 
-/*TOGGLE AND OTHERS*/
+/*TOGGLE*/
 .toggled > .trigger, .hidden-input {
   display: none;
 }
@@ -219,6 +221,23 @@ a.edit-form {
   display: inline-block;
 }
 
+.trigger > span:hover, .trigger > a:hover {
+  background: lightgrey;
+  cursor: pointer;
+}
+
+/*FORMS*/
+input {
+  border: 1px solid grey;
+  background: white;
+}
+
+.required:after {
+  content: " *";
+  color: red;
+}
+
+/*MODAL*/
 #modal {
   display: none;
 }
@@ -242,9 +261,4 @@ a.edit-form {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-}
-
-.required:after {
-  content: " *";
-  color: red;
 }

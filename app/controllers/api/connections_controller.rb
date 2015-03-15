@@ -5,7 +5,7 @@ class Api::ConnectionsController < ApplicationController
     @connection.sender_id = current_user.id
 
     if @connection.save
-      render json: @connection
+      render :show
     else
       render json: @connection.errors.full_messages, status: :unprocessable_entity
     end
@@ -17,10 +17,10 @@ class Api::ConnectionsController < ApplicationController
   end
 
   def update
-    @connection = current_user.connections.find(params[:id])
-
+    @connection = current_user.connections.includes(:users).find(params[:id])
+    
     if @connection.update({status: params[:status]})
-      render json: @connection
+      render :show
     else
       render json: @connection.errors.full_messages, status: :unprocessable_entity
     end

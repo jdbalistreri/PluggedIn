@@ -22,7 +22,11 @@ ExtinctIn.Views.ConnectButton = Backbone.View.extend({
 
   approveConnection: function () {
     this.model.set("status", 1)
-    this.model.save();
+    this.model.save({}, {
+      success: function (model) {
+        this.collection.add(model, {merge: true});
+      }.bind(this)
+    });
   },
 
   denyConnection: function () {

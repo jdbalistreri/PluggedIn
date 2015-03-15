@@ -2,6 +2,10 @@ ExtinctIn.Views.UserForm = ExtinctIn.ToggleableFormView.extend({
 
   template: JST["users/form"],
 
+  initialize: function (options) {
+    this.connections = options.connections;
+  },
+
   events: function () {
     return _.extend({}, ExtinctIn.ToggleableFormView.prototype.events,{
       "change input#user-picture" : "changePicture",
@@ -15,7 +19,8 @@ ExtinctIn.Views.UserForm = ExtinctIn.ToggleableFormView.extend({
     if (!this.currentUser()) {
       var connectButton = new ExtinctIn.Views.ConnectButton({
         user: this.model,
-        model: this.model.cu_connection()});
+        model: this.model.cu_connection(),
+        collection: this.connections});
       this.addSubview(".button-holder", connectButton);
     }
 

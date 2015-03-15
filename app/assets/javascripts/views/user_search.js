@@ -4,7 +4,8 @@ ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.searchResults = new ExtinctIn.Collections.SearchResults();
-    this.listenTo(this.searchResults, "sync", this.render)
+    this.searchResults.fetch({data: {query: ""}});
+    this.listenTo(this.searchResults, "sync", this.render);
   },
 
   template: JST["users/search"],

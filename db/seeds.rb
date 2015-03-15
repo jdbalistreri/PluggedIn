@@ -1,7 +1,7 @@
 User.destroy_all
 Experience.destroy_all
 
-NUM_USERS = 30
+NUM_USERS = 100
 CONNECTION_DILUTOR = 2
 ADV_DEG_FREQ = 2
 MAX_USER_AGE = 60
@@ -135,8 +135,13 @@ def add_job(user)
   true
 end
 
+user1 = User.create!(email: "joe", password: "joejoe",
+  fname: "Joe", lname: "Bali", tagline: "ain't life grand?",
+  location: "Milwaukee, WI", industry: "Computer Software",
+  date_of_birth: Date.new(1991, 7, 24), summary: "This is my summary")
+
 # USER CREATION
-NUM_USERS.times do |i|
+(NUM_USERS-1).times do |i|
   user = make_user
   add_high_school(user)
   add_college(user)
@@ -163,12 +168,7 @@ NUM_USERS.times do |i|
     Connection.create!(
       sender_id: current_sender_id,
       receiver_id: receiver_id,
-      status: [0,0,1].sample )
+      status: [0,1,1,1,1].sample )
   end
 
 end
-
-user1 = User.create!(email: "joe", password: "joejoe",
-  fname: "Joe", lname: "Bali", tagline: "ain't life grand?",
-  location: "Milwaukee, WI", industry: "Computer Software",
-  date_of_birth: Date.new(1991, 7, 24), summary: "This is my summary")

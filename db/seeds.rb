@@ -165,9 +165,10 @@ NUM_USERS.times do |i|
   receiver_ids = (first_receiver_id..last_user_id).to_a.sample(num_connections)
 
   receiver_ids.each do |receiver_id|
+    swap = [true,false].sample
     Connection.create!(
-      sender_id: current_sender_id,
-      receiver_id: receiver_id,
+      sender_id: swap ? receiver_id : current_sender_id,
+      receiver_id: swap ? current_sender_id : receiver_id,
       status: [0,1,1,1,1].sample )
   end
 

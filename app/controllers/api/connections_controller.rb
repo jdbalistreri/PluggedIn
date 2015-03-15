@@ -12,7 +12,8 @@ class Api::ConnectionsController < ApplicationController
   end
 
   def index
-    @connections = current_user.connections
+    @user = User.find(params[:user_id])
+    @connections = @user.connections.includes(:users)
   end
 
   def update

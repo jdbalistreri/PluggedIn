@@ -5,7 +5,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     this.collection = new ExtinctIn.Collections.Users();
     this.collection.fetch();
 
-    this.connections = new ExtinctIn.Collections.Connections();
+    this.connections = new ExtinctIn.Collections.Connections([], {user_id: ExtinctIn.currentUserId});
     this.connections.fetch();
   },
 

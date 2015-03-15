@@ -4,18 +4,24 @@
 
 [heroku]: #fillthisin
 
+## Current To Do
+- [ ] Add pagination and search to the connections box
+- [ ] Add number of connections to the user's show page
+- [ ] Add a connect button to the users index item view
+- [ ] Improve inbox view for connections to show the user
+
+
 ## Minimum Viable Product
 ExtinctIn is a clone of LinkedIn built on Rails and Backbone. Users can:
 
 - [x] Create accounts
 - [x] Create sessions (log in)
 - [x] Create user profiles with personal information
-- [ ] User profiles contain past job/school experiences
-- [ ] Users can edit their profile in place by double clicking the text
-- [ ] Request to connect with other users
+- [x] User profiles contain past job/school experiences
+- [x] Users can edit their profile in place by double clicking the text
+- [x] Request to connect with other users
 - [ ] Send messages to other users
-- [ ] Search for users by name
-- [ ] Search for users by company
+- [ ] Search for users
 
 ## Design Docs
 * [View Wireframes][views]
@@ -53,7 +59,7 @@ On the Backbone side, I will add request connections buttons to user profiles. I
 ### Phase 4: Messages (~1-2 days)
 I will add Rails API routes (create, index, show) for messages. Rails routes should be able to return either sent messages or received messages for a given user.
 
-On the Backbone side, I will add ReceievedMessages and SentMessages views inside the Inbox composite view. Each of these views will be a composite of MessageListItem views, each of which will link to a MessageShow view.
+On the Backbone side, I will add ReceivedMessages and SentMessages views inside the Inbox composite view. Each of these views will be a composite of MessageListItem views, each of which will link to a MessageShow view.
 
 Finally, there will be multiple links (either reply or on a user's profile page) to the MessageForm view, that will allow a user to create a new message.
 
@@ -69,11 +75,10 @@ I'll need to add a `search` route to the Users controller. On the Backbone side,
 - [ ] Typeahead search bar
 - [ ] Degrees of connection
 - [ ] Detailed search options (e.g. location, school, etc.)
-- [ ] Tracking profile views
-- [ ] Statistics on who has viewed your profile (3rd party library for graphics)
 - [ ] Side bar with other people's profiles (based on being viewed by similar people)
 - [ ] Profile show routes use the user's username instead of id
-- [ ] Boxes on profile are draggable to change order
+- [ ] Tracking profile views
+- [ ] Statistics on who has viewed your profile (3rd party library for graphics)
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md

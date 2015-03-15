@@ -4,11 +4,10 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resources :users, only: [:show, :index, :update] do
-      resources :connected_users, only: :index
       resources :connections, only: :index
     end
 
-    resources :connections, only: [:create, :update, :index]
+    resources :connections, only: [:create, :update]
     resources :experiences, only: [:create, :update, :destroy, :show]
     get "/search", to: "static#search"
   end

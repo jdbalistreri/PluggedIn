@@ -14,4 +14,12 @@ class Api::StaticController < ApplicationController
     @result_users = User.all if @result_users.empty?
   end
 
+  def connections_search
+    @user = User.find(params[:user_id])
+    @connections = @user.connections
+                        .includes(:users)
+                        .page(params[:page] || 1)
+                        .per(10)
+  end
+
 end

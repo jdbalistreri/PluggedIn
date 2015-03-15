@@ -25,7 +25,6 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
 
   addConnectedUsersIndex: function () {
     var connectedUsersIndex = new ExtinctIn.Views.ConnectedUsersIndex({
-      collection: this.connections,
       user: this.model,
     });
     this.addSubview(".user-connections", connectedUsersIndex)

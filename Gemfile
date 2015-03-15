@@ -20,6 +20,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'figaro'
 gem 'pg_search'
 gem 'faker'
+gem 'kaminari'
 
 group :development do
   gem 'annotate'

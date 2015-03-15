@@ -5,8 +5,9 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
   template: JST["connected_users/index"],
 
   initialize: function (options) {
+    this.searchResults = new ExtinctIn.Collections.ConnectionsSearch();
     this.user = options.user;
-    this.listenTo(this.collection, "sync add", this.render);
+    this.listenTo(this.searchResults, "sync add", this.render);
   },
 
   render: function () {
@@ -20,6 +21,11 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
     }.bind(this))
 
     return this;
+  },
+
+  search: function (event) {
+    event && event.preventDefault();
+    this.searchResults.pageNum =
   },
 
 })

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :connections, only: [:create, :update]
     resources :experiences, only: [:create, :update, :destroy, :show]
     get "/search", to: "static#search"
+    get "/connections_search", to: "static#connections_search"
   end
 
   root "static#root"

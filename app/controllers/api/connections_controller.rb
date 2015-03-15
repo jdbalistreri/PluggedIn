@@ -18,7 +18,7 @@ class Api::ConnectionsController < ApplicationController
 
   def update
     @connection = current_user.connections.includes(:users).find(params[:id])
-    
+
     if @connection.update({status: params[:status]})
       render :show
     else

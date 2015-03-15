@@ -5,16 +5,22 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
   template: JST["connected_users/index"],
 
   initialize: function (options) {
-    this.searchResults = new ExtinctIn.Collections.ConnectionsSearch();
     this.user = options.user;
-    this.listenTo(this.searchResults, "sync add", this.render);
+    this.searchResults = new ExtinctIn.Collections.ConnectionsSearch();
+    this.search();
+    this.listenTo(this.searchResults, "sync", this.render);
+  },
+
+  events: {
+    "click .next-page" : "nextPage",
+    "click .prev-page" : "prevPage",
   },
 
   render: function () {
     var content = this.template()
     this.$el.html(content)
 
-    this.collection.each( function(connection) {
+    this.searchResults.each( function(connection) {
       if (connection.get("status") !== "approved") return;
       var connectionView = new ExtinctIn.Views.UserIndexItem({model: connection.user()});
       this.addSubview("ul.connected-users-list", connectionView);
@@ -25,7 +31,33 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
 
   search: function (event) {
     event && event.preventDefault();
-    this.searchResults.pageNum =
+    this.searchResults.pageNum = 1;
+    this.searchResults.fetch({
+      data: {
+        user_id: this.user.id,
+        page: 1
+      }
+    });
+  },
+
+  nextPage: function (event) {
+    this.incrementSearch(1);
+  },
+
+  prevPage: function (event) {
+    this.incrementSearch(-1);
+  },
+
+  incrementSearch: function (num) {
+    this.searchResults.fetch({
+      data: {
+        user_id: this.user.id,
+        page: this.searchResults.pageNum + num
+      },
+      success: function () {
+        this.searchResults.pageNum = this.searchResults.pageNum + num;
+      }.bind(this),
+    })
   },
 
 })

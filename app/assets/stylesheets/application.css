@@ -97,6 +97,10 @@ article {
   margin-top: 10px;
 }
 
+.user-connections {
+  margin-bottom: 100px;
+}
+
 .user-card, .user-sidebar {
   margin-top: 30px;
 }
@@ -285,6 +289,13 @@ a.edit-form {
   display: block;
 }
 
+.all-connections {
+  float: right;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 .thumb-picture {
   margin: 2px 10px 0 20px;
 }
@@ -293,6 +304,20 @@ a.edit-form {
   background: #ddd;
 }
 
+.connections-nav {
+  margin: 20px -20px -20px -20px;
+  padding: 10px;
+  display: block;
+  background: rgb(234, 234, 234);
+}
+
+.connections-nav .next-page {
+  float: right;
+}
+
+.connections-nav .prev-page {
+  float: left;
+}
 
 
 /*SEARCH RESULTS*/

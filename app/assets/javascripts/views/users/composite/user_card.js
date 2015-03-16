@@ -17,8 +17,4 @@ ExtinctIn.Views.UserCard = ExtinctIn.ToggleableFormView.extend({
     return this;
   },
 
-  currentUser: function () {
-    return ExtinctIn.currentUserId === parseInt(this.model.id);
-  },
-
 })

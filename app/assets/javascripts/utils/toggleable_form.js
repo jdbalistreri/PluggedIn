@@ -12,6 +12,10 @@ ExtinctIn.ToggleableFormView = Backbone.CompositeView.extend({
     this.render();
   },
 
+  currentUser: function () {
+    return ExtinctIn.currentUserId === parseInt(this.model.id);
+  },
+
   deleteModel: function () {
     var modalView = new ExtinctIn.Views.DeleteModal({model: this.model})
     ExtinctIn.$modalEl.toggleClass("toggled");

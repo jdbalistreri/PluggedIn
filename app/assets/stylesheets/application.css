@@ -15,7 +15,7 @@
  */
 
 /*RESET*/
-h1, h2, h3, body, label, form, ul, input, a, header, main, head {
+h1, h2, h3, body, label, button, form, ul, input, a, p, header, main, head {
   background: transparent;
   border: 0;
   margin: 0;
@@ -46,7 +46,7 @@ body {
 }
 
 a {
-  color: blue;
+  color: rgb(0, 111, 166);
 }
 
 h3 {
@@ -122,20 +122,81 @@ article {
 
 /*USER SHOW :: CARD*/
 
-.user-card section.trigger {
-  width: 935px;
-}
 .profile-picture {
   margin-left: -20px;
   float: left;
   width: 200px;
-  padding-right: 20px;
+  margin-right: 20px;
+  background: #ccc;
 }
 
-span.full-name {
+.profile-info {
+  position: relative;
+  width: 406px;
+  height: 200px;
+  float: right;
+}
+
+.user-card span.full-name {
   display: block;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 700;
+}
+
+.user-card p.title {
+  font-size: 16px;
+  line-height: 20px;
+  padding: 1px 0px;
+}
+
+.user-card  span {
+  font-size: 13px;
+}
+span.location {
+  color: rgb(102, 105, 106)
+}
+
+span.industry {
+  color: rgb(102, 105, 106)
+}
+
+span.industry:before {
+  content: " | "
+}
+
+.profile-bottom {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+.profile-info button {
+  float: left;
+  color: #fff;
+  background-color: rgb(40, 123, 188);
+  background-image: -webkit-linear-gradient(top, rgb(40,123,188) 0%,
+    rgb(35,99,154) 100%);
+  font-size: 13px;
+  font-weight: bold;
+  height: 31px;
+  line-height: 29px;
+  padding: 0 13px;
+  border: 1px solid rgb(27, 84, 128);
+  border-radius: 3px;
+}
+
+.profile-info button:hover {
+  background: rgb(35,99,154);
+}
+
+.connections {
+  float: right;
+}
+
+.connections strong {
+  font-size: 18px;
+  display: block;
+  text-align: right;
 }
 
 
@@ -252,12 +313,6 @@ a.edit-form {
   width: 450px;
 }
 
-/*BUTTONS*/
-
-.button-holder {
-  float: right;
-}
-
 /*TOGGLE*/
 .toggled > .trigger, .hidden-input {
   display: none;
@@ -267,9 +322,14 @@ a.edit-form {
   display: inline-block;
 }
 
-.trigger > span:hover, .trigger > a:hover {
+.trigger span:hover {
   background: lightgrey;
   cursor: pointer;
+}
+
+.trigger .connections:hover {
+  background: white;
+  cursor: default;
 }
 
 /*FORMS*/

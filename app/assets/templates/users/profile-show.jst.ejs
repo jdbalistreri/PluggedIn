@@ -1,10 +1,22 @@
 
 <img class="profile-picture" src="<%= user.escape("profile_picture_url") %>" alt="Profile Picture" />
-<span class="full-name"><%= user.escape("full_name")  %></span>
-<span class="field-text"><%= user.escape("tagline") %></span>
-<span class="location"><%= user.escape("location") %></span>
-<span class="industry"><%= user.escape("industry") %></span>
 
-<div class="button-holder">
+<section class="profile-info">
 
-</div>
+  <span class="full-name"><%= user.escape("full_name")  %></span>
+  <p class="title"><%= user.escape("tagline") %></p>
+  <span class="location"><%= user.escape("location") %></span>
+  <span class="industry"><%= user.escape("industry") %></span>
+
+
+  <div class="profile-bottom group">
+    <div class="button-holder">
+
+    </div>
+
+    <span class="connections">
+      <strong><%= user.escape("num_connections") %></strong>
+      connections
+    </span>
+  </div>
+</section>

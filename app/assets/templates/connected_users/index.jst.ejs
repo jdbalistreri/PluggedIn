@@ -1,8 +1,16 @@
-<a class="all-connections" href="javascript:void(0)">All (<%= user.escape("num_connections") %>)</a>
-<a class="shared-connections" href="javascript:void(0)">Shared (<%= user.escape("num_shared_connections") %>)</a>
+<a class="all-connections" href="javascript:void(0)">Connections (<%= user.escape("num_connections") %>)</a>
+<!-- <a class="shared-connections" href="javascript:void(0)">Shared (<%= user.escape("num_shared_connections") %>)</a> -->
 
 <ul class="connected-users-list">
 
 </ul>
-<a class="prev-page" href="javascript:void(0)">Prev Page</a>
-<a class="next-page" href="javascript:void(0)">Next Page</a>
+
+<nav>
+  <% if (show_prev) { %>
+    <a class="prev-page" href="javascript:void(0)">Prev Page</a>
+  <% } %>
+
+  <% if (show_next) { %>
+    <a class="next-page" href="javascript:void(0)">Next Page</a>
+  <% } %>
+</nav>

@@ -17,10 +17,18 @@ class Api::StaticController < ApplicationController
 
   def connections_search
     @user = User.find(params[:user_id])
-    @connected_users = @user.connected_users
-                        .includes(:connections)
-                        .page(params[:page] || 1)
-                        .per(10)
+
+    # if params[:shared]
+    #   @connected_users = @user.shared_users_with(current_user)
+    #                       .includes(:connections)
+    #                       .page(params[:page] || 1)
+    #                       .per(10)
+    # else
+      @connected_users = @user.connected_users
+                          .includes(:connections)
+                          .page(params[:page] || 1)
+                          .per(10)
+    # end
   end
 
 end

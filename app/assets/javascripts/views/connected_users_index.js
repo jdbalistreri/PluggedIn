@@ -7,7 +7,7 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.user = options.user;
     this.searchResults = new ExtinctIn.Collections.ConnectionsSearch();
-    this.search();
+    this.all_search();
     this.listenTo(this.searchResults, "sync", this.render);
   },
 
@@ -17,7 +17,15 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template({user: this.user})
+    var show_next = !(this.searchResults.pageNum >= this.searchResults.maxPages);
+    var show_prev = !(this.searchResults.pageNum <= 1);
+
+    var content = this.template({
+      user: this.user,
+      show_next: show_next,
+      show_prev: show_prev,
+    })
+
     this.$el.html(content)
 
     this.searchResults.each( function(user) {
@@ -28,22 +36,34 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
     return this;
   },
 
-  search: function (event) {
+  search: function (event, attr, shared) {
     event && event.preventDefault();
     this.searchResults.pageNum = 1;
+    this.searchResults.maxPages = Math.ceil(this.user.get(attr)/10);
     this.searchResults.fetch({
       data: {
         user_id: this.user.id,
-        page: 1
+        page: 1,
+        shared: shared
       }
     });
   },
 
+  all_search: function (event) {
+    this.search(event, "num_connections", false);
+  },
+
+  // shared_search: function (event) {
+  //   this.search(event, "num_shared_connections", true);
+  // },
+
   nextPage: function (event) {
+    if (this.searchResults.pageNum >= this.searchResults.maxPages) return;
     this.incrementSearch(1);
   },
 
   prevPage: function (event) {
+    if (this.searchResults.pageNum <= 1) return;
     this.incrementSearch(-1);
   },
 

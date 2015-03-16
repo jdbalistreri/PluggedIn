@@ -28,32 +28,36 @@
 </script>
 
 <script type="text/template" id="job-date-input">
-  <%= date_select("date", "start_date",
-        {discard_day: true, discard_year: true,
-        prompt: {month: "Choose..."}}) %>
-  <input type="number"
-          id="date_start_date_1i"
-          name="date[start_date(1i)]"
-          value="<%%= job.escape("start_year") %>"
-          placeholder="Year">
-   -
-  <span class="end-date">
-    <span class="trigger">
-      <%= date_select("date", "end_date",
-            {discard_day: true, discard_year: true,
-            prompt: {month: "Choose..."}}) %>
-      <input type="number"
-              id="date_end_date_1i"
-              class="date_end_year"
-              name="date[end_date(1i)]"
-              value="<%%= job.escape("end_year") %>"
-              placeholder="Year">
-    </span>
-    <span class="hidden-input">
-      Present
-    </span>
+  <li>
+    <%= date_select("date", "start_date",
+          {discard_day: true, discard_year: true,
+          prompt: {month: "Choose..."}}) %>
+    <input type="number"
+            id="date_start_date_1i"
+            name="date[start_date(1i)]"
+            value="<%%= job.escape("start_year") %>"
+            placeholder="Year">
+     - 
+  </li>
+  <li>
+    <span class="end-date">
+      <span class="trigger">
+        <%= date_select("date", "end_date",
+              {discard_day: true, discard_year: true,
+              prompt: {month: "Choose..."}}) %>
+        <input type="number"
+                id="date_end_date_1i"
+                class="date_end_year"
+                name="date[end_date(1i)]"
+                value="<%%= job.escape("end_year") %>"
+                placeholder="Year">
+      </span>
+      <span class="hidden-input">
+        Present
+      </span>
 
-  </span>
+    </span>
+  </li>
 </script>
 
 <script type="text/template" id="school-date-input">

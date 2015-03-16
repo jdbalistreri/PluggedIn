@@ -14,12 +14,15 @@
   <br>
 
   <label class="required" for="">Time Period</label>
-  <%= _.template($("#job-date-input").html())({job: job}) %>
+  <ul class="group">
+    <%= _.template($("#job-date-input").html())({job: job}) %>
+  </ul>
 
-  <br>
-  <input id="check-present" type="checkbox" name="check_present" value="true">
-  <label for="check-present">I currently work here</label>
-  <br>
+  <div class="check-present-container group">
+    <input id="check-present" type="checkbox" name="check_present" value="true">
+    <label class="check-present" for="check-present">I currently work here</label>
+  </div>
+
 
   <label for="">Description</label>
   <textarea name="description"><%= job.escape("description") %></textarea>

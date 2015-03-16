@@ -25,10 +25,23 @@ class User < ActiveRecord::Base
   has_attached_file :picture, styles: {profile: "200x200>", thumb: "60x60>"}, default_url: "default.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
+  def num_connections
+    self.connected_users.count
+  end
+
+  def num_shared_connections_with(user)
+    self.shared_connections_with(user).count
+  end
+
   def connection_with(user)
     self.connections
       .where(["connections.sender_id = :id OR connections.receiver_id = :id", {id: user.id}])
       .first
+  end
+
+  def shared_connections_with(user)
+    shared_ids = self.connected_users.map(&:id)
+    user.connected_users.select { |user| shared_ids.include?(user.id) }
   end
 
   def requested_users

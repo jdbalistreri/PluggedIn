@@ -17,7 +17,7 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template()
+    var content = this.template({user: this.user})
     this.$el.html(content)
 
     this.searchResults.each( function(user) {

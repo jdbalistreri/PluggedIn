@@ -24,7 +24,7 @@ ExtinctIn.Views.ConnectButton = Backbone.View.extend({
     this.model.set("status", 1)
     this.model.save({}, {
       success: function (model) {
-        this.collection.add(model, {merge: true});
+        this.user.set("num_connections", this.user.get("num_connections")+1);
       }.bind(this)
     });
   },

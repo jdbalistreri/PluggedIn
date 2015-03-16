@@ -1,7 +1,5 @@
-<a class="all-connections" href="javascript:void(0)">All (#number)</a>
-<a class="shared-connections" href="javascript:void(0)">Shared (#number)</a>
-<a class="new-connections" href="javascript:void(0)">New (#number)</a>
-Search <input class="connections-search" type="text" value="">
+<a class="all-connections" href="javascript:void(0)">All (<%= user.escape("num_connections") %>)</a>
+<a class="shared-connections" href="javascript:void(0)">Shared (<%= user.escape("num_shared_connections") %>)</a>
 
 <ul class="connected-users-list">
 

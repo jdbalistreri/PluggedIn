@@ -1,4 +1,14 @@
-<h3><%= type === "job" ? "Experience" : "Education" %></h3>
+<% if (type === "job") { %>
+  <h3>
+    <img src="images/experience.png" alt="" />
+    <strong>Experience</strong>
+  </h3>
+<% } else { %>
+  <h3>
+    <img src="images/education.png" alt="" />
+    <strong>Education</strong>
+  </h3>
+<% } %>
 
 <ul class="experiences-list">
 

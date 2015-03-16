@@ -1,5 +1,3 @@
-
-
 <header>
   <a href="#"><span>Extinct IN</span></a>
   <a href="#users/<%=current_user.try(:id) || "" %>">My Profile</a>
@@ -37,7 +35,7 @@
             name="date[start_date(1i)]"
             value="<%%= job.escape("start_year") %>"
             placeholder="Year">
-     - 
+     -
   </li>
   <li>
     <span class="end-date">

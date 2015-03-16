@@ -15,7 +15,7 @@
  */
 
 /*RESET*/
-h1, h2, h3, table, th, tr, td, body,
+h1, h2, h3, h4, table, th, tr, td, body,
 label, button, form, ul, input, a,
 p, header, main, head {
   background: transparent;
@@ -178,7 +178,8 @@ span.industry:before {
   width: 100%;
 }
 
-.profile-info button {
+.profile-info button,
+.experience button {
   float: left;
   color: #fff;
   background-color: rgb(40, 123, 188);
@@ -401,7 +402,35 @@ input {
 
 .required:after {
   content: " *";
-  color: red;
+  color: #900;
+}
+
+.experience {
+  background: #f4f4f4;
+  border: 1px solid #e9e9e9;
+  border-width: 1px 0px;
+  margin: 30px -20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.experience > input {
+  border: 1px solid #ccc;
+  display: block;
+  width: 100%;
+}
+
+.experience > label {
+  font-size: 13px;
+  font-weight: bold;
+  display: block;
+}
+
+.experience > textarea {
+  display: block;
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 100px;
 }
 
 /*MODAL*/

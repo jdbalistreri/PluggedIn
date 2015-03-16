@@ -1,5 +1,6 @@
 ExtinctIn.Views.ExperienceForm = Backbone.ExperiencesForm.extend({
 
+  
   className: "new-experience-form",
 
   template: function () {

@@ -1,19 +1,19 @@
-<form>
+<form class="hidden-input experience">
   <ul class="errors"></ul>
 
-  <label class="required" for="">Title: </label>
+  <label class="required" for="">Title</label>
   <input type="text" name="role" value="<%= job.escape("role") %>">
   <br>
 
-  <label class="required" for="">Company: </label>
+  <label class="required" for="">Company</label>
   <input type="text" name="institution" value="<%= job.escape("institution") %>">
   <br>
 
-  <label for="">Location: </label>
+  <label for="">Location</label>
   <input type="text" name="location" value="<%= job.escape("location") %>">
   <br>
 
-  <label class="required" for="">Time Period: </label>
+  <label class="required" for="">Time Period</label>
   <%= _.template($("#job-date-input").html())({job: job}) %>
 
   <br>
@@ -21,11 +21,11 @@
   <label for="check-present">I currently work here</label>
   <br>
 
-  <label for="">Description: </label>
+  <label for="">Description</label>
   <textarea name="description"><%= job.escape("description") %></textarea>
   <br>
 
-  <button class="submit">Submit</button>
+  <button class="submit">Save</button>
   <a href="javascript:void(0)" class="cancel">Cancel</a>
   <% if (!job.isNew()) { %>
     <a href="javascript:void(0)" class="delete">Remove this position</a>

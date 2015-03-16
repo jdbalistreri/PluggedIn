@@ -3,10 +3,10 @@
   <button class="request-connection">Connect</button>
 
 <% } else if (cu_connection.escape("status") === "approved") { %>
-  <button class="message-user">Message</button>
+  <button class="message-user">Send a message</button>
 
 <% } else if (parseInt(cu_connection.get("receiver_id")) === user.id) { %>
-  <button class="delete-this">Already Requested</button>
+  <button class="delete-this">Connection Sent</button>
 
 <% } else if (cu_connection.escape("status") === "pending") { %>
   <button class="approve-connection">Approve</button>

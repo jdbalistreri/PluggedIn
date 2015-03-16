@@ -15,7 +15,9 @@
  */
 
 /*RESET*/
-h1, h2, h3, body, label, button, form, ul, input, a, p, header, main, head {
+h1, h2, h3, table, th, tr, td, body,
+label, button, form, ul, input, a,
+p, header, main, head {
   background: transparent;
   border: 0;
   margin: 0;
@@ -197,6 +199,19 @@ span.industry:before {
   font-size: 18px;
   display: block;
   text-align: right;
+}
+
+.user-overview {
+  font-size: 12px;
+  text-align: left;
+  margin-top: 10px;
+  line-height: 17px;
+}
+
+.user-overview th {
+  color: rgb(153, 153, 153);
+  font-size: 11px;
+  padding: 2px 20px 0 0;
 }
 
 

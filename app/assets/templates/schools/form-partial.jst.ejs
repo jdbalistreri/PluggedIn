@@ -1,4 +1,4 @@
-<form>
+<form class="hidden-input experience">
   <ul class="errors"></ul>
 
   <label class="required" for="">School: </label>
@@ -13,7 +13,7 @@
   <%= _.template($("#school-date-input").html())({school: school}) %>
   <br>
 
-  <label for="">Field of Study: </label>
+  <label class="field-of-study" for="">Field of Study: </label>
   <input type="text" name="field" value="<%= school.escape("field") %>">
   <br>
 

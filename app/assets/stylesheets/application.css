@@ -178,9 +178,12 @@ span.industry:before {
   width: 100%;
 }
 
+.profile-info button {
+  float: left;
+}
+
 .profile-info button,
 .experience button {
-  float: left;
   color: #fff;
   background-color: rgb(40, 123, 188);
   background-image: -webkit-linear-gradient(top, rgb(40,123,188) 0%,
@@ -425,7 +428,7 @@ input {
 
 .experience > input {
   display: block;
-  width: 100%;
+  width: 596px;
 }
 
 .experience label {
@@ -435,7 +438,7 @@ input {
 }
 
 .experience ul > li {
-  float: left;
+  display: inline;
 }
 
 .experience .check-present-container {
@@ -450,16 +453,15 @@ input {
 .experience > textarea {
   display: block;
   border: 1px solid #ccc;
-  width: 100%;
+  width: 596px;
   height: 100px;
   font-size: 12px;
   padding: 5px;
   border-radius: 2px;
 }
 
-.experience span.hidden-input {
-  background: red;
-  vertical-align: middle;
+.field-of-study {
+  margin-top: 15px;
 }
 
 /*MODAL*/

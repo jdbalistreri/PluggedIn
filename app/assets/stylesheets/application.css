@@ -112,17 +112,19 @@ article {
   padding: 20px;
 }
 
-.user-show > article > h2 {
-  display: inline-block;
-  margin-top: -20px;
-  margin-left: -20px;
+h2 {
+  display:block;
+  margin: -20px 0 20px -20px;
+  padding: 5px 0px;
+}
+
+h2 > strong {
   padding: 7px 20px;
   background: #333;
   color: #fff;
   font-size: 13px;
   line-height: 17px;
   font-weight: bold;
-
 }
 
 

@@ -254,7 +254,7 @@ span.industry:before {
   content: " | "
 }
 
-.major, .degree {
+.degree {
   color: #444;
   font-size: 16px;
   line-height: 25px;

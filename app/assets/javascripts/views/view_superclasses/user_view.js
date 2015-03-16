@@ -1,16 +1,7 @@
-ExtinctIn.Views.UserIndexItem = Backbone.CompositeView.extend({
+ExtinctIn.UserView = Backbone.CompositeView.extend({
 
-  tagName: "li",
-  className: "user-index-item",
-
-  template: JST["users/index-item"],
-
-  initialize: function (options) {
-    options.display_type = options.display_type;
-  },
-
-  render: function () {
-    var content = this.template({user: this.model})
+  render: function() {
+    var content = this.template({user: this.model, currentUser: this.currentUser()});
     this.$el.html(content);
 
     if (!this.currentUser()) {
@@ -27,6 +18,5 @@ ExtinctIn.Views.UserIndexItem = Backbone.CompositeView.extend({
   currentUser: function () {
     return ExtinctIn.currentUserId === parseInt(this.model.id);
   },
-
-
-})
+  
+});

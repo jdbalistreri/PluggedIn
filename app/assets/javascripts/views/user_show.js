@@ -13,7 +13,7 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
     var content = this.template({user: this.model});
     this.$el.html(content);
 
-    this.addUserForm();
+    this.addUserCard();
     this.addJobsIndex();
     this.addSchoolsIndex();
     this.addConnectedUsersIndex();
@@ -48,10 +48,10 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
     this.addSubview(".user-experiences", schoolsIndex);
   },
 
-  addUserForm: function () {
-    var userForm = new ExtinctIn.Views.UserForm({
+  addUserCard: function () {
+    var userCard = new ExtinctIn.Views.UserCard({
       model: this.model,
     });
-    this.addSubview(".user-card", userForm);
+    this.addSubview(".user-card", userCard);
   },
 })

@@ -1,17 +1,30 @@
+<ul class="errors"></ul>
 
-<section class="group user-info<%= currentUser ? " trigger" : "" %>">
-  <img class="profile-picture" src="<%= user.escape("profile_picture_url") %>" alt="Profile Picture" />
-  <span class="full-name"><%= user.escape("full_name")  %></span>
-  <span class="field-text"><%= user.escape("tagline") %></span>
-  <span class="location"><%= user.escape("location") %></span>
-  <span class="industry"><%= user.escape("industry") %></span>
+<label for="user-fname">First Name: </label>
+<input id="user-fname" type="text" name="fname" value="<%= user.escape("fname")%>">
+<br>
 
-  <div class="button-holder">
+<label for="user-lname">Last Name: </label>
+<input id="user-lname" type="text" name="lname" value="<%= user.escape("lname")%>">
+<br>
 
-  </div>
+<label for="user-location">Location: </label>
+<input id="user-location" type="text" name="location" value="<%= user.escape("location")%>">
+<br>
 
-</section>
+<label for="user-industry">Industry: </label>
+<input id="user-industry" type="text" name="industry" value="<%= user.escape("industry")%>">
+<br>
 
-<% if (ExtinctIn.currentUserId === user.id) { %>
-  <%= JST["users/form-partial"]({user: user}) %>
-<% } %>
+<label for="user-tagline">Tagline: </label>
+<input id="user-tagline" type="text" name="tagline" value="<%= user.escape("tagline")%>">
+<br>
+
+<label for="user-picture">Picture: </label>
+<input type="file" id="user-picture" name="picture">
+<br>
+
+<img id="picture-preview" src="" alt="" />
+
+<button class="submit">Submit</button>
+<a href="javascript:void(0)" class="cancel">Cancel</a>

@@ -1,7 +1,8 @@
 ExtinctIn.Views.UserForm = ExtinctIn.ToggleableFormView.extend({
 
   template: JST["users/form"],
-
+  tagName: "form",
+  
   events: function () {
     return _.extend({}, ExtinctIn.ToggleableFormView.prototype.events,{
       "change input#user-picture" : "changePicture",
@@ -9,17 +10,8 @@ ExtinctIn.Views.UserForm = ExtinctIn.ToggleableFormView.extend({
   },
 
   render: function() {
-    var content = this.template({user: this.model, currentUser: this.currentUser()});
+    var content = this.template({user: this.model});
     this.$el.html(content);
-
-    if (!this.currentUser()) {
-      var connectButton = new ExtinctIn.Views.ConnectButton({
-        user: this.model,
-        model: this.model.cu_connection(),
-      });
-      this.addSubview(".button-holder", connectButton);
-    }
-
     return this;
   },
 
@@ -34,10 +26,6 @@ ExtinctIn.Views.UserForm = ExtinctIn.ToggleableFormView.extend({
     };
 
     fileReader.readAsDataURL(file);
-  },
-
-  currentUser: function () {
-    return ExtinctIn.currentUserId === parseInt(this.model.id);
   },
 
   submitOnSuccess: function () {

@@ -26,7 +26,11 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
   def num_connections
-    self.connections.length
+    count = 0
+    self.connections.each do |connection|
+      count += 1 if connection.approved?
+    end
+    count
   end
 
   def num_shared_connections_with(user)

@@ -31,11 +31,22 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
       if (parseInt(model.get(id_attr)) === ExtinctIn.currentUserId) {
         return;
       }
+
+      if (id_attr === "sender_id") {
+        if (model.status !== "pending") {
+          return;
+        }
+      }
+
       view = new ExtinctIn.Views.ConnectionIndexItem({
         model: model,
       });
       this.addSubview(".messages", view);
     }.bind(this))
+
+    if (this.subviews(".messages").length === 0) {
+      this.$(".messages").html("Nothing new!");
+    }
   },
 
 })

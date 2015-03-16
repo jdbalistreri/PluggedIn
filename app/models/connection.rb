@@ -32,7 +32,7 @@ class Connection < ActiveRecord::Base
     def cannot_duplicate_connections
       return unless self.sender_id && self.receiver_id
       if User.find(self.sender_id)
-          .connected_users
+          .all_connected_users
           .map(&:id)
           .include?(self.receiver_id)
         errors[:base] << "Cannot make a duplicate connection"

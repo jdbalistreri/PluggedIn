@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
     self.connections.each do |connection|
       return connection if connection.sender_id == user.id || connection.receiver_id == user.id
     end
+    nil
   end
 
   # def shared_users_with(other_user)

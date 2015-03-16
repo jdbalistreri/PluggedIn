@@ -15,7 +15,7 @@
  */
 
 /*RESET*/
-h1, h2, h3, h4, table, th, tr, td, body,
+h1, h2, h3, h4, h5, table, th, tr, td, body,
 label, button, form, ul, input, a,
 p, header, main, head {
   background: transparent;
@@ -244,11 +244,11 @@ span.industry:before {
   font-size: 14px;
 }
 
-.local-text, .date-text {
+/*.local-text, .date-text {
   color: #444;
   font-size: 14px;
   line-height: 30px;
-}
+}*/
 
 .local-text:before, .major:before {
   content: " | "
@@ -264,6 +264,33 @@ a.edit-form {
   display: block;
   font-size: 14px;
   height: 0px;
+}
+
+/*USER SHOW :: EXPERIENCES 2*/
+
+.experience-index-item {
+  padding-top: 20px;
+}
+
+.experience-index-item h4 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.experience-index-item h5 {
+  font-size: 14px;
+  margin: 3px 0 7px 0;
+}
+
+.experience-index-item .date-location {
+  font-size: 12px;
+  color: rgb(102, 105, 106);
+  margin-top: 3px;
+}
+
+.experience-index-item p {
+  margin-top: 10px;
+  font-size: 13px;
 }
 
 /*USER SHOW :: CONNECTIONS*/
@@ -296,7 +323,8 @@ a.edit-form {
 }
 
 .all-connections {
-  float: right;
+  display: block;
+  text-align: right;
   color: black;
   font-size: 12px;
   font-weight: bold;

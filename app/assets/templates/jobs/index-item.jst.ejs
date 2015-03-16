@@ -1,14 +1,16 @@
 
 <section class="<%= currentUser ? "trigger" : "" %>">
-  <span class="field-text"><%= experience.escape("role") %></span>
-  <span class="field-text"><%= experience.escape("institution") %></span>
-  <span class="date-text"><%= experience.escape("date_string") %></span>
+  <h4 class="title"><%= experience.escape("role") %></h4>
+  <h5 class="school"><%= experience.escape("institution") %></h5>
+  <div class="date-location">
+    <span class="date-text"><%= experience.escape("date_string") %></span>
 
-  <% if (experience.escape("location") !== "") { %>
-    <span class="local-text"><%= experience.escape("location") %></span>
-  <% } %>
+    <% if (experience.escape("location") !== "") { %>
+      <span class="local-text"><%= experience.escape("location") %></span>
+    <% } %>
+  </div>
   <% if (experience.escape("description") !== "") { %>
-    <span class="field-text"><%= experience.escape("description") %></span>
+    <p class="description"><%= experience.escape("description") %></p>
   <% } %>
 
   <% if (currentUser) { %>

@@ -1,4 +1,4 @@
-ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
+ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
 
   className: "user-show",
   tagName: "section",
@@ -14,7 +14,7 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
     this.$el.html(content);
 
     this.addUserCard();
-    this.addJobsIndex();
+    if (this.showJobs()) { this.addJobsIndex() };
     this.addSchoolsIndex();
     this.addConnectedUsersIndex();
 
@@ -53,5 +53,9 @@ ExtinctIn.Views.UserShow = Backbone.CompositeView.extend({
       model: this.model,
     });
     this.addSubview(".user-card", userCard);
+  },
+
+  showJobs: function () {
+    return (this.model.jobs().length > 0) || this.currentUser();   ;
   },
 })

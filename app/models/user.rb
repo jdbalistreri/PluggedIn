@@ -26,17 +26,21 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
   def num_connections
-    self.connected_users.count
+    self.connections.length
   end
 
   def num_shared_connections_with(user)
-    self.shared_connections_with(user).count
+    count = 0
+    self.connections.each do |connection|
+      count += 1 if connection.sender_id == user.id || connection.receiver_id == user.id
+    end
+    count
   end
 
   def connection_with(user)
-    self.connections
-      .where(["connections.sender_id = :id OR connections.receiver_id = :id", {id: user.id}])
-      .first
+    self.connections.each do |connection|
+      return connection if connection.sender_id == user.id || connection.receiver_id == user.id
+    end
   end
 
   def shared_connections_with(user)
@@ -45,16 +49,16 @@ class User < ActiveRecord::Base
   end
 
   def requested_users
-    @requested_users ||= self.all_user_connections
+    @requested_users ||= self.all_connected_users
                           .where("c.sender_id = ?", self.id)
                           .where("c.status != 1")
   end
 
   def connected_users
-    @connected_users ||= self.all_user_connections.where("c.status = 1")
+    @connected_users ||= self.all_connected_users.where("c.status = 1")
   end
 
-  def all_user_connections
+  def all_connected_users
     join1 = "JOIN user_connections uc1 ON u1.id = uc1.user_id"
     join2 = "JOIN user_connections uc2 ON uc1.connection_id = uc2.connection_id"
     join3 = "JOIN users u2 ON uc2.user_id = u2.id"

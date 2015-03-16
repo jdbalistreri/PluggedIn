@@ -268,10 +268,29 @@ a.edit-form {
   height: 62px;
   overflow: hidden;
   padding-top: 10px;
+  font-size: 13px;
 }
 
-.connected-users-list > li > span {
+.connections-title {
   font-size: 12px;
+  display: inline-block;
+}
+
+.connected-users-list button {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.connected-users-list .full-name {
+  display: block;
+}
+
+.thumb-picture {
+  margin: 2px 10px 0 20px;
+}
+
+.thumb-picture {
+  background: #ddd;
 }
 
 
@@ -295,11 +314,11 @@ a.edit-form {
   border-bottom: 1px solid grey;
 }
 
-.user-index-item > .full-name > a {
+/*.user-index-item > .full-name > a {
   font-size: 16px;
   font-weight: 400;
   color: rgb(0, 111, 166);
-}
+}*/
 
 /*SIDEBAR*/
 .user-sidebar {

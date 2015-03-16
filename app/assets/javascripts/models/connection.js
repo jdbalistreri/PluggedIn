@@ -4,16 +4,16 @@ ExtinctIn.Models.Connection = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.users) {
-      this.user().set(response.users[0]);
+      this.user(response.users[0]);
       delete response.users;
     }
 
     return response
   },
 
-  user: function () {
-    if (!this._user) {
-      this._user = new ExtinctIn.Models.User();
+  user: function (attrs) {
+    if (attrs) {
+      this._user = new ExtinctIn.Models.User(attrs, {parse: true});
     }
     return this._user
   },

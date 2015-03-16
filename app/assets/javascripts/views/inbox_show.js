@@ -33,7 +33,7 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
       }
 
       if (id_attr === "sender_id") {
-        if (model.status !== "pending") {
+        if (model.get("status") !== "pending") {
           return;
         }
       }

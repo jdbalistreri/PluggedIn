@@ -10,6 +10,7 @@ ExtinctIn.Views.UserIndexItem = Backbone.CompositeView.extend({
     this.$el.html(content);
 
     if (!this.currentUser()) {
+      // debugger
       var connectButton = new ExtinctIn.Views.ConnectButton({
         user: this.model,
         model: this.model.cu_connection(),

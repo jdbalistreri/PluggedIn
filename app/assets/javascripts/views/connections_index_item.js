@@ -1,4 +1,4 @@
-ExtinctIn.Views.ConnectionIndexItem = Backbone.View.extend({
+ExtinctIn.Views.ConnectionIndexItem = Backbone.CompositeView.extend({
 
   tagName: "li",
   className: "connection-index-item",
@@ -8,6 +8,8 @@ ExtinctIn.Views.ConnectionIndexItem = Backbone.View.extend({
   render: function () {
     var content = this.template({connection: this.model});
     this.$el.html(content);
+    var userIndexView = new ExtinctIn.Views.UserIndexItem({model: this.model.user()});
+    this.addSubview(".user-detail", userIndexView);
     return this;
   },
 

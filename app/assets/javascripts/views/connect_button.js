@@ -14,6 +14,8 @@ ExtinctIn.Views.ConnectButton = Backbone.View.extend({
   },
 
   render: function () {
+    console.log("render");
+    // debugger
     var content = this.template({user: this.user,
                                   cu_connection: this.model});
     this.$el.html(content);

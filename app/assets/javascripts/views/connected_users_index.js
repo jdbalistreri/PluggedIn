@@ -20,9 +20,8 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
     var content = this.template()
     this.$el.html(content)
 
-    this.searchResults.each( function(connection) {
-      if (connection.get("status") !== "approved") return;
-      var connectionView = new ExtinctIn.Views.UserIndexItem({model: connection.user()});
+    this.searchResults.each( function(user) {
+      var connectionView = new ExtinctIn.Views.UserIndexItem({model: user});
       this.addSubview("ul.connected-users-list", connectionView);
     }.bind(this))
 

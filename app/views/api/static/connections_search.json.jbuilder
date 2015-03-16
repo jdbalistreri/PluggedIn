@@ -1,3 +1,3 @@
-json.array! @connections do |connection|
-  json.partial! 'api/connections/connection', node_user_id: @user.id, connection: connection
+json.array! @connected_users do |user|
+  json.partial! 'api/shared/user', user: user
 end

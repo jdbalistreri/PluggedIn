@@ -16,9 +16,7 @@ class Api::StaticController < ApplicationController
 
   def connections_search
     @user = User.find(params[:user_id])
-    @connections = @user.connections
-                        .where(status: 1)
-                        .includes(:users)
+    @connected_users = @user.connected_users
                         .page(params[:page] || 1)
                         .per(10)
   end

@@ -5,6 +5,7 @@ class Api::ConnectionsController < ApplicationController
     @connection.sender_id = current_user.id
 
     if @connection.save
+      @connection = Connection.includes(:receiver).find(@connection.id)
       render :show
     else
       render json: @connection.errors.full_messages, status: :unprocessable_entity

@@ -10,7 +10,8 @@ ExtinctIn.Views.ConnectButton = Backbone.View.extend({
   events: {
     "click .request-connection" : "requestConnection",
     "click .approve-connection" : "approveConnection",
-    "click .deny-connection" : "denyConnection"
+    "click .deny-connection" : "denyConnection",
+    "click .message-user" : "messageUser"
   },
 
   render: function () {
@@ -34,10 +35,13 @@ ExtinctIn.Views.ConnectButton = Backbone.View.extend({
     this.model.save();
   },
 
+  messageUser: function () {
+    Backbone.history.navigate("#inbox/messages/new?user_id=" + this.user.id, {trigger: true})
+  },
+
   requestConnection: function () {
     this.model.set("sender_id", ExtinctIn.currentUserId)
     this.model.set("receiver_id", this.user.id)
     this.model.save();
   },
-
 })

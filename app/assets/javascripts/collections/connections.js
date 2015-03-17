@@ -1,7 +1,8 @@
 ExtinctIn.Collections.Connections = Backbone.Collection.extend({
 
   model: ExtinctIn.Models.Connection,
-
+  comparator: "created_at",
+  
   initialize: function (models, options) {
     this.user_id = options.user_id;
   },

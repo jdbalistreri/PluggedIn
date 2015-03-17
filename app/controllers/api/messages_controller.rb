@@ -5,6 +5,7 @@ class Api::MessagesController < ApplicationController
     @message = current_user.sent_messages.new(message_params)
 
     if @message.save
+      @message = Message.includes(:receiver).find(@message.id)
       render :show
     else
       render json: @message.errors.full_messages, status: :unprocessable_entity

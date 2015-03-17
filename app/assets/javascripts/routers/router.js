@@ -28,12 +28,34 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     this._swapViews(view);
   },
 
+  message_show: function (id) {
+    message = this.sent_messages.get(id);
+
+    if (!message) {
+      message = this.received_messages.get(id);
+    }
+
+    var view = new ExtinctIn.Views.InboxShow({
+      subview: new ExtinctIn.Views.MessageShow({
+        model: message || new ExtinctIn.Models.Message()})
+    });
+    this._swapViews(view);
+  },
+
+  new_message: function (query) {
+    var view = new ExtinctIn.Views.InboxShow({
+      subview: new ExtinctIn.Views.MessageForm({
+        query: query,
+        model: new ExtinctIn.Models.Message(),
+        collection: this.sent_messages
+      })
+    });
+    this._swapViews(view);
+  },
+
   inbox_show: function () {
     var view = new ExtinctIn.Views.InboxShow({
-      sent_connections: this.sent_connections,
-      received_connections: this.received_connections,
-      sent_messages: this.sent_messages,
-      received_messages: this.received_messages,
+      collection: this.received_messages,
     });
     this._swapViews(view);
   },

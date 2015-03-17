@@ -1,7 +1,10 @@
 ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
 
   initialize: function(options) {
-    this.listenTo(this.collection, "sync", this.render)
+    this.subview = options.subview;
+    if (this.collection) {
+      this.listenTo(this.collection, "sync", this.render);
+    }
   },
 
   template: JST["inbox/show"],
@@ -9,12 +12,18 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
   render: function (){
     var content = this.template();
     this.$el.html(content);
-    this.fillInbox(this.collection);
+    this.emptySubviews(".messages");
+
+    if (this.subview) {
+      this.addSubview(".messages", this.subview)
+    } else {
+      this.fillInbox(this.collection);
+    }
+
     return this;
   },
 
   fillInbox: function (collection) {
-    this.emptySubviews(".messages");
 
     if (collection instanceof ExtinctIn.Collections.Connections) {
       var viewConstructor = ExtinctIn.Views.ConnectionIndexItem;

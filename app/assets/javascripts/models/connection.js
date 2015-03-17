@@ -3,9 +3,9 @@ ExtinctIn.Models.Connection = Backbone.Model.extend({
   urlRoot: "api/connections",
 
   parse: function (response) {
-    if (response.users) {
-      this.user(response.users[0]);
-      delete response.users;
+    if (response.user) {
+      this.user(response.user);
+      delete response.user;
     }
 
     return response

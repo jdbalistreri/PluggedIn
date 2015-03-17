@@ -1,7 +1,8 @@
 ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
 
   initialize: function(options) {
-    this.connections = options.connections;
+    this.sent_connections = options.sent_connections;
+    this.received_connections = options.received_connections;
   },
 
   template: JST["inbox/show"],
@@ -28,26 +29,17 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
   },
 
   receivedConnections: function () {
-    this.fillInbox(this.connections, "sender_id");
+    this.fillInbox(this.received_connections);
   },
 
   sentConnections: function () {
-    this.fillInbox(this.connections, "receiver_id");
+    this.fillInbox(this.sent_connections);
   },
 
-  fillInbox: function (collection, id_attr) {
+  fillInbox: function (collection) {
     this.emptySubviews(".messages");
+
     collection.each(function (model) {
-      if (parseInt(model.get(id_attr)) === ExtinctIn.currentUserId) {
-        return;
-      }
-
-      if (id_attr === "sender_id") {
-        if (model.get("status") !== "pending") {
-          return;
-        }
-      }
-
       view = new ExtinctIn.Views.ConnectionIndexItem({
         model: model,
       });

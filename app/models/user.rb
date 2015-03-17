@@ -64,33 +64,12 @@ class User < ActiveRecord::Base
     count
   end
 
-  # def num_shared_connections_with(user)
-  #   # count = 0
-  #   # self.connections.each do |connection|
-  #   #   count += 1 if connection.sender_id == user.id || connection.receiver_id == user.id
-  #   # end
-  #   # count
-  #   self.shared_users_with(user).length
-  # end
-
   def connection_with(user)
     self.connections.each do |connection|
       return connection if connection.sender_id == user.id || connection.receiver_id == user.id
     end
     nil
   end
-
-  # def shared_users_with(other_user)
-  #   join1 = "JOIN user_connections uc3 ON u2.id = uc3.user_id"
-  #   join2 = "JOIN user_connections uc4 ON uc3.connection_id = uc4.connection_id"
-  #   join3 = "JOIN users u3 ON uc4.user_id = u3.id"
-  #   where = "u3.id = :other_user_id"
-  #   self.connected_users
-  #       .joins(join1)
-  #       .joins(join2)
-  #       .joins(join3)
-  #       .where([where, {other_user_id: other_user.id}])
-  # end
 
   def requested_users
     @requested_users ||= self.all_connected_users

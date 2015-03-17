@@ -6,9 +6,9 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     this.collection.fetch();
 
     this.sent_connections = new ExtinctIn.Collections.Connections([], {user_id: ExtinctIn.currentUserId, sent: true});
-    this.sent_connections.fetch();
     this.received_connections = new ExtinctIn.Collections.Connections([], {user_id: ExtinctIn.currentUserId, received: true});
-    this.received_connections.fetch();
+    this.sent_messages = new ExtinctIn.Collections.Messages([], {user_id: ExtinctIn.currentUserId, sent: true});
+    this.received_messages = new ExtinctIn.Collections.Messages([], {user_id: ExtinctIn.currentUserId});
   },
 
   routes: {
@@ -26,6 +26,8 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     var view = new ExtinctIn.Views.InboxShow({
       sent_connections: this.sent_connections,
       received_connections: this.received_connections,
+      sent_messages: this.sent_messages,
+      received_messages: this.received_messages,
     });
     this._swapViews(view);
   },

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     get "/messages/sent", to: "messages#sent"
     get "/messages/received", to: "messages#received"
 
+    get "/inbox", to: "inbox#index"
+
     resources :experiences, only: [:create, :update, :destroy, :show]
 
     get "/search", to: "static#search"

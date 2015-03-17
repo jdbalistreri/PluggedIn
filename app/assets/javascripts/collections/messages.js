@@ -14,11 +14,10 @@ ExtinctIn.Collections.Messages = Backbone.Collection.extend({
       this.add(model);
     }
 
-    // model.fetch();
+    model.fetch();
 
     return model;
   }
-
 });
 
 

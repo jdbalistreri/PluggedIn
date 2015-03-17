@@ -8,7 +8,7 @@ ExtinctIn.Views.MessageShow = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.model.id;
+    var content = this.template({message: this.model});
     this.$el.html(content);
     return this;
   },

@@ -1,6 +1,6 @@
 class Message < ActiveRecord::Base
 
-  validates :sender_id, :receiver_id, :subject, :body, presence: true;
+  validates :sender, :receiver, :subject, :body, presence: true;
   validate :different_sender_and_receiver
 
   belongs_to(
@@ -17,6 +17,22 @@ class Message < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :receiver_id,
     inverse_of: :received_messages
+  )
+
+  belongs_to(
+    :previous_message,
+    class_name: "Message",
+    primary_key: :id,
+    foreign_key: :reply_to_id,
+    inverse_of: :replies
+  )
+
+  has_many(
+    :replies,
+    class_name: "Message",
+    primary_key: :id,
+    foreign_key: :reply_to_id,
+    inverse_of: :previous_message
   )
 
   private

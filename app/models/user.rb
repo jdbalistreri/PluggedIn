@@ -9,6 +9,22 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_many(
+    :sent_messages,
+    class_name: "Message",
+    primary_key: :id,
+    foreign_key: :sender_id,
+    inverse_of: :sender
+  )
+
+  has_many(
+    :received_messages,
+    class_name: "Message",
+    primary_key: :id,
+    foreign_key: :receiver_id,
+    inverse_of: :receiver
+  )
+
+  has_many(
     :experiences,
     dependent: :destroy,
     inverse_of: :user

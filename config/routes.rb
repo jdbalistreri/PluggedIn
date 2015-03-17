@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     end
 
     resources :connections, only: [:create, :update]
+    resources :messages, only: [:create, :index]
     resources :experiences, only: [:create, :update, :destroy, :show]
+    
     get "/search", to: "static#search"
     get "/connections_search", to: "static#connections_search"
   end

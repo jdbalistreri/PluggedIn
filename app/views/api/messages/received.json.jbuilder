@@ -1,4 +1,4 @@
 
 json.array! @received_messages do |message|
-  json.partial! 'api/messages/message', message: message , user: message.sender
+  json.partial! 'api/messages/message', message: message , user: message.sender, sent: false;
 end

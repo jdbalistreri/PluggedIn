@@ -1,46 +1,16 @@
 ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
 
   initialize: function(options) {
-    this.sent_connections = options.sent_connections;
-    this.received_connections = options.received_connections;
-    this.sent_messages = options.sent_messages;
-    this.received_messages = options.received_messages;
-
-    this.sent_connections.fetch();
-    this.received_connections.fetch();
-    this.sent_messages.fetch();
-    this.received_messages.fetch();
+    this.listenTo(this.collection, "sync", this.render)
   },
 
   template: JST["inbox/show"],
 
-  events: {
-    "click .received-connections" : "receivedConnections",
-    "click .sent-connections" : "sentConnections",
-    "click .sent-messages" : "sentMessages",
-    "click .received-messages" : "receivedMessages",
-  },
-
   render: function (){
     var content = this.template();
     this.$el.html(content);
+    this.fillInbox(this.collection);
     return this;
-  },
-
-  receivedMessages: function () {
-    this.fillInbox(this.received_messages);
-  },
-
-  sentMessages: function () {
-    this.fillInbox(this.sent_messages);
-  },
-
-  receivedConnections: function () {
-    this.fillInbox(this.received_connections);
-  },
-
-  sentConnections: function () {
-    this.fillInbox(this.sent_connections);
   },
 
   fillInbox: function (collection) {

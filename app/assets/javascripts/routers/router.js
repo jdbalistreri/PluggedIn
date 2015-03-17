@@ -15,6 +15,12 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     "": "index",
     "users/:id": "user_show",
     "inbox": "inbox_show",
+    "inbox/messages/sent": "sent_messages",
+    "inbox/messages/received": "received_messages",
+    "inbox/messages/new": "new_message",
+    "inbox/messages/:id": "message_show",
+    "inbox/connections/sent": "sent_connections",
+    "inbox/connections/received": "received_connections",
   },
 
   index: function () {
@@ -29,6 +35,38 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
       sent_messages: this.sent_messages,
       received_messages: this.received_messages,
     });
+    this._swapViews(view);
+  },
+
+  sent_messages: function () {
+    var view = new ExtinctIn.Views.InboxShow({
+      collection: this.sent_messages,
+    });
+    this.sent_messages.fetch();
+    this._swapViews(view);
+  },
+
+  received_messages: function () {
+    var view = new ExtinctIn.Views.InboxShow({
+      collection: this.received_messages,
+    });
+    this.received_messages.fetch();
+    this._swapViews(view);
+  },
+
+  sent_connections: function () {
+    var view = new ExtinctIn.Views.InboxShow({
+      collection: this.sent_connections,
+    });
+    this.sent_connections.fetch();
+    this._swapViews(view);
+  },
+
+  received_connections: function () {
+    var view = new ExtinctIn.Views.InboxShow({
+      collection: this.received_connections,
+    });
+    this.received_connections.fetch();
     this._swapViews(view);
   },
 

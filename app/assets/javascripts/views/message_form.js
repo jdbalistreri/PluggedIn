@@ -20,7 +20,7 @@ ExtinctIn.Views.MessageForm = Backbone.View.extend({
     this.users.connected_users().forEach(function (user) {
       var $option = $("<option>").html(user.escape("full_name")).attr("value", user.id);
       this.$(".user-select").append($option);
-    })
+    }.bind(this))
 
     return this;
   },

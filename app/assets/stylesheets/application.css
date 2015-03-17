@@ -17,7 +17,7 @@
 /*RESET*/
 h1, h2, h3, h4, h5, table, th, tr, td, body,
 label, button, form, ul, input, a,
-p, header, main, head {
+p, header, main, strong, head {
   background: transparent;
   border: 0;
   margin: 0;
@@ -51,10 +51,10 @@ a {
   color: rgb(0, 111, 166);
 }
 
-h3 {
+/*h3 {
   font-size: 24px;
   padding-left: 10px;
-}
+}*/
 
 /*NAVIGATION BAR*/
 header {
@@ -270,10 +270,19 @@ a.edit-form {
 
 .user-experiences h3 {
   font-size: 16px;
+  font-weight: 400px;
+  display: block;
+  margin-bottom: 25px;
+}
+
+.user-experiences img {
+  display: inline;
+  vertical-align: middle;
+  padding-right: 10px;
 }
 
 .experience-index-item {
-  padding-top: 20px;
+  margin-top: 20px;
 }
 
 .experience-index-item h4 {

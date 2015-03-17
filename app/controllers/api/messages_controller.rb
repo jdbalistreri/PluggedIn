@@ -21,7 +21,7 @@ class Api::MessagesController < ApplicationController
 
   private
     def message_params
-      params.require(:connection)
+      params.require(:message)
         .permit(:receiver_id, :subject, :body, :reply_to_id)
     end
 

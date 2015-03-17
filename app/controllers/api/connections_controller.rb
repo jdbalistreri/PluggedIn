@@ -16,14 +16,6 @@ class Api::ConnectionsController < ApplicationController
     @connections = @user.connections.includes(users: :connections)
   end
 
-  def received
-    @received_connections = current_user.received_connections.where(status: 0).includes(:sender)
-  end
-
-  def sent
-    @sent_connections = current_user.sent_connections.includes(:receiver)
-  end
-
   def update
     @connection = current_user.connections.includes(:users).find(params[:id])
 

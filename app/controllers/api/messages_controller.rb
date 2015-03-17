@@ -12,12 +12,9 @@ class Api::MessagesController < ApplicationController
     end
   end
 
-  def sent
-    @sent_messages = current_user.sent_messages.includes(:receiver)
-  end
-
-  def received
-    @received_messages = current_user.received_messages.includes(:sender)
+  def show
+    @message = current_user.sent_messages.find(params[:id]) ||
+      current_user.received_messages.find(params[:id])
   end
 
   private

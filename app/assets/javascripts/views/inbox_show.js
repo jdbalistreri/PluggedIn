@@ -6,9 +6,9 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
     this.type = options.type;
     this.direction = options.direction;
 
-    this.updateValues();
 
     if (this.inbox) {
+      this.updateValues();
       this.listenTo(this.inbox, "sync", this.updateValues);
     }
   },

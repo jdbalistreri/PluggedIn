@@ -41,6 +41,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
         query: query,
         model: new ExtinctIn.Models.Message(),
         collection: this.inbox.messages(),
+        users: this.collection,
       })
     });
     this._swapViews(view);

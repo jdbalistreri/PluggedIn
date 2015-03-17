@@ -7,9 +7,21 @@ ExtinctIn.Views.MessageForm = Backbone.View.extend({
     "submit" : "handleSubmit"
   },
 
+  initialize: function (options) {
+    this.users = options.users;
+    this.query = options.query;
+    this.listenTo(this.users, "sync", this.render)
+  },
+
   render: function () {
     var content = this.template();
     this.$el.html(content);
+
+    this.users.connected_users().forEach(function (user) {
+      var $option = $("<option>").html(user.escape("full_name")).attr("value", user.id);
+      this.$(".user-select").append($option);
+    })
+
     return this;
   },
 

@@ -1,24 +1,28 @@
 class Api::MessagesController < ApplicationController
 
   def create
-    # @connection = Connection.new(connection_params)
-    # @connection.sender_id = current_user.id
-    #
-    # if @connection.save
-    #   render :show
-    # else
-    #   render json: @connection.errors.full_messages, status: :unprocessable_entity
-    # end
+
+    @message = current_user.sent_messages.new(message_params)
+
+    if @message.save
+      render :show
+    else
+      render json: @message.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
-  def index
+  def sent
     @sent_messages = current_user.sent_messages.includes(:receiver)
+  end
+
+  def received
     @received_messages = current_user.received_messages.includes(:sender)
   end
 
   private
     def message_params
-      params.require(:connection).permit(:receiver_id)
+      params.require(:connection)
+        .permit(:receiver_id, :subject, :body, :reply_to_id)
     end
 
 end

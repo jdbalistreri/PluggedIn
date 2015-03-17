@@ -5,10 +5,8 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     this.collection = new ExtinctIn.Collections.Users();
     this.collection.fetch();
 
-    this.sent_connections = new ExtinctIn.Collections.Connections([], {user_id: ExtinctIn.currentUserId, sent: true});
-    this.received_connections = new ExtinctIn.Collections.Connections([], {user_id: ExtinctIn.currentUserId, received: true});
-    this.sent_messages = new ExtinctIn.Collections.Messages([], {user_id: ExtinctIn.currentUserId, sent: true});
-    this.received_messages = new ExtinctIn.Collections.Messages([], {user_id: ExtinctIn.currentUserId});
+    this.inbox = new ExtinctIn.Models.Inbox();
+    this.inbox.fetch();
   },
 
   routes: {
@@ -29,15 +27,10 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   message_show: function (id) {
-    message = this.sent_messages.get(id);
-
-    if (!message) {
-      message = this.received_messages.get(id);
-    }
+    message = this.inbox.messages().getOrFetch(id);
 
     var view = new ExtinctIn.Views.InboxShow({
-      subview: new ExtinctIn.Views.MessageShow({
-        model: message || new ExtinctIn.Models.Message()})
+      subview: new ExtinctIn.Views.MessageShow({model: message})
     });
     this._swapViews(view);
   },
@@ -47,7 +40,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
       subview: new ExtinctIn.Views.MessageForm({
         query: query,
         model: new ExtinctIn.Models.Message(),
-        collection: this.sent_messages
+        collection: this.inbox.messages(),
       })
     });
     this._swapViews(view);
@@ -55,41 +48,37 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
 
   inbox_show: function () {
     var view = new ExtinctIn.Views.InboxShow({
-      collection: this.received_messages,
+      collection: this.inbox.messages().received(),
     });
     this._swapViews(view);
   },
 
   sent_messages: function () {
     var view = new ExtinctIn.Views.InboxShow({
-      collection: this.sent_messages,
+      collection: this.inbox.messages().sent(),
     });
-    this.sent_messages.fetch();
     this._swapViews(view);
   },
 
   received_messages: function () {
     var view = new ExtinctIn.Views.InboxShow({
-      collection: this.received_messages,
+      collection: this.inbox.messages().received(),
     });
-    this.received_messages.fetch();
     this._swapViews(view);
   },
 
   sent_connections: function () {
-    var view = new ExtinctIn.Views.InboxShow({
-      collection: this.sent_connections,
-    });
-    this.sent_connections.fetch();
-    this._swapViews(view);
+    // var view = new ExtinctIn.Views.InboxShow({
+    //   collection: this.inbox.sent_connections(),
+    // });
+    // this._swapViews(view);
   },
 
   received_connections: function () {
-    var view = new ExtinctIn.Views.InboxShow({
-      collection: this.received_connections,
-    });
-    this.received_connections.fetch();
-    this._swapViews(view);
+    // var view = new ExtinctIn.Views.InboxShow({
+    //   collection: this.inbox.received_connections(),
+    // });
+    // this._swapViews(view);
   },
 
   user_show: function (id) {

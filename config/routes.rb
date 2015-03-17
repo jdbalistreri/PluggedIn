@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     end
 
     resources :connections, only: [:create, :update]
+    get "/connections/sent", to: "connections#sent"
+    get "/connections/received", to: "connections#received"
 
     resources :messages, only: [:create]
     get "/messages/sent", to: "messages#sent"

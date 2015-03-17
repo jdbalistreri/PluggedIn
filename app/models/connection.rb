@@ -12,6 +12,20 @@ class Connection < ActiveRecord::Base
   has_many :user_connections, inverse_of: :connection, dependent: :destroy
   has_many :users, through: :user_connections, source: :user
 
+  belongs_to(
+    :sender,
+    class_name: "User",
+    foreign_key: :sender_id,
+    primary_key: :id
+  )
+
+  belongs_to(
+    :receiver,
+    class_name: "User",
+    foreign_key: :receiver_id,
+    primary_key: :id
+  )
+
   private
     def ensure_status
       self.status ||= 0;

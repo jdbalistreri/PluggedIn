@@ -8,13 +8,23 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
 
   events: {
     "click .received-connections" : "receivedConnections",
-    "click .sent-connections" : "sentConnections"
+    "click .sent-connections" : "sentConnections",
+    "click .sent-messages" : "sentMessages",
+    "click .received-messages" : "receivedMessages",
   },
 
   render: function (){
     var content = this.template();
     this.$el.html(content);
     return this;
+  },
+
+  receivedMessages: function () {
+    console.log("received");
+  },
+
+  sentMessages: function () {
+    console.log('sent');
   },
 
   receivedConnections: function () {

@@ -30,7 +30,22 @@ class User < ActiveRecord::Base
     inverse_of: :user
   )
 
+  has_many(
+    :sent_connections,
+    class_name: "Connection",
+    foreign_key: :sender_id,
+    primary_key: :id
+  )
+
+  has_many(
+    :received_connections,
+    class_name: "Connection",
+    foreign_key: :receiver_id,
+    primary_key: :id
+  )
+
   has_many :user_connections, inverse_of: :user, dependent: :destroy
+
   has_many(
     :connections,
     through: :user_connections,

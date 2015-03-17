@@ -425,7 +425,8 @@ a.edit-form {
 }
 
 .toggled > .hidden-input, .trigger {
-  display: inline-block;
+  display: block;
+  /*display: inline-block;*/
 }
 
 .trigger span:hover {
@@ -450,12 +451,9 @@ input {
 }
 
 .experience {
-  background: #f4f4f4;
-  border: 1px solid #e9e9e9;
-  border-width: 1px 0px;
-  margin: 30px -20px;
-  padding: 20px;
-  width: 100%;
+  margin-left: 0px;
+  padding: 0 20px;
+  width: 606px;
   font-size: 12px;
 }
 
@@ -502,6 +500,29 @@ input {
 
 .field-of-study {
   margin-top: 15px;
+}
+
+/*ADD EXPERIENCES FORM*/
+
+.new-experience-form {
+  background: #f4f4f4;
+  border: 1px solid #e9e9e9;
+  border-width: 1px 0px;
+  padding: 20px 0px;
+  margin: 30px -20px -8px -20px;
+}
+
+.experiences-list:last-child .new-experience-form {
+  margin: 30px -20px -20px -20px;
+  /*background: blue;*/
+}
+
+.new-experience-form .trigger {
+  font-size: 14px;
+}
+
+.new-experience-text {
+  text-align: center;
 }
 
 /*MODAL*/

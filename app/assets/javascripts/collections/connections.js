@@ -4,18 +4,18 @@ ExtinctIn.Collections.Connections = Backbone.Collection.extend({
 
   initialize: function (models, options) {
     this.user_id = options.user_id;
-    this.sent = options.sent;
-    this.received = options.received;
   },
 
   url: function () {
-    if (this.sent) {
-      return "api/connections/sent";
-    } else if (this.received) {
-      return "api/connections/received";
-    } else {
-      return "api/users/" + this.user_id + "/connections";
-    }
+    return "api/users/" + this.user_id + "/connections";
   },
 
 })
+
+ExtinctIn.Collections.Connections.prototype.sent = function () {
+  return this.where({sent: true});
+};
+
+ExtinctIn.Collections.Connections.prototype.received = function () {
+  return this.where({sent: false});
+};

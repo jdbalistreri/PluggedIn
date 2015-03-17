@@ -48,37 +48,47 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
 
   inbox_show: function () {
     var view = new ExtinctIn.Views.InboxShow({
-      collection: this.inbox.messages().received(),
+      type: "messages",
+      direction: "received",
+      inbox: this.inbox,
     });
     this._swapViews(view);
   },
 
   sent_messages: function () {
     var view = new ExtinctIn.Views.InboxShow({
-      collection: this.inbox.messages().sent(),
+      type: "messages",
+      direction: "sent",
+      inbox: this.inbox,
     });
     this._swapViews(view);
   },
 
   received_messages: function () {
     var view = new ExtinctIn.Views.InboxShow({
-      collection: this.inbox.messages().received(),
+      type: "messages",
+      direction: "received",
+      inbox: this.inbox,
     });
     this._swapViews(view);
   },
 
   sent_connections: function () {
-    // var view = new ExtinctIn.Views.InboxShow({
-    //   collection: this.inbox.sent_connections(),
-    // });
-    // this._swapViews(view);
+    var view = new ExtinctIn.Views.InboxShow({
+      type: "connections",
+      direction: "sent",
+      inbox: this.inbox,
+    });
+    this._swapViews(view);
   },
 
   received_connections: function () {
-    // var view = new ExtinctIn.Views.InboxShow({
-    //   collection: this.inbox.received_connections(),
-    // });
-    // this._swapViews(view);
+    var view = new ExtinctIn.Views.InboxShow({
+      type: "connections",
+      direction: "received",
+      inbox: this.inbox,
+    });
+    this._swapViews(view);
   },
 
   user_show: function (id) {

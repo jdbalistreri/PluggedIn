@@ -4,12 +4,12 @@ ExtinctIn.Models.Inbox = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.received_connections) {
-      this.received_connections().add(response.received_connections, {parse: true, inbox: this});
+      this.connections().add(response.received_connections, {parse: true, inbox: this});
       delete response.received_connections;
     }
 
     if (response.sent_connections) {
-      this.sent_connections().add(response.sent_connections, {parse: true, inbox: this});
+      this.connections().add(response.sent_connections, {parse: true, inbox: this});
       delete response.sent_connections;
     }
 
@@ -26,26 +26,12 @@ ExtinctIn.Models.Inbox = Backbone.Model.extend({
     return response
   },
 
-  received_connections: function () {
-    if (!this._received_connections) {
-      this._received_connections = new ExtinctIn.Collections.Connections(
-        [],
-        {user_id: ExtinctIn.currentUserId, received: true}
-      );
+  connections: function () {
+    if (!this._connections) {
+      this._connections = new ExtinctIn.Collections.Connections([], {user_id: ExtinctIn.currentUserId});
     }
 
-    return this._received_connections
-  },
-
-  sent_connections: function () {
-    if (!this._sent_connections) {
-      this._sent_connections = new ExtinctIn.Collections.Connections(
-        [],
-        {user_id: ExtinctIn.currentUserId, sent: true}
-      );
-    }
-
-    return this._sent_connections
+    return this._connections
   },
 
   messages: function () {

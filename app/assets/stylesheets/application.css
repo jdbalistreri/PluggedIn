@@ -167,10 +167,23 @@ header > h2 {
 }
 
 /*MAIN*/
-main {
+
+html {
   background-image: url(https://static.licdn.com/scds/common/u/images/themes/katy/textures/texture_grain_200x200_v2.png);
-  padding-bottom: 50px;
+}
+
+main {
+  padding-bottom: 20px;
   padding-top: 90px;
+}
+
+footer {
+  padding-top: 30px;
+  width: 975px;
+  margin: auto;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
 }
 
 #content {

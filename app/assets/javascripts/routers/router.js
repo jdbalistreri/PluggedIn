@@ -44,7 +44,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   search: function (query) {
-    var query = query.split("=")[1]
+    var query = query ? query.split("=")[1] : ""
     var view = new ExtinctIn.Views.UserSearch({query: query});
     this._swapViews(view);
   },

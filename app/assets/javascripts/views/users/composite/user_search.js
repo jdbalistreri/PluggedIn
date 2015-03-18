@@ -1,7 +1,7 @@
 ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
 
   tagName: "article",
-  className: "user-search",
+  className: "user-search group",
 
   initialize: function (options) {
     this.query = options.query;
@@ -17,7 +17,7 @@ ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template({results: this.searchResults});
+    var content = this.template({query: this.query});
     this.$el.html(content);
 
     this.searchResults.each(function (user) {

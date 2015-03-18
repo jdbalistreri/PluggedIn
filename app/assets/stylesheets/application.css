@@ -547,7 +547,8 @@ span.edit > a {
   padding: 20px;
 }
 
-.inbox > .sidebar {
+.inbox > .sidebar,
+.user-search > .sidebar {
   float: left;
   border-right: 1px solid grey;
   width: 179px;
@@ -562,7 +563,8 @@ span.edit > a {
   text-align: center;
 }
 
-.inbox > .inbox-content {
+.inbox > .inbox-content,
+.search-content {
   float: right;
   padding: 20px 20px 20px 20px;
   margin-top: -20px;
@@ -573,7 +575,8 @@ span.edit > a {
   border: 1px solid #ccc;
 }
 
-.inbox .messages {
+.inbox .messages,
+.search-results {
   width: 675px;
   height: 440px;
   overflow: scroll;
@@ -581,7 +584,8 @@ span.edit > a {
   /*border: 1px solid #ccc;*/
 }
 
-.inbox > .inbox-content h3 {
+.inbox > .inbox-content h3,
+.search-content h3 {
   font-size: 24px;
   font-weight: bold;
   padding-bottom: 20px;

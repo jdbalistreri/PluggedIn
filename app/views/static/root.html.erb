@@ -1,22 +1,28 @@
 <div class="global-header">
   <header class="top-header">
-    <nav class="top-header-nav">
-      <a href="#">Extinct IN</a>
+    <nav class="top-header-nav group">
+      <a href="#" class="logo">in</a>
 
-      <input type="text" name="name" value="" placeholder="Search for people...">
-      <span>
-        <%= render partial: "/shared/logged_in", locals: {current_user: current_user } %>
+      <form class="header-search">
+        <input type="text" placeholder="Search for people by name, company, etc...">
+        <button class="blue-button">Search</button>
+      </form>
+
+      <span class="user-info-header">
+        <%= current_user.full_name.titleize %>
+        <img src="<%=current_user.picture.url(:thumb)%>" alt="" />
       </span>
     </nav>
   </header>
 
   <header class="responsive-header">
-    <nav class="responsive-header-nav">
+    <nav class="responsive-header-nav group">
       <ul class="responsive-list group">
-        <li><a href="#users/<%=current_user.try(:id) || "" %>">My Profile</a></li>
+        <li><a href="#users/<%=current_user.try(:id) || "" %>">Profile</a></li>
         <li><a href="#inbox">Inbox</a></li>
         <li><a href="#">Search</a></li>
       </ul>
+      <%= render partial: "/shared/logged_in", locals: {current_user: current_user } %>
     </nav>
   </header>
 </div>

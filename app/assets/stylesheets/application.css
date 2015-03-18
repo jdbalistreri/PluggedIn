@@ -64,14 +64,42 @@ a {
   position: relative;
   background-color: #3f3f3f;
   background-image: -webkit-linear-gradient(top, #696969 0%, #3f3f3f 100%);
-  height: 42px;
+  height: 38px;
+  padding-top: 4px;
   color: white;
+}
+
+.top-header-nav {
   vertical-align: middle;
 }
 
 .top-header-nav > a {
   font-size: 24px;
   color: white;
+  display: inline;
+  float: left;
+}
+
+.top-header .logo {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 4px 4px 0 4px;
+  border-radius: 5px;
+  background: rgb(0, 111, 166);
+}
+
+.header-search {
+  float: left;
+  margin-top: 2px;
+}
+
+.header-search > input {
+  margin-left: 170px;
+  width: 300px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: black;
 }
 
 .responsive-header {
@@ -88,11 +116,21 @@ a {
   top: -30px;
 }
 
-.responsive-header-nav a {
+.responsive-header-nav a,
+.responsive-header-nav button {
   font-size: 13px;
   color: rgb(215, 215, 215);
-  padding: 7px 20px 7px 0;
   display: block;
+  padding: 6px 0px 4px 0;
+  -webkit-appearance: none;
+}
+
+.responsive-header-nav a {
+  padding: 9px 40px 7px 0;
+}
+
+.responsive-header-nav > ul {
+  float: left;
 }
 
 .responsive-list > li {
@@ -104,8 +142,24 @@ header > nav {
   margin: auto;
 }
 
-header .logout {
+.logout {
   float: right;
+}
+
+.logout > form {
+  display: inline;
+}
+
+.user-info-header {
+  float: right;
+  vertical-align: middle;
+  font-size: 13px;
+}
+
+.top-header img {
+  width: 35px;
+  border-radius: 3px;
+  margin-left: 10px;
 }
 
 header > h2 {
@@ -221,7 +275,8 @@ span.industry:before {
 }
 
 .profile-info button,
-.experience button {
+.experience button,
+.blue-button {
   color: #fff;
   background-color: rgb(40, 123, 188);
   background-image: -webkit-linear-gradient(top, rgb(40,123,188) 0%,
@@ -232,6 +287,20 @@ span.industry:before {
   line-height: 29px;
   padding: 0 13px;
   border: 1px solid rgb(27, 84, 128);
+  border-radius: 3px;
+}
+
+.grey-button {
+  display: inline-block;
+  color: rgb(102, 102, 102);
+  background-color: #e8e8e8;
+  background-image: -webkit-linear-gradient(top, #e8e8e8 0%, #e3e3e3 13%, #d7d7d7 32%, #b9b9b9 71%, #a9a9a9 100%);
+  font-size: 13px;
+  font-weight: bold;
+  height: 31px;
+  line-height: 29px;
+  padding: 0 12px;
+  border: 1px solid rgb(167, 167, 167);
   border-radius: 3px;
 }
 

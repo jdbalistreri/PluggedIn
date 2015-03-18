@@ -61,9 +61,18 @@ ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
   },
 
   handleScroll: function (event) {
+    if (!this._documentHeight) {
+      this._documentHeight = $(document).height()
+    }
+
     if ($(document).scrollTop() >= 48) {
       this.$(".user-connections").addClass("absolute");
-      this.$(".user-connections").css("top", $(document).scrollTop() - 48);
+      // debugger
+      if ($(document).scrollTop() + 633 > this._documentHeight) {
+        this.$(".user-connections").css("top", this._documentHeight - (633+48));
+      } else {
+        this.$(".user-connections").css("top", $(document).scrollTop() - 48);
+      }
     } else {
       this.$(".user-connections").removeClass("fixed");
       this.$(".user-connections").removeAttr("style");

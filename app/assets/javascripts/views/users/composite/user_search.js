@@ -3,9 +3,10 @@ ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
   tagName: "article",
   className: "user-search",
 
-  initialize: function () {
+  initialize: function (options) {
+    this.query = options.query;
     this.searchResults = new ExtinctIn.Collections.SearchResults();
-    this.searchResults.fetch({data: {query: ""}});
+    this.searchResults.fetch({data: {query: this.query}});
     this.listenTo(this.searchResults, "sync", this.render);
   },
 

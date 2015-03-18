@@ -26,6 +26,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
 
   bindEvents: function () {
     $(window).bind("mousewheel", this.handleScroll.bind(this));
+    $(".header-search").on("submit", this.goToSearch.bind(this));
   },
 
   handleScroll: function (event) {
@@ -36,8 +37,15 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     }
   },
 
-  search: function () {
-    var view = new ExtinctIn.Views.UserSearch();
+  goToSearch: function (event) {
+    event.preventDefault();
+    var query = $(event.currentTarget).serializeJSON().query;
+    Backbone.history.navigate("#search?query=" + query, {trigger: true});
+  },
+
+  search: function (query) {
+    var query = query.split("=")[1]
+    var view = new ExtinctIn.Views.UserSearch({query: query});
     this._swapViews(view);
   },
 

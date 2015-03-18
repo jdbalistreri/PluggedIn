@@ -1,6 +1,7 @@
 ExtinctIn.Views.MessageIndexItem = Backbone.View.extend({
 
   tagName: "li",
+  className: "message-index-item",
   template: JST["messages/index-item"],
 
   render: function () {

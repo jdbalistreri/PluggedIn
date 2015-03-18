@@ -583,6 +583,31 @@ span.edit > a {
   padding-bottom: 20px;
 }
 
+.inbox .message-link {
+  display: block;
+  color: black;
+  font-size: 13px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0px;
+}
+
+.message-link > img {
+  float: left;
+}
+
+.message-link > ul {
+  float: left;
+  padding: 10px;
+}
+
+.message-link > ul > li {
+  padding-bottom: 2px;
+}
+
+.message-link:hover {
+  background: lightgrey;
+}
+
 /*TOGGLE*/
 .toggled > .trigger, .hidden-input {
   display: none;

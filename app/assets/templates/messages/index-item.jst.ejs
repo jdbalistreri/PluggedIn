@@ -1,16 +1,15 @@
+<a class="message-link group" href= "<%= "#inbox/messages/" + message.id %>">
 <img src=" <%= message.user().escape("thumb_picture_url") %> " alt="" />
 
-<%= message.get("sent") ? "To:" : "From:" %> <%= message.user().escape("full_name") %>
-<br>
-Subject: <%= message.escape("subject") %>
-<br>
-Body: <%= message.escape("body") %>
-<br>
-Date: <%= message.escape("created_at") %>
-<br>
-
-<% if (!message.get("sent")) {%>
-  <button>Reply</button>
-<% } %>
-
-<hr>
+<ul>
+  <li>
+    <%= message.get("sent") ? "To:" : "From:" %> <%= message.user().escape("full_name") %>
+  </li>
+  <li>
+    Subject: <%= message.escape("subject") %>
+  </li>
+  <li>
+    Date: <%= message.escape("date_string") %>
+  </li>
+</ul>
+</a>

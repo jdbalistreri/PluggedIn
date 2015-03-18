@@ -35,6 +35,10 @@ class Message < ActiveRecord::Base
     inverse_of: :previous_message
   )
 
+  def date_string
+    self.created_at.to_formatted_s(:long_ordinal)
+  end
+
   private
     def different_sender_and_receiver
       if self.sender_id && self.sender_id == self.receiver_id

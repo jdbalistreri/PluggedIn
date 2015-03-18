@@ -21,9 +21,12 @@
   <textarea name="description"><%= school.escape("description") %></textarea>
   <br>
 
-  <button class="submit">Submit</button>
-  <a href="javascript:void(0)" class="cancel grey-button">Cancel</a>
-  <% if (!school.isNew()) { %>
-    <a href="javascript:void(0)" class="delete">Remove this school</a>
-  <% } %>
+  <ul class="bottom-buttons group">
+    <li><button class="submit">Save</button></li>
+    <li><a href="javascript:void(0)" class="cancel grey-button">Cancel</a></li>
+    <% if (!school.isNew()) { %>
+      <li><a class="remove-link delete" href="javascript:void(0)">Remove this school</a></li>
+    <% } %>
+
+  </ul>
 </form>

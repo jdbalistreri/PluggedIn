@@ -316,12 +316,11 @@ span.industry:before {
   background-image: -webkit-linear-gradient(top, #e8e8e8 0%, #e3e3e3 13%, #d7d7d7 32%, #b9b9b9 71%, #a9a9a9 100%);
   font-size: 13px;
   font-weight: bold;
-  height: 31px;
+  height: 29px;
   line-height: 29px;
   padding: 0 12px;
   border: 1px solid rgb(167, 167, 167);
   border-radius: 3px;
-  margin-top: -2px;
 }
 
 .profile-info button:hover {
@@ -577,6 +576,25 @@ input {
   width: 200px;
 }
 
+.errors {
+  color: #900;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.bottom-buttons > li {
+  float: left;
+  display: block;
+  padding-right: 10px;
+  vertical-align: bottom;
+  height: 30px;
+}
+
+.remove-link {
+  padding-top: 10px;
+  display: block;
+}
+
 .required:after {
   content: " *";
   color: #900;
@@ -615,7 +633,7 @@ input {
 }
 
 .experience ul > li {
-  display: inline;
+  display: inline-block;
 }
 
 .experience .check-present-container {

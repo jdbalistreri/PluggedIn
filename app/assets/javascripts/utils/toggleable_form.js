@@ -65,7 +65,7 @@ ExtinctIn.ToggleableFormView = Backbone.CompositeView.extend({
     response.responseJSON.forEach(function (error) {
       var $li = $("<li>").text(error);
       this.$(".errors").append($li);
-    })
+    }.bind(this))
   },
 
 })

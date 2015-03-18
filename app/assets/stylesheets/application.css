@@ -380,10 +380,11 @@ span.industry:before {
   line-height: 25px;
 }
 
-a.edit-form {
+span.edit > a {
   display: block;
   font-size: 14px;
   height: 0px;
+  padding-top: 3px;
 }
 
 /*USER SHOW :: EXPERIENCES 2*/

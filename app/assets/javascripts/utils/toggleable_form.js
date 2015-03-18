@@ -2,7 +2,7 @@ ExtinctIn.ToggleableFormView = Backbone.CompositeView.extend({
 
   events: {
     "click a.cancel" : "cancelForm",
-    "click section.trigger" : "toggleEl",
+    "click .trigger span.edit" : "toggleEl",
     "click a.delete" : "deleteModel",
     "submit form" : "formSubmit",
   },

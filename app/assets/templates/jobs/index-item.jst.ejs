@@ -1,26 +1,26 @@
 
 <section class="<%= currentUser ? "trigger" : "" %>">
-  <h4 class="title"><%= experience.escape("role") %></h4>
-  <h5 class="school"><%= experience.escape("institution") %></h5>
+  <h4 class="title"><span class="edit"><%= experience.escape("role") %></span></h4>
+  <h5 class="school"><span class="edit"><%= experience.escape("institution") %></span></h5>
   <div class="date-location">
-    <span class="date-text"><%= experience.escape("date_string") %></span>
+    <span class="date-text edit"><%= experience.escape("date_string") %></span>
 
     <% if (experience.escape("location") !== "") { %>
-      <span class="local-text"><%= experience.escape("location") %></span>
+      <span class="local-text edit"><%= experience.escape("location") %></span>
     <% } %>
   </div>
   <% if (experience.escape("description") !== "") { %>
-    <p class="description"><%= experience.escape("description") %></p>
+    <p class="description"><span class="edit"><%= experience.escape("description") %></span></p>
   <% } %>
 
   <% if (currentUser) { %>
     <% if (experience.escape("location") === "") { %>
-      <a class="edit-form" href="javascript:void(0)">Add Location</a>
+      <span class="edit"><a href="javascript:void(0)">Add Location</a></span>
       <br>
     <% } %>
 
     <% if (experience.escape("description") === "") { %>
-      <a class="edit-form" href="javascript:void(0)">Add Description</a>
+      <span class="edit"><a href="javascript:void(0)">Add Description</a></span>
       <br>
     <% } %>
   <%  } %>

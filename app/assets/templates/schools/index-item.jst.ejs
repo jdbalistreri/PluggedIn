@@ -1,30 +1,32 @@
 
 <section class="<%= currentUser ? "trigger" : "" %>">
-  <h4 class="title"><%= experience.escape("institution") %></h4>
+  <h4 class="title"><span class="edit"><%= experience.escape("institution") %></span></h4>
   <h5 class="school">
+    <span class="edit">
     <%= experience.escape("role") === "High School" ? "" : experience.escape("role") %>
     <% if (experience.escape("field") !== "") { %>
       <span class="major"><%= experience.escape("field") %></span>
     <% } %>
+    </span>
   </h5>
 
 
 
   <div class="date-location">
-    <span class="date-text"><%= experience.escape("date_string") %></span>
+    <span class="date-text edit"><%= experience.escape("date_string") %></span>
   </div>
 
   <% if (experience.escape("description") !== "") { %>
-    <span class="field-text"><%= experience.escape("description") %></span>
+    <span class="field-text edit"><%= experience.escape("description") %></span>
   <% } %>
 
   <% if (currentUser) { %>
     <% if (experience.escape("field") === "") { %>
-      <a class="edit-form" href="javascript:void(0)">Add Field of Study</a>
+      <span class="edit"><a href="javascript:void(0)">Add Field of Study</a></span>
       <br>
     <% } %>
     <% if (experience.escape("description") === "") { %>
-      <a class="edit-form" href="javascript:void(0)">Add Description</a>
+      <span class="edit"><a href="javascript:void(0)">Add Description</a></span>
       <br>
     <% } %>
   <% } %>

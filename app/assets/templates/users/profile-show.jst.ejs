@@ -3,23 +3,23 @@
 
 <section class="profile-info">
 
-  <span class="full-name"><%= user.escape("full_name")  %></span>
-  <p class="title"><%= user.escape("tagline") %></p>
-  <span class="location"><%= user.escape("location") %></span>
-  <span class="industry"><%= user.escape("industry") %></span>
+  <span class="full-name edit"><%= user.escape("full_name")  %></span>
+  <p class="title"><span class="edit"><%= user.escape("tagline") %></span></p>
+  <span class="location edit"><%= user.escape("location") %></span>
+  <span class="industry edit"><%= user.escape("industry") %></span>
 
   <table class="user-overview">
     <tr>
       <th> Current </th>
-      <td> Fill this in </td>
+      <td><span class="edit"> Fill this in </span></td>
     </tr>
     <tr>
       <th> Previous </th>
-      <td> Fill this in </td>
+      <td><span class="edit"> Fill this in </span></td>
     </tr>
     <tr>
       <th> Education </th>
-      <td> Fill this in </td>
+      <td><span class="edit"> Fill this in </span></td>
     </tr>
   </table>
 

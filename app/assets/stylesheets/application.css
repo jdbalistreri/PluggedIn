@@ -546,8 +546,8 @@ span.edit > a {
 .inbox > .sidebar {
   float: left;
   border-right: 1px solid grey;
-  width: 159px;
-  padding: 0 20px;
+  width: 179px;
+  padding: 0 20px 0 0;
   height: 300px;
 }
 
@@ -558,11 +558,29 @@ span.edit > a {
   text-align: center;
 }
 
-.inbox > .messages {
+.inbox > .inbox-content {
   float: right;
+  padding: 20px 20px 20px 20px;
   margin-top: -20px;
-  width: 695px;
-  padding: 20px;
+  margin-left: 20px;
+  border-radius: 5px;
+  width: 673px;
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+}
+
+.inbox .messages {
+  width: 675px;
+  height: 440px;
+  overflow: scroll;
+  background: white;
+  /*border: 1px solid #ccc;*/
+}
+
+.inbox > .inbox-content h3 {
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 20px;
 }
 
 /*TOGGLE*/

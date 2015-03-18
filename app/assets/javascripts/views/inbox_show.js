@@ -4,6 +4,7 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
     this.inbox = options.inbox;
     this.subview = options.subview;
     this.type = options.type;
+    this.title = options.title;
     this.direction = options.direction;
 
 
@@ -16,9 +17,9 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
   template: JST["inbox/show"],
 
   render: function (){
-    var content = this.template();
+    var content = this.template({title: this.title});
     this.$el.html(content);
-    this.emptySubviews(".messages");
+    // this.emptySubviews(".messages");
 
     if (this.subview) {
       this.addSubview(".messages", this.subview)

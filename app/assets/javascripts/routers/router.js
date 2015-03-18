@@ -45,7 +45,8 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     message = this.inbox.messages().getOrFetch(id);
 
     var view = new ExtinctIn.Views.InboxShow({
-      subview: new ExtinctIn.Views.MessageShow({model: message})
+      subview: new ExtinctIn.Views.MessageShow({model: message}),
+      title: "Message Detail",
     });
     this._swapViews(view);
   },
@@ -57,7 +58,8 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
         model: new ExtinctIn.Models.Message(),
         collection: this.inbox.messages(),
         users: this.collection,
-      })
+      }),
+      title: "New Message",
     });
     this._swapViews(view);
   },
@@ -66,6 +68,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     var view = new ExtinctIn.Views.InboxShow({
       type: "messages",
       direction: "received",
+      title: "Received Messages",
       inbox: this.inbox,
     });
     this._swapViews(view);
@@ -75,6 +78,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     var view = new ExtinctIn.Views.InboxShow({
       type: "messages",
       direction: "sent",
+      title: "Sent Messages",
       inbox: this.inbox,
     });
     this._swapViews(view);
@@ -84,6 +88,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     var view = new ExtinctIn.Views.InboxShow({
       type: "messages",
       direction: "received",
+      title: "Received Messages",
       inbox: this.inbox,
     });
     this._swapViews(view);
@@ -93,6 +98,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     var view = new ExtinctIn.Views.InboxShow({
       type: "connections",
       direction: "sent",
+      title: "Sent Connections",
       inbox: this.inbox,
     });
     this._swapViews(view);
@@ -102,6 +108,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     var view = new ExtinctIn.Views.InboxShow({
       type: "connections",
       direction: "received",
+      title: "Received Connections",
       inbox: this.inbox,
     });
     this._swapViews(view);

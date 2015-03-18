@@ -51,10 +51,6 @@ a {
   color: rgb(0, 111, 166);
 }
 
-/*h3 {
-  font-size: 24px;
-  padding-left: 10px;
-}*/
 
 /*NAVIGATION BAR*/
 header {
@@ -74,6 +70,7 @@ header > h2 {
 /*MAIN*/
 main {
   background-image: url(https://static.licdn.com/scds/common/u/images/themes/katy/textures/texture_grain_200x200_v2.png);
+  padding-bottom: 50px;
 }
 
 #content {
@@ -86,10 +83,10 @@ main {
 article {
   background: #fff;
   box-shadow: 1px 1px 1px grey;
+  border-radius: 2px;
 }
 
 .user-experiences,
-.user-connections,
 .user-card {
   width: 606px;
   padding: 20px;
@@ -97,18 +94,15 @@ article {
   margin-top: 10px;
 }
 
-.user-connections {
-  margin-bottom: 100px;
-}
-
-.user-card, .user-sidebar {
+.user-card, .user-connections {
   margin-top: 30px;
 }
 
-.user-sidebar {
+.user-connections {
   float: right;
+  position: relative;
   width: 278px;
-  height: 500px;
+  height: 490px;
   padding: 20px;
 }
 
@@ -119,6 +113,7 @@ h2 {
 }
 
 h2 > strong {
+  border-radius: 2px;
   padding: 7px 20px;
   background: #333;
   color: #fff;
@@ -244,12 +239,6 @@ span.industry:before {
   font-size: 14px;
 }
 
-/*.local-text, .date-text {
-  color: #444;
-  font-size: 14px;
-  line-height: 30px;
-}*/
-
 .local-text:before, .major:before {
   content: " | "
 }
@@ -321,6 +310,10 @@ a.edit-form {
   font-size: 13px;
 }
 
+.connected-users-list > li:first-child {
+  padding-top: 0px;
+}
+
 .connections-title {
   font-size: 12px;
   display: inline-block;
@@ -352,8 +345,11 @@ a.edit-form {
 }
 
 .connections-nav {
-  margin: 20px -20px -20px -20px;
   padding: 10px;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
   display: block;
   background: rgb(234, 234, 234);
 }

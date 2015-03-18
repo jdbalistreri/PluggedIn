@@ -39,7 +39,7 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
   search: function (event, attr, shared) {
     event && event.preventDefault();
     this.searchResults.pageNum = 1;
-    this.searchResults.maxPages = Math.ceil(this.user.get(attr)/10);
+    this.searchResults.maxPages = Math.ceil(this.user.get(attr)/6);
     this.searchResults.fetch({
       data: {
         user_id: this.user.id,

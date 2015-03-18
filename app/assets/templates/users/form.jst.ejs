@@ -1,10 +1,10 @@
 <ul class="errors"></ul>
 
-<label for="user-fname">First Name: </label>
+<label class="required" for="user-fname">First Name: </label>
 <input id="user-fname" type="text" name="fname" value="<%= user.escape("fname")%>">
 <br>
 
-<label for="user-lname">Last Name: </label>
+<label class="required" for="user-lname">Last Name: </label>
 <input id="user-lname" type="text" name="lname" value="<%= user.escape("lname")%>">
 <br>
 
@@ -25,6 +25,6 @@
 <br>
 
 <img id="picture-preview" src="" alt="" />
-
-<button class="submit">Submit</button>
-<a href="javascript:void(0)" class="cancel">Cancel</a>
+<br>
+<button class="submit blue-button">Submit</button>
+<a href="javascript:void(0)" class="cancel grey-button">Cancel</a>

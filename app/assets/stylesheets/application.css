@@ -525,26 +525,44 @@ span.edit > a {
   text-align: center;
 }
 
+/*SEARCH*/
+
+.user-search {
+  margin-top: 10px;
+  width: 935px;
+  padding: 20px;
+}
+
 
 /*INBOX*/
 
 .inbox {
-  margin-top: 30px;
-  width: 646px;
+  margin-top: 10px;
+  width: 935px;
   float: left;
+  padding: 20px;
 }
 
 .inbox > .sidebar {
   float: left;
-  background: lightgrey;
-  border: 1px solid grey;
-  width: 154px;
-  height: 100%;
+  border-right: 1px solid grey;
+  width: 159px;
+  padding: 0 20px;
+  height: 300px;
+}
+
+.inbox > .sidebar > li {
+  padding-bottom: 30px;
+  display: block;
+  margin: auto;
+  text-align: center;
 }
 
 .inbox > .messages {
   float: right;
-  width: 450px;
+  margin-top: -20px;
+  width: 695px;
+  padding: 20px;
 }
 
 /*TOGGLE*/

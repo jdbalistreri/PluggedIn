@@ -18,9 +18,9 @@
   <header class="responsive-header">
     <nav class="responsive-header-nav group">
       <ul class="responsive-list group">
-        <li><a href="#users/<%=current_user.try(:id) || "" %>">Profile</a></li>
+        <li><a href="#">Profile</a></li>
         <li><a href="#inbox">Inbox</a></li>
-        <li><a href="#">Search</a></li>
+        <li><a href="#search">Search</a></li>
       </ul>
       <%= render partial: "/shared/logged_in", locals: {current_user: current_user } %>
     </nav>

@@ -1,6 +1,7 @@
 ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
 
   tagName: "article",
+  className: "user-search",
 
   initialize: function () {
     this.searchResults = new ExtinctIn.Collections.SearchResults();

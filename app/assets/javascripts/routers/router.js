@@ -12,9 +12,10 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   routes: {
-    "": "index",
+    "": "user_show",
     "users/:id": "user_show",
     "inbox": "inbox_show",
+    "search": "search",
     "inbox/messages/sent": "sent_messages",
     "inbox/messages/received": "received_messages",
     "inbox/messages/new": "new_message",
@@ -35,7 +36,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     }
   },
 
-  index: function () {
+  search: function () {
     var view = new ExtinctIn.Views.UserSearch();
     this._swapViews(view);
   },
@@ -107,6 +108,9 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   user_show: function (id) {
+    if (!id) {
+      id = ExtinctIn.currentUserId;
+    }
     var user = this.collection.getOrFetch(id);
     var view = new ExtinctIn.Views.UserShow({model: user});
     this._swapViews(view);

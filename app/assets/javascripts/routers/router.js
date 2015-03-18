@@ -7,6 +7,8 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
 
     this.inbox = new ExtinctIn.Models.Inbox();
     this.inbox.fetch();
+
+    this.bindEvents();
   },
 
   routes: {
@@ -19,6 +21,18 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     "inbox/messages/:id": "message_show",
     "inbox/connections/sent": "sent_connections",
     "inbox/connections/received": "received_connections",
+  },
+
+  bindEvents: function () {
+    $(window).bind("mousewheel", this.handleScroll.bind(this));
+  },
+
+  handleScroll: function (event) {
+    if (event.originalEvent.wheelDelta >= 0) {
+      $(".global-header").removeClass("toggled")
+    } else {
+      $(".global-header").addClass("toggled")
+    }
   },
 
   index: function () {

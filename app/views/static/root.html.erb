@@ -1,12 +1,27 @@
-<header>
-  <a href="#"><span>Extinct IN</span></a>
-  <a href="#users/<%=current_user.try(:id) || "" %>">My Profile</a>
-  <a href="#inbox">Inbox</a>
-  <span>
-    <%= render partial: "/shared/logged_in", locals: {current_user: current_user } %>
+<div class="global-header">
+  <header class="top-header">
+    <nav class="top-header-nav">
+      <a href="#">Extinct IN</a>
 
-  </span>
-</header>
+      <input type="text" name="name" value="" placeholder="Search for people...">
+      <span>
+        <%= render partial: "/shared/logged_in", locals: {current_user: current_user } %>
+      </span>
+    </nav>
+  </header>
+
+  <header class="responsive-header">
+    <nav class="responsive-header-nav">
+      <ul class="responsive-list group">
+        <li><a href="#users/<%=current_user.try(:id) || "" %>">My Profile</a></li>
+        <li><a href="#inbox">Inbox</a></li>
+        <li><a href="#">Search</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+
 
 <main>
   <section class="group" id="content">

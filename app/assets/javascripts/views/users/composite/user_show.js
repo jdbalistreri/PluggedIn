@@ -6,7 +6,8 @@ ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
   template: JST["users/show"],
 
   initialize: function () {
-    this.listenTo(this.model, "sync", this.render)
+    this.listenTo(this.model, "sync", this.render);
+    $(window).on("scroll", this.handleScroll.bind(this))
   },
 
   render: function () {
@@ -58,4 +59,17 @@ ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
   showJobs: function () {
     return (this.model.jobs().length > 0) || this.currentUser();   ;
   },
+
+  handleScroll: function (event) {
+    if ($(document).scrollTop() >= 48) {
+      this.$(".user-connections").addClass("fixed");
+    } else {
+      this.$(".user-connections").removeClass("fixed");
+    }
+  },
+
+  remove: function () {
+    $(window).off();
+    ExtinctIn.UserView.prototype.remove.call(this);
+  }
 })

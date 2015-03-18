@@ -4,6 +4,10 @@ ExtinctIn.Views.DeleteModal = Backbone.View.extend({
 
   template: JST["utils/delete-modal"],
 
+  initialize: function () {
+    $(document).css("overflow", "hidden")
+  },
+
   events: {
     "click a.no" : "toggleModal",
     "click a.yes" : "deleteModel"

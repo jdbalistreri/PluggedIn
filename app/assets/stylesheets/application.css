@@ -694,7 +694,7 @@ input {
 
 #modal.toggled {
   display: block;
-  position: absolute;
+  position: fixed;
   background: rgba(0,0,0,.4);
   top: 0;
   bottom: 0;
@@ -710,5 +710,19 @@ input {
   height: 200px;
   top: 50%;
   left: 50%;
+  border-radius: 10px;
   transform: translateX(-50%) translateY(-50%);
+}
+
+#modal h3 {
+  padding: 20px;
+  margin: auto;
+}
+
+#modal ul {
+}
+
+#modal li {
+  padding-left: 20px;
+  float: left;
 }

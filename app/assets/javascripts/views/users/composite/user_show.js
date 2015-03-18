@@ -71,7 +71,6 @@ ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
   },
 
   remove: function () {
-    $(window).off();
     ExtinctIn.UserView.prototype.remove.call(this);
   }
 })

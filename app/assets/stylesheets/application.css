@@ -204,10 +204,8 @@ article {
   padding: 20px;
 }
 
-.user-connections.fixed {
-  position: fixed;
-  /*background: blue;*/
-  top: 40px;
+.user-connections.absolute {
+  position: absolute;
   right: 0px;
 }
 

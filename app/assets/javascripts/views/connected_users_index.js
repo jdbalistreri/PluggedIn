@@ -17,6 +17,7 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    console.log("render connected users")
     var show_next = !(this.searchResults.pageNum >= this.searchResults.maxPages);
     var show_prev = !(this.searchResults.pageNum <= 1);
 
@@ -26,8 +27,9 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
       show_prev: show_prev,
     })
 
-    this.$el.html(content)
-
+    this.$el.html(content);
+    this.emptySubviews("ul.connected-users-list");
+    // debugger
     this.searchResults.each( function(user) {
       var connectionView = new ExtinctIn.Views.UserIndexItem({model: user});
       this.addSubview("ul.connected-users-list", connectionView);

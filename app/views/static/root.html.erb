@@ -10,7 +10,7 @@
 
       <span class="user-info-header">
         <%= current_user.full_name.titleize %>
-        <img src="<%=current_user.picture.url(:thumb)%>" alt="" />
+        <img src="<%=image_url(current_user.picture.url(:thumb))%>" alt="" />
       </span>
     </nav>
   </header>

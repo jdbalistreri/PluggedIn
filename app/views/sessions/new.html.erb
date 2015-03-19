@@ -1,16 +1,35 @@
-<h2>Sign In</h2>
-
-<form class="" action=" <%=session_url%>" method="post">
-  <%= auth_token %>
-  <label for="user-email">Email Address: </label>
-  <input id="user-email" type="text" name="user[email]" value="">
-
-  <label for="user-password">Password: </label>
-  <input id="user-password" type="password" name="user[password]" value="">
-
-  <button>Sign In</button>
-</form>
+<section class="login-background">
 
 
-<br>
-Not a user yet? <a href=" <%= new_user_url %>">Sign Up!</a>
+  <form class="login-form" action=" <%=session_url%>" method="post">
+    <h2 class="login-logo">Plugged <strong>in</strong></h2>
+    <h3>A LinkedIn clone for robots</h3>
+
+    <%= auth_token %>
+    <input id="user-email" type="text" name="user[email]" value="" placeholder="Email Address">
+
+    <input id="user-password" type="password" name="user[password]" placeholder="Password">
+
+    <button class="blue-button sign-in">Sign In</button>
+    Not a user yet? <a href=" <%= new_user_url %>">Sign Up!</a>
+
+    <div class="new-user">
+      <strong>Employer?</strong>
+    <button class="green-button demo">Sign in as a demo user</button>
+    </div>
+  </form>
+
+
+</section>
+
+
+<script>
+  $((function () {
+    $(".demo").on("click", function (event) {
+      event.preventDefault();
+      $("#user-email").val("joe");
+      $("#user-password").val("joejoe");
+      $(".login-form").submit();
+    })
+  })())
+</script>

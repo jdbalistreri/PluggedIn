@@ -13,8 +13,13 @@ class Api::MessagesController < ApplicationController
   end
 
   def show
-    @message = current_user.sent_messages.find(params[:id]) ||
-      current_user.received_messages.find(params[:id])
+    found = false
+    messages = current_user.sent_messages.to_a.concat(current_user.received_messages.to_a)
+    messages.each do |message|
+      found = true if message.sender_id == current_user.id || message.receiver_id == current_user.id
+    end
+
+    @message = Message.find(params[:id]) if found
   end
 
   private

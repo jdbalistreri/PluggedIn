@@ -1,7 +1,12 @@
 class Api::UsersController < ApplicationController
 
   def index
-    @users = User.all.includes(:connections)
+    users = User.all.includes(:connections)
+    @users = []
+    users.each do |user|
+      cu_connection = user.connection_with(current_user)
+      @users << user if cu_connection && cu_connection.approved?
+    end
   end
 
   def show

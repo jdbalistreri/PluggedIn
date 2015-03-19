@@ -2,7 +2,8 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
 
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
-    this.collection = new ExtinctIn.Collections.Users();
+    this.connected_users = new ExtinctIn.Collections.Users();
+    this.connected_users.fetch();
 
     this.inbox = new ExtinctIn.Models.Inbox();
     // this.inbox.fetch();
@@ -69,7 +70,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
         query: query,
         model: new ExtinctIn.Models.Message(),
         collection: this.inbox.messages(),
-        users: this.collection,
+        users: this.connected_users,
       }),
       title: "New Message",
     });
@@ -130,7 +131,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     if (!id) {
       id = ExtinctIn.currentUserId;
     }
-    var user = this.collection.getOrFetch(id);
+    var user = this.connected_users.getOrFetch(id);
     var view = new ExtinctIn.Views.UserShow({model: user});
     this._swapViews(view);
   },

@@ -17,7 +17,7 @@ ExtinctIn.Views.MessageForm = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
 
-    this.users.connected_users().forEach(function (user) {
+    this.users.forEach(function (user) {
       var $option = $("<option>").html(user.escape("full_name")).attr("value", user.id);
       if ((this.query) && (user.id === parseInt(this.query.split("=")[1]))) {
         $option.prop("selected", true);

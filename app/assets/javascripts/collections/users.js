@@ -19,16 +19,16 @@ ExtinctIn.Collections.Users = Backbone.Collection.extend({
 });
 
 
-ExtinctIn.Collections.Users.prototype.connected_users = function () {
-  var connected_users = [];
-
-  this.each(function (user) {
-    if (user.cu_connection()) {
-      if (user.cu_connection().get("status") === "approved") {
-        connected_users.push(user);
-      }
-    }
-  })
-
-  return connected_users;
-};
+// ExtinctIn.Collections.Users.prototype.connected_users = function () {
+//   var connected_users = [];
+//
+//   this.each(function (user) {
+//     if (user.cu_connection()) {
+//       if (user.cu_connection().get("status") === "approved") {
+//         connected_users.push(user);
+//       }
+//     }
+//   })
+//
+//   return connected_users;
+// };

@@ -29,7 +29,7 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
 
     this.$el.html(content);
     this.emptySubviews("ul.connected-users-list");
-    // debugger
+
     this.searchResults.each( function(user) {
       var connectionView = new ExtinctIn.Views.UserIndexItem({model: user});
       this.addSubview("ul.connected-users-list", connectionView);

@@ -29,6 +29,11 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   handleScroll: function (event) {
+    if ($(document).scrollTop() === 0) {
+      $(".global-header").removeClass("toggled");
+      return;
+    }
+
     if (event.originalEvent.wheelDelta >= 0) {
       $(".global-header").removeClass("toggled")
     } else {

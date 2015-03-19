@@ -23,10 +23,12 @@ ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
   },
 
   addConnectedUsersIndex: function () {
-    var connectedUsersIndex = new ExtinctIn.Views.ConnectedUsersIndex({
-      user: this.model,
-    });
-    this.addSubview(".user-connections", connectedUsersIndex)
+    if (!this.connectedUsersIndex) {
+      this.connectedUsersIndex = new ExtinctIn.Views.ConnectedUsersIndex({
+        user: this.model,
+      });
+    }
+    this.addSubview(".user-connections", this.connectedUsersIndex)
   },
 
   addJobsIndex: function () {
@@ -67,7 +69,6 @@ ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
 
     if ($(document).scrollTop() >= 48) {
       this.$(".user-connections").addClass("absolute");
-      // debugger
       if ($(document).scrollTop() + 673 > this._documentHeight) {
         this.$(".user-connections").css("top", this._documentHeight - (673+48));
       } else {

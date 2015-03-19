@@ -53,10 +53,6 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
     this.search(event, "num_connections", false);
   },
 
-  // shared_search: function (event) {
-  //   this.search(event, "num_shared_connections", true);
-  // },
-
   nextPage: function (event) {
     if (this.searchResults.pageNum >= this.searchResults.maxPages) return;
     this.incrementSearch(1);

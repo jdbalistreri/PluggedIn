@@ -3,10 +3,9 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this.collection = new ExtinctIn.Collections.Users();
-    this.collection.fetch();
 
     this.inbox = new ExtinctIn.Models.Inbox();
-    this.inbox.fetch();
+    // this.inbox.fetch();
 
     this.bindEvents();
   },

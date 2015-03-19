@@ -9,8 +9,6 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    sleep 0.3
-
     @user = current_user
 
     if @user.update(user_params)

@@ -9,9 +9,9 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
 
 
     if (this.inbox) {
-      this.inbox.fetch();
+      ExtinctIn.Inbox.fetch();
       this.updateValues();
-      this.listenTo(this.inbox, "sync", this.updateValues);
+      this.listenTo(ExtinctIn.Inbox, "sync", this.updateValues);
     }
   },
 
@@ -31,7 +31,7 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
   },
 
   updateValues: function () {
-    this.displayItems = this.inbox[this.type]()[this.direction]();
+    this.displayItems = ExtinctIn.Inbox[this.type]()[this.direction]();
     this.render()
   },
 

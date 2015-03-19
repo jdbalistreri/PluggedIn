@@ -5,8 +5,10 @@ ExtinctIn.Collections.Messages = Backbone.Collection.extend({
   },
 
   model: ExtinctIn.Models.Message,
-  comparator: "created_at",
 
+  comparator: function (model) {
+    -model.get("created_at");
+  },
 
   getOrFetch: function (id) {
     var model = this.get(id);

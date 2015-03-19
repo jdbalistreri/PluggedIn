@@ -42,6 +42,11 @@ ExtinctIn.Views.ConnectButton = Backbone.View.extend({
   requestConnection: function () {
     this.model.set("sender_id", ExtinctIn.currentUserId)
     this.model.set("receiver_id", this.user.id)
-    this.model.save();
+    this.model.save({}, {
+      success: function (model) {
+        ExtinctIn.Inbox.messages().add(model, {merge: true});
+      },
+    });
+
   },
 })

@@ -18,5 +18,5 @@ ExtinctIn.UserView = Backbone.CompositeView.extend({
   currentUser: function () {
     return ExtinctIn.currentUserId === parseInt(this.model.id);
   },
-  
+
 });

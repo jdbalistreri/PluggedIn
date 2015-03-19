@@ -5,8 +5,8 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     this.connected_users = new ExtinctIn.Collections.Users();
     this.connected_users.fetch();
 
-    this.inbox = new ExtinctIn.Models.Inbox();
-    // this.inbox.fetch();
+    ExtinctIn.Inbox = new ExtinctIn.Models.Inbox();
+    // ExtinctIn.Inbox.fetch();
 
     this.bindEvents();
   },
@@ -55,7 +55,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   message_show: function (id) {
-    message = this.inbox.messages().getOrFetch(id);
+    message = ExtinctIn.Inbox.messages().getOrFetch(id);
 
     var view = new ExtinctIn.Views.InboxShow({
       subview: new ExtinctIn.Views.MessageShow({model: message}),
@@ -69,7 +69,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
       subview: new ExtinctIn.Views.MessageForm({
         query: query,
         model: new ExtinctIn.Models.Message(),
-        collection: this.inbox.messages(),
+        collection: ExtinctIn.Inbox.messages(),
         users: this.connected_users,
       }),
       title: "New Message",
@@ -82,7 +82,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
       type: "messages",
       direction: "received",
       title: "Received Messages",
-      inbox: this.inbox,
+      inbox: true,
     });
     this._swapViews(view);
   },
@@ -92,7 +92,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
       type: "messages",
       direction: "sent",
       title: "Sent Messages",
-      inbox: this.inbox,
+      inbox: true,
     });
     this._swapViews(view);
   },
@@ -102,7 +102,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
       type: "messages",
       direction: "received",
       title: "Received Messages",
-      inbox: this.inbox,
+      inbox: true,
     });
     this._swapViews(view);
   },
@@ -112,7 +112,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
       type: "connections",
       direction: "sent",
       title: "Sent Connections",
-      inbox: this.inbox,
+      inbox: true,
     });
     this._swapViews(view);
   },
@@ -122,7 +122,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
       type: "connections",
       direction: "received",
       title: "Received Connections",
-      inbox: this.inbox,
+      inbox: true,
     });
     this._swapViews(view);
   },

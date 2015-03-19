@@ -18,7 +18,7 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
   template: JST["inbox/show"],
 
   render: function (){
-    var content = this.template({title: this.title});
+    var content = this.template({title: this.title, count: this.displayItems && this.displayItems.length});
     this.$el.html(content);
 
     if (this.subview) {

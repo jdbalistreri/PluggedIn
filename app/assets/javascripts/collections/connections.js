@@ -1,9 +1,9 @@
 ExtinctIn.Collections.Connections = Backbone.Collection.extend({
 
   model: ExtinctIn.Models.Connection,
-  
+
   comparator: function (model) {
-    -model.get("created_at");
+    return -Date.parse(model.get("created_at"));
   },
 
   initialize: function (models, options) {

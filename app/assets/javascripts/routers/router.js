@@ -121,7 +121,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
     var view = new ExtinctIn.Views.InboxShow({
       type: "connections",
       direction: "received",
-      title: "Received Connections",
+      title: "Pending Received Connections",
       inbox: true,
     });
     this._swapViews(view);

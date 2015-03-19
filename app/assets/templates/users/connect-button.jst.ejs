@@ -6,11 +6,11 @@
   <button class="message-user">Send a message</button>
 
 <% } else if (parseInt(cu_connection.get("receiver_id")) === user.id) { %>
-  <button class="delete-this">Connection Sent</button>
+  <button class="delete-this disabled" disabled>Connection Sent</button>
 
 <% } else if (cu_connection.escape("status") === "pending") { %>
-  <button class="approve-connection">Approve</button>
-  <button class="deny-connection">Deny</button>
+  <a href="javascript:void(0)"><button class="approve-connection">Approve</button>
+  <button class="deny-connection">Deny</button></a>
 
 <% } else { %>
   <button class="approve-connection">Connect</button>

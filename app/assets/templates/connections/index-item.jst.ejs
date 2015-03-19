@@ -1,13 +1,11 @@
-<hr>
-Sent By: <a href="<%="#/users/" + connection.escape("sender_id") %>">
-  <%= connection.escape("sender_id") %></a>
-<br>
-Received By: <a href="<%="#/users/" + connection.escape("receiver_id") %>">
-  <%= connection.escape("receiver_id") %></a>
-<br>
-Status: <%= connection.escape("status") %>
+<section class="message-link group">
+<img src=" <%= connection.user().escape("thumb_picture_url") %> " alt="" />
 
-
-<section class="user-detail">
-
+<ul>
+  <li>
+    <%= connection.user().escape("full_name") %>
+  </li>
+  <li class="button-holder blue">
+  </li>
+</ul>
 </section>

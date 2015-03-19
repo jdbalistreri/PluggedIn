@@ -57,6 +57,10 @@ button {
   cursor: pointer;
 }
 
+button.disabled {
+  cursor: default;
+}
+
 /*LOGIN*/
 
 .login-background {
@@ -405,7 +409,8 @@ span.industry:before {
 
 .profile-info button,
 .experience button,
-.blue-button {
+.blue-button ,
+.button-holder.blue button {
   color: #fff;
   background-color: rgb(40, 123, 188);
   background-image: -webkit-linear-gradient(top, rgb(40,123,188) 0%,
@@ -718,7 +723,7 @@ span.edit > a {
   padding-bottom: 2px;
 }
 
-.message-link:hover {
+a.message-link:hover {
   background: lightgrey;
 }
 

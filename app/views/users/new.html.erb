@@ -1,23 +1,21 @@
-<h2>Sign Up</h2>
-
-<form class="" action="<%=users_url%>" method="post">
-  <%= auth_token %>
-  <label for="user-email">Email Address: </label>
-  <input id="user-email" type="text" name="user[email]" value="">
-
-  <label for="user-password">Password: </label>
-  <input id="user-password" type="password" name="user[password]" value="">
-
-  <br>
-  <label for="user-fname">First Name: </label>
-  <input id="user-fname" type="text" name="user[fname]" value="">
-
-  <label for="user-lname">Last Name: </label>
-  <input id="user-lname" type="text" name="user[lname]" value="">
+<section class="login-background">
 
 
-  <button>Sign Up</button>
-</form>
+  <form class="login-form" action="<%=users_url%>" method="post">
+    <h2 class="login-logo">Plugged <strong>in</strong></h2>
+    <h3>A LinkedIn clone for robots</h3>
 
-<br>
-Already have an account? <a href=" <%= new_session_url %>">Sign In!</a>
+    <%= auth_token %>
+    <input id="user-fname" type="text" name="user[fname]" value="" placeholder="First Name">
+    <input id="user-lname" type="text" name="user[lname]" value="" placeholder="Last Name">
+    <input id="user-email" type="text" name="user[email]" value="" placeholder="Email Address">
+
+    <input id="user-password" type="password" name="user[password]" placeholder="Password">
+
+    <button class="blue-button sign-in">Sign Up</button>
+    Already have an account? <a href=" <%= new_session_url %>">Sign In!</a>
+
+  </form>
+
+
+</section>

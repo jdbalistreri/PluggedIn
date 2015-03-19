@@ -139,6 +139,15 @@ button {
   font-size: 18px;
 }
 
+.login-form #user-fname {
+  width: 120px;
+  float: left;
+}
+
+.login-form #user-lname {
+  width: 200px;
+}
+
 .green-button {
   color: #fff;
   background-color: #0c0;

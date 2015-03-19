@@ -9,6 +9,7 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
 
 
     if (this.inbox) {
+      this.inbox.fetch();
       this.updateValues();
       this.listenTo(this.inbox, "sync", this.updateValues);
     }
@@ -19,7 +20,6 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
   render: function (){
     var content = this.template({title: this.title});
     this.$el.html(content);
-    // this.emptySubviews(".messages");
 
     if (this.subview) {
       this.addSubview(".messages", this.subview)

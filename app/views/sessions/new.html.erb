@@ -11,9 +11,10 @@
     <input id="user-password" type="password" name="user[password]" placeholder="Password">
 
     <button class="blue-button sign-in">Sign In</button>
-    Not a user yet? <a href=" <%= new_user_url %>">Sign Up!</a><br>
-    Or <a href="/auth/twitter">Sign in with Twitter</a>
-
+    <ul class="sign-in-options group">
+      <li>Not a user yet? <a href=" <%= new_user_url %>">Sign Up!</a></li>
+      <li>Or <a href="/auth/twitter">Sign in with Twitter</a></li>
+    </ul>
     <div class="new-user">
       <strong>Employer?</strong>
     <button class="green-button demo">Sign in as a demo user</button>

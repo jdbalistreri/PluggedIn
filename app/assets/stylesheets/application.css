@@ -78,7 +78,7 @@ button {
   position: absolute;
   background: rgba(255, 255, 255, .95);
   width: 375px;
-  height: 350px;
+  height: 370px;
   padding: 30px 40px;
   top: 50%;
   left: 50%;
@@ -131,7 +131,7 @@ button {
   border: 1px solid #ccc;
   padding: 10px;
   display: block;
-  margin: 20px 0 -20px 0;
+  margin: 30px 0 -20px 0;
 }
 
 .new-user strong {
@@ -163,6 +163,13 @@ button {
   width: 355px;
 }
 
+.sign-in-options li:first-child {
+  float: left
+}
+
+.sign-in-options li:last-child {
+  float: right
+}
 
 /*NAVIGATION BAR*/
 .global-header {

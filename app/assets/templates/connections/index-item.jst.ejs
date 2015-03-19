@@ -1,9 +1,10 @@
 <section class="message-link group">
-<img src=" <%= connection.user().escape("thumb_picture_url") %> " alt="" />
+<a href="#users/<%= connection.user().id %>" ><img src=" <%= connection.user().escape("thumb_picture_url") %> " alt="" />
+</a>
 
 <ul>
   <li>
-    <%= connection.user().escape("full_name") %>
+    <a href="#users/<%= connection.user().id %>" ><strong><%= connection.user().escape("full_name") %></strong></a>
   </li>
   <li class="button-holder blue">
   </li>

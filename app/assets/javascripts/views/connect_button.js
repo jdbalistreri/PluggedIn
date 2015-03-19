@@ -27,7 +27,6 @@ ExtinctIn.Views.ConnectButton = Backbone.View.extend({
       success: function (model) {
         var connection = ExtinctIn.Inbox.connections().get(model.id);
         ExtinctIn.Inbox.connections().remove(connection);
-        // debugger
         this.user.set("num_connections", this.user.get("num_connections")+1);
       }.bind(this)
     });
@@ -37,7 +36,8 @@ ExtinctIn.Views.ConnectButton = Backbone.View.extend({
     this.model.set("status", 2)
     this.model.save({}, {
       success: function (model) {
-        ExtinctIn.Inbox.connections().remove(model);
+        var connection = ExtinctIn.Inbox.connections().get(model.id);
+        ExtinctIn.Inbox.connections().remove(connection);
       },
     });
   },

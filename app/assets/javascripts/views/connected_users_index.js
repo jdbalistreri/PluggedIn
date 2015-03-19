@@ -17,7 +17,6 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    console.log("render connected users")
     var show_next = !(this.searchResults.pageNum >= this.searchResults.maxPages);
     var show_prev = !(this.searchResults.pageNum <= 1);
 

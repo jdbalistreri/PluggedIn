@@ -21,6 +21,8 @@ gem 'figaro'
 gem 'pg_search'
 gem 'faker'
 gem 'kaminari'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 group :development do
   gem 'annotate'

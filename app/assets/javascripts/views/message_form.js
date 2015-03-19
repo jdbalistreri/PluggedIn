@@ -35,8 +35,6 @@ ExtinctIn.Views.MessageForm = Backbone.View.extend({
 
     this.model.save(attrs, {
       success: function (model, response) {
-        ExtinctIn.Inbox.messages().add(model, {merge: true});
-        ExtinctIn.Inbox.messages().sort();
         Backbone.history.navigate("#inbox/messages/sent", {trigger: true});
       }.bind(this),
     })

@@ -24,7 +24,9 @@ class SessionsController < ApplicationController
   end
 
   def omniauth
-    @user = User.find_or_create_from_auth_hash()
+    @user = User.find_or_create_from_auth_hash(auth_hash)
+    log_in!(@user)
+    redirect_to "/"
   end
 
   private

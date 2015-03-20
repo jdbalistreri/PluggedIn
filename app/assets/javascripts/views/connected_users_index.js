@@ -6,9 +6,11 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.user = options.user;
+
     this.searchResults = new ExtinctIn.Collections.ConnectionsSearch();
-    this.all_search();
+    this.no_event_search();
     this.listenTo(this.searchResults, "sync", this.render);
+    this.listenTo(this.user, "sync", this.no_event_search);
   },
 
   events: {
@@ -37,8 +39,10 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
     return this;
   },
 
-  search: function (event, attr, shared) {
-    event && event.preventDefault();
+  search: function (local_event, attr, shared) {
+    if (this.user.get(attr) === undefined) return;
+
+    local_event && local_event.preventDefault();
     this.searchResults.pageNum = 1;
     this.searchResults.maxPages = Math.ceil(this.user.get(attr)/6);
     this.searchResults.fetch({
@@ -50,8 +54,12 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
     });
   },
 
-  all_search: function (event) {
-    this.search(event, "num_connections", false);
+  all_search: function (local_event) {
+    this.search(local_event, "num_connections", false);
+  },
+
+  no_event_search: function () {
+    this.search(null, "num_connections", false);
   },
 
   nextPage: function (event) {

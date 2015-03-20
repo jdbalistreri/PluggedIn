@@ -39,6 +39,26 @@ class Message < ActiveRecord::Base
     self.created_at.to_formatted_s(:long_ordinal)
   end
 
+  def body_preview
+    if self.body.length > 65
+      output = ""
+
+      self.body.split(" ").each do |word|
+        if output.length + word.length < 62
+          output += "#{word} "
+        else
+          output.strip!
+          output += "..."
+          return output
+        end
+      end
+
+      output
+    else
+      self.body
+    end
+  end
+
   private
     def different_sender_and_receiver
       if self.sender_id && self.sender_id == self.receiver_id

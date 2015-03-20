@@ -13,5 +13,11 @@
   <p class="message-body"> <%= message.escape("body") %> </p>
 
 
-  <a href="#inbox/messages<%= message.get("sent") ? "/sent" : "/received" %> " class="grey-button">Back</a>
+
+
+
+  <ul class="bottom-buttons group">
+    <li><a href="#inbox/messages<%= message.get("sent") ? "/sent" : "/received" %> " class="grey-button">Back</a></li>
+    <li><section class="button-holder blue-button"></section></li>
+  </ul>
 <% } %>

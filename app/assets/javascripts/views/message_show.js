@@ -1,4 +1,4 @@
-ExtinctIn.Views.MessageShow = Backbone.View.extend({
+ExtinctIn.Views.MessageShow = Backbone.CompositeView.extend({
 
   tagName: "li",
   className: "message-show",
@@ -11,6 +11,15 @@ ExtinctIn.Views.MessageShow = Backbone.View.extend({
   render: function () {
     var content = this.template({message: this.model});
     this.$el.html(content);
+
+    if (this.model.user()) {
+      var connectButton = new ExtinctIn.Views.ConnectButton({
+        user: this.model.user(),
+        model: this.model.user().cu_connection(),
+      });
+      this.addSubview(".button-holder", connectButton);
+    }
+
     return this;
   },
 

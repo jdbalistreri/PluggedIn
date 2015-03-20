@@ -97,12 +97,50 @@ class User < ActiveRecord::Base
         .where([where, {id: self.id}])
   end
 
+  def current_jobs
+    @jobs = self.jobs
+    @current_jobs.empty? ? nil : @current_jobs
+  end
+
+  def previous_jobs
+    @jobs = self.jobs
+    @previous_jobs.empty? ? nil : @previous_jobs
+  end
+
+  def education
+    @schools = self.schools
+    @education
+  end
+
   def jobs
-    self.experiences.where(experience_type: 0)
+    return @jobs if @jobs
+    jobs = self.experiences.where(experience_type: 0)
+    @current_jobs = []
+    @previous_jobs = []
+
+    jobs.each do |job|
+      if job.end_date.nil?
+        @current_jobs << job
+      else
+        @previous_jobs << job
+      end
+    end
+
+    @previous_jobs.sort! { |job| job.end_date }
+
+    @current_jobs = @current_jobs.sample(3).map(&:institution).join(", ")
+    @previous_jobs = @previous_jobs.sample(3).map(&:institution).join(", ")
+
+    jobs
   end
 
   def schools
-    self.experiences.where(experience_type: 1)
+    return @schools if @schools
+    schools = self.experiences.where(experience_type: 1)
+
+    @education = schools.map(&:institution).join(", ")
+
+    schools
   end
 
   def full_name

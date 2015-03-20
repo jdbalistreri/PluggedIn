@@ -6,3 +6,5 @@ json.cu_connection user.connection_with(current_user)
 
 json.profile_picture_url image_url(user.picture.url(:profile))
 json.thumb_picture_url image_url(user.picture.url(:thumb))
+
+json.(user, :education, :current_jobs, :previous_jobs)

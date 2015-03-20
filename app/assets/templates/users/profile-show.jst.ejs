@@ -9,18 +9,28 @@
   <span class="industry edit"><%= user.escape("industry") %></span>
 
   <table class="user-overview">
-    <tr>
-      <th> Current </th>
-      <td><span class="edit"> Fill this in </span></td>
-    </tr>
-    <tr>
-      <th> Previous </th>
-      <td><span class="edit"> Fill this in </span></td>
-    </tr>
-    <tr>
-      <th> Education </th>
-      <td><span class="edit"> Fill this in </span></td>
-    </tr>
+    <% if (user.escape("current_jobs")) { %>
+      <tr>
+        <th> Current </th>
+        <td><span class="edit"> <%= user.escape("current_jobs") %> </span></td>
+      </tr>
+    <% } %>
+
+    <% if (user.escape("previous_jobs")) { %>
+      <tr>
+        <th> Previous </th>
+        <td><span class="edit"> <%= user.escape("previous_jobs") %> </span></td>
+      </tr>
+    <% } %>
+
+    <% if (user.escape("education")) { %>
+      <tr>
+        <th> Education </th>
+        <td><span class="edit"> <%= user.escape("education") %> </span></td>
+      </tr>
+    <% } %>
+
+
   </table>
 
   <div class="profile-bottom group">

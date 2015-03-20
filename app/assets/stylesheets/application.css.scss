@@ -822,6 +822,10 @@ input {
   margin-bottom: 20px;
 }
 
+.errors > .error {
+  display: block;
+}
+
 .bottom-buttons > li {
   float: left;
   display: block;

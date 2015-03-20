@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     dependent: :destroy
   )
 
-  has_attached_file :picture, styles: {profile: "200x200>", thumb: "60x60>"}, default_url: "default.png"
+  has_attached_file :picture, styles: {profile: "200x200#", thumb: "60x60#"}, default_url: "default.png"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
   def num_connections

@@ -1,5 +1,5 @@
 
-<img class="thumb-picture" src="<%= user.escape("thumb_picture_url") %>" alt="Profile Picture" />
+<a href="#users/<%= user.id %>"><img class="thumb-picture" src="<%= user.escape("thumb_picture_url") %>" alt="Profile Picture" /></a>
 <span class="full-name">
   <a href="#users/<%= user.id %>"><%= user.escape("full_name") %></a>
 </span>

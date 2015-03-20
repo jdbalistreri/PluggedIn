@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates :email, :session_token, uniqueness: true
   validate :name_presence
   after_initialize :ensure_session_token
+  after_initialize :ensure_defaults
 
   has_many(
     :sent_messages,
@@ -227,6 +228,12 @@ class User < ActiveRecord::Base
       unless self.lname.present?
         errors[:base] << "Please include a last name"
       end
+    end
+
+    def ensure_defaults
+      self.tagline ||= "Tagline"
+      self.industry ||= "Industry"
+      self.location ||= "Location"
     end
 
 end

@@ -9,5 +9,5 @@
   <p> <%= message.escape("body") %> </p>
 
 
-  <a href="#inbox" class="grey-button">Back</a>
+  <a href="#inbox/messages<%= message.get("sent") ? "/sent" : "/received" %> " class="grey-button">Back</a>
 <% } %>

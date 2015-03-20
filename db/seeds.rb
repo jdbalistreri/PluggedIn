@@ -1,5 +1,5 @@
-User.destroy_all
-Experience.destroy_all
+# User.destroy_all
+# Experience.destroy_all
 
 NUM_USERS = 100
 CONNECTION_DILUTOR = 2
@@ -135,41 +135,81 @@ def add_job(user)
   true
 end
 
-user1 = User.create!(email: "joe", password: "joejoe",
-  fname: "Joe", lname: "Bali", tagline: "ain't life grand?",
-  location: "Milwaukee, WI", industry: "Computer Software",
-  date_of_birth: Date.new(1991, 7, 24), summary: "This is my summary")
+# user1 = User.create!(email: "joe", password: "joejoe",
+#   fname: "Joe", lname: "Balistreri", tagline: "Studies software development at App Academy",
+#   location: "New York, NY", industry: "Computer Software",
+#   date_of_birth: Date.new(1991, 7, 24), summary: "", picture: File.open(Rails.root.join("app", "assets", "images", "cute-robot.jpg")))
+#
+# user1.experiences.create!(
+#   experience_type: 0,
+#   role: "Strategy Consultant",
+#   institution: "Dean & Company",
+#   location: "Washington, DC",
+#   description: "Provided diligence support to private equity firms on $700MM+ in completed transactions.",
+#   start_date: Date.new(2013, 8, 1),
+#   end_date: Date.new(2014, 12, 1)
+# )
+#
+# user1.experiences.create!(
+#   experience_type: 1,
+#   role: "Bachelors of the Arts",
+#   institution: "Dartmouth College",
+#   location: "Hanover, NH",
+#   description: "",
+#   start_date: Date.new(2009, 1, 1),
+#   end_date: Date.new(2013, 1, 1)
+# )
+#
+# user1.experiences.create!(
+#   experience_type: 1,
+#   role: "Rails/Backbone Student",
+#   institution: "App Academy",
+#   location: "New York, NY",
+#   description: "",
+#   start_date: Date.new(2015, 1, 1),
+#   end_date: nil
+# )
 
-# USER CREATION
-(NUM_USERS-1).times do |i|
-  user = make_user
-  add_high_school(user)
-  add_college(user)
-  add_adv_deg(user) if i % ADV_DEG_FREQ === 0
+# # USER CREATION
+# (NUM_USERS-1).times do |i|
+#   user = make_user
+#   add_high_school(user)
+#   add_college(user)
+#   add_adv_deg(user) if i % ADV_DEG_FREQ === 0
+#
+#   loop do
+#     break unless add_job(user)
+#   end
+# end
+#
+# # CONNECTION CREATION
+# first_user_id = User.first.id
+# last_user_id = User.last.id
+#
+# NUM_USERS.times do |i|
+#   current_sender_id = first_user_id + i
+#
+#   first_receiver_id = current_sender_id + 1
+#   num_connections = rand( (NUM_USERS - i - 1) / CONNECTION_DILUTOR)
+#
+#   receiver_ids = (first_receiver_id..last_user_id).to_a.sample(num_connections)
+#
+#   receiver_ids.each do |receiver_id|
+#     swap = [true,false].sample
+#     Connection.create!(
+#       sender_id: swap ? receiver_id : current_sender_id,
+#       receiver_id: swap ? current_sender_id : receiver_id,
+#       status: [0,1,1,1,1].sample )
+#   end
+#
+# end
 
-  loop do
-    break unless add_job(user)
-  end
-end
 
-# CONNECTION CREATION
-first_user_id = User.first.id
-last_user_id = User.last.id
 
-NUM_USERS.times do |i|
-  current_sender_id = first_user_id + i
+demo = User.first
 
-  first_receiver_id = current_sender_id + 1
-  num_connections = rand( (NUM_USERS - i - 1) / CONNECTION_DILUTOR)
+connection_ids = demo.connected_users.map(&:id)
 
-  receiver_ids = (first_receiver_id..last_user_id).to_a.sample(num_connections)
-
-  receiver_ids.each do |receiver_id|
-    swap = [true,false].sample
-    Connection.create!(
-      sender_id: swap ? receiver_id : current_sender_id,
-      receiver_id: swap ? current_sender_id : receiver_id,
-      status: [0,1,1,1,1].sample )
-  end
-
-end
+demo.sent_messages.create!(receiver_id: connection_ids.sample,
+                        subject: "Coffee this week",
+                        body: "Hey! \n Are you free to get coffee sometime this week? I heard you got a new job and I'd love to hear about it. It sounds like you've been doing some really interesting work. \n I'm free sometime next Tuesday afternoon if that works for you. There's a great new place in Soho we could check out. \n \n Best, \n -Joe")

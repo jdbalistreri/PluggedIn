@@ -560,10 +560,10 @@ span.edit > a {
 
 .connected-users-list > li {
   float: left;
-  width: 318px;
+  width: 278px;
   height: 62px;
   overflow: hidden;
-  padding: 10px 0 0 20px;
+  padding: 10px 20px 0 20px;
   font-size: 13px;
 }
 
@@ -573,6 +573,8 @@ span.edit > a {
 
 .connections-title {
   font-size: 12px;
+  width: 200px;
+  max-height: 30px;
   display: inline-block;
 }
 
@@ -776,7 +778,7 @@ a.message-link:hover {
   width: 300px;
   display: block;
   padding: 20px;
-  white-space: pre-wrap;
+  white-space: pre-line;
 }
 
 

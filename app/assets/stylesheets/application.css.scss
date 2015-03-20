@@ -702,7 +702,7 @@ span.edit > a {
 
 .inbox .message-link {
   display: block;
-  color: black;
+  color: #666;
   font-size: 13px;
   border-bottom: 1px solid #ccc;
   padding: 10px 20px;
@@ -726,14 +726,31 @@ span.edit > a {
 
 .message-link strong {
   font-weight: bold;
+  color: #333;
   font-size: 14px;
   margin-top: -5px;
   padding-bottom: 5px;
-  display: block;
+  display: inline-block;
+}
+
+.message-link .subject {
+  font-size: 12px;
+  font-weight: bold;
 }
 
 a.message-link:hover {
   background: lightgrey;
+}
+
+.message-index-item {
+  color: #ccc;
+  position: relative;
+}
+
+.message-index-item .date {
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
 
 /*TOGGLE*/

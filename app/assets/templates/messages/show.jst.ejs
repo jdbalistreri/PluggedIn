@@ -1,2 +1,13 @@
-<h3> <%= message.escape("subject") %> </h3>
-<p> <%= message.escape("body") %> </p>
+
+<% if (message.user()) { %>
+  <img src=" <%= message.user() && message.user().escape("thumb_picture_url") %> " alt="" />
+
+  <span class="subject"><%= message.escape("subject") %></span>
+  <strong><%= message.user().escape("full_name") %></strong>
+  <%= message.escape("date_string") %>
+
+  <p> <%= message.escape("body") %> </p>
+
+
+  <a href="#inbox" class="grey-button">Back</a>
+<% } %>

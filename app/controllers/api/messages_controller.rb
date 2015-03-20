@@ -16,10 +16,21 @@ class Api::MessagesController < ApplicationController
     found = false
     messages = current_user.sent_messages.to_a.concat(current_user.received_messages.to_a)
     messages.each do |message|
-      found = true if message.sender_id == current_user.id || message.receiver_id == current_user.id
+      found = true if message.id == Integer(params[:id])
     end
 
-    @message = Message.find(params[:id]) if found
+    if found
+      @message = Message.find(params[:id])
+
+      @sent = @message.sender_id == current_user.id
+      if @sent
+        @user = @message.receiver
+      else
+        @user = @message.sender
+      end
+    else
+      render json: "no message found"
+    end
   end
 
   private

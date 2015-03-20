@@ -3,13 +3,18 @@
 
 <ul>
   <li>
-    <%= message.get("sent") ? "To:" : "From:" %> <%= message.user().escape("full_name") %>
+    <%= message.get("sent") ? "To:" : "" %>
+    <strong><%= message.user().escape("full_name") %></strong>
   </li>
   <li>
-    Subject: <%= message.escape("subject") %>
+    <span class="subject"><%= message.escape("subject") %></span>
   </li>
   <li>
-    Date: <%= message.escape("date_string") %>
+    <span class="body"><%= message.escape("body").slice(0,25) %></span>
   </li>
 </ul>
+
+<span class="date">
+  <%= message.escape("date_string") %>
+</span>
 </a>

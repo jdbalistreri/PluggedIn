@@ -1,6 +1,7 @@
 ExtinctIn.Views.MessageShow = Backbone.View.extend({
 
   tagName: "li",
+  className: "message-show",
   template: JST["messages/show"],
 
   initialize: function () {

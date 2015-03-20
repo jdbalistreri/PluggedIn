@@ -61,6 +61,16 @@ button.disabled {
   cursor: default;
 }
 
+/*UNIVERSAL STYLES*/
+
+.thumb-picture {
+  margin: 2px 10px 0 0px;
+  background: #ddd;
+  border-radius: 3px;
+  width: 60px;
+  float: left;
+}
+
 /*LOGIN*/
 
 .login-background {
@@ -553,7 +563,7 @@ span.edit > a {
   width: 318px;
   height: 62px;
   overflow: hidden;
-  padding-top: 10px;
+  padding: 10px 0 0 20px;
   font-size: 13px;
 }
 
@@ -583,12 +593,6 @@ span.edit > a {
   font-weight: bold;
 }
 
-.thumb-picture {
-  margin: 2px 10px 0 20px;
-  background: #ddd;
-  border-radius: 3px;
-}
-
 .connections-nav {
   padding: 10px;
   position: absolute;
@@ -610,11 +614,7 @@ span.edit > a {
 
 /*SEARCH RESULTS*/
 
-.thumb-picture {
-  width: 60px;
-  float: left;
-  margin-right: 10px;
-}
+
 
 .search-results {
   width: 564px;
@@ -622,16 +622,9 @@ span.edit > a {
 
 .search-results > .user-index-item {
   height: 68px;
-  padding-top: 12px;
-  padding-bottom: 8px;
+  padding: 12px 0 8px 20px;
   border-bottom: 1px solid grey;
 }
-
-/*.user-index-item > .full-name > a {
-  font-size: 16px;
-  font-weight: 400;
-  color: rgb(0, 111, 166);
-}*/
 
 /*SIDEBAR*/
 .user-sidebar {
@@ -752,6 +745,40 @@ a.message-link:hover {
   top: 10px;
   right: 20px;
 }
+
+/*MESSAGE SHOW*/
+
+.message-show {
+  padding: 20px;
+}
+
+.message-info {
+  font-size: 12px;
+  color: #666;
+}
+
+.message-info .subject {
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+  color: #000;
+  padding-bottom: 10px;
+}
+
+.message-info a {
+  display: block;
+  font-size: 14px;
+  padding-bottom: 5px;
+}
+
+.message-show .message-body {
+  font-size: 16px;
+  width: 300px;
+  display: block;
+  padding: 20px;
+  white-space: pre-wrap;
+}
+
 
 /*TOGGLE*/
 .toggled > .trigger, .hidden-input {

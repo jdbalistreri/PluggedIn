@@ -16,6 +16,7 @@ ExtinctIn.Views.DeleteModal = Backbone.View.extend({
   render: function () {
     var content = this.template();
     this.$el.html(content);
+    $("html").css("overflow", "hidden");
     return this;
   },
 
@@ -27,6 +28,7 @@ ExtinctIn.Views.DeleteModal = Backbone.View.extend({
 
   toggleModal: function () {
     ExtinctIn.$modalEl.toggleClass("toggled");
+    $("html").css("overflow", "");
     this.remove();
   }
 })

@@ -1,6 +1,7 @@
 ExtinctIn.Views.MessageForm = Backbone.View.extend({
 
   tagName: "form",
+  className: "message-form",
   template: JST["messages/form"],
 
   events: {

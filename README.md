@@ -2,9 +2,7 @@
 
 Plugged In is a professional networking site, similar to LinkedIn, built on Rails and Backbone.
 
-##[Live Link][heroku]
-
-[heroku]: #http://plugged-in.io
+##<a href="http://www.plugged-in.io">Live Link</a>
 
 ## Features
 

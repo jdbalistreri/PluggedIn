@@ -17,7 +17,10 @@ ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var content = this.template({query: this.query});
+    var content = this.template({
+      query: this.query,
+      found: this.searchResults.found,
+      totalCount: this.searchResults.totalCount});
     this.$el.html(content);
 
     this.searchResults.each(function (user) {

@@ -1,6 +1,5 @@
 
 <% if (cu_connection.isNew()) { %>
-  <% console.log("got here2") %>
   <button class="request-connection">Connect</button>
 
 <% } else if (cu_connection.escape("status") === "approved") { %>
@@ -14,6 +13,5 @@
   <button class="deny-connection">Deny</button></a>
 
 <% } else { %>
-  <% console.log("got here") %>
   <button class="approve-connection">Connect</button>
 <% } %>

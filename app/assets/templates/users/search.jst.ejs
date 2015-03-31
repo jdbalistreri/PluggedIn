@@ -1,7 +1,11 @@
 <h2><strong>Search</strong></h2>
 
 <ul class="sidebar">
-  <span>NUM search results for <%= query %></span>
+  <% if (!found) { %>
+    <span>No results found. Showing all users</span>
+  <%  } else { %>
+    <span><strong><%= totalCount %></strong>  result(s) for <strong><%= query %></strong></span>
+  <% } %>
 </ul>
 
 <section class="search-content">

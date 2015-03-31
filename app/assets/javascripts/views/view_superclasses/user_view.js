@@ -3,7 +3,7 @@ ExtinctIn.UserView = Backbone.CompositeView.extend({
   render: function() {
     var content = this.template({user: this.model, currentUser: this.currentUser()});
     this.$el.html(content);
-
+    
     if (!this.currentUser()) {
       var connectButton = new ExtinctIn.Views.ConnectButton({
         user: this.model,

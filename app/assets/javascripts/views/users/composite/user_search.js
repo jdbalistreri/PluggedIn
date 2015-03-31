@@ -23,6 +23,8 @@ ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
       totalCount: this.searchResults.totalCount});
     this.$el.html(content);
 
+    $(".search-results").scroll(this.handleScroll.bind(this));
+
     this.searchResults.each(function (user) {
       var indexItem = new ExtinctIn.Views.UserIndexItem({model: user});
       this.addSubview(".search-results", indexItem);
@@ -40,5 +42,10 @@ ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
         query: query
       },
     });
+  },
+
+  handleScroll: function (event) {
+    console.log(event.currentTarget.scrollTop)
+    // debugger
   },
 })

@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   pg_search_scope(
     :user_search,
     against: [:fname, :lname],
-    associated_against: { experiences: [:role, :institution] }
+    associated_against: { experiences: [:role, :institution]},
+    using: {tsearch: {prefix: true}}
   )
 
   validates :password_digest, :email, :session_token, presence: true

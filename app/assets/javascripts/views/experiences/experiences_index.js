@@ -8,6 +8,7 @@ ExtinctIn.Views.ExperiencesIndex = Backbone.CompositeView.extend({
     this.user = options.user;
     this.typeU = options.typeU;
     this.typeL = options.typeL;
+    this.$el.addClass(this.typeL + "-section");
     this.listenTo(this.collection, "add sort remove", this.render)
   },
 

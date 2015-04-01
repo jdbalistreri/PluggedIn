@@ -14,9 +14,10 @@
 //= require jquery_ujs
 //= require jquery.serializejson.min
 //= require underscore
+//= require shepherd.min.js
 //= require backbone
 //= require extinct_in
-//= require shepherd.min.js
+//= require tour
 //= require_tree ../templates
 //= require_tree ./utils
 //= require_tree ./models

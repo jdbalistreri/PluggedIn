@@ -30,7 +30,7 @@ Users can:
 
 ###Messages/Search
 - Navigation between [inbox][inbox-view] pages occurs using the router[router] and a getOrFetch method to ensure data persists across hard refreshes
-- [API Search Controller][search_controller] processes search query with PGSearch and paginates results with Kaminari
+- [API Static Controller][search_controller] processes search query with PGSearch and paginates results with Kaminari
 - Search results view uses [infinite scroll][search-results] to improve load time and UX
 
 ### Coming Soon!
@@ -52,3 +52,4 @@ Users can:
 [inbox-view]: ./app/assets/javascripts/views/inbox_show.js
 [router]: ./app/assets/javascripts/routers/router.js
 [search-results]: ./app/assets/javascripts/views/users/composite/user_search.js
+[search_controller]: ./app/controllers/api/static_controller.rb

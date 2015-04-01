@@ -7,15 +7,13 @@ Plugged In is a professional networking site, similar to LinkedIn, built on Rail
 ## Features
 
 Users can:
-- Create accounts
-- Create sessions (log in)
-- Create user profiles with personal information
-- Add past job/school experiences to their profiles
-- Edit their profiles in place by double clicking the text
-- Request to connect with other users
+- Create accounts and sessions (log in)
+- Create profiles with personal information and add past job/school experiences
+- Edit profiles in place by double clicking the text
+- Request to connect with other users and view connections
 - Send messages to other users
 - Search for users
-- Tour for new users and demo user account
+- Take a website tour on login or sign in with a demo account
 
 ## Implementation
 ###Profiles, Users, and Experiences

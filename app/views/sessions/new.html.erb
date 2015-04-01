@@ -29,9 +29,17 @@
   $((function () {
     $(".demo").on("click", function (event) {
       event.preventDefault();
-      $("#user-email").val("joe");
-      $("#user-password").val("joejoe");
-      $(".login-form").submit();
+      $.ajax({
+        type: "GET",
+        url: "demo",
+        data_type: "json",
+        success: function (response) {
+          $("#user-email").val(response.email);
+          $("#user-password").val(response.password);
+          $(".login-form").submit();
+        },
+      })
+
     })
   })())
 </script>

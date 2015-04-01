@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :new]
   resource :session, only: [:create, :destroy, :new]
 
+  get "session/demo", to: "users#new_demo"
   get "auth/:provider/callback", to: "sessions#omniauth"
 
 

@@ -19,18 +19,19 @@ Users can:
 
 ## Implementation
 ###Profiles, Users, and Experiences
-- Profile forms views edit in place by inheriting from [toggleable form superclass][toggleable]
-- A users experiences are [sent down][user-jbuilder] with the user as JSON and [parsed][user-parse] into separate Backbone collections
+- Form views on profile edit in place by inheriting from [toggleable form superclass][toggleable]
+- A user's experiences are [sent down][user-jbuilder] with user data as JSON and [parsed][user-parse] into separate Backbone collections
 - [User model][user-model] has built in methods to generate realistic seed data
 
 ###Connections
 - Connections rely on two [database tables][schema] (connections and user_connections) to cleanly implement two-way friendships
-- [Connect button subview][connect-button] allows users to issue connection requests across various user views; updates available options based on a user's connection status with the current user
+- [Connect button subview][connect-button] allows users to issue connection requests across various user views; permits options available based on a user's connection status with the current user
 - [Connected users index view][connected-users-index] displays a user's approved connections while paginating results
 
-###Messages
-
-###Search
+###Messages/Search
+- Navigation between [inbox][inbox-view] pages occurs using the router[router] and a getOrFetch method to ensure data persists across hard refreshes
+- [API Search Controller][search_controller] processes search query with PGSearch and paginates results with Kaminari
+- Search results view uses [infinite scroll][search-results] to improve load time and UX
 
 ### Coming Soon!
 - Notifications and dropdown menus on navigation bar
@@ -48,3 +49,6 @@ Users can:
 [connect-button]: ./app/assets/javascripts/views/connect_button.js
 [schema]: ./db/schema.rb
 [connected-users-index]: ./app/assets/javascripts/views/connected_users_index.js
+[inbox-view]: ./app/assets/javascripts/views/inbox_show.js
+[router]: ./app/assets/javascripts/routers/router.js
+[search-results]: ./app/assets/javascripts/views/users/composite/user_search.js

@@ -33,11 +33,7 @@ Users can:
 
 ### Coming Soon!
 - Notifications and dropdown menus on navigation bar
-- Typeahead search bar
 - Degrees of connection
-- Detailed search options (e.g. location, school, etc.)
-- Profile show routes use the user's username instead of id
-- Tracking profile views
 - Statistics on who has viewed a user profile (D3 for data visualization)
 
 [user-jbuilder]: ./app/views/api/users/show.json.jbuilder

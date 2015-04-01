@@ -232,39 +232,50 @@ class User < ActiveRecord::Base
   end
 
   def add_messages
-    connection_ids = self.connected_users.map(&:id)
+    connected_users = self.connected_users
 
-    self.sent_messages.create!(receiver_id: connection_ids.sample,
+
+    target_user = connected_users.sample
+    self.sent_messages.create!(receiver_id: target_user.id,
                             subject: "Coffee this week",
-                            body: "Hey NAME! \n\n Are you free to get coffee sometime this week? I heard you got a new job and I'd love to hear about it. It sounds like you've been doing some really interesting work. \n I'm free sometime next Tuesday afternoon if that works for you. There's a great new place in Soho we could check out. \n \n Best, \n -Joe")
-    self.sent_messages.create!(receiver_id: connection_ids.sample,
+                            body: "Hey #{target_user.fname}! \n\n Are you free to get coffee sometime this week? I heard you got a new job and I'd love to hear about it. It sounds like you've been doing some really interesting work. \n I'm free sometime next Tuesday afternoon if that works for you. There's a great new place in Soho we could check out. \n \n Best, \n -#{self.fname}")
+    target_user = connected_users.sample
+    self.sent_messages.create!(receiver_id: target_user.id,
                             subject: "Networking event",
-                            body: "NAME, \n\n It was great seeing you at the company networking event last week. How have things been on the new project this week? \n \n -Joe")
-    self.sent_messages.create!(receiver_id: connection_ids.sample,
+                            body: "#{target_user.fname}, \n\n It was great seeing you at the company networking event last week. How have things been on the new project this week? \n \n -#{self.fname}")
+    target_user = connected_users.sample
+    self.sent_messages.create!(receiver_id: target_user.id,
                             subject: "New position opening at Dean",
-                            body: "NAME, \n\n I remember you mentioned that you'd be interested in working at Dean, and one of my former colleagues just told me a position opened up on the private equity team. Are you still interested in making the transition to consulting? If so, let me know and I'll recommend you for the job. \n \n Best, \n -Joe")
-    self.sent_messages.create!(receiver_id: connection_ids.sample,
+                            body: "#{target_user.fname}, \n\n I remember you mentioned that you'd be interested in working at Dean, and one of my former colleagues just told me a position opened up on the private equity team. Are you still interested in making the transition to consulting? If so, let me know and I'll recommend you for the job. \n \n Best, \n -#{self.fname}")
+    target_user = connected_users.sample
+    self.sent_messages.create!(receiver_id: target_user.id,
                             subject: "Dartmouth meetup",
-                            body: "Hi NAME, \n\n Are you gonna go to the Dartmouth cocktails event this weekend? It could be fun if you wanna head over together after work. \n \n -Joe")
-    self.sent_messages.create!(receiver_id: connection_ids.sample,
+                            body: "Hi #{target_user.fname}, \n\n Are you gonna go to the Dartmouth cocktails event this weekend? It could be fun if you wanna head over together after work. \n \n -#{self.fname}")
+    target_user = connected_users.sample
+    self.sent_messages.create!(receiver_id: target_user.id,
                             subject: "Phone call tomorrow",
-                            body: "NAME, \n\n Would it be alright if we rescheduled tomorrow's phone call? Something just came up at work, but I'd still love to chat. Could you do same time next week instead? \n \n Best, \n -Joe")
+                            body: "#{target_user.fname}, \n\n Would it be alright if we rescheduled tomorrow's phone call? Something just came up at work, but I'd still love to chat. Could you do same time next week instead? \n \n Best, \n -#{self.fname}")
 
-    self.received_messages.create!(sender_id: connection_ids.sample,
+    target_user = connected_users.sample
+    self.received_messages.create!(sender_id: target_user.id,
+                            subject: "RE: Networking event",
+                            body: "#{self.fname}, \n\n Yes. The networking event will be held at 7 pm this coming Tuesday. Please arrive at our offices a few minutes early to get your nametag. \n \n --#{target_user.fname}")
+    target_user = connected_users.sample
+    self.received_messages.create!(sender_id: target_user.id,
                             subject: "RE: Coffee this week",
-                            body: "Joe, yes! \n\n I'd love to get coffee. It sounds like you're up to some cool stuff at App Academy. Let me know when you're free! \n \n --NAME")
-    self.received_messages.create!(sender_id: connection_ids.sample,
-                            subject: "RE: Coffee this week",
-                            body: "Joe, yes! \n\n I'd love to get coffee. It sounds like you're up to some cool stuff at App Academy. Let me know when you're free! \n \n --NAME")
-    self.received_messages.create!(sender_id: connection_ids.sample,
-                            subject: "RE: Coffee this week",
-                            body: "Joe, yes! \n\n I'd love to get coffee. It sounds like you're up to some cool stuff at App Academy. Let me know when you're free! \n \n --NAME")
-    self.received_messages.create!(sender_id: connection_ids.sample,
-                            subject: "RE: Coffee this week",
-                            body: "Joe, yes! \n\n I'd love to get coffee. It sounds like you're up to some cool stuff at App Academy. Let me know when you're free! \n \n --NAME")
-    self.received_messages.create!(sender_id: connection_ids.sample,
-                            subject: "RE: Coffee this week",
-                            body: "Joe, yes! \n\n I'd love to get coffee. It sounds like you're up to some cool stuff at App Academy. Let me know when you're free! \n \n --NAME")
+                            body: "#{self.fname}, yes! \n\n I'd love to get coffee. It sounds like you're up to some cool stuff at App Academy. Let me know when you're free! \n \n --#{target_user.fname}")
+    target_user = connected_users.sample
+    self.received_messages.create!(sender_id: target_user.id,
+                            subject: "RE: Summer Hiking Trip",
+                            body: "#{self.fname}, \n\n We should definitely get the rest of our friends together and road trip across the country. I'd love to go climbing at Joshua Tree, and I know you've been climbing a lot lately. It'll be fun! \n \n --#{target_user.fname}")
+    target_user = connected_users.sample
+    self.received_messages.create!(sender_id: target_user.id,
+                            subject: "RE: Your Recommendation",
+                            body: "#{self.fname}, \n\n Thank you for recommending Tanya for the position at Acme Corp. We're in the process of reviewing her application, and we're very excited about the prospect of working with her. \n \n Warm regards, \n #{target_user.full_name}")
+    target_user = connected_users.sample
+    self.received_messages.create!(sender_id: target_user.id,
+                            subject: "RE: RE: Start Up Idea",
+                            body: "#{self.fname}, \n\n It sounds like you'd be a great fit for our team. We're looking to get moving quickly, so let me know soon if you'd like to join the team. I'll send you the full details via email later tonight. \n \n Best, \n #{target_user.fname}")
   end
 
   def add_connections

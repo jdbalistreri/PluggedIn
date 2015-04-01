@@ -18,11 +18,13 @@ Users can:
 - Tour for new users and demo user account
 
 ## Implementation
-###Users/Profiles
+###Profiles/Users
+- Profile forms views edit in place by inheriting from [toggleable form superclass][toggleable]
 - [User model][user] hashes passwords with BCrypt and ensures a session_token on create
+
 ###Experiences
 - [Experiences model][experiences] holds both job experiences and school experiences
-- A users experiences are [sent down][user-jbuilder] with the user as JSON and parsed into separate Backbone collections
+- A users experiences are [sent down][user-jbuilder] with the user as JSON and [parsed][user-parse] into separate Backbone collections
 - Placeholder
 - Placeholder
 
@@ -37,4 +39,6 @@ Users can:
 
 [user]: ./app/models/user.rb
 [experiences]: ./app/models/experiences.rb
-[user-jbuilder]: ./app/views/api/shared/_user.json.jbuilder
+[user-jbuilder]: ./app/views/api/users/show.json.jbuilder
+[user-parse]: ./app/assets/javascripts/models/user.js
+[toggleable]: ./app/assets/javascripts/utils/toggleable_form.js

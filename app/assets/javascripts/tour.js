@@ -72,3 +72,10 @@ tour.addStep('School Experiences',
   buttons: [{text: "Back", action: tour.back, classes: "shepherd-button-secondary"}, {text: "Next", action: tour.next}]
   }
 );
+
+tour.addStep('End',
+  {title: "Thanks for taking our tour!",
+  text: "Make sure you check out your connections tab, search, and inbox before you go!",
+  buttons: [{text: "Back", action: tour.back, classes: "shepherd-button-secondary"}, {text: "Done", action: tour.complete}]
+  }
+);

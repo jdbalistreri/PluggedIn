@@ -26,6 +26,7 @@ Users can:
 ###Connections
 - Connections rely on two [database tables][schema] (connections and user_connections) to cleanly implement two-way friendships
 - [Connect button subview][connect-button] allows users to issue connection requests across various user views; updates available options based on a user's connection status with the current user
+- [Connected users index view][connected-users-index] displays a user's approved connections while paginating results
 
 ###Messages
 
@@ -41,8 +42,9 @@ Users can:
 - Statistics on who has viewed a user profile (D3 for data visualization)
 
 [user-jbuilder]: ./app/views/api/users/show.json.jbuilder
-[user-jbuilder]: ./app/models/user.rb
+[user-model]: ./app/models/user.rb
 [user-parse]: ./app/assets/javascripts/models/user.js
 [toggleable]: ./app/assets/javascripts/utils/toggleable_form.js
 [connect-button]: ./app/assets/javascripts/views/connect_button.js
 [schema]: ./db/schema.rb
+[connected-users-index]: ./app/assets/javascripts/views/connected_users_index.js

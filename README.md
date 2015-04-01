@@ -15,9 +15,10 @@ Users can:
 - Request to connect with other users
 - Send messages to other users
 - Search for users
+- Tour for new users and demo user account
 
 ## Implementation
-- Placeholder
+- [User][user] model hashes passwords with BCrypt and ensures a session_token on create
 - Placeholder
 - Placeholder
 
@@ -29,3 +30,5 @@ Users can:
 - Profile show routes use the user's username instead of id
 - Tracking profile views
 - Statistics on who has viewed a user profile (D3 for data visualization)
+
+[user]: ./app/models/user.rb

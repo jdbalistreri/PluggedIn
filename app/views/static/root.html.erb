@@ -46,7 +46,7 @@
   $(document).ready(function(){
     ExtinctIn.currentUserId = <%= current_user.try(:id) || "null" %>;
     ExtinctIn.$modalEl = $("#modal");
-    ExtinctIn.initialize({$rootEl: $("#content")});
+    ExtinctIn.initialize({$rootEl: $("#content"), tour: <%= session[:refreshes] <= 1 %>});
   });
 </script>
 

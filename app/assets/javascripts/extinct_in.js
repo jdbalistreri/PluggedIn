@@ -6,6 +6,8 @@ window.ExtinctIn = {
   initialize: function(options) {
     new ExtinctIn.Routers.Router(options);
     Backbone.history.start();
-    ExtinctIn.Tour.start();
+    if (options.tour) {
+      ExtinctIn.Tour.start();
+    }
   }
 };

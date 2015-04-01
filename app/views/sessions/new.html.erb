@@ -6,6 +6,10 @@
     <h3>A LinkedIn clone for robots</h3>
 
     <%= auth_token %>
+    <div class="new-user">
+      <strong>Employer?</strong>
+    <button class="green-button demo">Sign in as a demo user</button>
+    </div>
     <input id="user-email" type="text" name="user[email]" value="" placeholder="Email Address">
 
     <input id="user-password" type="password" name="user[password]" placeholder="Password">
@@ -15,10 +19,7 @@
       <li>Not a user yet? <a href=" <%= new_user_url %>">Sign Up!</a></li>
       <li>Or <a href="/auth/twitter">Sign in with Twitter</a></li>
     </ul>
-    <div class="new-user">
-      <strong>Employer?</strong>
-    <button class="green-button demo">Sign in as a demo user</button>
-    </div>
+
   </form>
 
 
@@ -29,6 +30,7 @@
   $((function () {
     $(".demo").on("click", function (event) {
       event.preventDefault();
+      $(event.target).html("Creating your account...").prop("disabled", true)
       $.ajax({
         type: "GET",
         url: "demo",

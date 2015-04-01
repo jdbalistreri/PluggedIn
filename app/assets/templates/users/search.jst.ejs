@@ -1,8 +1,8 @@
 <h2><strong>Search</strong></h2>
 
-<ul class="sidebar">
+<ul class="search-sidebar sidebar">
   <% if (!found) { %>
-    <span>No results found. Showing all users</span>
+    <span>No results found. <br> Please try a new search.</span>
   <%  } else { %>
     <span><strong><%= totalCount %></strong>  result(s) for <strong><%= query %></strong></span>
   <% } %>

@@ -59,14 +59,11 @@ ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
   },
 
   handleScroll: function (event) {
-    console.log(this.$(".user-index-item").length)
-    // debugger
     if (event.currentTarget.scrollTop >= this.scrollMax && this.canSearch) {
       this.page += 1;
       this.scrollMax += 750;
       this.canSearch = false;
       this.search();
     }
-    // debugger
   },
 })

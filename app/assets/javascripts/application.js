@@ -16,6 +16,7 @@
 //= require underscore
 //= require backbone
 //= require extinct_in
+//= require shepherd.min.js
 //= require_tree ../templates
 //= require_tree ./utils
 //= require_tree ./models

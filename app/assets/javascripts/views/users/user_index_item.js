@@ -1,4 +1,4 @@
-ExtinctIn.Views.UserIndexItem = ExtinctIn.UserView.extend({
+PluggedIn.Views.UserIndexItem = PluggedIn.UserView.extend({
 
   tagName: "li",
   className: "user-index-item",

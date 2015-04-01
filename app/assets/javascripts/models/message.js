@@ -1,4 +1,4 @@
-ExtinctIn.Models.Message = Backbone.Model.extend({
+PluggedIn.Models.Message = Backbone.Model.extend({
 
   urlRoot: "api/messages",
 
@@ -13,7 +13,7 @@ ExtinctIn.Models.Message = Backbone.Model.extend({
 
   user: function (attrs) {
     if (attrs) {
-      this._user = new ExtinctIn.Models.User(attrs, {parse: true});
+      this._user = new PluggedIn.Models.User(attrs, {parse: true});
     }
     return this._user
   },

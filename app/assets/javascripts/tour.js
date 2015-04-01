@@ -4,7 +4,7 @@ var handleScroll = function (element) {
             scrollTop: target_height}, 600);
 };
 
-ExtinctIn.Tour = tour = new Shepherd.Tour({defaults:
+PluggedIn.Tour = tour = new Shepherd.Tour({defaults:
     {classes: 'shepherd-theme-arrows shepherd-open shepherd-element',
     scrollTo: true,
     scrollToHandler: handleScroll,

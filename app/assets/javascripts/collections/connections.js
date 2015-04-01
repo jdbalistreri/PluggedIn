@@ -1,6 +1,6 @@
-ExtinctIn.Collections.Connections = Backbone.Collection.extend({
+PluggedIn.Collections.Connections = Backbone.Collection.extend({
 
-  model: ExtinctIn.Models.Connection,
+  model: PluggedIn.Models.Connection,
 
   comparator: function (model) {
     return -Date.parse(model.get("created_at"));
@@ -12,10 +12,10 @@ ExtinctIn.Collections.Connections = Backbone.Collection.extend({
 
 })
 
-ExtinctIn.Collections.Connections.prototype.sent = function () {
+PluggedIn.Collections.Connections.prototype.sent = function () {
   return this.where({sent: true});
 };
 
-ExtinctIn.Collections.Connections.prototype.received = function () {
+PluggedIn.Collections.Connections.prototype.received = function () {
   return this.where({sent: false});
 };

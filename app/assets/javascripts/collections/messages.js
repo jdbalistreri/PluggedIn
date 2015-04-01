@@ -1,10 +1,10 @@
-ExtinctIn.Collections.Messages = Backbone.Collection.extend({
+PluggedIn.Collections.Messages = Backbone.Collection.extend({
 
   initialize: function(models, options) {
     this.inbox = options.inbox;
   },
 
-  model: ExtinctIn.Models.Message,
+  model: PluggedIn.Models.Message,
 
   comparator: function (model) {
     return -Date.parse(model.get("created_at"));
@@ -14,7 +14,7 @@ ExtinctIn.Collections.Messages = Backbone.Collection.extend({
     var model = this.get(id);
 
     if (!model) {
-      model = new ExtinctIn.Models.Message({id: id});
+      model = new PluggedIn.Models.Message({id: id});
       this.add(model);
     }
 
@@ -25,10 +25,10 @@ ExtinctIn.Collections.Messages = Backbone.Collection.extend({
 });
 
 
-ExtinctIn.Collections.Messages.prototype.sent = function () {
+PluggedIn.Collections.Messages.prototype.sent = function () {
   return this.where({sent: true});
 };
 
-ExtinctIn.Collections.Messages.prototype.received = function () {
+PluggedIn.Collections.Messages.prototype.received = function () {
   return this.where({sent: false});
 };

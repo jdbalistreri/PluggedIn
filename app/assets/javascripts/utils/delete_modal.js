@@ -1,4 +1,4 @@
-ExtinctIn.Views.DeleteModal = Backbone.View.extend({
+PluggedIn.Views.DeleteModal = Backbone.View.extend({
 
   tagName: "section",
 
@@ -27,7 +27,7 @@ ExtinctIn.Views.DeleteModal = Backbone.View.extend({
   },
 
   toggleModal: function () {
-    ExtinctIn.$modalEl.toggleClass("toggled");
+    PluggedIn.$modalEl.toggleClass("toggled");
     $("html").css("overflow", "");
     this.remove();
   }

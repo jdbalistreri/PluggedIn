@@ -1,4 +1,4 @@
-ExtinctIn.Views.ExperienceIndexItem = Backbone.ExperiencesForm.extend({
+PluggedIn.Views.ExperienceIndexItem = Backbone.ExperiencesForm.extend({
 
   className: "experience-index-item",
 
@@ -21,7 +21,7 @@ ExtinctIn.Views.ExperienceIndexItem = Backbone.ExperiencesForm.extend({
   },
 
   currentUser: function () {
-    return ExtinctIn.currentUserId === parseInt(this.model.get("user_id"));
+    return PluggedIn.currentUserId === parseInt(this.model.get("user_id"));
   },
 
   submitBeforeSave: function () {

@@ -1,4 +1,4 @@
-ExtinctIn.Models.Inbox = Backbone.Model.extend({
+PluggedIn.Models.Inbox = Backbone.Model.extend({
 
   urlRoot: "api/inbox",
 
@@ -28,7 +28,7 @@ ExtinctIn.Models.Inbox = Backbone.Model.extend({
 
   connections: function () {
     if (!this._connections) {
-      this._connections = new ExtinctIn.Collections.Connections([], {user_id: ExtinctIn.currentUserId});
+      this._connections = new PluggedIn.Collections.Connections([], {user_id: PluggedIn.currentUserId});
     }
 
     return this._connections
@@ -36,7 +36,7 @@ ExtinctIn.Models.Inbox = Backbone.Model.extend({
 
   messages: function () {
     if (!this._messages) {
-      this._messages = new ExtinctIn.Collections.Messages([], {user_id: ExtinctIn.currentUserId});
+      this._messages = new PluggedIn.Collections.Messages([], {user_id: PluggedIn.currentUserId});
     }
 
     return this._messages

@@ -1,4 +1,4 @@
-ExtinctIn.Views.UserProfileShow = ExtinctIn.UserView.extend({
+PluggedIn.Views.UserProfileShow = PluggedIn.UserView.extend({
 
   template: JST["users/profile-show"],
 

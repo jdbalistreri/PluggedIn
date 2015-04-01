@@ -44,9 +44,9 @@
 
 <script charset="utf-8">
   $(document).ready(function(){
-    ExtinctIn.currentUserId = <%= current_user.try(:id) || "null" %>;
-    ExtinctIn.$modalEl = $("#modal");
-    ExtinctIn.initialize({$rootEl: $("#content"), tour: <%= session[:refreshes] <= 1 %>});
+    PluggedIn.currentUserId = <%= current_user.try(:id) || "null" %>;
+    PluggedIn.$modalEl = $("#modal");
+    PluggedIn.initialize({$rootEl: $("#content"), tour: <%= session[:refreshes] <= 1 %>});
   });
 </script>
 

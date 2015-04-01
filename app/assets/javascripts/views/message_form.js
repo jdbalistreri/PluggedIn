@@ -1,4 +1,4 @@
-ExtinctIn.Views.MessageForm = Backbone.View.extend({
+PluggedIn.Views.MessageForm = Backbone.View.extend({
 
   tagName: "form",
   className: "message-form",

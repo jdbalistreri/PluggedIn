@@ -1,6 +1,6 @@
-ExtinctIn.Collections.SearchResults = Backbone.Collection.extend({
+PluggedIn.Collections.SearchResults = Backbone.Collection.extend({
   url: "api/search",
-  model: ExtinctIn.Models.User,
+  model: PluggedIn.Models.User,
 
   parse: function (response) {
     if (response.found) {

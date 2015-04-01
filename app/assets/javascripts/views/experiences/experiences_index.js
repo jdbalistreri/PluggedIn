@@ -1,4 +1,4 @@
-ExtinctIn.Views.ExperiencesIndex = Backbone.CompositeView.extend({
+PluggedIn.Views.ExperiencesIndex = Backbone.CompositeView.extend({
 
   tagName: "section",
 
@@ -18,16 +18,16 @@ ExtinctIn.Views.ExperiencesIndex = Backbone.CompositeView.extend({
     this.$el.html(content)
 
     this.collection.each( function(experience) {
-      var experienceItemView = new ExtinctIn.Views.ExperienceIndexItem(
+      var experienceItemView = new PluggedIn.Views.ExperienceIndexItem(
                                   {model: experience, type: that.typeL});
       that.addSubview("ul.experiences-list", experienceItemView);
     })
 
-    if (ExtinctIn.currentUserId === this.user.id ) {
-      var model = new ExtinctIn.Models[that.typeU]({user: this.user});
+    if (PluggedIn.currentUserId === this.user.id ) {
+      var model = new PluggedIn.Models[that.typeU]({user: this.user});
 
       var viewType = this.typeU + "Form"
-      var newExperienceView = new ExtinctIn.Views.ExperienceForm(
+      var newExperienceView = new PluggedIn.Views.ExperienceForm(
         { model: model,
           collection: this.collection,
           type: this.typeL});

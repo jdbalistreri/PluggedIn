@@ -1,4 +1,4 @@
-ExtinctIn.Views.ConnectButton = Backbone.View.extend({
+PluggedIn.Views.ConnectButton = Backbone.View.extend({
 
   template: JST["users/connect-button"],
 
@@ -25,8 +25,8 @@ ExtinctIn.Views.ConnectButton = Backbone.View.extend({
     this.model.set("status", 1)
     this.model.save({}, {
       success: function (model) {
-        var connection = ExtinctIn.Inbox.connections().get(model.id);
-        ExtinctIn.Inbox.connections().remove(connection);
+        var connection = PluggedIn.Inbox.connections().get(model.id);
+        PluggedIn.Inbox.connections().remove(connection);
         this.user.set("num_connections", this.user.get("num_connections")+1);
       }.bind(this)
     });
@@ -36,8 +36,8 @@ ExtinctIn.Views.ConnectButton = Backbone.View.extend({
     this.model.set("status", 2)
     this.model.save({}, {
       success: function (model) {
-        var connection = ExtinctIn.Inbox.connections().get(model.id);
-        ExtinctIn.Inbox.connections().remove(connection);
+        var connection = PluggedIn.Inbox.connections().get(model.id);
+        PluggedIn.Inbox.connections().remove(connection);
       },
     });
   },
@@ -47,11 +47,11 @@ ExtinctIn.Views.ConnectButton = Backbone.View.extend({
   },
 
   requestConnection: function () {
-    this.model.set("sender_id", ExtinctIn.currentUserId)
+    this.model.set("sender_id", PluggedIn.currentUserId)
     this.model.set("receiver_id", this.user.id)
     this.model.save({}, {
       success: function (model) {
-        ExtinctIn.Inbox.messages().add(model, {merge: true});
+        PluggedIn.Inbox.messages().add(model, {merge: true});
       },
     });
 

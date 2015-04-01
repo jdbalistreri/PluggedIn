@@ -1,4 +1,4 @@
-ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
+PluggedIn.Views.UserSearch = Backbone.CompositeView.extend({
 
   tagName: "article",
   className: "user-search group",
@@ -8,7 +8,7 @@ ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
     this.page = 1;
     this.scrollMax = 440;
     this.query = options.query;
-    this.searchResults = new ExtinctIn.Collections.SearchResults();
+    this.searchResults = new PluggedIn.Collections.SearchResults();
     this.searchResults.fetch({data: {query: this.query}});
     this.listenTo(this.searchResults, "sync", this.render);
   },
@@ -38,7 +38,7 @@ ExtinctIn.Views.UserSearch = Backbone.CompositeView.extend({
 
   addResults: function () {
     this.searchResults.each(function (user) {
-      var indexItem = new ExtinctIn.Views.UserIndexItem({model: user});
+      var indexItem = new PluggedIn.Views.UserIndexItem({model: user});
       this.addSubview(".search-results", indexItem);
     }.bind(this))
   },

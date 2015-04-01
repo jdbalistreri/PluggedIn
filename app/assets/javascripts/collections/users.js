@@ -1,6 +1,6 @@
-ExtinctIn.Collections.Users = Backbone.Collection.extend({
+PluggedIn.Collections.Users = Backbone.Collection.extend({
   url: "api/users",
-  model: ExtinctIn.Models.User,
+  model: PluggedIn.Models.User,
 
   comparator: "full_name",
 
@@ -8,7 +8,7 @@ ExtinctIn.Collections.Users = Backbone.Collection.extend({
     var user = this.get(id);
 
     if (!user) {
-      user = new ExtinctIn.Models.User({id: id});
+      user = new PluggedIn.Models.User({id: id});
       this.add(user)
     }
 
@@ -19,7 +19,7 @@ ExtinctIn.Collections.Users = Backbone.Collection.extend({
 });
 
 
-// ExtinctIn.Collections.Users.prototype.connected_users = function () {
+// PluggedIn.Collections.Users.prototype.connected_users = function () {
 //   var connected_users = [];
 //
 //   this.each(function (user) {

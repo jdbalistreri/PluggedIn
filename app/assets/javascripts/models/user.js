@@ -1,4 +1,4 @@
-ExtinctIn.Models.User = Backbone.Model.extend({
+PluggedIn.Models.User = Backbone.Model.extend({
   urlRoot: "api/users",
 
   parse: function (response) {
@@ -28,14 +28,14 @@ ExtinctIn.Models.User = Backbone.Model.extend({
 
   cu_connection: function () {
     if (!this._cu_connection) {
-      this._cu_connection = new ExtinctIn.Models.Connection();
+      this._cu_connection = new PluggedIn.Models.Connection();
     }
     return this._cu_connection
   },
 
   jobs: function () {
     if (!this._jobs) {
-      this._jobs = new ExtinctIn.Collections.Experiences([], {type: "Job"})
+      this._jobs = new PluggedIn.Collections.Experiences([], {type: "Job"})
     }
 
     return this._jobs
@@ -43,7 +43,7 @@ ExtinctIn.Models.User = Backbone.Model.extend({
 
   schools: function () {
     if (!this._schools) {
-      this._schools = new ExtinctIn.Collections.Experiences([], {type: "School"})
+      this._schools = new PluggedIn.Collections.Experiences([], {type: "School"})
     }
 
     return this._schools

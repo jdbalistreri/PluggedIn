@@ -1,13 +1,13 @@
-ExtinctIn.Collections.Experiences = Backbone.Collection.extend({
+PluggedIn.Collections.Experiences = Backbone.Collection.extend({
   url: "api/experiences",
 
   model: function (attrs) {
     var type = attrs.type_str;
-    return new ExtinctIn.Models[type](attrs);
+    return new PluggedIn.Models[type](attrs);
   },
 
   comparator: function (modelA, modelB) {
-    if (modelA instanceof ExtinctIn.Models.Job) {
+    if (modelA instanceof PluggedIn.Models.Job) {
       if (modelA.get("end_year") === null) {
         if (modelB.get("end_year") === null) {
           return this.startDateSort(modelA, modelB);

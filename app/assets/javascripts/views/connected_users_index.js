@@ -1,4 +1,4 @@
-ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
+PluggedIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
 
   tagName: "section",
 
@@ -7,7 +7,7 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.user = options.user;
 
-    this.searchResults = new ExtinctIn.Collections.ConnectionsSearch();
+    this.searchResults = new PluggedIn.Collections.ConnectionsSearch();
     this.no_event_search();
     this.listenTo(this.searchResults, "sync", this.render);
     this.listenTo(this.user, "sync", this.no_event_search);
@@ -32,7 +32,7 @@ ExtinctIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
     this.emptySubviews("ul.connected-users-list");
 
     this.searchResults.each( function(user) {
-      var connectionView = new ExtinctIn.Views.UserIndexItem({model: user});
+      var connectionView = new PluggedIn.Views.UserIndexItem({model: user});
       this.addSubview("ul.connected-users-list", connectionView);
     }.bind(this))
 

@@ -1,4 +1,4 @@
-ExtinctIn.ToggleableFormView = Backbone.CompositeView.extend({
+PluggedIn.ToggleableFormView = Backbone.CompositeView.extend({
 
   events: {
     "click a.cancel" : "cancelForm",
@@ -13,13 +13,13 @@ ExtinctIn.ToggleableFormView = Backbone.CompositeView.extend({
   },
 
   currentUser: function () {
-    return ExtinctIn.currentUserId === parseInt(this.model.id);
+    return PluggedIn.currentUserId === parseInt(this.model.id);
   },
 
   deleteModel: function () {
-    var modalView = new ExtinctIn.Views.DeleteModal({model: this.model})
-    ExtinctIn.$modalEl.toggleClass("toggled");
-    ExtinctIn.$modalEl.html(modalView.render().$el);
+    var modalView = new PluggedIn.Views.DeleteModal({model: this.model})
+    PluggedIn.$modalEl.toggleClass("toggled");
+    PluggedIn.$modalEl.html(modalView.render().$el);
   },
 
   formSubmit: function (event) {

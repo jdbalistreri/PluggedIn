@@ -1,13 +1,13 @@
-window.ExtinctIn = {
+window.PluggedIn = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
   initialize: function(options) {
-    new ExtinctIn.Routers.Router(options);
+    new PluggedIn.Routers.Router(options);
     Backbone.history.start();
     if (options.tour) {
-      ExtinctIn.Tour.start();
+      PluggedIn.Tour.start();
     }
   }
 };

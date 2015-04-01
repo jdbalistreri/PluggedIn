@@ -1,4 +1,4 @@
-ExtinctIn.Models.Job = Backbone.Model.extend({
+PluggedIn.Models.Job = Backbone.Model.extend({
   urlRoot: "api/experiences",
 
   initialize: function (options) {

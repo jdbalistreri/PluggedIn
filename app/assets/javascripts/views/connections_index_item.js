@@ -1,4 +1,4 @@
-ExtinctIn.Views.ConnectionIndexItem = Backbone.CompositeView.extend({
+PluggedIn.Views.ConnectionIndexItem = Backbone.CompositeView.extend({
 
   tagName: "li",
   className: "connection-index-item",
@@ -9,7 +9,7 @@ ExtinctIn.Views.ConnectionIndexItem = Backbone.CompositeView.extend({
     var content = this.template({connection: this.model});
     this.$el.html(content);
 
-    var connectButton = new ExtinctIn.Views.ConnectButton({
+    var connectButton = new PluggedIn.Views.ConnectButton({
       user: this.model.user(),
       model: this.model.user().cu_connection(),
     });

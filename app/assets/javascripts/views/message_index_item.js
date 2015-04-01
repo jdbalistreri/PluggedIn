@@ -1,4 +1,4 @@
-ExtinctIn.Views.MessageIndexItem = Backbone.View.extend({
+PluggedIn.Views.MessageIndexItem = Backbone.View.extend({
 
   tagName: "li",
   className: "message-index-item",

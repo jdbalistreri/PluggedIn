@@ -1,4 +1,4 @@
-ExtinctIn.Models.School = Backbone.Model.extend({
+PluggedIn.Models.School = Backbone.Model.extend({
   urlRoot: "api/experiences",
 
   initialize: function (options) {

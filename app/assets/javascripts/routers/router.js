@@ -1,12 +1,11 @@
-ExtinctIn.Routers.Router = Backbone.Router.extend({
+PluggedIn.Routers.Router = Backbone.Router.extend({
 
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
-    this.connected_users = new ExtinctIn.Collections.Users();
+    this.connected_users = new PluggedIn.Collections.Users();
     this.connected_users.fetch();
 
-    ExtinctIn.Inbox = new ExtinctIn.Models.Inbox();
-    // ExtinctIn.Inbox.fetch();
+    PluggedIn.Inbox = new PluggedIn.Models.Inbox();
 
     this.bindEvents();
   },
@@ -50,26 +49,26 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
 
   search: function (query) {
     var query = query ? query.split("=")[1] : ""
-    var view = new ExtinctIn.Views.UserSearch({query: query});
+    var view = new PluggedIn.Views.UserSearch({query: query});
     this._swapViews(view);
   },
 
   message_show: function (id) {
-    message = ExtinctIn.Inbox.messages().getOrFetch(id);
+    message = PluggedIn.Inbox.messages().getOrFetch(id);
 
-    var view = new ExtinctIn.Views.InboxShow({
-      subview: new ExtinctIn.Views.MessageShow({model: message}),
+    var view = new PluggedIn.Views.InboxShow({
+      subview: new PluggedIn.Views.MessageShow({model: message}),
       title: "Message Detail",
     });
     this._swapViews(view);
   },
 
   new_message: function (query) {
-    var view = new ExtinctIn.Views.InboxShow({
-      subview: new ExtinctIn.Views.MessageForm({
+    var view = new PluggedIn.Views.InboxShow({
+      subview: new PluggedIn.Views.MessageForm({
         query: query,
-        model: new ExtinctIn.Models.Message(),
-        collection: ExtinctIn.Inbox.messages(),
+        model: new PluggedIn.Models.Message(),
+        collection: PluggedIn.Inbox.messages(),
         users: this.connected_users,
       }),
       title: "New Message",
@@ -78,7 +77,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   inbox_show: function () {
-    var view = new ExtinctIn.Views.InboxShow({
+    var view = new PluggedIn.Views.InboxShow({
       type: "messages",
       direction: "received",
       title: "Received Messages",
@@ -88,7 +87,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   sent_messages: function () {
-    var view = new ExtinctIn.Views.InboxShow({
+    var view = new PluggedIn.Views.InboxShow({
       type: "messages",
       direction: "sent",
       title: "Sent Messages",
@@ -98,7 +97,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   received_messages: function () {
-    var view = new ExtinctIn.Views.InboxShow({
+    var view = new PluggedIn.Views.InboxShow({
       type: "messages",
       direction: "received",
       title: "Received Messages",
@@ -108,7 +107,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   sent_connections: function () {
-    var view = new ExtinctIn.Views.InboxShow({
+    var view = new PluggedIn.Views.InboxShow({
       type: "connections",
       direction: "sent",
       title: "Sent Connections",
@@ -118,7 +117,7 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
   },
 
   received_connections: function () {
-    var view = new ExtinctIn.Views.InboxShow({
+    var view = new PluggedIn.Views.InboxShow({
       type: "connections",
       direction: "received",
       title: "Pending Received Connections",
@@ -129,10 +128,10 @@ ExtinctIn.Routers.Router = Backbone.Router.extend({
 
   user_show: function (id) {
     if (!id) {
-      id = ExtinctIn.currentUserId;
+      id = PluggedIn.currentUserId;
     }
     var user = this.connected_users.getOrFetch(id);
-    var view = new ExtinctIn.Views.UserShow({model: user});
+    var view = new PluggedIn.Views.UserShow({model: user});
     this._swapViews(view);
   },
 

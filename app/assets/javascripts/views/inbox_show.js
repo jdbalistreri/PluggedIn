@@ -1,4 +1,4 @@
-ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
+PluggedIn.Views.InboxShow = Backbone.CompositeView.extend({
 
   initialize: function(options) {
     this.inbox = options.inbox;
@@ -9,10 +9,10 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
 
 
     if (this.inbox) {
-      ExtinctIn.Inbox.fetch();
+      PluggedIn.Inbox.fetch();
       this.updateValues();
-      this.listenTo(ExtinctIn.Inbox, "sync", this.updateValues);
-      this.listenTo(ExtinctIn.Inbox.connections(), "remove", this.updateValues);
+      this.listenTo(PluggedIn.Inbox, "sync", this.updateValues);
+      this.listenTo(PluggedIn.Inbox.connections(), "remove", this.updateValues);
     }
   },
 
@@ -32,16 +32,16 @@ ExtinctIn.Views.InboxShow = Backbone.CompositeView.extend({
   },
 
   updateValues: function () {
-    this.displayItems = ExtinctIn.Inbox[this.type]()[this.direction]();
+    this.displayItems = PluggedIn.Inbox[this.type]()[this.direction]();
     this.render();
   },
 
   fillInbox: function () {
 
-    if (this.displayItems[0] instanceof ExtinctIn.Models.Connection) {
-      var viewConstructor = ExtinctIn.Views.ConnectionIndexItem;
+    if (this.displayItems[0] instanceof PluggedIn.Models.Connection) {
+      var viewConstructor = PluggedIn.Views.ConnectionIndexItem;
     } else {
-      var viewConstructor = ExtinctIn.Views.MessageIndexItem;
+      var viewConstructor = PluggedIn.Views.MessageIndexItem;
     }
 
     _.each(this.displayItems, (function (model) {

@@ -1,4 +1,4 @@
-ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
+PluggedIn.Views.UserShow = PluggedIn.UserView.extend({
 
   className: "user-show",
   tagName: "section",
@@ -24,7 +24,7 @@ ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
 
   addConnectedUsersIndex: function () {
     if (!this.connectedUsersIndex) {
-      this.connectedUsersIndex = new ExtinctIn.Views.ConnectedUsersIndex({
+      this.connectedUsersIndex = new PluggedIn.Views.ConnectedUsersIndex({
         user: this.model,
       });
     }
@@ -32,7 +32,7 @@ ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
   },
 
   addJobsIndex: function () {
-    var jobsIndex = new ExtinctIn.Views.ExperiencesIndex({
+    var jobsIndex = new PluggedIn.Views.ExperiencesIndex({
       collection: this.model.jobs(),
       user: this.model,
       typeU: "Job",
@@ -42,7 +42,7 @@ ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
   },
 
   addSchoolsIndex: function () {
-    var schoolsIndex = new ExtinctIn.Views.ExperiencesIndex({
+    var schoolsIndex = new PluggedIn.Views.ExperiencesIndex({
       collection: this.model.schools(),
       user: this.model,
       typeU: "School",
@@ -52,7 +52,7 @@ ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
   },
 
   addUserCard: function () {
-    var userCard = new ExtinctIn.Views.UserCard({
+    var userCard = new PluggedIn.Views.UserCard({
       model: this.model,
     });
     this.addSubview(".user-card", userCard);
@@ -82,6 +82,6 @@ ExtinctIn.Views.UserShow = ExtinctIn.UserView.extend({
   },
 
   remove: function () {
-    ExtinctIn.UserView.prototype.remove.call(this);
+    PluggedIn.UserView.prototype.remove.call(this);
   }
 })

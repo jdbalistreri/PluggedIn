@@ -18,7 +18,11 @@ Users can:
 - Tour for new users and demo user account
 
 ## Implementation
-- [User][user] model hashes passwords with BCrypt and ensures a session_token on create
+###Users/Profiles
+- [User model][user] hashes passwords with BCrypt and ensures a session_token on create
+###Experiences
+- [Experiences model][experiences] holds both job experiences and school experiences
+- A users experiences are [sent down][user-jbuilder] with the user as JSON and parsed into separate Backbone collections
 - Placeholder
 - Placeholder
 
@@ -32,3 +36,5 @@ Users can:
 - Statistics on who has viewed a user profile (D3 for data visualization)
 
 [user]: ./app/models/user.rb
+[experiences]: ./app/models/experiences.rb
+[user-jbuilder]: ./app/views/api/shared/_user.json.jbuilder

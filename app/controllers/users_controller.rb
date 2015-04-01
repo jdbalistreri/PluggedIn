@@ -17,9 +17,7 @@ class UsersController < ApplicationController
   end
 
   def new_demo
-    @user = User.new(provider: "Demo", fname: "Joe", lname: "Balistreri",
-            email: "demouser#{SecureRandom::random_number(1000)}@demo.com", password: "password")
-
+    @user = User.new_demo
     @user.save!
     render json: {email: @user.email, password: @user.password }
   end

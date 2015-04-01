@@ -18,15 +18,18 @@ Users can:
 - Tour for new users and demo user account
 
 ## Implementation
-###Profiles/Users
+###Profiles, Users, and Experiences
 - Profile forms views edit in place by inheriting from [toggleable form superclass][toggleable]
-- [User model][user] hashes passwords with BCrypt and ensures a session_token on create
-
-###Experiences
-- [Experiences model][experiences] holds both job experiences and school experiences
 - A users experiences are [sent down][user-jbuilder] with the user as JSON and [parsed][user-parse] into separate Backbone collections
-- Placeholder
-- Placeholder
+- [User model][user-model] has built in methods to generate realistic seed data
+
+###Connections
+- Connections rely on two [database tables][schema] (connections and user_connections) to cleanly implement two-way friendships
+- [Connect button subview][connect-button] allows users to issue connection requests across various user views; updates available options based on a user's connection status with the current user
+
+###Messages
+
+###Search
 
 ### Coming Soon!
 - Notifications and dropdown menus on navigation bar
@@ -37,8 +40,9 @@ Users can:
 - Tracking profile views
 - Statistics on who has viewed a user profile (D3 for data visualization)
 
-[user]: ./app/models/user.rb
-[experiences]: ./app/models/experiences.rb
 [user-jbuilder]: ./app/views/api/users/show.json.jbuilder
+[user-jbuilder]: ./app/models/user.rb
 [user-parse]: ./app/assets/javascripts/models/user.js
 [toggleable]: ./app/assets/javascripts/utils/toggleable_form.js
+[connect-button]: ./app/assets/javascripts/views/connect_button.js
+[schema]: ./db/schema.rb

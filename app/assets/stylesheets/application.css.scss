@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require_tree ../../../vendor/assets/stylesheets/.
+
  */
 
 /*RESET*/
@@ -1019,4 +1020,13 @@ input {
 #modal li {
   padding-left: 23px;
   float: left;
+}
+
+.spinner {
+  display: none;
+  margin: -15px auto 15px auto;
+}
+
+.spinner.toggled {
+  display: block;
 }

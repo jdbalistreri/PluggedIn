@@ -8,8 +8,9 @@
     <%= auth_token %>
     <div class="new-user">
       <strong>Employer?</strong>
-    <button class="green-button demo">Sign in as a demo user</button>
+      <button class="green-button demo">Sign in as a demo user</button>
     </div>
+      <img class="spinner" src="<%= image_path("spinner.gif")%>">
     <input id="user-email" type="text" name="user[email]" value="" placeholder="Email Address">
 
     <input id="user-password" type="password" name="user[password]" placeholder="Password">
@@ -30,7 +31,8 @@
   $((function () {
     $(".demo").on("click", function (event) {
       event.preventDefault();
-      $(event.target).html("Creating your account...").prop("disabled", true)
+      $(event.target).html("Creating your account... ").prop("disabled", true);
+      $(".spinner").addClass('toggled');
       $.ajax({
         type: "GET",
         url: "demo",

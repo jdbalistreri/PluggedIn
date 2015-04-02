@@ -10,7 +10,9 @@
       <strong>Employer?</strong>
       <button class="green-button demo">Sign in as a demo user</button>
     </div>
+    <div class="spinner-container">
       <img class="spinner" src="<%= image_path("spinner.gif")%>">
+    </div>
     <input id="user-email" type="text" name="user[email]" value="" placeholder="Email Address">
 
     <input id="user-password" type="password" name="user[password]" placeholder="Password">
@@ -32,7 +34,9 @@
     $(".demo").on("click", function (event) {
       event.preventDefault();
       $(event.target).html("Creating your account... ").prop("disabled", true);
-      $(".spinner").addClass('toggled');
+      $(".login-form").css("height", "445");
+      $(".spinner-container").css("height", "68");
+      setTimeout(function () { $(".spinner").addClass('toggled')}, 1000);
       $.ajax({
         type: "GET",
         url: "demo",

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resource :session, only: [:create, :destroy, :new]
 
   get "session/demo", to: "users#new_demo"
+  get "demo", to: "users#new_demo"
   get "auth/:provider/callback", to: "sessions#omniauth"
 
 

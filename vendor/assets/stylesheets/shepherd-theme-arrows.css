@@ -3,11 +3,10 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-.shepherd-element {
+.shepherd-content {
   position: absolute;
-  display: none;
   box-shadow: 10px 10px 40px black;
-  width: 400px;  }
+  width: 300px;  }
   .shepherd-element.shepherd-open {
     display: block; }
 

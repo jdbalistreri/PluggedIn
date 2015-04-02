@@ -27,7 +27,7 @@ Users can:
 - [Connected users index view][connected-users-index] displays a user's approved connections while paginating results
 
 ###Messages/Search
-- Navigation between [inbox][inbox-view] pages occurs using the router[router] and a getOrFetch method to ensure data persists across hard refreshes
+- Navigation between [inbox][inbox-view] pages occurs using the [router][router] and a getOrFetch method to ensure data persists across hard refreshes
 - [API Static Controller][search_controller] processes search query with PGSearch and paginates results with Kaminari
 - Search results view uses [infinite scroll][search-results] to improve load time and UX
 

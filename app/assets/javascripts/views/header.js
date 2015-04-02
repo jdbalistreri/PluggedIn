@@ -20,6 +20,10 @@ PluggedIn.Views.Header = Backbone.View.extend({
     return this;
   },
 
+  clearSearch: function () {
+    this.$(".header-search input").val("");
+  },
+
   goToSearch: function (event) {
     event.preventDefault();
     var query = $(event.currentTarget).serializeJSON().query;

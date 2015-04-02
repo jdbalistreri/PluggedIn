@@ -26,12 +26,16 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
   },
 
   addHeader: function () {
-    var headerView = new PluggedIn.Views.Header();
-    this.$header.html(headerView.render().$el)
+    this.headerView = new PluggedIn.Views.Header();
+    this.$header.html(this.headerView.render().$el)
   },
 
   bindEvents: function () {
     $(window).bind("mousewheel", this.handleScroll.bind(this));
+  },
+
+  clearSearch: function () {
+    this.headerView.clearSearch();
   },
 
   handleScroll: function (event) {
@@ -54,6 +58,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
   },
 
   message_show: function (id) {
+    this.clearSearch();
     message = PluggedIn.Inbox.messages().getOrFetch(id);
 
     var view = new PluggedIn.Views.InboxShow({
@@ -64,6 +69,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
   },
 
   new_message: function (query) {
+    this.clearSearch();
     var view = new PluggedIn.Views.InboxShow({
       subview: new PluggedIn.Views.MessageForm({
         query: query,
@@ -77,6 +83,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
   },
 
   inbox_show: function () {
+    this.clearSearch();
     var view = new PluggedIn.Views.InboxShow({
       type: "messages",
       direction: "received",
@@ -87,6 +94,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
   },
 
   sent_messages: function () {
+    this.clearSearch();
     var view = new PluggedIn.Views.InboxShow({
       type: "messages",
       direction: "sent",
@@ -97,6 +105,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
   },
 
   received_messages: function () {
+    this.clearSearch();
     var view = new PluggedIn.Views.InboxShow({
       type: "messages",
       direction: "received",
@@ -107,6 +116,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
   },
 
   sent_connections: function () {
+    this.clearSearch();
     var view = new PluggedIn.Views.InboxShow({
       type: "connections",
       direction: "sent",
@@ -117,6 +127,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
   },
 
   received_connections: function () {
+    this.clearSearch();
     var view = new PluggedIn.Views.InboxShow({
       type: "connections",
       direction: "received",
@@ -127,6 +138,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
   },
 
   user_show: function (id) {
+    this.clearSearch();
     if (!id) {
       id = PluggedIn.currentUserId;
     }

@@ -9,7 +9,7 @@ PluggedIn.Views.Header = Backbone.View.extend({
   },
 
   events: {
-    "click .logout" : "logout",
+    "submit .header-search": "goToSearch",
   },
 
   template: JST["utils/header"],
@@ -20,7 +20,10 @@ PluggedIn.Views.Header = Backbone.View.extend({
     return this;
   },
 
-  logout: function () {
-    console.log("logout")
+  goToSearch: function (event) {
+    event.preventDefault();
+    var query = $(event.currentTarget).serializeJSON().query;
+    Backbone.history.navigate("#search?query=" + query, {trigger: true});
   },
+
 })

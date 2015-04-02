@@ -1,33 +1,5 @@
 <div class="global-header">
-  <header class="top-header">
-    <nav class="top-header-nav group">
-      <a href="#" class="logo">in</a>
-
-      <form class="header-search">
-        <input type="text" name="query" placeholder="Search for people by name, company, etc...">
-        <button class="blue-button"><i class="fa fa-search fa-lg"></i></button>
-      </form>
-
-      <span class="user-info-header">
-        <%= current_user.full_name.titleize %>
-        <img src="<%=image_url(current_user.picture.url(:thumb))%>" alt="" />
-      </span>
-    </nav>
-  </header>
-
-  <header class="responsive-header">
-    <nav class="responsive-header-nav group">
-      <ul class="responsive-list group">
-        <li><a href="#">Profile</a></li>
-        <li><a href="#inbox">Inbox</a></li>
-        <li><a href="#search">Search</a></li>
-      </ul>
-      <%= render partial: "/shared/logged_in", locals: {current_user: current_user } %>
-    </nav>
-  </header>
 </div>
-
-
 
 <main>
   <section class="group" id="content">
@@ -96,4 +68,8 @@
         {discard_day: true, discard_month: true,
         prompt: {year: "-"}, start_year: Time.now.year + 7, end_year: 1900}) %>
   </span>
+</script>
+
+<script type="text/template" id="logout">
+  <%= render partial: "/shared/logged_in", locals: {current_user: current_user } %>
 </script>

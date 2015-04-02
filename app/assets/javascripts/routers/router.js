@@ -32,7 +32,6 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
 
   bindEvents: function () {
     $(window).bind("mousewheel", this.handleScroll.bind(this));
-    $(".header-search").on("submit", this.goToSearch.bind(this));
   },
 
   handleScroll: function (event) {
@@ -46,12 +45,6 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
     } else {
       $(".global-header").addClass("toggled")
     }
-  },
-
-  goToSearch: function (event) {
-    event.preventDefault();
-    var query = $(event.currentTarget).serializeJSON().query;
-    Backbone.history.navigate("#search?query=" + query, {trigger: true});
   },
 
   search: function (query) {

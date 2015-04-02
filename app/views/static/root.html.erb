@@ -46,7 +46,10 @@
   $(document).ready(function(){
     PluggedIn.currentUserId = <%= current_user.try(:id) || "null" %>;
     PluggedIn.$modalEl = $("#modal");
-    PluggedIn.initialize({$rootEl: $("#content"), tour: <%= session[:refreshes] <= 1 %>});
+    PluggedIn.initialize({
+      $rootEl: $("#content"),
+      $header: $(".global-header"),
+      tour: <%= session[:refreshes] <= 1 %>});
   });
 </script>
 

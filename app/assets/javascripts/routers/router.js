@@ -7,6 +7,8 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
 
     PluggedIn.Inbox = new PluggedIn.Models.Inbox();
 
+    this.$header = options.$header;
+    this.addHeader();
     this.bindEvents();
   },
 
@@ -21,6 +23,11 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
     "inbox/messages/:id": "message_show",
     "inbox/connections/sent": "sent_connections",
     "inbox/connections/received": "received_connections",
+  },
+
+  addHeader: function () {
+    var headerView = new PluggedIn.Views.Header();
+    this.$header.html(headerView.render().$el)
   },
 
   bindEvents: function () {

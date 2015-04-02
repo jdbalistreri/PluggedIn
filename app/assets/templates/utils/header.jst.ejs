@@ -1,0 +1,28 @@
+<header class="top-header">
+  <nav class="top-header-nav group">
+    <a href="#" class="logo">in</a>
+
+    <form class="header-search">
+      <input type="text" name="query" placeholder="Search for people by name, company, etc...">
+      <button class="blue-button"><i class="fa fa-search fa-lg"></i></button>
+    </form>
+
+    <span class="user-info-header">
+      <%= current_user.escape("full_name") %>
+      <img src="<%= current_user.escape("thumb_picture_url")%>" alt="" />
+    </span>
+  </nav>
+</header>
+
+<header class="responsive-header">
+  <nav class="responsive-header-nav group">
+    <ul class="responsive-list group">
+      <li><a href="#">Profile</a></li>
+      <li><a href="#inbox">Inbox</a></li>
+      <li><a href="#search">Search</a></li>
+    </ul>
+    <section class="logout">
+      <button>Log Out</button>
+    </section>
+  </nav>
+</header>

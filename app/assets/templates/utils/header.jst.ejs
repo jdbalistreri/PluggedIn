@@ -7,10 +7,10 @@
       <button class="blue-button"><i class="fa fa-search fa-lg"></i></button>
     </form>
 
-    <span class="user-info-header">
-      <%= current_user.escape("full_name") %>
+    <a href="#" class="user-info-header">
+      <span><%= current_user.escape("full_name") %></span>
       <img src="<%= current_user.escape("thumb_picture_url")%>" alt="" />
-    </span>
+    </a>
   </nav>
 </header>
 

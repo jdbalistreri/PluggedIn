@@ -216,6 +216,21 @@ button.disabled {
   float: left;
 }
 
+.top-header-nav > .user-info-header {
+  font-size: 16px;
+  float: right;
+  vertical-align: middle;
+}
+
+.user-info-header > span {
+  vertical-align: middle;
+}
+
+.user-info-header > img {
+  vertical-align: middle;
+  display: inline-block;
+}
+
 .top-header .logo {
   font-size: 30px;
   font-weight: bold;
@@ -290,8 +305,11 @@ header > nav {
 
 .top-header img {
   width: 35px;
+  height: 35px;
   border-radius: 3px;
   margin-left: 10px;
+  background: #ddd;
+  border-radius: 3px;
 }
 
 header > h2 {

@@ -2,7 +2,11 @@
 
 <ul class="search-sidebar sidebar">
   <% if (!found) { %>
-    <span>No results found. <br> Please try a new search.</span>
+    <% if (query !== "") { %>
+      <span>No results found for '<%= query %>'. <br><br> Please try a new search.</span>
+    <%  } else { %>
+      <span>Welcome to the search page! <br><br> Use the search bar to find users.</span>
+    <% }%>
   <%  } else { %>
     <span><strong><%= totalCount %></strong>  result(s) for <strong><%= query %></strong></span>
   <% } %>

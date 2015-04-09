@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def create
     @user = User.new(user_params)
 
@@ -19,7 +18,6 @@ class UsersController < ApplicationController
   def new_demo
     @user = User.new_demo
     @user.save!
-    render json: {email: @user.email, password: @user.password }
+    render json: { email: @user.email, password: @user.password }
   end
-
 end

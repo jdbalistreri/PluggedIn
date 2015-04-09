@@ -1,5 +1,4 @@
 class Api::UsersController < ApplicationController
-
   def index
     users = User.all.includes(:connections)
     @users = []
@@ -17,10 +16,9 @@ class Api::UsersController < ApplicationController
     @user = current_user
 
     if @user.update(user_params)
-      render "show"
+      render 'show'
     else
       render json: @user.errors.full_messages, status: :unprocessable_entity
     end
   end
-
 end

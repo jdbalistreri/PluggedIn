@@ -30,6 +30,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'byebug'
+  gem 'rubocop'
 end
 
 group :development, :test do

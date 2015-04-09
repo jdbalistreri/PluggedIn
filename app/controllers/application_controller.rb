@@ -20,14 +20,14 @@ class ApplicationController < ActionController::Base
   def current_user
     return nil if session[:token].nil?
     unless @current_user
-      @current_user = User.find_by({session_token: session[:token]})
+      @current_user = User.find_by(session_token: session[:token])
       session[:refreshes] = session[:refreshes] ? session[:refreshes] + 1 : 0
     end
     @current_user
   end
 
   def current_user_id
-    return nil if !@current_user
+    return nil unless @current_user
     @current_user.id
   end
 
@@ -35,15 +35,15 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-
-
   private
+
     def require_logged_in
       redirect_to new_session_url unless logged_in?
     end
 
     def user_params
       params.require(:user).permit(:password, :email, :fname, :lname, :location,
-            :tagline, :industry, :date_of_birth, :summary, :picture)
+                                   :tagline, :industry, :date_of_birth,
+                                   :summary, :picture)
     end
 end

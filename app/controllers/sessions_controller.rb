@@ -1,16 +1,15 @@
 class SessionsController < ApplicationController
-
   def create
     user = User.find_by_credentials(
       params[:user][:email],
-      params[:user][:password],
+      params[:user][:password]
     )
 
     if user
       log_in!(user)
       redirect_to root_url
     else
-      flash.now[:errors] = ["Invalid username/password"]
+      flash.now[:errors] = ['Invalid username/password']
       render :new
     end
   end
@@ -26,12 +25,12 @@ class SessionsController < ApplicationController
   def omniauth
     @user = User.find_or_create_from_auth_hash(auth_hash)
     log_in!(@user)
-    redirect_to "/"
+    redirect_to '/'
   end
 
   private
+
     def auth_hash
       request.env['omniauth.auth']
     end
-
 end

@@ -8,23 +8,25 @@ class Api::ConnectionsController < ApplicationController
       @connection = Connection.includes(:receiver).find(@connection.id)
       render :show
     else
-      render json: @connection.errors.full_messages, status: :unprocessable_entity
+      render json: @connection.errors.full_messages,
+             status: :unprocessable_entity
     end
   end
 
   def update
     @connection = current_user.connections.includes(:users).find(params[:id])
 
-    if @connection.update({status: params[:status]})
+    if @connection.update(status: params[:status])
       render :show
     else
-      render json: @connection.errors.full_messages, status: :unprocessable_entity
+      render json: @connection.errors.full_messages,
+             status: :unprocessable_entity
     end
   end
 
   private
+
     def connection_params
       params.require(:connection).permit(:receiver_id)
     end
-
 end

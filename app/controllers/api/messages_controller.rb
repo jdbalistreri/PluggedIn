@@ -31,14 +31,14 @@ class Api::MessagesController < ApplicationController
         @user = @message.sender
       end
     else
-      render json: "no message found"
+      render json: 'no message found'
     end
   end
 
   private
+
     def message_params
       params.require(:message)
         .permit(:receiver_id, :subject, :body, :reply_to_id)
     end
-
 end

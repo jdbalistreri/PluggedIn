@@ -27,16 +27,16 @@ PluggedIn.Collections.Experiences = Backbone.Collection.extend({
 
       if (maxA === maxB) {
         if (minA === minB) {
-          return 0
+          return 0;
         } else if (minA < minB) {
-          return 1
+          return 1;
         } else {
-          return -1
+          return -1;
         }
       } else if (maxA < maxB) {
-        return 1
+        return 1;
       } else {
-        return -1
+        return -1;
       }
     }
   },
@@ -56,4 +56,4 @@ PluggedIn.Collections.Experiences = Backbone.Collection.extend({
       return -1;
     }
   },
-})
+});

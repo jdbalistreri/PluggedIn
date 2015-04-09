@@ -11,6 +11,6 @@ PluggedIn.Collections.SearchResults = Backbone.Collection.extend({
       this.totalCount = response.total_count;
     }
 
-    return response.results
+    return response.results;
   },
-})
+});

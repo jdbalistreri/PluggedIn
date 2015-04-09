@@ -10,7 +10,7 @@ PluggedIn.Collections.Connections = Backbone.Collection.extend({
     this.user_id = options.user_id;
   },
 
-})
+});
 
 PluggedIn.Collections.Connections.prototype.sent = function () {
   return this.where({sent: true});

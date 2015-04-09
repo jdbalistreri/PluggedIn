@@ -9,26 +9,11 @@ PluggedIn.Collections.Users = Backbone.Collection.extend({
 
     if (!user) {
       user = new PluggedIn.Models.User({id: id});
-      this.add(user)
+      this.add(user);
     }
 
-    user.fetch()
+    user.fetch();
 
     return user;
   },
 });
-
-
-// PluggedIn.Collections.Users.prototype.connected_users = function () {
-//   var connected_users = [];
-//
-//   this.each(function (user) {
-//     if (user.cu_connection()) {
-//       if (user.cu_connection().get("status") === "approved") {
-//         connected_users.push(user);
-//       }
-//     }
-//   })
-//
-//   return connected_users;
-// };

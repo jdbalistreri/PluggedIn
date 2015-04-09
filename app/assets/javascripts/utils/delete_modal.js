@@ -5,7 +5,7 @@ PluggedIn.Views.DeleteModal = Backbone.View.extend({
   template: JST["utils/delete-modal"],
 
   initialize: function () {
-    $(document).css("overflow", "hidden")
+    $(document).css("overflow", "hidden");
   },
 
   events: {
@@ -31,4 +31,4 @@ PluggedIn.Views.DeleteModal = Backbone.View.extend({
     $("html").css("overflow", "");
     this.remove();
   }
-})
+});

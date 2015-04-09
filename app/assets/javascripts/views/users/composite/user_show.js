@@ -7,7 +7,7 @@ PluggedIn.Views.UserShow = PluggedIn.UserView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
-    $(window).on("scroll", this.handleScroll.bind(this))
+    $(window).on("scroll", this.handleScroll.bind(this));
   },
 
   render: function () {
@@ -15,7 +15,7 @@ PluggedIn.Views.UserShow = PluggedIn.UserView.extend({
     this.$el.html(content);
 
     this.addUserCard();
-    if (this.showJobs()) { this.addJobsIndex() };
+    if (this.showJobs()) { this.addJobsIndex(); }
     this.addSchoolsIndex();
     this.addConnectedUsersIndex();
 
@@ -28,7 +28,7 @@ PluggedIn.Views.UserShow = PluggedIn.UserView.extend({
         user: this.model,
       });
     }
-    this.addSubview(".user-connections", this.connectedUsersIndex)
+    this.addSubview(".user-connections", this.connectedUsersIndex);
   },
 
   addJobsIndex: function () {
@@ -59,13 +59,13 @@ PluggedIn.Views.UserShow = PluggedIn.UserView.extend({
   },
 
   showJobs: function () {
-    return (this.model.jobs().length > 0) || this.currentUser();   ;
+    return (this.model.jobs().length > 0) || this.currentUser();
   },
 
   handleScroll: function (event) {
 
     if (!this._documentHeight) {
-      this._documentHeight = $(document).height()
+      this._documentHeight = $(document).height();
     }
 
     if ($(document).scrollTop() >= 48) {
@@ -84,4 +84,4 @@ PluggedIn.Views.UserShow = PluggedIn.UserView.extend({
   remove: function () {
     PluggedIn.UserView.prototype.remove.call(this);
   }
-})
+});

@@ -22,7 +22,7 @@ PluggedIn.Views.UserForm = Backbone.View.extend({
 
     fileReader.onloadend = function () {
       that.model.set("picture", fileReader.result);
-      that.$("#picture-preview").attr("src", fileReader.result)
+      that.$("#picture-preview").attr("src", fileReader.result);
     };
 
     fileReader.readAsDataURL(file);
@@ -32,4 +32,4 @@ PluggedIn.Views.UserForm = Backbone.View.extend({
     this.toggleEl();
   },
 
-})
+});

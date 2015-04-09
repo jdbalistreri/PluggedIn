@@ -27,7 +27,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
 
   addHeader: function () {
     this.headerView = new PluggedIn.Views.Header();
-    this.$header.html(this.headerView.render().$el)
+    this.$header.html(this.headerView.render().$el);
   },
 
   bindEvents: function () {
@@ -45,14 +45,14 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
     }
 
     if (event.originalEvent.wheelDelta >= 0) {
-      $(".global-header").removeClass("toggled")
+      $(".global-header").removeClass("toggled");
     } else {
-      $(".global-header").addClass("toggled")
+      $(".global-header").addClass("toggled");
     }
   },
 
   search: function (query) {
-    var query = query ? query.split("=")[1] : ""
+    query = query ? query.split("=")[1] : "";
     var view = new PluggedIn.Views.UserSearch({query: query});
     this._swapViews(view);
   },
@@ -153,4 +153,4 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
     this.$rootEl.html(view.render().$el);
   },
 
-})
+});

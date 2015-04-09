@@ -19,14 +19,14 @@ PluggedIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    var show_next = !(this.searchResults.pageNum >= this.searchResults.maxPages);
-    var show_prev = !(this.searchResults.pageNum <= 1);
+    var show_next = (this.searchResults.pageNum < this.searchResults.maxPages);
+    var show_prev = (this.searchResults.pageNum > 1);
 
     var content = this.template({
       user: this.user,
       show_next: show_next,
       show_prev: show_prev,
-    })
+    });
 
     this.$el.html(content);
     this.emptySubviews("ul.connected-users-list");
@@ -34,7 +34,7 @@ PluggedIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
     this.searchResults.each( function(user) {
       var connectionView = new PluggedIn.Views.UserIndexItem({model: user});
       this.addSubview("ul.connected-users-list", connectionView);
-    }.bind(this))
+    }.bind(this));
 
     return this;
   },
@@ -81,7 +81,7 @@ PluggedIn.Views.ConnectedUsersIndex = Backbone.CompositeView.extend({
       success: function () {
         this.searchResults.pageNum = this.searchResults.pageNum + num;
       }.bind(this),
-    })
+    });
   },
 
-})
+});

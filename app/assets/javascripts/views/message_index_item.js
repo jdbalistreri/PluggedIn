@@ -10,4 +10,4 @@ PluggedIn.Views.MessageIndexItem = Backbone.View.extend({
     return this;
   },
 
-})
+});

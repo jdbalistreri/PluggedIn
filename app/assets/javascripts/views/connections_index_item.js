@@ -20,4 +20,4 @@ PluggedIn.Views.ConnectionIndexItem = Backbone.CompositeView.extend({
   },
 
 
-})
+});

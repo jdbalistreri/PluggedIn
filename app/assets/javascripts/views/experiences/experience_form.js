@@ -4,7 +4,7 @@ PluggedIn.Views.ExperienceForm = Backbone.ExperiencesForm.extend({
   className: "new-experience-form",
 
   template: function () {
-    return JST[this.type + "s/new-form"]
+    return JST[this.type + "s/new-form"];
   },
 
   initialize: function (options) {
@@ -25,4 +25,4 @@ PluggedIn.Views.ExperienceForm = Backbone.ExperiencesForm.extend({
   submitOnSuccess: function (model) {
     this.collection.add(model, {merge: true});
   },
-})
+});

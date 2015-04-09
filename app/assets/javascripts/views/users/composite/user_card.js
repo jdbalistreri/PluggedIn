@@ -17,4 +17,4 @@ PluggedIn.Views.UserCard = PluggedIn.ToggleableFormView.extend({
     return this;
   },
 
-})
+});

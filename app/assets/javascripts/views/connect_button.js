@@ -22,7 +22,7 @@ PluggedIn.Views.ConnectButton = Backbone.View.extend({
   },
 
   approveConnection: function () {
-    this.model.set("status", 1)
+    this.model.set("status", 1);
     this.model.save({}, {
       success: function (model) {
         var connection = PluggedIn.Inbox.connections().get(model.id);
@@ -33,7 +33,7 @@ PluggedIn.Views.ConnectButton = Backbone.View.extend({
   },
 
   denyConnection: function () {
-    this.model.set("status", 2)
+    this.model.set("status", 2);
     this.model.save({}, {
       success: function (model) {
         var connection = PluggedIn.Inbox.connections().get(model.id);
@@ -43,12 +43,12 @@ PluggedIn.Views.ConnectButton = Backbone.View.extend({
   },
 
   messageUser: function () {
-    Backbone.history.navigate("#inbox/messages/new?user_id=" + this.user.id, {trigger: true})
+    Backbone.history.navigate("#inbox/messages/new?user_id=" + this.user.id, {trigger: true});
   },
 
   requestConnection: function () {
-    this.model.set("sender_id", PluggedIn.currentUserId)
-    this.model.set("receiver_id", this.user.id)
+    this.model.set("sender_id", PluggedIn.currentUserId);
+    this.model.set("receiver_id", this.user.id);
     this.model.save({}, {
       success: function (model) {
         PluggedIn.Inbox.messages().add(model, {merge: true});
@@ -56,4 +56,4 @@ PluggedIn.Views.ConnectButton = Backbone.View.extend({
     });
 
   },
-})
+});

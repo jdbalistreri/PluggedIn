@@ -36,12 +36,12 @@ Backbone.ExperiencesForm = PluggedIn.ToggleableFormView.extend({
   },
 
   submitCancelCondition: function () {
-    if (this.school()) return false
+    if (this.school()) return false;
     return !this.validEndDate();
   },
 
   toggleEndDate: function () {
-    this.$(".end-date").toggleClass("toggled")
+    this.$(".end-date").toggleClass("toggled");
   },
 
   validEndDate: function () {

@@ -11,7 +11,7 @@ PluggedIn.Views.MessageForm = Backbone.View.extend({
   initialize: function (options) {
     this.users = options.users;
     this.query = options.query;
-    this.listenTo(this.users, "sync", this.render)
+    this.listenTo(this.users, "sync", this.render);
   },
 
   render: function () {
@@ -24,7 +24,7 @@ PluggedIn.Views.MessageForm = Backbone.View.extend({
         $option.prop("selected", true);
       }
       this.$(".user-select").append($option);
-    }.bind(this))
+    }.bind(this));
 
     return this;
   },
@@ -38,7 +38,7 @@ PluggedIn.Views.MessageForm = Backbone.View.extend({
       success: function (model, response) {
         Backbone.history.navigate("#inbox/messages/sent", {trigger: true});
       }.bind(this),
-    })
+    });
   },
 
-})
+});

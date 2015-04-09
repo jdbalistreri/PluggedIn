@@ -6,7 +6,7 @@ PluggedIn.Models.School = Backbone.Model.extend({
   },
 
   toJSON: function () {
-    return {experience: _.clone(this.attributes)}
+    return {experience: _.clone(this.attributes)};
   },
 
-})
+});

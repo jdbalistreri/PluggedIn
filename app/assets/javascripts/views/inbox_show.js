@@ -23,7 +23,7 @@ PluggedIn.Views.InboxShow = Backbone.CompositeView.extend({
     this.$el.html(content);
 
     if (this.subview) {
-      this.addSubview(".messages", this.subview)
+      this.addSubview(".messages", this.subview);
     } else {
       this.fillInbox();
     }
@@ -37,11 +37,12 @@ PluggedIn.Views.InboxShow = Backbone.CompositeView.extend({
   },
 
   fillInbox: function () {
+    var viewConstructor;
 
     if (this.displayItems[0] instanceof PluggedIn.Models.Connection) {
-      var viewConstructor = PluggedIn.Views.ConnectionIndexItem;
+      viewConstructor = PluggedIn.Views.ConnectionIndexItem;
     } else {
-      var viewConstructor = PluggedIn.Views.MessageIndexItem;
+      viewConstructor = PluggedIn.Views.MessageIndexItem;
     }
 
     _.each(this.displayItems, (function (model) {
@@ -49,7 +50,7 @@ PluggedIn.Views.InboxShow = Backbone.CompositeView.extend({
         model: model,
       });
       this.addSubview(".messages", view);
-    }.bind(this)))
+    }.bind(this)));
 
 
     if (this.subviews(".messages").length === 0) {
@@ -57,4 +58,4 @@ PluggedIn.Views.InboxShow = Backbone.CompositeView.extend({
     }
   },
 
-})
+});

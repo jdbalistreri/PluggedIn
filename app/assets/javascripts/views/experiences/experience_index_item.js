@@ -3,7 +3,7 @@ PluggedIn.Views.ExperienceIndexItem = Backbone.ExperiencesForm.extend({
   className: "experience-index-item",
 
   template: function () {
-    return JST[this.type + "s/index-item"]
+    return JST[this.type + "s/index-item"];
   },
 
   initialize: function (options) {
@@ -15,7 +15,7 @@ PluggedIn.Views.ExperienceIndexItem = Backbone.ExperiencesForm.extend({
     var content = this.template()({experience: this.model, currentUser: this.currentUser()});
     this.$el.html(content);
 
-    this.selectCurrentDates()
+    this.selectCurrentDates();
 
     return this;
   },
@@ -32,4 +32,4 @@ PluggedIn.Views.ExperienceIndexItem = Backbone.ExperiencesForm.extend({
     this.toggleEl();
     this.model.collection.sort();
   },
-})
+});

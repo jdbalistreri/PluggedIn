@@ -23,7 +23,7 @@ PluggedIn.Models.Inbox = Backbone.Model.extend({
       delete response.sent_messages;
     }
 
-    return response
+    return response;
   },
 
   connections: function () {
@@ -31,7 +31,7 @@ PluggedIn.Models.Inbox = Backbone.Model.extend({
       this._connections = new PluggedIn.Collections.Connections([], {user_id: PluggedIn.currentUserId});
     }
 
-    return this._connections
+    return this._connections;
   },
 
   messages: function () {
@@ -39,7 +39,7 @@ PluggedIn.Models.Inbox = Backbone.Model.extend({
       this._messages = new PluggedIn.Collections.Messages([], {user_id: PluggedIn.currentUserId});
     }
 
-    return this._messages
+    return this._messages;
   },
 
-})
+});

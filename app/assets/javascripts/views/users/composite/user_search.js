@@ -40,7 +40,7 @@ PluggedIn.Views.UserSearch = Backbone.CompositeView.extend({
     this.searchResults.each(function (user) {
       var indexItem = new PluggedIn.Views.UserIndexItem({model: user});
       this.addSubview(".search-results", indexItem);
-    }.bind(this))
+    }.bind(this));
   },
 
   search: function (event) {
@@ -66,4 +66,4 @@ PluggedIn.Views.UserSearch = Backbone.CompositeView.extend({
       this.search();
     }
   },
-})
+});

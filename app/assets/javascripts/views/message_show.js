@@ -23,4 +23,4 @@ PluggedIn.Views.MessageShow = Backbone.CompositeView.extend({
     return this;
   },
 
-})
+});

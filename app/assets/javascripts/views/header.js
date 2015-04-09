@@ -3,7 +3,7 @@ PluggedIn.Views.Header = Backbone.View.extend({
   className: "global-header",
 
   initialize: function () {
-    this.model = new PluggedIn.Models.User({id: PluggedIn.currentUserId})
+    this.model = new PluggedIn.Models.User({id: PluggedIn.currentUserId});
     this.model.fetch();
     this.listenTo(this.model, "sync", this.render);
   },
@@ -30,4 +30,4 @@ PluggedIn.Views.Header = Backbone.View.extend({
     Backbone.history.navigate("#search?query=" + query, {trigger: true});
   },
 
-})
+});

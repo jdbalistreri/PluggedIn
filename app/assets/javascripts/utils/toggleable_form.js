@@ -17,7 +17,7 @@ PluggedIn.ToggleableFormView = Backbone.CompositeView.extend({
   },
 
   deleteModel: function () {
-    var modalView = new PluggedIn.Views.DeleteModal({model: this.model})
+    var modalView = new PluggedIn.Views.DeleteModal({model: this.model});
     PluggedIn.$modalEl.toggleClass("toggled");
     PluggedIn.$modalEl.html(modalView.render().$el);
   },
@@ -41,7 +41,7 @@ PluggedIn.ToggleableFormView = Backbone.CompositeView.extend({
         this.$("button").html("Submit").prop("disabled", false);
         return that.submitOnError(response);
       }.bind(this),
-    })
+    });
   },
 
   toggleEl: function () {
@@ -65,7 +65,7 @@ PluggedIn.ToggleableFormView = Backbone.CompositeView.extend({
     response.responseJSON.forEach(function (error) {
       var $li = $("<li>").text(error).addClass("error");
       this.$(".errors").append($li);
-    }.bind(this))
+    }.bind(this));
   },
 
-})
+});

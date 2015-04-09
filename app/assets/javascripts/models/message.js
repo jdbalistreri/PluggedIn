@@ -8,14 +8,14 @@ PluggedIn.Models.Message = Backbone.Model.extend({
       delete response.user;
     }
 
-    return response
+    return response;
   },
 
   user: function (attrs) {
     if (attrs) {
       this._user = new PluggedIn.Models.User(attrs, {parse: true});
     }
-    return this._user
+    return this._user;
   },
 
-})
+});

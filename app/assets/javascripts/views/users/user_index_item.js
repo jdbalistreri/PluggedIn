@@ -5,4 +5,4 @@ PluggedIn.Views.UserIndexItem = PluggedIn.UserView.extend({
 
   template: JST["users/index-item"],
 
-})
+});

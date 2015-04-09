@@ -135,7 +135,7 @@ class User < ActiveRecord::Base
       end
     end
 
-    @previous_jobs.sort!(&:end_date)
+    @previous_jobs.sort { |job| job.end_date }
 
     @current_jobs = @current_jobs.sample(3).map(&:institution).join(', ')
     @previous_jobs = @previous_jobs.sample(3).map(&:institution).join(', ')

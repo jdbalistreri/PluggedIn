@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   include PgSearch
+
+  attr_reader :password
   pg_search_scope(
     :user_search,
     against: [:fname, :lname],
@@ -89,39 +91,39 @@ class User < ActiveRecord::Base
   end
 
   def all_connected_users
-    join1 = "JOIN user_connections uc1 ON u1.id = uc1.user_id"
-    join2 = "JOIN user_connections uc2 ON uc1.connection_id = uc2.connection_id"
-    join3 = "JOIN users u2 ON uc2.user_id = u2.id"
-    join4 = "JOIN connections c ON c.id = uc1.connection_id"
-    where = "u1.id = :id AND u2.id != :id"
-    User.select("u2.*")
-        .distinct
-        .from("users u1")
-        .joins(join1)
-        .joins(join2)
-        .joins(join3)
-        .joins(join4)
-        .where([where, {id: self.id}])
+    join1 = 'JOIN user_connections uc1 ON u1.id = uc1.user_id'
+    join2 = 'JOIN user_connections uc2 ON uc1.connection_id = uc2.connection_id'
+    join3 = 'JOIN users u2 ON uc2.user_id = u2.id'
+    join4 = 'JOIN connections c ON c.id = uc1.connection_id'
+    where = 'u1.id = :id AND u2.id != :id'
+    User.select('u2.*')
+      .distinct
+      .from('users u1')
+      .joins(join1)
+      .joins(join2)
+      .joins(join3)
+      .joins(join4)
+      .where([where, { id: id }])
   end
 
   def current_jobs
-    @jobs = self.jobs
+    @jobs = jobs
     @current_jobs.empty? ? nil : @current_jobs
   end
 
   def previous_jobs
-    @jobs = self.jobs
+    @jobs = jobs
     @previous_jobs.empty? ? nil : @previous_jobs
   end
 
   def education
-    @schools = self.schools
+    @schools = schools
     @education
   end
 
   def jobs
     return @jobs if @jobs
-    jobs = self.experiences.where(experience_type: 0)
+    jobs = experiences.where(experience_type: 0)
     @current_jobs = []
     @previous_jobs = []
 
@@ -133,19 +135,19 @@ class User < ActiveRecord::Base
       end
     end
 
-    @previous_jobs.sort! { |job| job.end_date }
+    @previous_jobs.sort!(&:end_date)
 
-    @current_jobs = @current_jobs.sample(3).map(&:institution).join(", ")
-    @previous_jobs = @previous_jobs.sample(3).map(&:institution).join(", ")
+    @current_jobs = @current_jobs.sample(3).map(&:institution).join(', ')
+    @previous_jobs = @previous_jobs.sample(3).map(&:institution).join(', ')
 
     jobs
   end
 
   def schools
     return @schools if @schools
-    schools = self.experiences.where(experience_type: 1)
+    schools = experiences.where(experience_type: 1)
 
-    @education = schools.map(&:institution).join(", ")
+    @education = schools.map(&:institution).join(', ')
 
     schools
   end
@@ -155,12 +157,12 @@ class User < ActiveRecord::Base
   end
 
   def age
-    DateTime.now.year - self.date_of_birth.year
+    DateTime.now.year - date_of_birth.year
   end
 
   def last_date
     return @last_date if @last_date
-    end_dates = self.experiences.map(&:end_date)
+    end_dates = experiences.map(&:end_date)
 
     if end_dates.any? { |date| date.nil? || Time.now < date }
       @last_date = nil
@@ -176,11 +178,7 @@ class User < ActiveRecord::Base
 
   def password=(password)
     @password = password
-    self.password_digest = BCrypt::Password.create(password);
-  end
-
-  def password
-    @password
+    self.password_digest = BCrypt::Password.create(password)
   end
 
   def is_password?(password)
@@ -188,19 +186,19 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_credentials(email, password)
-    user = User.find_by({email: email})
+    user = User.find_by(email: email)
     return nil if user.nil?
     user.is_password?(password) ? user : nil
   end
 
   def self.generate_session_token
-    SecureRandom::urlsafe_base64
+    SecureRandom.urlsafe_base64
   end
 
   def reset_session_token!
     self.session_token = self.class.generate_session_token
     self.save!
-    self.session_token
+    session_token
   end
 
   def self.find_or_create_from_auth_hash(auth_hash)
@@ -210,12 +208,12 @@ class User < ActiveRecord::Base
 
     unless user
       user = User.create!(
-            provider: auth_hash[:provider],
-            uid: auth_hash[:uid],
-            fname: auth_hash[:info][:name].split.first,
-            lname: auth_hash[:info][:name].split.last,
-            email: auth_hash[:info][:nickname],
-            password: SecureRandom::urlsafe_base64
+              provider: auth_hash[:provider],
+              uid: auth_hash[:uid],
+              fname: auth_hash[:info][:name].split.first,
+              lname: auth_hash[:info][:name].split.last,
+              email: auth_hash[:info][:nickname],
+              password: SecureRandom.urlsafe_base64
       )
     end
 
@@ -434,7 +432,7 @@ class User < ActiveRecord::Base
       location: User.rand_location,
       description: Faker::Company.catch_phrase,
       start_date: start_date,
-      end_date: end_date > Time.now ? nil : end_date,
+      end_date: end_date > Time.now ? nil : end_date
     )
     true
   end

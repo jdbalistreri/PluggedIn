@@ -3,12 +3,12 @@ class User < ActiveRecord::Base
   pg_search_scope(
     :user_search,
     against: [:fname, :lname],
-    associated_against: { experiences: [:role, :institution]},
-    using: {tsearch: {prefix: true}}
+    associated_against: { experiences: [:role, :institution] },
+    using: { tsearch: { prefix: true } }
   )
 
   validates :password_digest, :email, :session_token, presence: true
-  validates :password, length: {minimum: 6, allow_nil: true}
+  validates :password, length: { minimum: 6, allow_nil: true }
   validates :email, :session_token, uniqueness: true
   validate :name_presence
   after_initialize :ensure_session_token
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   has_many(
     :sent_messages,
-    class_name: "Message",
+    class_name: 'Message',
     primary_key: :id,
     foreign_key: :sender_id,
     inverse_of: :sender
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   has_many(
     :received_messages,
-    class_name: "Message",
+    class_name: 'Message',
     primary_key: :id,
     foreign_key: :receiver_id,
     inverse_of: :receiver
@@ -38,14 +38,14 @@ class User < ActiveRecord::Base
 
   has_many(
     :sent_connections,
-    class_name: "Connection",
+    class_name: 'Connection',
     foreign_key: :sender_id,
     primary_key: :id
   )
 
   has_many(
     :received_connections,
-    class_name: "Connection",
+    class_name: 'Connection',
     foreign_key: :receiver_id,
     primary_key: :id
   )
@@ -59,32 +59,33 @@ class User < ActiveRecord::Base
     dependent: :destroy
   )
 
-  has_attached_file :picture, styles: {profile: "200x200#", thumb: "60x60#"}, default_url: "default.png"
+  has_attached_file :picture, styles: { profile: '200x200#', thumb: '60x60#' }, default_url: 'default.png'
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
   def num_connections
     count = 0
-    self.connections.each do |connection|
+    connections.each do |connection|
       count += 1 if connection.approved?
     end
     count
   end
 
   def connection_with(user)
-    self.connections.each do |connection|
-      return connection if connection.sender_id == user.id || connection.receiver_id == user.id
+    connections.each do |connection|
+      return connection if connection.sender_id == user.id ||
+                           connection.receiver_id == user.id
     end
     nil
   end
 
   def requested_users
-    @requested_users ||= self.all_connected_users
-                          .where("c.sender_id = ?", self.id)
-                          .where("c.status != 1")
+    @requested_users ||= all_connected_users
+                         .where('c.sender_id = ?', id)
+                         .where('c.status != 1')
   end
 
   def connected_users
-    @connected_users ||= self.all_connected_users.where("c.status = 1")
+    @connected_users ||= all_connected_users.where('c.status = 1')
   end
 
   def all_connected_users

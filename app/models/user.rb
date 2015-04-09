@@ -301,7 +301,7 @@ class User < ActiveRecord::Base
     summary = "#{Faker::Company.bs.capitalize}."
 
 
-    user = User.create(
+    user = User.create!(
       email: email || Faker::Internet.free_email("#{fname}.#{lname}"),
       password: "password",
       fname: fname,

@@ -49,6 +49,7 @@ ul {
 
 body {
   font-family: Helvetica, Arial, sans-serif;
+  color: #111;
   background-image: image-url("grid.png");
 }
 
@@ -85,8 +86,6 @@ button.disabled {
   right: 0;
   background-size: cover;
   background-image: image-url("nyc-skyline.jpg");
-  /*background-image: url(http://o.homedsgn.com/wp-content/uploads/2011/06/NYC-Andrew-Mace-27.jpg);*/
-  /*background-image: url(http://www.hdfinewallpapers.com/HDWallpapers/Big/Countries-and-City/Amazing_Beautiful_Night_Look_of_New_York_City_Photo.jpg)*/
 }
 
 .login-form {
@@ -536,6 +535,10 @@ span.edit > a {
   padding-top: 3px;
 }
 
+span.edit {
+  padding: 5px 0;
+}
+
 /*USER SHOW :: EXPERIENCES 2*/
 
 .user-experiences h3 {
@@ -614,7 +617,7 @@ span.edit > a {
 .all-connections {
   display: block;
   text-align: right;
-  color: black;
+  color: #111;
   font-size: 12px;
   font-weight: bold;
 }
@@ -789,7 +792,7 @@ a.message-link:hover {
   font-size: 18px;
   font-weight: bold;
   display: block;
-  color: #000;
+  color: #111;
   padding-bottom: 10px;
 }
 
@@ -835,7 +838,7 @@ input {
   padding: 5px 10px 5px 10px;
   border-radius: 3px;
   font-size: 13px;
-  color: black;
+  color: #111;
 }
 
 #picture-preview {

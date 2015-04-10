@@ -21,7 +21,8 @@ class User < ActiveRecord::Base
     class_name: 'Message',
     primary_key: :id,
     foreign_key: :sender_id,
-    inverse_of: :sender
+    inverse_of: :sender,
+    dependent: :destroy
   )
 
   has_many(
@@ -29,7 +30,8 @@ class User < ActiveRecord::Base
     class_name: 'Message',
     primary_key: :id,
     foreign_key: :receiver_id,
-    inverse_of: :receiver
+    inverse_of: :receiver,
+    dependent: :destroy
   )
 
   has_many(
@@ -42,14 +44,16 @@ class User < ActiveRecord::Base
     :sent_connections,
     class_name: 'Connection',
     foreign_key: :sender_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
     :received_connections,
     class_name: 'Connection',
     foreign_key: :receiver_id,
-    primary_key: :id
+    primary_key: :id,
+    destroy: :destroy
   )
 
   has_many :user_connections, inverse_of: :user, dependent: :destroy

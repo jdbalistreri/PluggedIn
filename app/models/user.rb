@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
     class_name: 'Connection',
     foreign_key: :receiver_id,
     primary_key: :id,
-    destroy: :destroy
+    dependent: :destroy
   )
 
   has_many :user_connections, inverse_of: :user, dependent: :destroy

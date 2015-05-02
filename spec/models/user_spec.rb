@@ -2,49 +2,51 @@ require 'rails_helper'
 
 describe User, type: :model do
 
-  it "validates the presence of an email, password, and name" do
-    user1 = User.new(email: "user@example.com", password: "", fname: "John", lname: "Masters")
-    expect(user1.valid?).to be(false)
-
-    user2 = User.new(email: "", password: "password", fname: "John", lname: "Masters")
-    expect(user2.valid?).to be(false)
-
-    user3 = User.new(email: "asdf", password: "password", fname: "John", lname: "")
-    expect(user3.valid?).to be(false)
-
-    user4 = User.new(email: "asdf", password: "password", fname: "", lname: "asdfas")
-    expect(user4.valid?).to be(false)
-
-    user5 = build(:user)
-    expect(user5.valid?).to be(true)
-  end
-
-  it "validates that users have a unique email address" do
-    user1 = User.create!(email: "user@example.com", password: "password", fname: "John", lname: "Masters")
-    user2 = User.new(email: "user@example.com", password: "password", fname: "John", lname: "Masters")
-    expect(user2.valid?).to be(false)
+  it "creates a valid user" do
+    user = build(:user)
+    expect(user.valid?).to be(true)
   end
 
   it "ensures a session token upon user creation" do
-    user1 = User.new()
-    expect(user1.session_token).not_to be(nil)
+    user = build(:user)
+    expect(user.session_token).not_to be(nil)
+  end
 
+  it "validates the presence of a password" do
+    user = build(:user, password: "")
+    expect(user.valid?).to be(false)
+  end
+
+  it "validates the presence of an email" do
+    user = build(:user, email: "")
+    expect(user.valid?).to be(false)
+  end
+
+  it "validates the presence of an fname" do
+    user = build(:user, fname: "")
+    expect(user.valid?).to be(false)
+  end
+
+  it "validates the presence of an lname" do
+    user = build(:user, lname: "")
+    expect(user.valid?).to be(false)
+  end
+
+  it "validates that users have a unique email address" do
+    user1 = create(:user)
+    user2 = build(:user)
+    expect(user2.valid?).to be(false)
   end
 
   it "finds a user by username and password" do
-    user1 = User.create!(email: "user@example.com", password: "password", fname: "John", lname: "Masters")
+    user = create(:user, email: "user@example.com", password: "password")
     found_user = User.find_by_credentials("user@example.com", "password")
-    expect(user1.id).to equal(found_user.id)
-
-    found_user2 = User.find_by_credentials("user@example.com", "other")
-    expect(found_user2).to equal(nil)
+    expect(user.id).to equal(found_user.id)
   end
 
   it "does not save a user's password" do
-    user1 = User.create!(email: "user@example.com", password: "password", fname: "John", lname: "Masters")
+    user = create(:user)
     expect(User.first.password).to eq(nil)
   end
-
-  it "has many connected users"
 
 end

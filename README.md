@@ -1,13 +1,13 @@
 # Plugged In
 
-Plugged In is a professional networking site built in Rails and Backbone.
+Plugged In is a professional networking site built in Rails and Backbone
 #####<a href="http://www.plugged-in.io" target="_blank">Live Link</a>
 
 ### Challenge Overview
 #####Problem:
 Implement the core functionality of a professional networking site (e.g. LinkedIn)
 #####Solution:
-Full stack solution uses a RESTful Rails API that delivers JSON to Backbone front­end (feature and implementation detail below).
+Full stack solution uses a RESTful Rails API that delivers JSON to Backbone front­end (feature and implementation detail below)
 
 ### Features
 - Create accounts and sessions (log in)
@@ -39,6 +39,18 @@ Full stack solution uses a RESTful Rails API that delivers JSON to Backbone fron
 - Degrees of connection
 - Statistics on who has viewed a user profile (D3 for data visualization)
 
+##About the Developer
+I am an NYC-based web developer with experience in Rails and JavaScript. After graduating from Dartmouth in 2013, I worked as an analytic strategy consultant. During that time I began teaching myself to code and ultimately decided to pursue programming full time.
+
+####Online Presence
+- [Personal website][personal]
+- [Resume][resume]
+- [LinkedIn][linkedin]
+- [Tumblr][tumblr]
+####Other Projects
+- [Chess in Ruby][chess]
+- Asteroids in JS and Canvas [live][asteroids] [github][asteroids-github]
+
 [user-jbuilder]: ./app/views/api/users/show.json.jbuilder
 [user-model]: ./app/models/user.rb
 [user-parse]: ./app/assets/javascripts/models/user.js
@@ -50,3 +62,10 @@ Full stack solution uses a RESTful Rails API that delivers JSON to Backbone fron
 [router]: ./app/assets/javascripts/routers/router.js
 [search-results]: ./app/assets/javascripts/views/users/composite/user_search.js
 [search_controller]: ./app/controllers/api/static_controller.rb
+[chess]: https://github.com/jdbalistreri/Chess
+[personal]: http://www.joebalistreri.net/
+[resume]: https://drive.google.com/file/d/13_K04Uy3gyKyTTF1SK_sSRadxEHW1FTFuaZciw9Km2R4_3po9riI8oF7-JSSapEUziy_19doEK5oo_K2/view
+[tumblr]: http://jdbalistreri.tumblr.com/
+[linkedin]: https://www.linkedin.com/in/jdbalistreri
+[asteroids]: http://www.joebalistreri.net/AsteroidsJS/
+[asteroids-github]: https://github.com/jdbalistreri/AsteroidsJS

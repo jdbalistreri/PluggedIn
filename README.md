@@ -1,10 +1,16 @@
 # Plugged In
 
-Plugged In is a professional networking site, similar to LinkedIn, built on Rails and Backbone.
+Plugged In is a professional networking site built in Rails and Backbone.
 
-##<a href="http://www.plugged-in.io" target="_blank">Live Link</a>
+###Problem
+Implement the core functionality of a professional networking site (e.g. LinkedIn)
 
-## Features
+###Solution
+Full stack solution uses a RESTful Rails API that delivers JSON to Backbone front­end (feature and implementation detail below).
+
+###<a href="http://www.plugged-in.io" target="_blank">Live Link</a>
+
+### Features
 
 Users can:
 - Create accounts and sessions (log in)
@@ -15,18 +21,17 @@ Users can:
 - Search for users
 - Take a website tour on login or sign in with a demo account
 
-## Implementation
-###Profiles, Users, and Experiences
+###Profiles, Users, and Experiences Implementation
 - Form views on profile edit in place by inheriting from [toggleable form superclass][toggleable]
 - A user's experiences are [sent down][user-jbuilder] with user data as JSON and [parsed][user-parse] into separate Backbone collections
 - [User model][user-model] has built in methods to generate realistic seed data
 
-###Connections
+###Connections Implementation
 - Connections rely on two [database tables][schema] (connections and user_connections) to cleanly implement two-way friendships
 - [Connect button subview][connect-button] allows users to issue connection requests across various user views; permits options available based on a user's connection status with the current user
 - [Connected users index view][connected-users-index] displays a user's approved connections while paginating results
 
-###Messages/Search
+###Messages/Search Implementation
 - Navigation between [inbox][inbox-view] pages occurs using the [router][router] and a getOrFetch method to ensure data persists across hard refreshes
 - [API Static Controller][search_controller] processes search query with PGSearch and paginates results with Kaminari
 - Search results view uses [infinite scroll][search-results] to improve load time and UX

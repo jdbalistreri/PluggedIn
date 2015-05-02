@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'byebug'
 
 describe Connection, type: :model do
   let(:user1) { User.create!(email: "user1@example.com", password: "password",

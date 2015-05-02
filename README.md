@@ -42,13 +42,14 @@ Full stack solution uses a RESTful Rails API that delivers JSON to Backbone fron
 ##About the Developer
 I am an NYC-based web developer with experience in Rails and JavaScript. After graduating from Dartmouth in 2013, I worked as an analytic strategy consultant. During that time I began teaching myself to code and ultimately decided to pursue programming full time.
 
-####Online Presence
+#### Online Presence
 - [Personal website][personal]
 - [Resume][resume]
 - [LinkedIn][linkedin]
 - [Tumblr][tumblr]
-####Other Projects
-- [Chess in Ruby][chess]
+
+#### Other Projects
+- Chess in Ruby [github][chess]
 - Asteroids in JS and Canvas [live][asteroids] [github][asteroids-github]
 
 [user-jbuilder]: ./app/views/api/users/show.json.jbuilder

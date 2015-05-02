@@ -35,8 +35,9 @@ Full stack solution uses a RESTful Rails API that delivers JSON to Backbone fron
 - Search results view uses [infinite scroll][search-results] to improve load time and UX
 
 ### Technical Choices
-The features implemented in this project where chosen to replicate the core experience of using a professional networking site. These features centered around the experience of creating a profile and connecting with other users (e.g. connections, search, messaging, profiles) and incorporated a diverse set of implementation techniques and libraries
+The features implemented in this project where chosen to replicate the core experience of using a professional networking site. These features centered around the experience of creating a profile and connecting with other users (e.g. connections, search, messaging, profiles). Features that did not demonstrate a unique programming skill set or whose presence would not significantly add to the experience of using the website were excluded in this version of the project.
 - For example, company pages were not implemented because their architecture would have largely duplicated that of user profiles
+- Additionally, email verification was not implemented because it would detract from the UX of a website primarily built for demonstration purposes
 
 However, additional features whose absence might not be immediately noticed would need to be added to complete a production-grade app. Those include more expansive test coverage, email verification/notifications, profile privacy and user settings, notifications, flashes, and multiple login.
 

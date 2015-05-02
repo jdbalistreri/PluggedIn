@@ -6,9 +6,8 @@ class Api::MessagesController < ApplicationController
 
     if @message.save
       @message = Message.includes(:receiver).find(@message.id)
-      @sent = true
-      @user = @message.receiver
-      render :show
+      render :partial => "api/shared/message", :locals => { message: @message,
+          sent: true, user: @message.receiver }
     else
       render json: @message.errors.full_messages, status: :unprocessable_entity
     end
@@ -30,6 +29,8 @@ class Api::MessagesController < ApplicationController
       else
         @user = @message.sender
       end
+      render :partial => "api/shared/message", :locals => { message: @message,
+          sent: @sent, user: @user }
     else
       render json: 'no message found'
     end

@@ -2,13 +2,12 @@
 
 Plugged In is a professional networking site built in Rails and Backbone.
 
-###Problem
-Implement the core functionality of a professional networking site (e.g. LinkedIn)
+####<a href="http://www.plugged-in.io" target="_blank">Live Link</a>
 
-###Solution
-Full stack solution uses a RESTful Rails API that delivers JSON to Backbone front­end (feature and implementation detail below).
+### Challenge Overview
+Problem: Implement the core functionality of a professional networking site (e.g. LinkedIn)
 
-###<a href="http://www.plugged-in.io" target="_blank">Live Link</a>
+Solution: Full stack solution uses a RESTful Rails API that delivers JSON to Backbone front­end (feature and implementation detail below).
 
 ### Features
 
@@ -21,22 +20,23 @@ Users can:
 - Search for users
 - Take a website tour on login or sign in with a demo account
 
-###Profiles, Users, and Experiences Implementation
+### Implementation
+####Profiles, Users, and Experiences
 - Form views on profile edit in place by inheriting from [toggleable form superclass][toggleable]
 - A user's experiences are [sent down][user-jbuilder] with user data as JSON and [parsed][user-parse] into separate Backbone collections
 - [User model][user-model] has built in methods to generate realistic seed data
 
-###Connections Implementation
+#### Connections
 - Connections rely on two [database tables][schema] (connections and user_connections) to cleanly implement two-way friendships
 - [Connect button subview][connect-button] allows users to issue connection requests across various user views; permits options available based on a user's connection status with the current user
 - [Connected users index view][connected-users-index] displays a user's approved connections while paginating results
 
-###Messages/Search Implementation
+#### Messages/Search
 - Navigation between [inbox][inbox-view] pages occurs using the [router][router] and a getOrFetch method to ensure data persists across hard refreshes
 - [API Static Controller][search_controller] processes search query with PGSearch and paginates results with Kaminari
 - Search results view uses [infinite scroll][search-results] to improve load time and UX
 
-### Coming Soon!
+### Technical Choices
 - Notifications and dropdown menus on navigation bar
 - Degrees of connection
 - Statistics on who has viewed a user profile (D3 for data visualization)

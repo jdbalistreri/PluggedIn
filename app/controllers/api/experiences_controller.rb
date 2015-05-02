@@ -6,7 +6,8 @@ class Api::ExperiencesController < ApplicationController
     @experience.end_date = nil if params['experience']['check_present']
 
     if @experience.save
-      render :show
+      render :partial => "api/shared/experience",
+             :locals => { experience: @experience }
     else
       render json: @experience.errors.full_messages,
              status: :unprocessable_entity
@@ -21,6 +22,8 @@ class Api::ExperiencesController < ApplicationController
 
   def show
     @experience = current_user.experiences.find(params[:id])
+    render :partial => "api/shared/experience",
+           :locals => { experience: @experience }
   end
 
   def update
@@ -30,7 +33,8 @@ class Api::ExperiencesController < ApplicationController
     @experience.end_date = nil if params['experience']['check_present']
 
     if @experience.save
-      render :show
+      render :partial => "api/shared/experience",
+             :locals => { experience: @experience }
     else
       render json: @experience.errors.full_messages,
              status: :unprocessable_entity

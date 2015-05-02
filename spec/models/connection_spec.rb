@@ -19,7 +19,7 @@ describe Connection, type: :model do
     expect(connection.valid?).to be(false)
   end
 
-  it "validates that a message is not sent from a user to herself" do
+  it "validates that a connection cannot be sent from a user to herself" do
     connection = build(:connection, sender: user1, receiver: user1)
     expect(connection.valid?).to be(false)
   end

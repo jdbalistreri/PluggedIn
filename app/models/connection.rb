@@ -31,7 +31,7 @@ class Connection < ActiveRecord::Base
     end
 
     def cannot_send_to_self
-      errors[:base] << 'A user cannot message herself' if sender_id &&
+      errors[:base] << 'A user cannot connect with herself' if sender_id &&
                                                           receiver_id &&
                                                           sender_id == receiver_id
     end

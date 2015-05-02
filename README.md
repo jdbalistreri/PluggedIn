@@ -35,7 +35,10 @@ Full stack solution uses a RESTful Rails API that delivers JSON to Backbone fron
 - Search results view uses [infinite scroll][search-results] to improve load time and UX
 
 ### Technical Choices
-- *to complete*
+The features implemented in this project where chosen to replicate the core experience of using a professional networking site. These features centered around the experience of creating a profile and connecting with other users (e.g. connections, search, messaging, profiles) and incorporated a diverse set of implementation techniques and libraries
+- For example, company pages were not implemented because their architecture would have largely duplicated that of user profiles
+
+However, additional features whose absence might not be immediately noticed would need to be added to complete a production-grade app. Those include more expansive test coverage, email verification/notifications, profile privacy and user settings, notifications, flashes, and multiple login.
 
 ##About the Developer
 I am an NYC-based web developer with experience in Rails and JavaScript. After graduating from Dartmouth in 2013, I worked as an analytic strategy consultant. During that time I began teaching myself to code and ultimately decided to pursue programming full time.

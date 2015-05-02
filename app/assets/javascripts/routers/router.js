@@ -26,7 +26,8 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
   },
 
   addHeader: function () {
-    this.headerView = new PluggedIn.Views.Header();
+    var current_user = this.connected_users.getOrFetch(PluggedIn.currentUserId);
+    this.headerView = new PluggedIn.Views.Header({model: current_user});
     this.$header.html(this.headerView.render().$el);
   },
 

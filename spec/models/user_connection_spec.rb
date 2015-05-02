@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'byebug'
 
 describe UserConnection, type: :model do
 

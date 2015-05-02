@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe User, type: :model do
 
   it "validates the presence of an email, password, and name" do
@@ -16,7 +15,7 @@ describe User, type: :model do
     user4 = User.new(email: "asdf", password: "password", fname: "", lname: "asdfas")
     expect(user4.valid?).to be(false)
 
-    user5 = User.new(email: "asdf", password: "password", fname: "adsfas", lname: "asdfas")
+    user5 = build(:user)
     expect(user5.valid?).to be(true)
   end
 

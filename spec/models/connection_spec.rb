@@ -5,18 +5,15 @@ describe Connection, type: :model do
   let(:user2) { create(:user) }
 
   it "creates a valid connection" do
-    connection = build(:connection)
-    expect(connection.valid?).to be(true)
+    expect(build(:connection).valid?).to be(true)
   end
 
   it "validates the presence of a sender" do
-    connection = build(:connection, sender: nil)
-    expect(connection.valid?).to be(false)
+    expect(build(:connection, sender: nil).valid?).to be(false)
   end
 
   it "validates the presence of a receiver" do
-    connection = build(:connection, receiver: nil)
-    expect(connection.valid?).to be(false)
+    expect(build(:connection, receiver: nil).valid?).to be(false)
   end
 
   it "validates that a connection cannot be sent from a user to herself" do
@@ -25,8 +22,7 @@ describe Connection, type: :model do
   end
 
   it "ensures a 'pending' status if not specificed" do
-    connection = build(:connection)
-    expect(connection.pending?).to be(true)
+    expect(build(:connection).pending?).to be(true)
   end
 
   it "generates corresponding UserConnection models on create" do
@@ -39,5 +35,4 @@ describe Connection, type: :model do
     connection2 = build(:connection, sender: user2, receiver: user1)
     expect(connection2.valid?).to be(false)
   end
-
 end

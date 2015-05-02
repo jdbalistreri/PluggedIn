@@ -1,41 +1,33 @@
 require 'rails_helper'
 
 describe User, type: :model do
-
   it "creates a valid user" do
-    user = build(:user)
-    expect(user.valid?).to be(true)
+    expect(build(:user).valid?).to be(true)
   end
 
   it "ensures a session token upon user creation" do
-    user = build(:user)
-    expect(user.session_token).not_to be(nil)
+    expect(build(:user).session_token).not_to be(nil)
   end
 
   it "validates the presence of a password" do
-    user = build(:user, password: "")
-    expect(user.valid?).to be(false)
+    expect( build(:user, password: "").valid?).to be(false)
   end
 
   it "validates the presence of an email" do
-    user = build(:user, email: "")
-    expect(user.valid?).to be(false)
+    expect(build(:user, email: "").valid?).to be(false)
   end
 
   it "validates the presence of an fname" do
-    user = build(:user, fname: "")
-    expect(user.valid?).to be(false)
+    expect(build(:user, fname: "").valid?).to be(false)
   end
 
   it "validates the presence of an lname" do
-    user = build(:user, lname: "")
-    expect(user.valid?).to be(false)
+    expect(build(:user, lname: "").valid?).to be(false)
   end
 
   it "validates that users have a unique email address" do
-    user1 = create(:user, email: "user@example.com")
-    user2 = build(:user, email: "user@example.com")
-    expect(user2.valid?).to be(false)
+    create(:user, email: "user@example.com")
+    expect(build(:user, email: "user@example.com").valid?).to be(false)
   end
 
   it "finds a user by username and password" do
@@ -45,8 +37,7 @@ describe User, type: :model do
   end
 
   it "does not save a user's password" do
-    user = create(:user)
+    create(:user)
     expect(User.first.password).to eq(nil)
   end
-
 end

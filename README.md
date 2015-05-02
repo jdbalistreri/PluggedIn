@@ -1,17 +1,15 @@
 # Plugged In
 
 Plugged In is a professional networking site built in Rails and Backbone.
-
-####<a href="http://www.plugged-in.io" target="_blank">Live Link</a>
+#####<a href="http://www.plugged-in.io" target="_blank">Live Link</a>
 
 ### Challenge Overview
-Problem: Implement the core functionality of a professional networking site (e.g. LinkedIn)
-
-Solution: Full stack solution uses a RESTful Rails API that delivers JSON to Backbone front­end (feature and implementation detail below).
+#####Problem:
+Implement the core functionality of a professional networking site (e.g. LinkedIn)
+#####Solution:
+Full stack solution uses a RESTful Rails API that delivers JSON to Backbone front­end (feature and implementation detail below).
 
 ### Features
-
-Users can:
 - Create accounts and sessions (log in)
 - Create profiles with personal information and add past job/school experiences
 - Edit profiles in place by double clicking the text
@@ -21,7 +19,7 @@ Users can:
 - Take a website tour on login or sign in with a demo account
 
 ### Implementation
-####Profiles, Users, and Experiences
+#### Profiles, Users, and Experiences
 - Form views on profile edit in place by inheriting from [toggleable form superclass][toggleable]
 - A user's experiences are [sent down][user-jbuilder] with user data as JSON and [parsed][user-parse] into separate Backbone collections
 - [User model][user-model] has built in methods to generate realistic seed data

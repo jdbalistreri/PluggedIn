@@ -35,9 +35,7 @@ Full stack solution uses a RESTful Rails API that delivers JSON to Backbone fron
 - Search results view uses [infinite scroll][search-results] to improve load time and UX
 
 ### Technical Choices
-- Notifications and dropdown menus on navigation bar
-- Degrees of connection
-- Statistics on who has viewed a user profile (D3 for data visualization)
+- *to complete*
 
 ##About the Developer
 I am an NYC-based web developer with experience in Rails and JavaScript. After graduating from Dartmouth in 2013, I worked as an analytic strategy consultant. During that time I began teaching myself to code and ultimately decided to pursue programming full time.

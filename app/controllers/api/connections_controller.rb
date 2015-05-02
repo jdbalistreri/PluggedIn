@@ -6,7 +6,8 @@ class Api::ConnectionsController < ApplicationController
 
     if @connection.save
       @connection = Connection.includes(:receiver).find(@connection.id)
-      render :show
+      render :partial => "api/shared/connection", :locals => { connection: @connection,
+          sent: true, user: @connection.receiver }
     else
       render json: @connection.errors.full_messages,
              status: :unprocessable_entity
@@ -17,7 +18,8 @@ class Api::ConnectionsController < ApplicationController
     @connection = current_user.connections.includes(:users).find(params[:id])
 
     if @connection.update(status: params[:status])
-      render :show
+      render :partial => "api/shared/connection", :locals => { connection: @connection,
+          sent: true, user: @connection.receiver }
     else
       render json: @connection.errors.full_messages,
              status: :unprocessable_entity

@@ -1,2 +1,2 @@
-json.partial! 'api/shared/connection',
-  node_user_id: @connection.sender_id, connection: @connection, sent: true, user: @connection.receiver
+json.partial! 'api/shared/connection', connection: @connection, sent: true,
+                                       user: @connection.receiver

@@ -1,10 +1,3 @@
-json.(user, :id, :fname, :lname, :full_name, :location,
-      :tagline, :industry, :date_of_birth, :summary,
-      :email, :num_connections)
-
-json.cu_connection user.connection_with(current_user)
-
+json.partial! 'api/shared/user_simple', user: user
+json.(user, :num_connections, :education, :current_jobs, :previous_jobs)
 json.profile_picture_url image_url(user.picture.url(:profile))
-json.thumb_picture_url image_url(user.picture.url(:thumb))
-
-json.(user, :education, :current_jobs, :previous_jobs)

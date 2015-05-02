@@ -33,8 +33,8 @@ describe User, type: :model do
   end
 
   it "validates that users have a unique email address" do
-    user1 = create(:user)
-    user2 = build(:user)
+    user1 = create(:user, email: "user@example.com")
+    user2 = build(:user, email: "user@example.com")
     expect(user2.valid?).to be(false)
   end
 

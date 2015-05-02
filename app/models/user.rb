@@ -161,7 +161,9 @@ class User < ActiveRecord::Base
   end
 
   def age
-    DateTime.now.year - date_of_birth.year
+    now = DateTime.now
+    dob = date_of_birth
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
   def last_date

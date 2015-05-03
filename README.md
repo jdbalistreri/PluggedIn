@@ -51,15 +51,13 @@ However, additional features whose absence might not be immediately noticed woul
 
 #### First steps
 - Download/clone repository locally
-- Open the terminal in the project directory
-- Run `bundle install`
+- Open the terminal in the project directory and run `bundle install`
 
-#### To host locally:
-- Run `rails s` in the terminal
--Navigate to http://localhost:3000/ in your browser
+#### To run model and controller tests
+- Run `bundle exec rspec` in the project directory
 
-#### To run tests:
-- Run `bundle exec rspec` in the terminal to run model and controller tests
+#### Note
+- Hosting locally not possible because User model depends on AWS access keys
 
 ##About the Developer
 I am an NYC-based web developer with experience in Rails and JavaScript. After graduating from Dartmouth in 2013, I worked as an analytic strategy consultant. During that time I began teaching myself to code and ultimately decided to pursue programming full time.

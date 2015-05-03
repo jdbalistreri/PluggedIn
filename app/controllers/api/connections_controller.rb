@@ -16,14 +16,18 @@ class Api::ConnectionsController < ApplicationController
   end
 
   def update
-    @connection = current_user.connections.includes(:users).find(params[:id])
+    begin
+      @connection = current_user.connections.includes(:users).find(params[:id])
 
-    if @connection.update(status: params[:status])
-      render :partial => "api/shared/connection.json.jbuilder", :locals => { connection: @connection,
-          sent: true, user: @connection.receiver }
-    else
-      render json: @connection.errors.full_messages,
-             status: :unprocessable_entity
+      if @connection.update(status: params[:status])
+        render :partial => "api/shared/connection.json.jbuilder", :locals => { connection: @connection,
+            sent: true, user: @connection.receiver }
+      else
+        render json: @connection.errors.full_messages,
+               status: :unprocessable_entity
+      end
+    rescue
+      render json: "record not found", status: :unprocessable_entity
     end
   end
 

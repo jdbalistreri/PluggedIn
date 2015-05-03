@@ -39,13 +39,32 @@ describe Api::ConnectionsController do
     end
 
     describe "#update" do
+      let(:connection) { create(:connection, sender: current_user) }
+
+      before(:each) do
+        @controller.log_in!(current_user)
+      end
+
       context "when the connection is valid" do
-        it 'updates the connection to the database'
-        it 'renders the updated connection as JSON'
+        before(:each) do
+          put :update, id: connection.id, status: "approved"
+        end
+
+        it 'updates the connection to the database' do
+          connection.reload
+          expect(connection.status).to eq("approved")
+        end
+
+        it 'renders the updated connection as JSON' do
+          assert_template "api/shared/_connection.json.jbuilder"
+        end
       end
 
       context "when the connection is invalid" do
-        it 'responds with a status 422'
+        it 'responds with a status 422' do
+          put :update, id: connection.id + 1, status: "approved"
+          expect(response.code).to eq("422")
+        end
       end
     end
   end

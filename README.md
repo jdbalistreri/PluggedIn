@@ -48,15 +48,18 @@ The features implemented in this project where chosen to replicate the core expe
 However, additional features whose absence might not be immediately noticed would need to be added to complete a production-grade app. Those include more expansive test coverage, email verification/notifications, profile privacy and user settings, notifications, flashes, and multiple login.
 
 ## Build
+
 #### First steps
 - Download/clone repository locally
 - Open the terminal in the project directory
-- Run '''bundle install'''
+- Run 'bundle install'
+
 #### To host locally:
-- Run '''rails s''' in the terminal
+- Run 'rails s' in the terminal
 -Navigate to http://localhost:3000/ in your browser
+
 #### To run tests:
-- Run '''bundle exec rspec''' in the terminal to run model and controller tests
+- Run 'bundle exec rspec' in the terminal to run model and controller tests
 
 ##About the Developer
 I am an NYC-based web developer with experience in Rails and JavaScript. After graduating from Dartmouth in 2013, I worked as an analytic strategy consultant. During that time I began teaching myself to code and ultimately decided to pursue programming full time.

@@ -3,7 +3,7 @@ FactoryGirl.define do
     user
     role "Default Role"
     institution "Default Institution"
-    experience_type { [0,1].sample }
+    experience_type { ["job","school"].sample }
     start_date { Faker::Date.between(10.years.ago, Date.today) }
     end_date { Faker::Date.between(start_date || 10.years.ago, Date.today) }
   end

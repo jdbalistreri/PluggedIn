@@ -41,10 +41,6 @@ describe Api::ConnectionsController do
     describe "#update" do
       let(:connection) { create(:connection, sender: current_user) }
 
-      before(:each) do
-        @controller.log_in!(current_user)
-      end
-
       context "when the connection is valid" do
         before(:each) do
           put :update, id: connection.id, status: "approved"

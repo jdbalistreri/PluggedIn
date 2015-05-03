@@ -1,13 +1,13 @@
 class Api::ExperiencesController < ApplicationController
   before_action :require_logged_in
-  
+
   def create
     @experience = current_user.experiences.new(experience_params)
 
     @experience.end_date = nil if params['experience']['check_present']
 
     if @experience.save
-      render :partial => "api/shared/experience",
+      render :partial => "api/shared/experience.json.jbuilder",
              :locals => { experience: @experience }
     else
       render json: @experience.errors.full_messages,
@@ -23,7 +23,7 @@ class Api::ExperiencesController < ApplicationController
 
   def show
     @experience = current_user.experiences.find(params[:id])
-    render :partial => "api/shared/experience",
+    render :partial => "api/shared/experience.json.jbuilder",
            :locals => { experience: @experience }
   end
 
@@ -34,7 +34,7 @@ class Api::ExperiencesController < ApplicationController
     @experience.end_date = nil if params['experience']['check_present']
 
     if @experience.save
-      render :partial => "api/shared/experience",
+      render :partial => "api/shared/experience.json.jbuilder",
              :locals => { experience: @experience }
     else
       render json: @experience.errors.full_messages,

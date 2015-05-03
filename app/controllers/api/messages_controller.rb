@@ -1,13 +1,13 @@
 class Api::MessagesController < ApplicationController
   before_action :require_logged_in
-  
+
   def create
 
     @message = current_user.sent_messages.new(message_params)
 
     if @message.save
       @message = Message.includes(:receiver).find(@message.id)
-      render :partial => "api/shared/message", :locals => { message: @message,
+      render :partial => "api/shared/message.json.jbuilder", :locals => { message: @message,
           sent: true, user: @message.receiver }
     else
       render json: @message.errors.full_messages, status: :unprocessable_entity
@@ -30,7 +30,7 @@ class Api::MessagesController < ApplicationController
       else
         @user = @message.sender
       end
-      render :partial => "api/shared/message", :locals => { message: @message,
+      render :partial => "api/shared/message.json.jbuilder", :locals => { message: @message,
           sent: @sent, user: @user }
     else
       render json: 'no message found'

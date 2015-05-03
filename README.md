@@ -3,11 +3,14 @@
 Plugged In is a professional networking site built in Rails and Backbone
 #####<a href="http://www.plugged-in.io" target="_blank">Live Link</a>
 
-### Challenge Overview
+## Challenge Overview
+
 #####Problem:
 Implement the core functionality of a professional networking site (e.g. LinkedIn)
 #####Solution:
 Full stack solution uses a RESTful Rails API that delivers JSON to Backbone front­end (feature and implementation detail below)
+
+## Project Detail
 
 ### Features
 - Create accounts and sessions (log in)

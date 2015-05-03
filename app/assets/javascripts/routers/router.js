@@ -4,6 +4,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
     this.connected_users = new PluggedIn.Collections.Users();
     this.connected_users.fetch();
+    this.loaded_user_profiles = new PluggedIn.Collections.Users();
 
     PluggedIn.Inbox = new PluggedIn.Models.Inbox();
 
@@ -26,7 +27,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
   },
 
   addHeader: function () {
-    var current_user = this.connected_users.getOrFetch(PluggedIn.currentUserId);
+    var current_user = this.loaded_user_profiles.getOrFetch(PluggedIn.currentUserId);
     this.headerView = new PluggedIn.Views.Header({model: current_user});
     this.$header.html(this.headerView.render().$el);
   },
@@ -143,7 +144,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
     if (!id) {
       id = PluggedIn.currentUserId;
     }
-    var user = this.connected_users.getOrFetch(id);
+    var user = this.loaded_user_profiles.getOrFetch(id);
     var view = new PluggedIn.Views.UserShow({model: user});
     this._swapViews(view);
   },

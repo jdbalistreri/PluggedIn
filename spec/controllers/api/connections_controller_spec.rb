@@ -24,13 +24,17 @@ describe Api::ConnectionsController do
           end.to change { Connection.count }.from(0).to(1)
         end
 
-        it 'renders the new connection as JSON' do
-
+        it 'renders the new connection template' do
+          post :create, connection: { receiver_id: other_user.id }
+          assert_template "api/shared/_connection.json.jbuilder"
         end
       end
 
       context "when the connection is invalid" do
-        it 'responds with a status 422'
+        it 'responds with a status 422' do
+          post :create, connection: { receiver_id: current_user.id }
+          expect(response.code).to eq("422")
+        end
       end
     end
 

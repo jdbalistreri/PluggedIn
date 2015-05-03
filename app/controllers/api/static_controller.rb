@@ -1,4 +1,6 @@
 class Api::StaticController < ApplicationController
+  before_action :require_logged_in
+  
   def search
     @result_users = User
                     .user_search(params[:query])

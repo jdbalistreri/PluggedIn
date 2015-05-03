@@ -1,5 +1,6 @@
 class Api::MessagesController < ApplicationController
-
+  before_action :require_logged_in
+  
   def create
 
     @message = current_user.sent_messages.new(message_params)

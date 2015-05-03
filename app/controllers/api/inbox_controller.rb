@@ -1,4 +1,6 @@
 class Api::InboxController < ApplicationController
+  before_action :require_logged_in
+  
   def index
     @sent_messages = current_user.sent_messages.includes(receiver: :connections)
     @received_messages = current_user

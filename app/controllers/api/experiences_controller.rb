@@ -1,5 +1,6 @@
 class Api::ExperiencesController < ApplicationController
-
+  before_action :require_logged_in
+  
   def create
     @experience = current_user.experiences.new(experience_params)
 

@@ -1,13 +1,13 @@
 class Api::ConnectionsController < ApplicationController
   before_action :require_logged_in
-  
+
   def create
     @connection = Connection.new(connection_params)
     @connection.sender_id = current_user.id
 
     if @connection.save
       @connection = Connection.includes(:receiver).find(@connection.id)
-      render :partial => "api/shared/connection", :locals => { connection: @connection,
+      render :partial => "api/shared/connection.json.jbuilder", :locals => { connection: @connection,
           sent: true, user: @connection.receiver }
     else
       render json: @connection.errors.full_messages,
@@ -19,7 +19,7 @@ class Api::ConnectionsController < ApplicationController
     @connection = current_user.connections.includes(:users).find(params[:id])
 
     if @connection.update(status: params[:status])
-      render :partial => "api/shared/connection", :locals => { connection: @connection,
+      render :partial => "api/shared/connection.json.jbuilder", :locals => { connection: @connection,
           sent: true, user: @connection.receiver }
     else
       render json: @connection.errors.full_messages,

@@ -1,6 +1,6 @@
 class Api::StaticController < ApplicationController
   before_action :require_logged_in
-  
+
   def search
     @result_users = User
                     .user_search(params[:query])
@@ -14,6 +14,8 @@ class Api::StaticController < ApplicationController
       @total_count = @result_users.total_count
       @found = true
     end
+
+    render "api/static/search.json.jbuilder"
   end
 
   def connections_search
@@ -22,5 +24,7 @@ class Api::StaticController < ApplicationController
                        .includes(:connections)
                        .page(params[:page] || 1)
                        .per(6)
+
+    render "api/static/connections_search.json.jbuilder"
   end
 end

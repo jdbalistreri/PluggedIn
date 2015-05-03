@@ -15,68 +15,42 @@ describe Api::UsersController do
       @controller.log_in!(current_user)
     end
 
-    # describe "#index" do
-    #   context "when the experience is valid" do
-    #     it "adds a new experience to the database" do
-    #       expect do
-    #         post :create, experience: attributes_for(:experience)
-    #       end.to change { Experience.count }.from(0).to(1)
-    #     end
-    #
-    #     it 'renders the new connection template' do
-    #       post :create, experience: attributes_for(:experience)
-    #       assert_template "api/shared/_experience.json.jbuilder"
-    #     end
-    #   end
-    #
-    #   context "when the experience is invalid" do
-    #     it 'responds with a status 422' do
-    #       post :create, experience: { role: "test" }
-    #       expect(response.code).to eq("422")
-    #     end
-    #   end
-    # end
-    #
-    # describe "#show" do
-    #   let(:experience) { create(:experience, user: current_user) }
-    #
-    #   before(:each) do
-    #     get :show, id: experience.id
-    #   end
-    #
-    #   it "assigns the requested experience to @experience" do
-    #     expect(assigns[:experience]).to eq(experience)
-    #   end
-    #
-    #   it "renders the #show partial view" do
-    #     assert_template "api/shared/_experience.json.jbuilder"
-    #   end
-    # end
-    #
-    # describe "#update" do
-    #   let(:experience) { create(:experience, user: current_user) }
-    #
-    #   context "when the experience is valid" do
-    #     before(:each) do
-    #       put :update, id: experience.id, experience: { role: "Test Role" }
-    #     end
-    #
-    #     it 'updates the experience to the database' do
-    #       experience.reload
-    #       expect(experience.role).to eq("Test Role")
-    #     end
-    #
-    #     it 'renders the updated experience as JSON' do
-    #       assert_template "api/shared/_experience.json.jbuilder"
-    #     end
-    #   end
-    #
-    #   context "when the experience is invalid" do
-    #     it 'responds with a status 422' do
-    #       put :update, id: experience.id, experience: { role: "" }
-    #       expect(response.code).to eq("422")
-    #     end
-    #   end
-    # end
+    describe "#show" do
+      before(:each) do
+        get :show, id: current_user.id
+      end
+
+      it "assigns the requested user to @user" do
+        expect(assigns[:user]).to eq(current_user)
+      end
+
+      it "renders the #show partial view" do
+        assert_template 'api/users/show.json.jbuilder'
+      end
+    end
+
+    describe "#update" do
+      context "when the user updates are valid" do
+        before(:each) do
+          put :update, id: current_user.id, user: { fname: "TestName" }
+        end
+
+        it 'updates the user in the database' do
+          current_user.reload
+          expect(current_user.fname).to eq("TestName")
+        end
+
+        it 'renders the updated user' do
+          assert_template 'api/users/show.json.jbuilder'
+        end
+      end
+
+      context "when the user update are invalid" do
+        it 'responds with a status 422' do
+          put :update, id: current_user.id, user: { fname: "" }
+          expect(response.code).to eq("422")
+        end
+      end
+    end
   end
 end

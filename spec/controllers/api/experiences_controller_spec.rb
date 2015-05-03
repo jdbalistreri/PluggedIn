@@ -39,11 +39,28 @@ describe Api::ExperiencesController do
     end
 
     describe "#destroy" do
-
+      it "deletes the experience" do
+        experience = create(:experience, user: current_user)
+        expect do
+          delete :destroy, id: experience.id
+        end.to change { Experience.count }.from(1).to(0)
+      end
     end
 
     describe "#show" do
+      let(:experience) { create(:experience, user: current_user) }
 
+      before(:each) do
+        get :show, id: experience.id
+      end
+
+      it "assigns the requested experience to @experience" do
+        expect(assigns[:experience]).to eq(experience)
+      end
+
+      it "renders the #show partial view" do
+        assert_template "api/shared/_experience.json.jbuilder"
+      end
     end
 
     describe "#update" do

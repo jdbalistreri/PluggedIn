@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Api::InboxController do
   let(:current_user) { create(:user) }
+  let(:other_user) { create(:user) }
 
   context 'when user is not logged in' do
     it "redirects to the new session url" do
@@ -13,6 +14,21 @@ describe Api::InboxController do
   context 'when user is logged in' do
     before(:each) do
       @controller.log_in!(current_user)
+    end
+
+    describe "#connected_users" do
+      before(:each) do
+        create(:connection, sender: current_user, receiver: other_user, status: "approved")
+        get :connected_users
+      end
+
+      it "assigns the current user's connected_users to @connected_users" do
+        expect(assigns[:connected_users]).to eq([other_user])
+      end
+
+      it 'renders the connected users view' do
+        assert_template "api/inbox/connected_users.json.jbuilder"
+      end
     end
 
     describe "#index" do

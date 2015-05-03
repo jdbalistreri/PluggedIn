@@ -57,7 +57,7 @@ However, additional features whose absence might not be immediately noticed woul
 - Run `bundle exec rspec` in the project directory
 
 #### Note
-- Hosting locally not possible because User model depends on AWS access keys
+- Hosting locally may not be possible because User model depends on AWS access keys
 
 ##About the Developer
 I am an NYC-based web developer with experience in Rails and JavaScript. After graduating from Dartmouth in 2013, I worked as an analytic strategy consultant. During that time I began teaching myself to code and ultimately decided to pursue programming full time.

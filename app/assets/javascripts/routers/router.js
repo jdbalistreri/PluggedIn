@@ -2,7 +2,7 @@ PluggedIn.Routers.Router = Backbone.Router.extend({
 
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
-    this.connected_users = new PluggedIn.Collections.Users();
+    this.connected_users = new PluggedIn.Collections.ConnectedUsers();
     this.connected_users.fetch();
     this.loaded_user_profiles = new PluggedIn.Collections.Users();
 

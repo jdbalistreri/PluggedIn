@@ -1,6 +1,11 @@
 class Api::InboxController < ApplicationController
   before_action :require_logged_in
 
+  def connected_users
+    @connected_users = current_user.connected_users.includes(:connections)
+    render "api/inbox/connected_users.json.jbuilder"
+  end
+
   def index
     @sent_messages = current_user.sent_messages.includes(receiver: :connections)
     @received_messages = current_user
@@ -13,7 +18,7 @@ class Api::InboxController < ApplicationController
     @sent_connections = current_user
                         .sent_connections
                         .includes(receiver: :connections)
-                        
+
     render "api/inbox/index.json.jbuilder"
   end
 end

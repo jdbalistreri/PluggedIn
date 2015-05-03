@@ -8,12 +8,13 @@ Rails.application.routes.draw do
 
 
   namespace :api, defaults: {format: :json} do
-    resources :users, only: [:show, :index, :update]
+    resources :users, only: [:show, :update]
 
     resources :connections, only: [:create, :update]
     resources :messages, only: [:create, :show]
 
     get "/inbox", to: "inbox#index"
+    get "/inbox/connected_users", to: "inbox#connected_users"
 
     resources :experiences, only: [:create, :update, :destroy, :show]
 

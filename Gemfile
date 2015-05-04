@@ -39,6 +39,7 @@ group :development, :test do
   gem 'json_expressions'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 group :production do

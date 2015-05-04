@@ -1,4 +1,5 @@
 require 'factory_girl_rails'
+require 'capybara/rspec'
 require 'json_expressions/rspec'
 
 RSpec.configure do |config|

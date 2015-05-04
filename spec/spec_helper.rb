@@ -1,6 +1,5 @@
 require 'factory_girl_rails'
-require 'capybara/rspec'
-require 'json_expressions/rspec'
+# require 'capybara/rspec'
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods

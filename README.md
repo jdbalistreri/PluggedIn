@@ -40,8 +40,10 @@ Full stack solution uses a RESTful Rails API that delivers JSON to Backbone fron
 ###Test Coverage
 - **Model tests:** initial coverage complete
 - **Controller tests:** initial coverage complete
-- **Integration tests:** *pending*
-- **JavaScript tests:** *pending*
+- **Integration tests:** *in process*
+- **JavaScript tests:** *to implement*
+
+**filling out test coverage is highest priority of outstanding to dos**
 
 ### Technical Choices
 The features implemented in this project where chosen to replicate the core experience of using a professional networking site. These features centered around the experience of creating a profile and connecting with other users (e.g. connections, search, messaging, profiles). Features that did not demonstrate a unique programming skill set or whose presence would not significantly add to the experience of using the website were excluded in this version of the project.

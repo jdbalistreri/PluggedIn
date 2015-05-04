@@ -12,5 +12,4 @@ feature "Signing up" do
     expect(page).to have_content "Welcome to Plugged In"
   end
 
-
 end
